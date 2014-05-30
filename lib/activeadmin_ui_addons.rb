@@ -1,0 +1,2 @@
+module ActiveadminUiAddons
+end
