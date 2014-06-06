@@ -6,5 +6,14 @@ ActiveAdmin.register Invoice do
     id_column
     bool_column :paid
     actions
-  end  
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :legal_date
+      row :number
+      bool_row :paid
+    end
+  end
 end
