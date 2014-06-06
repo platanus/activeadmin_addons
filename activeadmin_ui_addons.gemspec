@@ -7,11 +7,11 @@ require "activeadmin_ui_addons/version"
 Gem::Specification.new do |s|
   s.name        = "activeadmin-ui-addons"
   s.version     = ActiveadminUiAddons::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ActiveadminUiAddons."
-  s.description = "TODO: Description of ActiveadminUiAddons."
+  s.authors     = ["Platanus"]
+  s.email       = ["contact@platan.us"]
+  s.homepage    = "https://github.com/platanus/activeadmin-ui-addons"
+  s.summary     = "Set of addons to help with the activeadmin ui"
+  s.description = "Set of addons to help with the activeadmin ui"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
