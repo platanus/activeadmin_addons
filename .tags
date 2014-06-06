@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ActiveAdminUIAddons	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^module ActiveAdminUIAddons$/;"	m
+ActiveAdminUIAddons	./lib/activeadmin_ui_addons/engine.rb	/^module ActiveAdminUIAddons$/;"	m
+ActiveadminUiAddons	./lib/activeadmin_ui_addons.rb	/^module ActiveadminUiAddons$/;"	m
+ActiveadminUiAddons	./lib/activeadmin_ui_addons/version.rb	/^module ActiveadminUiAddons$/;"	m
+AddPaidToInvoices	./spec/dummy/db/migrate/20140530173150_add_paid_to_invoices.rb	/^class AddPaidToInvoices < ActiveRecord::Migration$/;"	c
+AdminUser	./spec/dummy/app/models/admin_user.rb	/^class AdminUser < ActiveRecord::Base$/;"	c
+Application	./spec/dummy/config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Dummy
+ApplicationController	./spec/dummy/app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	./spec/dummy/app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+AttributesTable	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^      class AttributesTable$/;"	c	class:Views
+BoolValues	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^  module BoolValues$/;"	m	class:ActiveAdminUIAddons
+CreateActiveAdminComments	./spec/dummy/db/migrate/20140530172146_create_active_admin_comments.rb	/^class CreateActiveAdminComments < ActiveRecord::Migration$/;"	c
+CreateInvoices	./spec/dummy/db/migrate/20140530172044_create_invoices.rb	/^class CreateInvoices < ActiveRecord::Migration$/;"	c
+DeviseCreateAdminUsers	./spec/dummy/db/migrate/20140530172144_devise_create_admin_users.rb	/^class DeviseCreateAdminUsers < ActiveRecord::Migration$/;"	c
+Dummy	./spec/dummy/config/application.rb	/^module Dummy$/;"	m
+Engine	./lib/activeadmin_ui_addons/engine.rb	/^    class Engine < ::Rails::Engine$/;"	c	class:ActiveAdminUIAddons.Rails
+Invoice	./spec/dummy/app/models/invoice.rb	/^class Invoice < ActiveRecord::Base$/;"	c
+Rails	./lib/activeadmin_ui_addons/engine.rb	/^  module Rails$/;"	m	class:ActiveAdminUIAddons
+TableFor	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^      class TableFor$/;"	c	class:Views
+Views	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^    module Views$/;"	m
+bool_column	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^        def bool_column(attribute)$/;"	f	class:Views.TableFor
+bool_row	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^        def bool_row(attribute)$/;"	f	class:Views.AttributesTable
+bool_value	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^      def bool_value(model, attribute)$/;"	f	class:ActiveAdminUIAddons.BoolValues
+change	./spec/dummy/db/migrate/20140530172044_create_invoices.rb	/^  def change$/;"	f	class:CreateInvoices
+change	./spec/dummy/db/migrate/20140530172144_devise_create_admin_users.rb	/^  def change$/;"	f	class:DeviseCreateAdminUsers
+change	./spec/dummy/db/migrate/20140530173150_add_paid_to_invoices.rb	/^  def change$/;"	f	class:AddPaidToInvoices
+down	./spec/dummy/db/migrate/20140530172146_create_active_admin_comments.rb	/^  def self.down$/;"	F	class:CreateActiveAdminComments
+i18n_lookup	./lib/activeadmin_ui_addons/addons/bool_values.rb	/^      def i18n_lookup(model, attribute, key, last_default)$/;"	f	class:ActiveAdminUIAddons.BoolValues
+migrate	./spec/dummy/db/migrate/20140530172144_devise_create_admin_users.rb	/^  def migrate(direction)$/;"	f	class:DeviseCreateAdminUsers
+up	./spec/dummy/db/migrate/20140530172146_create_active_admin_comments.rb	/^  def self.up$/;"	F	class:CreateActiveAdminComments

@@ -20,6 +20,7 @@ PATH
   specs:
     activeadmin-ui-addons (0.0.1)
       rails (~> 4.0.5)
+      railties
 
 GEM
   remote: https://rubygems.org/
