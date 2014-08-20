@@ -7,7 +7,7 @@ Set of addons to help with the activeadmin ui
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'activeadmin_ui_addons'
+gem 'activeadmin-ui-addons', :github => 'platanus/activeadmin-ui-addons', :require => 'activeadmin_ui_addons'
 ```
 
 And then execute:
