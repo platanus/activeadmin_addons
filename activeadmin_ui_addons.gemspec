@@ -5,7 +5,7 @@ require "activeadmin_ui_addons/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "activeadmin-ui-addons"
+  s.name        = "activeadmin_ui_addons"
   s.version     = ActiveadminUiAddons::VERSION
   s.authors     = ["Platanus"]
   s.email       = ["contact@platan.us"]
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", ">= 4"
   s.add_dependency "railties"
+  s.add_dependency "select2-rails"
   
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "sqlite3"
