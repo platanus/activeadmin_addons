@@ -73,7 +73,8 @@ Using tags input, you can add tags using select2.
 
 [Read more!](docs/select2_tags.md)
 
+### Paperclip Integration
 
+Displays a paperclip image into index and show views.
 
-
-
+[Read more!](docs/paperclip_integration.md)
