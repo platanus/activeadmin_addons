@@ -18,7 +18,7 @@ GIT
 PATH
   remote: .
   specs:
-    activeadmin_ui_addons (0.0.2)
+    activeadmin_addons (0.0.2)
       rails (>= 4)
       railties
       select2-rails
@@ -179,7 +179,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
-  activeadmin_ui_addons!
+  activeadmin_addons!
   devise
   pry
   rspec-rails
