@@ -1,6 +1,6 @@
 # ActiveAdmin UI Addons
 
-Set of addons to help with the activeadmin ui 
+Set of addons to help with the activeadmin ui
 
 ## Instalation
 
