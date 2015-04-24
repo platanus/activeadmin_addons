@@ -30,6 +30,10 @@ In `app/assets/javascripts/active_admin.js.coffee` add this line **after** `#= r
 #= require activeadmin_addons/all
 ```
 
+## Default behaviour
+
+* This gem changes the default ActiveAdmin's input type for date attributes from `:date_select` to `:datepicker`
+
 ## Addons
 
 ### Boolean values
