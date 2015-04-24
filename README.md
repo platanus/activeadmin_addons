@@ -1,13 +1,13 @@
 # ActiveAdmin UI Addons
 
-Set of addons to help with the activeadmin ui 
+Set of addons to help with the activeadmin ui
 
 ## Instalation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'activeadmin-ui-addons', :github => 'platanus/activeadmin-ui-addons', :require => 'activeadmin_ui_addons'
+gem 'activeadmin_addons'
 ```
 
 And then execute:
@@ -21,18 +21,20 @@ $ bundle
 The **first** line in `app/assets/stylesheets/active_admin.css.scss` should be:
 
 ```stylesheet
-//= require activeadmin_ui_addons/all
+//= require activeadmin_addons/all
 ```
 
 In `app/assets/javascripts/active_admin.js.coffee` add this line **after** `#= require active_admin/base`
 
 ```javascript
-#= require activeadmin_ui_addons/all
+#= require activeadmin_addons/all
 ```
 
 ## Addons
 
-### Bool Row
+### Boolean values
+
+#### Bool Row
 
 Modifies how boolean values are displayed in attributes_table control (the one used in show view)
 
@@ -43,7 +45,7 @@ Modifies how boolean values are displayed in attributes_table control (the one u
 
 [Read more!](docs/bool_row.md)
 
-### Bool Column
+#### Bool Column
 
 Modifies how boolean values are displayed in index view
 
@@ -53,11 +55,19 @@ Modifies how boolean values are displayed in index view
 
 [Read more!](docs/bool_column.md)
 
-#### Select2
+### Select2
+
+#### Default
 
 With [select2](http://ivaynberg.github.io/select2/) the select control looks nicer, it works great with large collections and multiple selection.
 
-[Read more!](docs/select2.md)
+[Read more!](docs/select2_default.md)
+
+#### Tagging
+
+Using tags input, you can add tags using select2.
+
+[Read more!](docs/select2_tags.md)
 
 
 

@@ -9,7 +9,7 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "activeadmin_ui_addons"
+require "activeadmin_addons"
 
 module Dummy
   class Application < Rails::Application
