@@ -32,7 +32,9 @@ In `app/assets/javascripts/active_admin.js.coffee` add this line **after** `#= r
 
 ## Addons
 
-### Bool Row
+### Boolean values
+
+#### Bool Row
 
 Modifies how boolean values are displayed in attributes_table control (the one used in show view)
 
@@ -43,7 +45,7 @@ Modifies how boolean values are displayed in attributes_table control (the one u
 
 [Read more!](docs/bool_row.md)
 
-### Bool Column
+#### Bool Column
 
 Modifies how boolean values are displayed in index view
 
@@ -53,11 +55,19 @@ Modifies how boolean values are displayed in index view
 
 [Read more!](docs/bool_column.md)
 
-#### Select2
+### Select2
+
+#### Default
 
 With [select2](http://ivaynberg.github.io/select2/) the select control looks nicer, it works great with large collections and multiple selection.
 
-[Read more!](docs/select2.md)
+[Read more!](docs/select2_default.md)
+
+#### Tagging
+
+Using tags input, you can add tags using select2.
+
+[Read more!](docs/select2_tags.md)
 
 
 
