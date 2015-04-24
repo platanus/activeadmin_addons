@@ -7,7 +7,7 @@ Set of addons to help with the activeadmin ui
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'activeadmin-ui-addons', :github => 'platanus/activeadmin-ui-addons', :require => 'activeadmin_ui_addons'
+gem 'activeadmin_addons'
 ```
 
 And then execute:
@@ -21,13 +21,13 @@ $ bundle
 The **first** line in `app/assets/stylesheets/active_admin.css.scss` should be:
 
 ```stylesheet
-//= require activeadmin_ui_addons/all
+//= require activeadmin_addons/all
 ```
 
 In `app/assets/javascripts/active_admin.js.coffee` add this line **after** `#= require active_admin/base`
 
 ```javascript
-#= require activeadmin_ui_addons/all
+#= require activeadmin_addons/all
 ```
 
 ## Addons
