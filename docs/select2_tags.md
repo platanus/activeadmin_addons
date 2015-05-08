@@ -1,4 +1,6 @@
-### Select2 - Tagging
+### Select2
+
+#### Tagging
 
 To enable select2 with tags functionality you need to do the following:
 

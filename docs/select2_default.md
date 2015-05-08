@@ -1,4 +1,6 @@
-### Select2 - Default
+### Select2
+
+#### Default
 
 You will have all the power of [select2](http://ivaynberg.github.io/select2/) out of the box.
 
