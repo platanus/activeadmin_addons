@@ -75,9 +75,17 @@ Using tags input, you can add tags using select2.
 
 ### Paperclip Integration
 
+#### For Images
+
 Displays a paperclip image into index and show views.
 
-[Read more!](docs/paperclip_integration.md)
+[Read more!](docs/paperclip_images.md)
+
+#### For Any Attachment
+
+Displays a paperclip link with attachment related icon into index and show views.
+
+[Read more!](docs/paperclip_attachment.md)
 
 #### Enumerize Integration
 
