@@ -9,3 +9,5 @@ If you don't want to use it in a specific control, just add this class
 ```
 default-select
 ```
+
+![Select2 Default](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/select2-example.png)
