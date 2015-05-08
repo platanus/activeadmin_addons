@@ -11,6 +11,8 @@ show do
 end
 ```
 
+![Paperclip Image](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/paperclip-image-row-example.png)
+
 #### Image column
 
 ```ruby
@@ -19,4 +21,7 @@ index do
   image_column :photo, style: :thumb
 end
 ```
+
+![Paperclip Image](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/paperclip-image-column-example.png)
+
 > You can pass `style` attribute matching paperclip's style definition
