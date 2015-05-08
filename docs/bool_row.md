@@ -1,4 +1,6 @@
-### Boolean values - Bool Row
+### Boolean values
+
+#### Bool Row
 
 Modifies how boolean values are displayed in attributes_table control (the one used in show view)
 

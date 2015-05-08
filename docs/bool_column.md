@@ -1,4 +1,6 @@
-### Boolean values - Bool Column
+### Boolean values
+
+#### Bool Column
 
 Modifies how boolean values are displayed in index view
 
