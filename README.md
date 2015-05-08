@@ -78,3 +78,9 @@ Using tags input, you can add tags using select2.
 Displays a paperclip image into index and show views.
 
 [Read more!](docs/paperclip_integration.md)
+
+#### Enumerize Integration
+
+You can show [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
+
+[Read more!](docs/enumerize_integration.md)
