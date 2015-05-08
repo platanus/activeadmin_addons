@@ -11,7 +11,7 @@ show do
 end
 ```
 
-![Paperclip Attachment](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/paperclip-attachment-row-example.png)
+<img src="./images/paperclip-attachment-row-example.png" height="200" />
 
 #### Attachment Column
 
@@ -22,6 +22,6 @@ index do
 end
 ```
 
-![Paperclip Attachment](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/paperclip-attachment-column-example.png)
+<img src="./images/paperclip-attachment-column-example.png" height="300" />
 
 > You can pass `truncate` attribute to toggle truncating the filename. `attachment_column` truncates by default, while `attachment_row` doesn't

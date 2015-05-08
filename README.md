@@ -65,7 +65,7 @@ Modifies how boolean values are displayed in index view
 
 With [select2](http://ivaynberg.github.io/select2/) the select control looks nicer, it works great with large collections and multiple selection.
 
-![Select2 Default](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/select2-example.png)
+<img src="./docs/images/select2-example.png" height="200" />
 
 [Read more!](docs/select2_default.md)
 
@@ -73,7 +73,7 @@ With [select2](http://ivaynberg.github.io/select2/) the select control looks nic
 
 Using tags input, you can add tags using select2.
 
-![Select2 Tagging](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/select2-tags-example.png)
+<img src="./docs/images/select2-tags-example.png" height="100" />
 
 [Read more!](docs/select2_tags.md)
 
@@ -81,7 +81,7 @@ Using tags input, you can add tags using select2.
 
 Using `search_select` input, you can easly add ajax search to activeadmin
 
-![Select2 Ajax Search](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/select2-ajax-example.png)
+<img src="./docs/images/select2-ajax-example.png" height="100" />
 
 [Read more!](docs/select2_search.md)
 
@@ -91,7 +91,7 @@ Using `search_select` input, you can easly add ajax search to activeadmin
 
 Displays a paperclip image into index and show views.
 
-![Paperclip Image](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/paperclip-image-column-example.png)
+<img src="./docs/images/paperclip-image-column-example.png" height="200" />
 
 [Read more!](docs/paperclip_images.md)
 
@@ -99,7 +99,7 @@ Displays a paperclip image into index and show views.
 
 Displays a paperclip link with attachment related icon into index and show views.
 
-![Paperclip Attachment](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/paperclip-attachment-column-example.png)
+<img src="./docs/images/paperclip-attachment-column-example.png" height="250" />
 
 [Read more!](docs/paperclip_attachment.md)
 
@@ -107,6 +107,6 @@ Displays a paperclip link with attachment related icon into index and show views
 
 You can show [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
 
-![Paperclip Attachment](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/enumerize-tag-column-example.png)
+<img src="./docs/images/enumerize-tag-column-example.png" height="150" />
 
 [Read more!](docs/enumerize_integration.md)

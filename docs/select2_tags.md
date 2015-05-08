@@ -14,4 +14,4 @@ You can load previous created tags using `collection` option passing an array of
 f.input :hobbies, as: :tags, collection: ['Playing guitar', 'Watching Game of Thrones']
 ```
 
-![Select2 Tagging](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/select2-tags-example.png)
+<img src="./images/select2-tags-example.png" height="200" />

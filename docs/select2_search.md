@@ -8,7 +8,7 @@ To enable select2 search functionality you need to do the following:
   f.input :category_id, as: :search_select, url: admin_categories_path, fields: [:name]
 ```
 
-![Select2 Ajax Search](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/select2-ajax-example.png)
+<img src="./images/select2-ajax-example.png" height="200" />
 
 * `category_id`: Notice we're using the relation field name, not the realtion itself, so you can't use `f.input :category`.
 * `url`: This is the URL where to get the results. This URL expects an activeadmin collection Url (like the index action) or anything that uses [ransack](https://github.com/activerecord-hackery/ransack) search gem.

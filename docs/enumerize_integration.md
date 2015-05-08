@@ -11,7 +11,7 @@ show do
 end
 ```
 
-![Paperclip Attachment](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/enumerize-tag-row-example.png)
+<img src="./images/enumerize-tag-row-example.png" height="200" />
 
 #### Tag Column
 
@@ -22,7 +22,7 @@ index do
 end
 ```
 
-![Paperclip Attachment](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/enumerize-tag-column-example.png)
+<img src="./images/enumerize-tag-column-example.png" height="150" />
 
 If you want to customize the tag's colors. You need to define css classes matching enumerize attribute values. For example: if you have the `Bill` model with:
 

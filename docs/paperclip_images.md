@@ -11,7 +11,7 @@ show do
 end
 ```
 
-![Paperclip Image](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/paperclip-image-row-example.png)
+<img src="./images/paperclip-image-row-example.png" height="300" />
 
 #### Image column
 
@@ -22,6 +22,6 @@ index do
 end
 ```
 
-![Paperclip Image](https://raw.githubusercontent.com/platanus/activeadmin_addons/master/docs/images/paperclip-image-column-example.png)
+<img src="./images/paperclip-image-column-example.png" height="200" />
 
 > You can pass `style` attribute matching paperclip's style definition
