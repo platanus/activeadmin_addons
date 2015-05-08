@@ -73,6 +73,12 @@ Using tags input, you can add tags using select2.
 
 [Read more!](docs/select2_tags.md)
 
+#### Ajax Search
+
+Using `search_select` input, you can easly add ajax search to activeadmin
+
+[Read more!](docs/select2_search.md)
+
 ### Paperclip Integration
 
 Displays a paperclip image into index and show views.
