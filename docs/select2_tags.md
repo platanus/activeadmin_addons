@@ -14,4 +14,4 @@ You can load previous created tags using `collection` option passing an array of
 f.input :hobbies, as: :tags, collection: ['Playing guitar', 'Watching Game of Thrones']
 ```
 
-<img src="./images/select2-tags-example.png" height="200" />
+<img src="./images/select2-tags-example.png" />
