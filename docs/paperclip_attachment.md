@@ -6,7 +6,7 @@
 show do
   attributes_table do
     # another attributes...
-    attachment_row :document
+    attachment_row :document, label: "Download this"
   end
 end
 ```
@@ -24,4 +24,7 @@ end
 
 <img src="./images/paperclip-attachment-column-example.png" height="300" />
 
-> You can pass `truncate` attribute to toggle truncating the filename. `attachment_column` truncates by default, while `attachment_row` doesn't
+#### Options
+
+* You can pass `truncate` attribute to toggle truncating the filename. `attachment_column` truncates by default, while `attachment_row` doesn't
+* Pass `label` if you want to show another text instead of the filename
