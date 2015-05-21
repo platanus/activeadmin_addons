@@ -22,15 +22,17 @@ module ActiveAdminAddons
       end
 
       def link(context, model, attribute, options)
+        options[:truncate] = options.fetch(:truncate, true)
         doc = model.send(attribute)
         raise 'you need to pass a paperclip attribute' unless doc.respond_to?(:url)
 
         icon = icon_for_filename(doc.original_filename)
         icon_img = context.image_tag(icon, width: "20", height: "20", style: "margin-right: 5px; vertical-align: middle;")
         file_name = (options[:truncate] == true) ? context.truncate(doc.original_filename) : doc.original_filename
+        label_text = options.fetch(:label, file_name)
         label = context.content_tag(:span) do
           context.concat(icon_img)
-          context.safe_concat(file_name)
+          context.safe_concat(label_text)
         end
 
         context.link_to(label, doc.url, { target: "_blank" }) if doc.exists?
@@ -42,13 +44,11 @@ module ActiveAdminAddons
     module Views
       class TableFor
         def attachment_column(attribute, options = {})
-          options[:truncate] = options.fetch(:truncate, true)
           column(attribute) { |model| PaperclipAttachment.link(self, model, attribute, options) }
         end
       end
       class AttributesTable
         def attachment_row(attribute, options = {})
-          options[:truncate] = options.fetch(:truncate, false)
           row(attribute) { |model| PaperclipAttachment.link(self, model, attribute, options) }
         end
       end
