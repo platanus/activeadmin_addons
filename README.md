@@ -30,9 +30,12 @@ In `app/assets/javascripts/active_admin.js.coffee` add this line **after** `#= r
 #= require activeadmin_addons/all
 ```
 
-## Default behaviour
+## Default behaviour Changes
 
-* This gem changes the default ActiveAdmin's input type for date attributes from `:date_select` to `:datepicker`
+Installing this gem...
+
+* The default date input will be `:datepicker` instead of `:date_select`
+* Add better integration with [enumerize](https://github.com/brainspec/enumerize) on filters and selects
 
 ## Addons
 
