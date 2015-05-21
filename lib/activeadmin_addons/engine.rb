@@ -8,6 +8,7 @@ module ActiveAdminAddons
         require_relative './addons/paperclip_image'
         require_relative './addons/paperclip_attachment'
         require_relative './addons/enum_tag'
+        require_relative './support/enumerize_formtastic_support'
         app.config.assets.precompile +=  %w(select.scss)
       end
     end
