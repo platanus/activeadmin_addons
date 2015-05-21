@@ -18,7 +18,7 @@ end
 ```ruby
 index do
   # another attributes...
-  number_row :profit, as: :percentage
+  number_column :profit, as: :percentage
 end
 ```
 
