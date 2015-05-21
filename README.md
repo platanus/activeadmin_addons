@@ -113,3 +113,11 @@ You can show [enumerize](https://github.com/brainspec/enumerize) values as activ
 <img src="./docs/images/enumerize-tag-column-example.png" height="150" />
 
 [Read more!](docs/enumerize_integration.md)
+
+#### Number Formatting
+
+You can show numbers with format supported by [Rails NumberHelper](http://apidock.com/rails/v4.2.1/ActionView/Helpers/NumberHelper)
+
+<img src="./docs/images/number-column-example.png" height="150" />
+
+[Read more!](docs/number.md)
