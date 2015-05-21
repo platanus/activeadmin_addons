@@ -106,7 +106,7 @@ Displays a paperclip link with attachment related icon into index and show views
 
 [Read more!](docs/paperclip_attachment.md)
 
-#### Enumerize Integration
+### Enumerize Integration
 
 You can show [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
 
@@ -114,10 +114,18 @@ You can show [enumerize](https://github.com/brainspec/enumerize) values as activ
 
 [Read more!](docs/enumerize_integration.md)
 
-#### Number Formatting
+### Number Formatting
 
 You can show numbers with format supported by [Rails NumberHelper](http://apidock.com/rails/v4.2.1/ActionView/Helpers/NumberHelper)
 
 <img src="./docs/images/number-column-example.png" height="150" />
 
 [Read more!](docs/number.md)
+
+### List
+
+You can show `Array` or `Hash` values as html lists.
+
+<img src="./docs/images/list-row-example.png" height="150" />
+
+[Read more!](docs/list.md)
