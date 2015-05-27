@@ -3,6 +3,7 @@ module ActiveAdminAddons
     class << self
       def image(context, model, attribute, options)
         img = model.send(attribute)
+        return nil if img.nil?
         raise 'you need to pass a paperclip image attribute' unless img.respond_to?(:url)
         style = options.fetch(:style, :original)
         context.image_tag(img.url(style)) if img.exists?
