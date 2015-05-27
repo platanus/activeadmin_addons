@@ -24,6 +24,7 @@ module ActiveAdminAddons
       def link(context, model, attribute, options)
         options[:truncate] = options.fetch(:truncate, true)
         doc = model.send(attribute)
+        return nil if doc.nil?
         raise 'you need to pass a paperclip attribute' unless doc.respond_to?(:url)
 
         icon = icon_for_filename(doc.original_filename)
