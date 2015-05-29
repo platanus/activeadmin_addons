@@ -4,8 +4,10 @@ module ActiveAdminAddons
 
   module BoolValues
     class << self
-      def bool_value(model, attribute)
-        if model[attribute]
+      def bool_value(model, attribute, &block)
+        data = model.send(attribute)
+        data = block.call if block
+        if data
           i18n_lookup(model, attribute, 'true_value', DEFAULT_BOOLEAN_TRUE)
         else
           i18n_lookup(model, attribute, 'false_value', DEFAULT_BOOLEAN_FALSE)
@@ -28,13 +30,15 @@ module ActiveAdminAddons
   module ::ActiveAdmin
     module Views
       class TableFor
-        def bool_column(attribute)
-          column(attribute) { |model| BoolValues.bool_value(model, attribute) }
+        def bool_column(*args, &block)
+          attribute = args[1] || args[0]
+          column(*args) { |model| BoolValues.bool_value(model, attribute, &block) }
         end
       end
       class AttributesTable
-        def bool_row(attribute)
-          row(attribute) { |model| BoolValues.bool_value(model, attribute) }
+        def bool_row(*args, &block)
+          attribute = args[1] || args[0]
+          row(*args) { |model| BoolValues.bool_value(model, attribute, &block) }
         end
       end
     end
