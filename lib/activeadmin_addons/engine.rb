@@ -3,6 +3,7 @@ module ActiveAdminAddons
     class Engine < ::Rails::Engine
       require 'select2-rails'
       initializer "set boolean values addon" do |app|
+        require_relative './support/custom_builder'
         require_relative './addons/bool_values'
         require_relative './addons/paperclip_image'
         require_relative './addons/paperclip_attachment'
