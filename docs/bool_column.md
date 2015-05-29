@@ -23,8 +23,8 @@ end
 
 #### The default value is
 
-* true: &#x2717;
-* false: &#x2714;
+* true: &#x2714;
+* false: &#x2717;
 
 #### Modifing the default
 
