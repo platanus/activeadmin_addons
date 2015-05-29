@@ -1,70 +1,61 @@
-module ActiveAdminAddons
-  module ListHelper
-    class << self
-      def localized_value(key, model, attribute)
-         I18n.t("addons_list.#{model.class.name.underscore}.#{attribute}.#{key}")
-      end
+class ListBuilder < ActiveAdminAddons::CustomBuilder
 
-      def array_list(ctx, model, attribute, options)
-        items = model.send(attribute)
-        ctx.content_tag(options[:list_type]) do
-          items.each do |value|
-            value = localized_value(value, model, attribute) if !!options[:localize]
-            ctx.concat(ctx.content_tag(:li, value))
-          end
-        end
-      end
+  def render
+    options[:localize] = options.fetch(:localize, false)
+    options[:list_type] = options.fetch(:list_type, :ul)
 
-      def hash_list(ctx,  model, attribute, options)
-        items = model.send(attribute)
-        ctx.content_tag(options[:list_type]) do
-          items.keys.each do |key|
-            label =  !!options[:localize] ? localized_value(key, model, attribute) : key
-            value = items[key]
-            ctx.concat(ctx.content_tag(:li) do
-              if value.blank?
-                ctx.content_tag(:span, label)
-              else
-                ctx.content_tag(:span) do
-                  ctx.concat("#{label}:&nbsp".html_safe)
-                  ctx.concat(ctx.content_tag(:span) do
-                    ctx.content_tag(:i, value)
-                  end)
-                end
-              end
-            end)
-          end
-        end
-      end
+    raise 'invalid list type (ul, ol)' unless [:ul, :ol].include?(options[:list_type])
+    raise "list must be Array or Hash" if !data.is_a?(Hash) && !data.is_a?(Array)
 
-      def list(ctx, model, attribute, options)
-        options[:localize] = options.fetch(:localize, false)
-        options[:list_type] = options.fetch(:list_type, :ul)
-        raise 'invalid list type (ul, ol)' unless [:ul, :ol].include?(options[:list_type])
+    data.is_a?(Array) ? render_array : render_hash
+  end
 
-        items = model.send(attribute)
+  def localized_value(key, model, attribute)
+    I18n.t("addons_list.#{model.class.name.underscore}.#{attribute}.#{key}")
+  end
 
-        if !items.is_a?(Hash) && !items.is_a?(Array)
-          rails "list must be Array or Hash"
-        end
-
-        return array_list(ctx, model, attribute, options) if items.is_a?(Array)
-        hash_list(ctx, model, attribute, options)
+  def render_array
+    context.content_tag(options[:list_type]) do
+      data.each do |value|
+        value = localized_value(value, model, attribute) if !!options[:localize]
+        context.concat(context.content_tag(:li, value))
       end
     end
   end
 
-  module ::ActiveAdmin
-    module Views
-      class TableFor
-        def list_column(attribute, options = {})
-          column(attribute) { |model| ListHelper.list(self, model, attribute, options) }
-        end
+  def render_hash
+    context.content_tag(options[:list_type]) do
+      data.keys.each do |key|
+        label =  !!options[:localize] ? localized_value(key, model, attribute) : key
+        value = data[key]
+        context.concat(context.content_tag(:li) do
+          if value.blank?
+            context.content_tag(:span, label)
+          else
+            context.content_tag(:span) do
+              context.concat("#{label}:&nbsp".html_safe)
+              context.concat(context.content_tag(:span) do
+                context.content_tag(:i, value)
+              end)
+            end
+          end
+        end)
       end
-      class AttributesTable
-        def list_row(attribute, options = {})
-          row(attribute) { |model| ListHelper.list(self, model, attribute, options) }
-        end
+    end
+  end
+
+end
+
+module ::ActiveAdmin
+  module Views
+    class TableFor
+      def list_column(*args, &block)
+        column(*args) { |model| ::ListBuilder.new(self, model, *args, &block).render }
+      end
+    end
+    class AttributesTable
+      def list_row(*args, &block)
+        row(*args) { |model| ::ListBuilder.new(self, model, *args, &block).render }
       end
     end
   end
