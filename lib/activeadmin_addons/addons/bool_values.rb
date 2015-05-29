@@ -5,7 +5,7 @@ module ActiveAdminAddons
   module BoolValues
     class << self
       def bool_value(model, attribute)
-        if model[attribute]
+        if model.send(attribute)
           i18n_lookup(model, attribute, 'true_value', DEFAULT_BOOLEAN_TRUE)
         else
           i18n_lookup(model, attribute, 'false_value', DEFAULT_BOOLEAN_FALSE)
