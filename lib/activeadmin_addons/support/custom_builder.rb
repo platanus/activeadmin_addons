@@ -23,11 +23,15 @@ module ActiveAdminAddons
     end
 
     def options
-      @options ||= args.last.is_a?(Hash) ? args.last : {}
+      @options ||= has_opts? ? args.last : {}
     end
 
     def attribute
-      @attribute ||= args[1] || args[0]
+      @attribute ||= has_opts? ? args[0] : args[1]
+    end
+
+    def has_opts?
+      args[1] && args[1].is_a?(Hash)
     end
 
   end
