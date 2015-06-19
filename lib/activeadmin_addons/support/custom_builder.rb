@@ -26,12 +26,22 @@ module ActiveAdminAddons
       @options ||= has_opts? ? args.last : {}
     end
 
+    # attachment_column :foto
+    # attachment_column :foto, style: :hola
+    # attachment_column "Mi Foto", :foto
+    # attachment_column "Mi Foto", :foto, {}
+    # attachment_column :foto do
+    # end
     def attribute
-      @attribute ||= has_opts? ? args[0] : args[1]
+      @attribute ||= has_label? ? args[1] : args[0]
+    end
+
+    def has_label?
+      has_opts? ? args.length == 3 : args.length == 2
     end
 
     def has_opts?
-      args[1] && args[1].is_a?(Hash)
+      @has_opts ||= args.last.is_a?(Hash)
     end
 
   end
