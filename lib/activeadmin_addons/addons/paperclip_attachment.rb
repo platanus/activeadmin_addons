@@ -10,7 +10,7 @@ module ActiveAdminAddons
     }
 
     def icon_for_filename filename
-      for_ext File.extname(filename)
+      for_ext File.extname(filename.to_s)
     end
 
     def for_ext file_extension
