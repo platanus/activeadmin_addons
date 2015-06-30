@@ -21,9 +21,9 @@ module ActiveAdminAddons
     end
 
     def render
-      options[:truncate] = options.fetch(:truncate, true)
-      return nil if data.nil?
       raise 'you need to pass a paperclip attribute' unless data.respond_to?(:url)
+      options[:truncate] = options.fetch(:truncate, true)
+      return nil unless data.exists?
 
       icon = icon_for_filename(data.original_filename)
       icon_img = context.image_tag(icon, width: "20", height: "20", style: "margin-right: 5px; vertical-align: middle;")
@@ -34,7 +34,7 @@ module ActiveAdminAddons
         context.safe_concat(label_text)
       end
 
-      context.link_to(label, data.url, { target: "_blank" }) if data.exists?
+      context.link_to(label, data.url, { target: "_blank" })
     end
   end
 
