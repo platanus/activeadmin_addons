@@ -1,4 +1,4 @@
-# ActiveAdmin UI Addons
+# ActiveAdmin Addons
 
 Set of addons to help with the activeadmin ui
 
