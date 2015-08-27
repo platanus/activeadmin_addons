@@ -43,6 +43,5 @@ module ActiveAdminAddons
     def has_opts?
       @has_opts ||= args.last.is_a?(Hash)
     end
-
   end
 end
