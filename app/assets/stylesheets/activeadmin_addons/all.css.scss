@@ -1,1 +1,13 @@
 @import "select2";
+
+.filter_range_select {
+  input[type=number] {
+    padding-right: 0px;
+    width: 96px;
+  }
+  .separator {
+    display: inline-block;
+    text-align: center;
+    width: 12px;
+  }
+}
