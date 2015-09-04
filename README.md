@@ -129,3 +129,23 @@ You can show `Array` or `Hash` values as html lists.
 <img src="./docs/images/list-row-example.png" height="150" />
 
 [Read more!](docs/list.md)
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+## Credits
+
+Thank you [contributors](https://github.com/platanus/activeadmin_addons/graphs/contributors)!
+
+<img src="http://platan.us/gravatar_with_text.png" alt="Platanus" width="250"/>
+
+activeadmin_addons is maintained by [platanus](http://platan.us).
+
+## License
+
+ActiveAdminAddons is © 2015 Platanus, spa. It is free software and may be redistributed under the terms specified in the LICENSE file.
