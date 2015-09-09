@@ -1,4 +1,4 @@
-### Enumerize Integration
+### Enum Integration
 
 #### Tag Row
 
@@ -28,8 +28,13 @@ If you want to customize the tag's colors. You need to define css classes matchi
 
 ```ruby
 class Bill < ActiveRecord::Base
+  # Enumerize
   extend Enumerize
   enumerize :state, in: [:rejected, :approved]
+
+  # Rails Enum
+  enum status: { active: 0, archived: 1 }
+
 end
 ```
 

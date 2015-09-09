@@ -106,9 +106,9 @@ Displays a paperclip link with attachment related icon into index and show views
 
 [Read more!](docs/paperclip_attachment.md)
 
-### Enumerize Integration
+### Enum Integration
 
-You can show [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
+You can show Rails' built in `enums` or [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
 
 <img src="./docs/images/enumerize-tag-column-example.png" height="150" />
 
