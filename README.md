@@ -39,6 +39,18 @@ Installing this gem...
 
 ## Addons
 
+### Filters
+
+#### Range Filter
+
+To filter based on a range of values you can use `range_select` like this:
+
+```ruby
+filter :barks_count, as: :range_select
+```
+
+<img src="./docs/images/filter-range.png" height="100" />
+
 ### Boolean values
 
 #### Bool Row
