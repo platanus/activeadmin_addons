@@ -118,6 +118,14 @@ Displays a paperclip link with attachment related icon into index and show views
 
 [Read more!](docs/paperclip_attachment.md)
 
+### AASM Integration
+
+You can show [aasm](https://github.com/aasm/aasm) values as active admin tags.
+
+<img src="./docs/images/aasm-integration-example.png" height="100" />
+
+[Read more!](docs/aasm_integration.md)
+
 ### Enum Integration
 
 You can show Rails' built in `enums` or [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
