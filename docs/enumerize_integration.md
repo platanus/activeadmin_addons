@@ -38,7 +38,7 @@ class Bill < ActiveRecord::Base
 end
 ```
 
-You will nedd to define inside `your_app/app/assets/stylesheets/active_admin.css.scss` the following:
+You will need to define inside `your_app/app/assets/stylesheets/active_admin.css.scss` the following:
 
 ```scss
 .status_tag {
