@@ -12,6 +12,6 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'devise'
+gem "activeadmin", github: "gregbell/active_admin"
+gem "devise"
 gem "sass-rails", "~> 4.0.2"

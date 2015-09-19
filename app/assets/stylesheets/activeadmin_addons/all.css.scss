@@ -11,3 +11,12 @@
     width: 12px;
   }
 }
+
+.editable-cell {
+  .editable-cell-form {
+    display: none;
+    > li, > form > li {
+      list-style-type: none;
+    }
+  }
+}

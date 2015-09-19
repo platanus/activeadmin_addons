@@ -11,6 +11,7 @@ module ActiveAdminAddons
         require_relative './addons/state_values'
         require_relative './addons/number'
         require_relative './addons/list'
+        require_relative './addons/editable_index'
         require_relative './support/enumerize_formtastic_support'
         require_relative './support/set_datepicker'
         app.config.assets.precompile +=  %w(select.scss)

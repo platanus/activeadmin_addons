@@ -4,7 +4,11 @@ ActiveAdmin.register Invoice do
   index do
     selectable_column
     id_column
-    bool_column :paid
+    editable_column :number
+    # editable { column :number }
+    # bool_column :paid
+    # editable { bool_column :paid }
+    editable_column :paid
     actions
   end
 
@@ -15,5 +19,14 @@ ActiveAdmin.register Invoice do
       row :number
       bool_row :paid
     end
+  end
+
+  form do |f|
+    f.inputs "Details" do
+      f.input :legal_date, as: :datepicker
+      f.input :number
+      f.input :paid
+    end
+    f.actions
   end
 end

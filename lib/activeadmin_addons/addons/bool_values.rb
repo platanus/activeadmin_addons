@@ -24,7 +24,6 @@ module ActiveAdminAddons
   end
 
   module BoolValues
-
     module ::ActiveAdmin
       module Views
         class TableFor
