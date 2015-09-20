@@ -1,3 +1,5 @@
+//= require font-awesome
+
 @import "select2";
 
 .filter_range_select {
@@ -12,11 +14,23 @@
   }
 }
 
+$gray: #999;
+
 .editable-cell {
+  .editable-cell-show, .editable-cell-edit {
+    text-decoration: none;
+    color: $gray;
+    padding-right: 0.5em;
+  }
+
   .editable-cell-form {
     display: none;
     > li, > form > li {
       list-style-type: none;
+    }
+    .editable-cell-show, > .input {
+      display: inline;
+      box-sizing: border-box;
     }
   }
 }

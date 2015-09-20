@@ -25,7 +25,7 @@ triggerChange = (element, callback) ->
 class EditableCell
   constructor: (@root) ->
     @valueElement = @root.find(".editable-cell-value")
-    @textValueElement = @valueElement.find(".editable-cell-show")
+    @textValueElement = @valueElement.find(".editable-cell-data")
     @formElement = @root.find(".editable-cell-form")
     @url = @formElement.data("url")
     @httpMethod = @_getAttributeAndDestroy(@formElement.find("[name=_method]"), "value")
@@ -34,6 +34,7 @@ class EditableCell
     @inputElement = getInputElement(@formElement)
     @inputName = @inputElement.attr("name")
 
+    @root.closest("td").width(@root.closest("td").width())
     @inputElement.attr("autocomplete", false)
 
   attachEvents: ->

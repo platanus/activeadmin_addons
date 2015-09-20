@@ -9,8 +9,10 @@ module ActiveAdminAddons
             context.a(
               "href" => "javascript:void(0);",
               "class" => "editable-cell-edit"
-            ) { "edit" }
-            context.span("class" => "editable-cell-show") { builder.send(:data) }
+            ) do
+              context.i "class" => "fa fa-pencil-square-o"
+            end
+            context.span("class" => "editable-cell-data") { builder.send(:data) }
           end
 
           context.div({
@@ -20,7 +22,9 @@ module ActiveAdminAddons
             context.a(
               "href" => "javascript:void(0);",
               "class" => "editable-cell-show"
-            ) { "show" }
+            ) do
+              context.i "class" => "fa fa-eye"
+            end
 
             context.active_admin_form_for([:admin, model]) do |f|
               f.input builder.send(:attribute), {

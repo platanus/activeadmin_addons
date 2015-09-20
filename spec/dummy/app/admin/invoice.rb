@@ -4,11 +4,9 @@ ActiveAdmin.register Invoice do
   index do
     selectable_column
     id_column
-    editable_column :number
-    # editable { column :number }
-    # bool_column :paid
-    # editable { bool_column :paid }
-    editable_column :paid
+    editable_column :number, :as => :string
+    # TODO: bool_column :paid, editable: { :as => :checkbox }
+    bool_column :paid
     actions
   end
 
