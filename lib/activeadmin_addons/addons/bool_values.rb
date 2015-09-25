@@ -16,10 +16,18 @@ module ActiveAdminAddons
     def i18n_lookup(key, last_default)
       model_name = model.class.model_name.i18n_key
 
-      model_i18n = "activeadmin.addons.boolean.models.#{model_name}.#{key}"
-      default_i18n = "activeadmin.addons.boolean.default.#{key}"
+      scope = "activeadmin.addons.boolean"
+      value = I18n.t("models.#{model_name}.#{attribute}.#{key}", default: '', scope: scope)
+      value = I18n.t("models.#{model_name}.#{key}", default: '', scope: scope) if value.empty?
+      value = I18n.t("default.#{key}", default: last_default, scope: scope) if value.empty?
 
-      I18n.t(model_i18n, default: I18n.t(default_i18n, default: last_default)).html_safe
+      value.html_safe
+
+      #
+      # model_i18n = "activeadmin.addons.boolean.models.#{model_name}.#{key}"
+      # default_i18n = "activeadmin.addons.boolean.default.#{key}"
+      #
+      # I18n.t(model_i18n, default: I18n.t(default_i18n, default: last_default)).html_safe
     end
   end
 

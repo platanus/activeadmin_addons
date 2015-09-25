@@ -3,10 +3,13 @@ en:
   activeadmin:
     addons:
       boolean:
-        models:
-          invoice:
-            true_value: pagada
-            false_value: no pagada
         default:
           true_value: ok
           false_value: nope
+        models:
+          invoice:
+            true_value: he
+            false_value: nahaniri
+            paid:
+              true_value: pagada
+              false_value: no pagada
