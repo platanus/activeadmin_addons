@@ -1,4 +1,4 @@
-# ActiveAdmin Addons
+# ActiveAdmin Addons [![Build Status](https://secure.travis-ci.org/platanus/activeadmin_addons.svg?branch=master)](http://travis-ci.org/platanus/activeadmin_addons)
 
 Set of addons to help with the activeadmin ui
 
