@@ -7,6 +7,7 @@ require 'factory_girl_rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'shoulda-matchers'
+require 'enumerize'
 
 # ActiveAdmin.application.load_paths = [File.expand_path("../dummy/app/admin", __FILE__)]
 

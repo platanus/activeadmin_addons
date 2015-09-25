@@ -84,6 +84,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    enumerize (1.0.0)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.4.0)
@@ -241,6 +243,7 @@ DEPENDENCIES
   activeadmin_addons!
   capybara
   devise
+  enumerize
   factory_girl_rails (= 4.4.0)
   guard (~> 2.7.0)
   guard-rspec (~> 4.3)
