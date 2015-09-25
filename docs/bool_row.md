@@ -53,3 +53,18 @@ en:
             true_value: pagada
             false_value: no pagada
 ```
+
+
+#### Modifing an specific model attribute
+
+```
+en:
+  activeadmin:
+    addons:
+      boolean:
+        models:
+          invoice:
+            paid:
+              true_value: pagada
+              false_value: no pagada
+```
