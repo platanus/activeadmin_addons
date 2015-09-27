@@ -31,6 +31,7 @@ $(function() {
       var url = $(el).data('url');
       var fields = $(el).data('fields');
       var displayName = $(el).data('display_name');
+      var minimumInputLength = $(el).data('minimum_input_length');
       var order = fields[0] + "_desc";
 
       $(el).select2({
@@ -70,7 +71,7 @@ $(function() {
           },
           cache: true
         },
-        minimumInputLength: 1
+        minimumInputLength: minimumInputLength
       });
     });
   }
