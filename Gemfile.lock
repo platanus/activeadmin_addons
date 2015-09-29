@@ -22,7 +22,7 @@ PATH
     activeadmin_addons (0.2.7)
       rails (>= 4)
       railties
-      select2-rails
+      select2-rails (~> 3.5.9)
 
 GEM
   remote: https://rubygems.org/
