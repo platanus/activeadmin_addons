@@ -1,6 +1,29 @@
 # ActiveAdmin Addons [![Build Status](https://secure.travis-ci.org/platanus/activeadmin_addons.svg?branch=master)](http://travis-ci.org/platanus/activeadmin_addons)
 
-Set of addons to help with the activeadmin ui
+Set of addons to improve the activeadmin ui and make it as awesome as we can.
+
+**Table of Contents**
+
+- [Instalation](#instalation)
+- [Setup](#setup)
+- [Default behaviour Changes](#default-behaviour-changes)
+- [Addons](#addons)
+	- [Filters](#filters)
+		- [Range Filter](#range-filter)
+	- [Boolean values](#boolean-values)
+		- [Bool Row](#bool-row)
+		- [Bool Column](#bool-column)
+	- [Select2](#select2)
+		- [Default](#default)
+		- [Tagging](#tagging)
+		- [Ajax Search](#ajax-search)
+	- [Paperclip Integration](#paperclip-integration)
+		- [For Images](#for-images)
+		- [For Any Attachment](#for-any-attachment)
+	- [AASM Integration](#aasm-integration)
+	- [Enum Integration](#enum-integration)
+	- [Number Formatting](#number-formatting)
+	- [List](#list)
 
 ## Instalation
 
