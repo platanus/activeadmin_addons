@@ -66,6 +66,7 @@ describe "Paperclip Image", type: :feature do
       register_show(Invoice) do
         image_row("Mi foto", :photo)
       end
+
       visit admin_invoice_path(create_photo_invoice)
     end
 
