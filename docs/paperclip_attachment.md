@@ -26,5 +26,5 @@ end
 
 #### Options
 
-* You can pass `truncate` attribute to toggle truncating the filename. `attachment_column` truncates by default, while `attachment_row` doesn't
+* You can pass `truncate` attribute to toggle truncating the filename. `attachment_column` truncates by default.
 * Pass `label` if you want to show another text instead of the filename

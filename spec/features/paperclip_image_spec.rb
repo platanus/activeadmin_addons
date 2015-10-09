@@ -12,7 +12,7 @@ describe "Paperclip Image", type: :feature do
     Invoice.create photo: File.new(ENGINE_RAILS_ROOT + 'spec/assets/Rails.png')
   end
 
-  context "with a block" do
+  context "without options" do
     before do
       register_index(Invoice) do
         image_column :photo
@@ -40,11 +40,11 @@ describe "Paperclip Image", type: :feature do
 
     it "shows the attachent as an image" do
       img = page.find('img')
-      expect(img[:src]).to match(/thumb\/Rails.png/)
+      expect(img[:src]).to match(%r{thumb/Rails.png})
     end
   end
 
-  context "without a block" do
+  context "passing a block" do
     before do
       register_show(Invoice) do
         image_row(:photo) do |invoice|
