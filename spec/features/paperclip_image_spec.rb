@@ -47,9 +47,7 @@ describe "Paperclip Image", type: :feature do
   context "passing a block" do
     before do
       register_show(Invoice) do
-        image_row(:photo) do |invoice|
-          invoice.photo
-        end
+        image_row(:photo, &:photo)
       end
 
       visit admin_invoice_path(create_photo_invoice)

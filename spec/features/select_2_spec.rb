@@ -22,6 +22,46 @@ describe "Select 2", type: :feature do
     end
   end
 
+  context "Tags" do
+    context "with empty collection" do
+      before do
+        register_form(Invoice) do |f|
+          f.input :number, as: :tags
+        end
+
+        invoice = Invoice.first_or_create!
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "adds new tags", js: true do
+        find("div.select2-container").click
+        input = find('.select2-input')
+        input.set('Value 1')
+        input.native.send_keys(:return)
+        expect(page).to have_css("li.select2-search-choice", count: 1)
+        input.set('Value 2')
+        input.native.send_keys(:return)
+        expect(page).to have_css("li.select2-search-choice", count: 2)
+      end
+    end
+
+    context "with empty collection" do
+      before do
+        register_form(Invoice) do |f|
+          f.input :number, as: :tags, collection: ["#111", "#222", "#333"]
+        end
+
+        invoice = Invoice.first_or_create!
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "adds new tags", js: true do
+        find("div.select2-container").click
+        expect(page).to have_css(".select2-result", count: 3)
+      end
+    end
+  end
+
   context "Ajax search" do
     context "with basic config" do
       before do

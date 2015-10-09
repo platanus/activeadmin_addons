@@ -6,3 +6,6 @@ rvm:
 script:
   - cd spec/dummy && RAILS_ENV=test bundle exec rake db:create db:migrate
   - cd ../.. && bundle exec rspec spec
+
+addons:
+  firefox: "31.0esr"

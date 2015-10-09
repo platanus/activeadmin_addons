@@ -28,7 +28,7 @@ ActiveAdmin.register Invoice do
     f.inputs "Details" do
       f.input :state
       f.input :paid
-      f.input :number
+      f.input :number, as: :tags, collection: ["value 1", "value 2"]
       f.input :attachment
       f.input :photo
       f.input :category_id, as: :search_select, url: admin_categories_path,
