@@ -5,8 +5,6 @@ class Invoice < ActiveRecord::Base
   extend ::Enumerize
   include Paperclip::Glue
 
-  has_many :details
-
   enumerize :state, in: [:pending, :rejected, :approved], default: :pending
 
   enum status: { active: 0, archived: 1 }
@@ -21,4 +19,8 @@ class Invoice < ActiveRecord::Base
   }
 
   validates_attachment :photo, content_type: { content_type: /\Aimage\/.*\Z/ }
+
+  def display_name
+    number
+  end
 end

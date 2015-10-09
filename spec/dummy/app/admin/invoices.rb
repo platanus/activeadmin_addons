@@ -29,7 +29,7 @@ ActiveAdmin.register Invoice do
     f.inputs "Details" do
       f.input :state
       f.input :paid
-      f.input :number
+      f.input :number, as: :tags
       f.input :attachment
       f.input :photo
     end

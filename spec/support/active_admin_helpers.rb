@@ -5,8 +5,16 @@ module ActiveAdminHelpers
     ActiveAdmin.application.namespaces.each(&:reset_menu!)
   end
 
-  def register_index(klass, &block)
-    load_resources do
+  def register_page(klass, reset_app = true, &block)
+    load_resources(reset_app) do
+      ActiveAdmin.register(klass) do
+        instance_eval(&block)
+      end
+    end
+  end
+
+  def register_index(klass, reset_app = true, &block)
+    load_resources(reset_app) do
       ActiveAdmin.register(klass) do
         index do
           instance_eval(&block)
@@ -15,8 +23,8 @@ module ActiveAdminHelpers
     end
   end
 
-  def register_show(klass, &block)
-    load_resources do
+  def register_show(klass, reset_app = true, &block)
+    load_resources(reset_app) do
       ActiveAdmin.register(klass) do
         show do
           attributes_table do
@@ -27,8 +35,8 @@ module ActiveAdminHelpers
     end
   end
 
-  def register_form(klass, &block)
-    load_resources do
+  def register_form(klass, reset_app = true, &block)
+    load_resources(reset_app) do
       ActiveAdmin.register(klass) do
         form do |f|
           f.inputs "Details" do
@@ -53,23 +61,22 @@ module ActiveAdminHelpers
   # setup with the new configurations.
   #
   # Eg:
-  #   load_resources do
+  #   load_resources(reset_app) do
   #     ActiveAdmin.regiser(Post)
   #   end
   #
-  def load_resources
-    ActiveAdmin.application = nil
-
-    ActiveAdmin.setup do
-
+  def load_resources(reset_app = true)
+    if !!reset_app
+      ActiveAdmin.application = nil
+      ActiveAdmin.setup {}
+      # Disabling authentication in specs so that we don't have to worry about
+      # it allover the place
+      ActiveAdmin.application.authentication_method = false
+      ActiveAdmin.application.current_user_method = false
     end
 
-    # Disabling authentication in specs so that we don't have to worry about
-    # it allover the place
-    ActiveAdmin.application.authentication_method = false
-    ActiveAdmin.application.current_user_method = false
-
     yield
+
     reload_menus!
     reload_routes!
   end
