@@ -27,6 +27,18 @@ module ActiveAdminHelpers
     end
   end
 
+  def register_form(klass, &block)
+    load_resources do
+      ActiveAdmin.register(klass) do
+        form do |f|
+          f.inputs "Details" do
+            instance_exec(f, &block)
+          end
+        end
+      end
+    end
+  end
+
   # Sometimes we need to reload the routes within
   # the application to test them out
   def reload_routes!(_show_routes = false)
@@ -46,7 +58,17 @@ module ActiveAdminHelpers
   #   end
   #
   def load_resources
-    ActiveAdmin.application = ::ActiveAdmin::Application.new
+    ActiveAdmin.application = nil
+
+    ActiveAdmin.setup do
+
+    end
+
+    # Disabling authentication in specs so that we don't have to worry about
+    # it allover the place
+    ActiveAdmin.application.authentication_method = false
+    ActiveAdmin.application.current_user_method = false
+
     yield
     reload_menus!
     reload_routes!
