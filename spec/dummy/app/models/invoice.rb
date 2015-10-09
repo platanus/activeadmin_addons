@@ -5,6 +5,8 @@ class Invoice < ActiveRecord::Base
   extend ::Enumerize
   include Paperclip::Glue
 
+  belongs_to :category
+
   enumerize :state, in: [:pending, :rejected, :approved], default: :pending
 
   enum status: { active: 0, archived: 1 }

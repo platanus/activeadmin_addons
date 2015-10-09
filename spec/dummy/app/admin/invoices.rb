@@ -1,5 +1,5 @@
 ActiveAdmin.register Invoice do
-  permit_params :legal_date, :number, :paid, :state, :attachment, :photo
+  permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id
 
   index do
     selectable_column
@@ -8,7 +8,6 @@ ActiveAdmin.register Invoice do
     bool_column :paid
     image_column :photo, style: :thumb
     attachment_column :attachment
-    column :legal_date
     number_column :number, as: :currency, unit: "$", separator: ","
     actions
   end
@@ -29,9 +28,12 @@ ActiveAdmin.register Invoice do
     f.inputs "Details" do
       f.input :state
       f.input :paid
-      f.input :number, as: :tags
+      f.input :number
       f.input :attachment
       f.input :photo
+      f.input :category_id, as: :search_select, url: admin_categories_path,
+                            fields: [:name], display_name: 'name',
+                            minimum_input_length: 1
     end
     f.actions
   end
