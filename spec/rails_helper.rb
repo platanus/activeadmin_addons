@@ -12,6 +12,7 @@ require 'paperclip'
 require 'capybara/poltergeist'
 require 'database_cleaner'
 
+# Uncomment to work with poltergeist instead of firefox
 # Capybara.javascript_driver = :poltergeist
 
 # ActiveAdmin.application.load_paths = [File.expand_path("../dummy/app/admin", __FILE__)]

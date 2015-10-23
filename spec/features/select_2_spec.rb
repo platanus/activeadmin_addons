@@ -83,9 +83,7 @@ describe "Select 2", type: :feature do
       it "shows other categories after search", js: true do
         find("div.select2-container").click
         find('.select2-input').set('Cat')
-        wait_for_ajax
-        expect(page.text).to match(/Cat #2/)
-        expect(page.text).to match(/Cat #1/)
+        expect(page).to have_css('.select2-results .select2-result', count: 2)
       end
     end
 
@@ -106,16 +104,13 @@ describe "Select 2", type: :feature do
       it "shows nothing looking for name (default)", js: true do
         find("div.select2-container").click
         find('.select2-input').set('Cat')
-        wait_for_ajax
-        expect(page.text).not_to match(/Cat #1/)
+        expect(page).to_not have_css('.select2-results .select2-result')
       end
 
       it "shows results looking for description", js: true do
         find("div.select2-container").click
         find('.select2-input').set('Desc')
-        wait_for_ajax
-        expect(page.text).to match(/Cat #2/)
-        expect(page.text).to match(/Cat #1/)
+        expect(page).to have_css('.select2-results .select2-result', count: 2)
       end
     end
 
@@ -136,8 +131,7 @@ describe "Select 2", type: :feature do
       it "shows custom label)", js: true do
         find("div.select2-container").click
         find('.select2-input').set('Cat')
-        wait_for_ajax
-        expect(page.text).to match(/My shiny Cat #2/)
+        expect(page).to have_css('.select2-container .select2-chosen', text: /My shiny Cat #2/)
       end
     end
   end
