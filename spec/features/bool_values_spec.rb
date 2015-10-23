@@ -42,7 +42,7 @@ describe "Bool values", type: :feature do
       register_show(AdminUser) do
         bool_row(:id)
       end
-      @admin = AdminUser.create(email: "admin@platan.us", password: "12345678")
+      @admin = AdminUser.create!(email: "admin@platan.us", password: "12345678")
     end
 
     it "shows the default true localized value" do

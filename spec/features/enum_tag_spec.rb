@@ -28,8 +28,8 @@ describe "Enum tag", type: :feature do
             invoice.state
           end
         end
-        @invoice = Invoice.create
-        visit admin_invoice_path(@invoice)
+
+        visit admin_invoice_path(Invoice.create)
       end
 
       it "localizes the value returned from the block" do
@@ -46,11 +46,11 @@ describe "Enum tag", type: :feature do
         register_show(Invoice) do
           tag_row("custom state", :state)
         end
-        @invoice = Invoice.create
+
+        visit admin_invoice_path(Invoice.create)
       end
 
       it "shows custom label" do
-        visit admin_invoice_path(@invoice)
         expect(page).to have_content 'Custom State'
       end
     end
@@ -62,11 +62,12 @@ describe "Enum tag", type: :feature do
         register_index(Invoice) do
           tag_column :status
         end
+
+        Invoice.create(status: :archived)
+        visit admin_invoices_path
       end
 
       it "shows set value" do
-        Invoice.create(status: :archived)
-        visit admin_invoices_path
         expect(page).to have_css('.archived')
       end
     end
