@@ -17,3 +17,4 @@ To enable select2 search functionality you need to do the following:
 * `display_name`: **(optional)** You can pass an optional `display_name` to set the field to show results on the select. This will be the field read from the object on loading the form and also when reading data from the ajax response(on the JSON). It **defaults to**: `name`
 * `minimum_input_length`: **(optional)** Minimum number of characters required to initiate the
   search. It **defaults to**: `1`
+* `class`: **(optional)** You can pass extra classes for your field.
