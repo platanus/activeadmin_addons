@@ -114,6 +114,23 @@ describe "Select 2", type: :feature do
       end
     end
 
+    context 'with class option' do
+      before do
+        register_page(Category) {}
+
+        register_form(Invoice, false) do |f|
+          f.input :category_id, as: :search_select, url: admin_categories_path, class: 'tester'
+        end
+
+        invoice = create_invoice_with_categories
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "hidden input with tester class", js: true do
+        expect(page).to have_css('input.select2-ajax.tester', visible: false)
+      end
+    end
+
     context "with different display name" do
       before do
         register_page(Category) {}
