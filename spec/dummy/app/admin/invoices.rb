@@ -22,6 +22,7 @@ ActiveAdmin.register Invoice do
       attachment_row("Mi documento", :attachment, truncate: false, &:attachment)
       row :legal_date
       number_row("Número", :number, as: :human, &:number)
+      row :city
     end
   end
 
@@ -35,17 +36,17 @@ ActiveAdmin.register Invoice do
       f.input :category_id, as: :search_select, url: admin_categories_path,
                             fields: [:name], display_name: 'name',
                             minimum_input_length: 1
-      f.input :country, as: :nested_select,
+      f.input :country_id, as: :nested_select,
+                           fields: [:name], display_name: 'name',
+                           minimum_input_length: 1
+      f.input :region_id, as: :nested_select,
+                          fields: [:name], display_name: 'name',
+                          minimum_input_length: 1,
+                          parent: :country_id
+      f.input :city_id, as: :nested_select,
                         fields: [:name], display_name: 'name',
-                        minimum_input_length: 1
-      f.input :region, as: :nested_select,
-                       fields: [:name], display_name: 'name',
-                       minimum_input_length: 1,
-                       parent: :country
-      f.input :city, as: :nested_select,
-                     fields: [:name], display_name: 'name',
-                     minimum_input_length: 1,
-                     parent: :region
+                        minimum_input_length: 1,
+                        parent: :region_id
     end
     f.actions
   end

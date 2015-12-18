@@ -39,11 +39,11 @@ $(function() {
       var selectInstance;
 
       if (parent) {
-        var parentSelector = '#' + model + '_' + parent;
+        var parentSelector = '#' + model + '_' + parent + '_id' ;
 
         $(parentSelector).on("change", function(e) {
-            selectInstance.val(null).trigger("change");
-            parentId = e.val;
+          selectInstance.val(null).trigger("change");
+          parentId = e.val;
         });
       }
 
@@ -76,13 +76,7 @@ $(function() {
             };
 
             if (parentId) {
-              var suffix = '_eq';
-
-              if (!parent.match(/_id$/)) {
-                suffix = '_id_eq';
-              }
-
-              query.q[parent + suffix] = parentId;
+              query.q[parent + '_eq'] = parentId;
             }
 
             return query;
