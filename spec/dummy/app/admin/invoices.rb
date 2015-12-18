@@ -29,13 +29,13 @@ ActiveAdmin.register Invoice do
   form do |f|
     f.inputs "Details" do
       f.input :state
+      f.input :category_id, as: :search_select, url: admin_categories_path,
+                            fields: [:name], display_name: 'name',
+                            minimum_input_length: 1
       f.input :paid
       f.input :number, as: :tags, collection: ["value 1", "value 2"]
       f.input :attachment
       f.input :photo
-      f.input :category_id, as: :search_select, url: admin_categories_path,
-                            fields: [:name], display_name: 'name',
-                            minimum_input_length: 1
       f.input :country_id, as: :nested_select,
                            fields: [:name], display_name: 'name',
                            minimum_input_length: 1

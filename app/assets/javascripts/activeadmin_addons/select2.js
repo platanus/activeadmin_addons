@@ -8,6 +8,8 @@ $(function() {
   $(document).on('has_many_add:after', setupSelect2);
 
   function setupSelect2() {
+    var INVALID_PARENT_ID = -1;
+
     $('.select2-tags').each(function(i, el) {
       $(el).select2({
         width: '80%',
@@ -35,15 +37,19 @@ $(function() {
       var model = $(el).data('model');
       var minimumInputLength = $(el).data('minimum_input_length');
       var order = fields[0] + "_desc";
-      var parentId = null;
+      var parentId = INVALID_PARENT_ID;
       var selectInstance;
 
-      if (parent) {
-        var parentSelector = '#' + model + '_' + parent + '_id' ;
+      if (!!parent) {
+        var parentSelector = '#' + model + '_' + parent;
 
         $(parentSelector).on("change", function(e) {
           selectInstance.val(null).trigger("change");
           parentId = e.val;
+
+          if(!parentId) {
+            parentId = INVALID_PARENT_ID;
+          }
         });
       }
 
@@ -62,7 +68,7 @@ $(function() {
           dataType: 'json',
           delay: 250,
           data: function (term) {
-            var textQuery = {m: "or"};
+            var textQuery = { m: "or" };
             fields.forEach(function(field) {
               textQuery[field + "_contains"] = term;
             });
@@ -75,7 +81,7 @@ $(function() {
               }
             };
 
-            if (parentId) {
+            if (!!parent) {
               query.q[parent + '_eq'] = parentId;
             }
 
