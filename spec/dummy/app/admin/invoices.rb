@@ -1,5 +1,6 @@
 ActiveAdmin.register Invoice do
-  permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id
+  permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id,
+    :city_id
 
   index do
     selectable_column
@@ -34,6 +35,17 @@ ActiveAdmin.register Invoice do
       f.input :category_id, as: :search_select, url: admin_categories_path,
                             fields: [:name], display_name: 'name',
                             minimum_input_length: 1
+      f.input :country, as: :nested_select,
+                        fields: [:name], display_name: 'name',
+                        minimum_input_length: 1
+      f.input :region, as: :nested_select,
+                       fields: [:name], display_name: 'name',
+                       minimum_input_length: 1,
+                       parent: :country
+      f.input :city, as: :nested_select,
+                     fields: [:name], display_name: 'name',
+                     minimum_input_length: 1,
+                     parent: :region
     end
     f.actions
   end

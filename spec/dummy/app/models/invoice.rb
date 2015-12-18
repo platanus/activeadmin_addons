@@ -6,6 +6,7 @@ class Invoice < ActiveRecord::Base
   include Paperclip::Glue
 
   belongs_to :category
+  belongs_to :city
 
   enumerize :state, in: [:pending, :rejected, :approved], default: :pending
 

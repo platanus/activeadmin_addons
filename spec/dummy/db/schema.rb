@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009201023) do
+ActiveRecord::Schema.define(version: 20151218170831) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -53,6 +53,21 @@ ActiveRecord::Schema.define(version: 20151009201023) do
     t.datetime "updated_at"
   end
 
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.integer  "region_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["region_id"], name: "index_cities_on_region_id"
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "invoices", force: true do |t|
     t.datetime "legal_date"
     t.string   "number"
@@ -70,8 +85,19 @@ ActiveRecord::Schema.define(version: 20151009201023) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "category_id"
+    t.integer  "city_id"
   end
 
   add_index "invoices", ["category_id"], name: "index_invoices_on_category_id"
+  add_index "invoices", ["city_id"], name: "index_invoices_on_city_id"
+
+  create_table "regions", force: true do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "regions", ["country_id"], name: "index_regions_on_country_id"
 
 end

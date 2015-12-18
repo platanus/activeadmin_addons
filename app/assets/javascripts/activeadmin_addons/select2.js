@@ -31,8 +31,18 @@ $(function() {
       var url = $(el).data('url');
       var fields = $(el).data('fields');
       var displayName = $(el).data('display_name');
+      var parent = $(el).data('parent');
+      var model = $(el).data('model');
       var minimumInputLength = $(el).data('minimum_input_length');
       var order = fields[0] + "_desc";
+      var parentId = null;
+
+      if (parent) {
+        var parentSelector = '#' + model + '_' + parent;
+        $(parentSelector).on("select2-selecting", function(e) {
+            parentId = e.val;
+        });
+      }
 
       $(el).select2({
         width: '80%',
@@ -49,15 +59,24 @@ $(function() {
           dataType: 'json',
           delay: 250,
           data: function (term) {
-            var query = {m: "or"};
+            var textQuery = {m: "or"};
             fields.forEach(function(field) {
-              query[field + "_contains"] = term;
+              textQuery[field + "_contains"] = term;
             });
 
-            return {
+            var query =  {
               order: order,
-              q: query
+              q: {
+                groupings: [textQuery],
+                combinator: 'and'
+              }
             };
+
+            if (parentId) {
+             (!!parent.match(/_id$/)) ?  query.q[parent] = parentId : query.q[parent + "_id"] = parentId;
+            }
+
+            return query;
           },
           results: function (data, page) {
             return {
