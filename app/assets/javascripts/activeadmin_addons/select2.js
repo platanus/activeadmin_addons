@@ -36,15 +36,18 @@ $(function() {
       var minimumInputLength = $(el).data('minimum_input_length');
       var order = fields[0] + "_desc";
       var parentId = null;
+      var selectInstance;
 
       if (parent) {
         var parentSelector = '#' + model + '_' + parent;
-        $(parentSelector).on("select2-selecting", function(e) {
+
+        $(parentSelector).on("change", function(e) {
+            selectInstance.val(null).trigger("change");
             parentId = e.val;
         });
       }
 
-      $(el).select2({
+      selectInstance = $(el).select2({
         width: '80%',
         initSelection: function(element, callback) {
           var id = $(element).val();
@@ -73,7 +76,13 @@ $(function() {
             };
 
             if (parentId) {
-             (!!parent.match(/_id$/)) ?  query.q[parent] = parentId : query.q[parent + "_id"] = parentId;
+              var suffix = '_eq';
+
+              if (!parent.match(/_id$/)) {
+                suffix = '_id_eq';
+              }
+
+              query.q[parent + suffix] = parentId;
             }
 
             return query;
