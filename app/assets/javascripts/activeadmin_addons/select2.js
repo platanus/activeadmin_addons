@@ -36,16 +36,17 @@ $(function() {
       var parent = $(el).data('parent');
       var model = $(el).data('model');
       var minimumInputLength = $(el).data('minimum_input_length');
-      var order = fields[0] + "_desc";
+      var order = fields[0] + '_desc';
       var parentId = INVALID_PARENT_ID;
       var selectInstance;
 
       if (!!parent) {
         var parentSelector = '#' + model + '_' + parent;
 
-        $(parentSelector).on("change", function(e) {
-          selectInstance.val(null).trigger("change");
+        $(parentSelector).on('change', function(e) {
+          selectInstance.val(null).trigger('change');
           parentId = e.val;
+          console.info(selectInstance);
 
           if(!parentId) {
             parentId = INVALID_PARENT_ID;
@@ -57,7 +58,9 @@ $(function() {
         width: '80%',
         initSelection: function(element, callback) {
           var id = $(element).val();
-          var text = $(element).data("selected") || "";
+          var text = $(element).data('selected') || '';
+          $(element).data('selected', '');
+
           callback({
             id: id,
             text: text
@@ -68,9 +71,9 @@ $(function() {
           dataType: 'json',
           delay: 250,
           data: function (term) {
-            var textQuery = { m: "or" };
+            var textQuery = { m: 'or' };
             fields.forEach(function(field) {
-              textQuery[field + "_contains"] = term;
+              textQuery[field + '_contains'] = term;
             });
 
             var query =  {
