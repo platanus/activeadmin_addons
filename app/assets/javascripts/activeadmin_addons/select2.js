@@ -37,7 +37,7 @@ $(function() {
       var model = $(el).data('model');
       var minimumInputLength = $(el).data('minimum_input_length');
       var order = fields[0] + '_desc';
-      var parentId = INVALID_PARENT_ID;
+      var parentId = $(el).data('parent_id') || INVALID_PARENT_ID;
       var selectInstance;
 
       if (!!parent) {
