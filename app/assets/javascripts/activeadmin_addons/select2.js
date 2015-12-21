@@ -46,7 +46,6 @@ $(function() {
         $(parentSelector).on('change', function(e) {
           selectInstance.val(null).trigger('change');
           parentId = e.val;
-          console.info(selectInstance);
 
           if(!parentId) {
             parentId = INVALID_PARENT_ID;

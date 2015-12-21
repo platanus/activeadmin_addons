@@ -36,17 +36,11 @@ ActiveAdmin.register Invoice do
       f.input :number, as: :tags, collection: ["value 1", "value 2"]
       f.input :attachment
       f.input :photo
-      f.input :country_id, as: :nested_select,
-                           fields: [:name], display_name: 'name',
-                           minimum_input_length: 1
-      f.input :region_id, as: :nested_select,
-                          fields: [:name], display_name: 'name',
-                          minimum_input_length: 1,
-                          parent: :country_id
+
       f.input :city_id, as: :nested_select,
                         fields: [:name], display_name: 'name',
                         minimum_input_length: 1,
-                        parent: :region_id
+                        parents: [:region_id, :country_id]
     end
     f.actions
   end
