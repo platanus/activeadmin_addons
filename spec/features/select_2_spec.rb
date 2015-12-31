@@ -1,26 +1,27 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Select 2", type: :feature do
   def create_invoice_with_categories
-    Category.where(name: 'Cat #1', description: "Desc 1").first_or_create!
-    cat = Category.where(name: 'Cat #2', description: "Desc 2").first_or_create!
+    Category.where(name: "Cat #1", description: "Desc 1").first_or_create!
+    cat = Category.where(name: "Cat #2", description: "Desc 2").first_or_create!
     Invoice.first_or_create!(category: cat)
   end
 
   def create_invoice_with_city
-    chile = Country.where(name: 'Chile').first_or_create!
-    metropolitana = Region.where(name: 'Metropolitana', country: chile).first_or_create!
-    city = City.where(name: 'Santiago', region: metropolitana).first_or_create!
-    City.where(name: 'Colina', region: metropolitana).first_or_create!
-    antofagasta = Region.where(name: 'Antofagasta', country: chile).first_or_create!
-    City.where(name: 'Mejillones', region: antofagasta).first_or_create!
-    City.where(name: 'Tocopilla', region: antofagasta).first_or_create!
+    chile = Country.where(name: "Chile").first_or_create!
+    @metropolitana = Region.where(name: "Metropolitana", country: chile).first_or_create!
+    @santiago = City.where(
+      name: "Santiago", region: @metropolitana, information: "info1").first_or_create!
+    City.where(name: "Colina", region: @metropolitana).first_or_create!
+    antofagasta = Region.where(name: "Antofagasta", country: chile).first_or_create!
+    City.where(name: "Mejillones", region: antofagasta).first_or_create!
+    City.where(name: "Tocopilla", region: antofagasta).first_or_create!
 
-    argentina = Country.where(name: 'Argentina').first_or_create!
-    cuyo = Region.where(name: 'Cuyo', country: argentina).first_or_create!
-    City.where(name: 'Mendoza', region: cuyo).first_or_create!
+    argentina = Country.where(name: "Argentina").first_or_create!
+    cuyo = Region.where(name: "Cuyo", country: argentina).first_or_create!
+    City.where(name: "Mendoza", region: cuyo).first_or_create!
 
-    Invoice.first_or_create!(city: city)
+    Invoice.first_or_create!(city: @santiago)
   end
 
   context "Default" do
@@ -51,11 +52,11 @@ describe "Select 2", type: :feature do
 
       it "adds new tags", js: true do
         find("div.select2-container").click
-        input = find('.select2-input')
-        input.set('Value 1')
+        input = find(".select2-input")
+        input.set("Value 1")
         input.native.send_keys(:return)
         expect(page).to have_css("li.select2-search-choice", count: 1)
-        input.set('Value 2')
+        input.set("Value 2")
         input.native.send_keys(:return)
         expect(page).to have_css("li.select2-search-choice", count: 2)
       end
@@ -117,9 +118,9 @@ describe "Select 2", type: :feature do
       end
 
       it "shows filled select controls based on defined city_id", js: true do
-        expect(page).to have_css('#s2id_invoice_country_id .select2-chosen', text: /Chile/)
-        expect(page).to have_css('#s2id_invoice_region_id .select2-chosen', text: /Metropolitana/)
-        expect(page).to have_css('#s2id_invoice_city_id .select2-chosen', text: /Santiago/)
+        expect(page).to have_css("#s2id_invoice_country_id .select2-chosen", text: /Chile/)
+        expect(page).to have_css("#s2id_invoice_region_id .select2-chosen", text: /Metropolitana/)
+        expect(page).to have_css("#s2id_invoice_city_id .select2-chosen", text: /Santiago/)
       end
 
       context "updating the highest hierachy level" do
@@ -129,14 +130,14 @@ describe "Select 2", type: :feature do
         end
 
         it "shows results based on entered text", js: true do
-          expect(page).to have_css('.select2-results .select2-result', count: 1, text: /Argentina/)
+          expect(page).to have_css(".select2-results .select2-result", count: 1, text: /Argentina/)
         end
 
         context "after click option" do
           before { find(".select2-result-label").click }
 
           it "sets value after click option", js: true do
-            expect(page).to have_css('#s2id_invoice_country_id .select2-chosen', text: /Argentina/)
+            expect(page).to have_css("#s2id_invoice_country_id .select2-chosen", text: /Argentina/)
           end
 
           it "resets children select controls after click option", js: true do
@@ -153,7 +154,7 @@ describe "Select 2", type: :feature do
         end
 
         it "shows results based on entered text", js: true do
-          expect(page).to have_css('.select2-results .select2-result',
+          expect(page).to have_css(".select2-results .select2-result",
             count: 1, text: /Antofagasta/)
         end
 
@@ -161,11 +162,11 @@ describe "Select 2", type: :feature do
           before { find(".select2-result-label").click }
 
           it "sets value after click option", js: true do
-            expect(page).to have_css('#s2id_invoice_region_id .select2-chosen', text: /Antofagasta/)
+            expect(page).to have_css("#s2id_invoice_region_id .select2-chosen", text: /Antofagasta/)
           end
 
           it "preserves parent value", js: true do
-            expect(page).to have_css('#s2id_invoice_country_id .select2-chosen', text: /Chile/)
+            expect(page).to have_css("#s2id_invoice_country_id .select2-chosen", text: /Chile/)
           end
 
           it "resets children values", js: true do
@@ -181,21 +182,62 @@ describe "Select 2", type: :feature do
         end
 
         it "shows results based on entered text", js: true do
-          expect(page).to have_css('.select2-results .select2-result', count: 1, text: /Colina/)
+          expect(page).to have_css(".select2-results .select2-result", count: 1, text: /Colina/)
         end
 
         context "after click option", js: true do
           before { find(".select2-result-label").click }
 
           it "sets value after click option", js: true do
-            expect(page).to have_css('#s2id_invoice_city_id .select2-chosen', text: /Colina/)
+            expect(page).to have_css("#s2id_invoice_city_id .select2-chosen", text: /Colina/)
           end
 
           it "preserves parent values", js: true do
-            expect(page).to have_css('#s2id_invoice_country_id .select2-chosen', text: /Chile/)
-            expect(page).to have_css('#s2id_invoice_region_id .select2-chosen',
+            expect(page).to have_css("#s2id_invoice_country_id .select2-chosen", text: /Chile/)
+            expect(page).to have_css("#s2id_invoice_region_id .select2-chosen",
               text: /Metropolitana/)
           end
+        end
+      end
+
+      context "with general options" do
+        before do
+          register_page(Region, false) {}
+          register_page(City, false) {}
+
+          register_form(Invoice, false) do |f|
+            f.input :city_id, as: :nested_select,
+                              fields: [:name, :information], display_name: :id,
+                              minimum_input_length: 5,
+                              level_1: { attribute: :region_id },
+                              level_2: { attribute: :city_id }
+          end
+
+          invoice = create_invoice_with_city
+          visit edit_admin_invoice_path(invoice)
+        end
+
+        it "sets display name on each select", js: true do
+          expect(page).to have_css("#s2id_invoice_region_id .select2-chosen",
+            text: /#{@metropolitana.id}/)
+          expect(page).to have_css("#s2id_invoice_city_id .select2-chosen",
+            text: /#{@santiago.id}/)
+        end
+
+        it "sets general minimum_input_length option", js: true do
+          find("#s2id_invoice_region_id").click
+          expect(page).to have_css(".select2-no-results",
+            text: /Please enter 5 or more characters/)
+          find("#s2id_invoice_city_id").click
+          expect(page).to have_css(".select2-no-results",
+            text: /Please enter 5 or more characters/)
+        end
+
+        it "uses general fields to search", js: true do
+          find("#s2id_invoice_city_id").click
+          find(".select2-input").set("info1")
+          expect(page).to have_css("#s2id_invoice_city_id .select2-chosen",
+            text: /#{@santiago.id}/)
         end
       end
     end
@@ -221,8 +263,8 @@ describe "Select 2", type: :feature do
 
       it "shows other categories after search", js: true do
         find("div.select2-container").click
-        find('.select2-input').set('Cat')
-        expect(page).to have_css('.select2-results .select2-result', count: 2)
+        find(".select2-input").set("Cat")
+        expect(page).to have_css(".select2-results .select2-result", count: 2)
       end
     end
 
@@ -242,23 +284,23 @@ describe "Select 2", type: :feature do
 
       it "shows nothing looking for name (default)", js: true do
         find("div.select2-container").click
-        find('.select2-input').set('Cat')
-        expect(page).to_not have_css('.select2-results .select2-result')
+        find(".select2-input").set("Cat")
+        expect(page).to_not have_css(".select2-results .select2-result")
       end
 
       it "shows results looking for description", js: true do
         find("div.select2-container").click
-        find('.select2-input').set('Desc')
-        expect(page).to have_css('.select2-results .select2-result', count: 2)
+        find(".select2-input").set("Desc")
+        expect(page).to have_css(".select2-results .select2-result", count: 2)
       end
     end
 
-    context 'with class option' do
+    context "with class option" do
       before do
         register_page(Category) {}
 
         register_form(Invoice, false) do |f|
-          f.input :category_id, as: :search_select, url: admin_categories_path, class: 'tester'
+          f.input :category_id, as: :search_select, url: admin_categories_path, class: "tester"
         end
 
         invoice = create_invoice_with_categories
@@ -266,7 +308,7 @@ describe "Select 2", type: :feature do
       end
 
       it "hidden input with tester class", js: true do
-        expect(page).to have_css('input.select2-ajax.tester', visible: false)
+        expect(page).to have_css("input.select2-ajax.tester", visible: false)
       end
     end
 
@@ -286,8 +328,8 @@ describe "Select 2", type: :feature do
 
       it "shows custom label)", js: true do
         find("div.select2-container").click
-        find('.select2-input').set('Cat')
-        expect(page).to have_css('.select2-container .select2-chosen', text: /My shiny Cat #2/)
+        find(".select2-input").set("Cat")
+        expect(page).to have_css(".select2-container .select2-chosen", text: /My shiny Cat #2/)
       end
     end
   end

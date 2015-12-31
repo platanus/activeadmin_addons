@@ -39,11 +39,16 @@ ActiveAdmin.register Invoice do
 
       f.input :city_id, as: :nested_select,
                         fields: [:name], display_name: 'name',
-                        minimum_input_length: 1,
+                        minimum_input_length: 0,
                         level_1: { attribute: :country_id },
                         level_2: { attribute: :region_id },
-                        level_3: { attribute: :city_id }
+                        level_3: {
+                          attribute: :city_id,
+                          minimum_input_length: 1,
+                          fields: [:name, :information]
+                        }
     end
+
     f.actions
   end
 end

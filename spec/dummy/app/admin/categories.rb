@@ -18,6 +18,7 @@ ActiveAdmin.register Category do
   form do |f|
     f.inputs "Details" do
       f.input :name
+      f.input :description
     end
     f.actions
   end

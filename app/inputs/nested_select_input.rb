@@ -1,15 +1,4 @@
 class NestedSelectInput < Formtastic::Inputs::StringInput
-  def input_html_options
-    opts = {}
-    opts["class"] = ['select2-ajax'].concat([@options[:class]] || []).join(' ')
-    opts["data-fields"] = (@options[:fields] || ["name"]).to_json
-    opts["data-model"] = @object.class.to_s.downcase
-    opts["data-display_name"] = @options[:display_name] || "name"
-    opts["data-minimum_input_length"] = @options[:minimum_input_length] || 1
-
-    super.merge(opts)
-  end
-
   def to_html
     html_elems = []
 
@@ -64,22 +53,46 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
     raise("Missing mandatory attribute level_key on #{level_key}") unless attribute
   end
 
-  def select_html_options(level_data)
-    attribute = level_data[:attribute]
-    parent_attribute = level_data[:parent_attribute]
+  def select_html_options(level)
+    attribute = level[:attribute]
     instance = instance_from_attribute_name(attribute)
 
-    opts = input_html_options.clone
-    opts["id"] = [@object.class.to_s.downcase, attribute.to_s].join("_")
+    opts = {}
+    opts["class"] = select_classes(level)
+    opts["data-fields"] = get_option(level, :fields, ["name"]).to_json
+    opts["data-model"] = model_name
+    opts["data-display_name"] = get_option(level, :display_name,  "name")
+    opts["data-minimum_input_length"] = get_option(level, :minimum_input_length, 1)
+
+    opts["id"] = build_select_id(attribute)
     opts["data-url"] = build_url(attribute)
     opts["data-selected"] = instance.try(opts["data-display_name"])
 
-    if parent_attribute
-      opts["data-parent"] = parent_attribute
-      opts["data-parent_id"] = @object.send(parent_attribute)
-    end
+    opts.merge(select_html_parent_options(level[:parent_attribute]))
+  end
 
+  def select_html_parent_options(parent_attribute)
+    opts = {}
+    return opts unless parent_attribute
+    opts["data-parent"] = parent_attribute
+    opts["data-parent_id"] = @object.send(parent_attribute)
     opts
+  end
+
+  def select_classes(level_data)
+    ['select2-ajax'].concat(get_option(level_data, :class, [])).join(' ')
+  end
+
+  def model_name
+    @object.class.to_s.downcase
+  end
+
+  def build_select_id(attribute)
+    [@object.class.to_s.downcase, attribute.to_s].join("_")
+  end
+
+  def get_option(level_data, option, default)
+    level_data[option] || @options[option] || default
   end
 
   def set_parent_value(level_data)
