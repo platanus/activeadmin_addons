@@ -7,6 +7,22 @@ describe "Select 2", type: :feature do
     Invoice.first_or_create!(category: cat)
   end
 
+  def create_invoice_with_city
+    chile = Country.where(name: 'Chile').first_or_create!
+    metropolitana = Region.where(name: 'Metropolitana', country: chile).first_or_create!
+    city = City.where(name: 'Santiago', region: metropolitana).first_or_create!
+    City.where(name: 'Colina', region: metropolitana).first_or_create!
+    antofagasta = Region.where(name: 'Antofagasta', country: chile).first_or_create!
+    City.where(name: 'Mejillones', region: antofagasta).first_or_create!
+    City.where(name: 'Tocopilla', region: antofagasta).first_or_create!
+
+    argentina = Country.where(name: 'Argentina').first_or_create!
+    cuyo = Region.where(name: 'Cuyo', country: argentina).first_or_create!
+    City.where(name: 'Mendoza', region: cuyo).first_or_create!
+
+    Invoice.first_or_create!(city: city)
+  end
+
   context "Default" do
     before do
       register_form(Invoice) do |f|
@@ -58,6 +74,129 @@ describe "Select 2", type: :feature do
       it "adds new tags", js: true do
         find("div.select2-container").click
         expect(page).to have_css(".select2-result", count: 3)
+      end
+    end
+  end
+
+  context "Nested select" do
+    context "with nil city" do
+      before do
+        register_form(Invoice, false) do |f|
+          f.input :city_id, as: :nested_select,
+                            level_1: { attribute: :country_id },
+                            level_2: { attribute: :region_id },
+                            level_3: { attribute: :city_id }
+        end
+
+        invoice = Invoice.first_or_create!
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "shows empty select controls", js: true do
+        expect(page.text).to_not match(/Chile/)
+        expect(page.text).to_not match(/Metropolitana/)
+        expect(page.text).to_not match(/Santiago/)
+      end
+    end
+
+    context "with selected city" do
+      before do
+        register_page(Country, false) {}
+        register_page(Region, false) {}
+        register_page(City, false) {}
+
+        register_form(Invoice, false) do |f|
+          f.input :city_id, as: :nested_select,
+                            level_1: { attribute: :country_id },
+                            level_2: { attribute: :region_id },
+                            level_3: { attribute: :city_id }
+        end
+
+        invoice = create_invoice_with_city
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "shows filled select controls based on defined city_id", js: true do
+        expect(page).to have_css('#s2id_invoice_country_id .select2-chosen', text: /Chile/)
+        expect(page).to have_css('#s2id_invoice_region_id .select2-chosen', text: /Metropolitana/)
+        expect(page).to have_css('#s2id_invoice_city_id .select2-chosen', text: /Santiago/)
+      end
+
+      context "updating the highest hierachy level" do
+        before do
+          find("#s2id_invoice_country_id").click
+          find(".select2-input").set("Arg")
+        end
+
+        it "shows results based on entered text", js: true do
+          expect(page).to have_css('.select2-results .select2-result', count: 1, text: /Argentina/)
+        end
+
+        context "after click option" do
+          before { find(".select2-result-label").click }
+
+          it "sets value after click option", js: true do
+            expect(page).to have_css('#s2id_invoice_country_id .select2-chosen', text: /Argentina/)
+          end
+
+          it "resets children select controls after click option", js: true do
+            expect(page.text).to_not match(/Metropolitana/)
+            expect(page.text).to_not match(/Santiago/)
+          end
+        end
+      end
+
+      context "updating medium level" do
+        before do
+          find("#s2id_invoice_region_id").click
+          find(".select2-input").set("Antof")
+        end
+
+        it "shows results based on entered text", js: true do
+          expect(page).to have_css('.select2-results .select2-result',
+            count: 1, text: /Antofagasta/)
+        end
+
+        context "after click option" do
+          before { find(".select2-result-label").click }
+
+          it "sets value after click option", js: true do
+            expect(page).to have_css('#s2id_invoice_region_id .select2-chosen', text: /Antofagasta/)
+          end
+
+          it "preserves parent value", js: true do
+            expect(page).to have_css('#s2id_invoice_country_id .select2-chosen', text: /Chile/)
+          end
+
+          it "resets children values", js: true do
+            expect(page.text).to_not match(/Santiago/)
+          end
+        end
+      end
+
+      context "updating lowest level" do
+        before do
+          find("#s2id_invoice_city_id").click
+          find(".select2-input").set("na")
+        end
+
+        it "shows results based on entered text", js: true do
+          expect(page).to have_css('.select2-results .select2-result', count: 1, text: /Colina/)
+        end
+
+        context "after click option", js: true do
+          before { find(".select2-result-label").click }
+
+          it "sets value after click option", js: true do
+            expect(page).to have_css('#s2id_invoice_city_id .select2-chosen', text: /Colina/)
+          end
+
+          it "preserves parent values", js: true do
+            expect(page).to have_css('#s2id_invoice_country_id .select2-chosen', text: /Chile/)
+            expect(page).to have_css('#s2id_invoice_region_id .select2-chosen',
+              text: /Metropolitana/)
+          end
+        end
       end
     end
   end
