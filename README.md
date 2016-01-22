@@ -17,6 +17,7 @@ Set of addons to improve the activeadmin ui and make it as awesome as we can.
 		- [Default](#default)
 		- [Tagging](#tagging)
 		- [Ajax Search](#ajax-search)
+		- [Nested Select](#nested-select)
 	- [Paperclip Integration](#paperclip-integration)
 		- [For Images](#for-images)
 		- [For Any Attachment](#for-any-attachment)
@@ -117,11 +118,19 @@ Using tags input, you can add tags using select2.
 
 #### Ajax Search
 
-Using `search_select` input, you can easly add ajax search to activeadmin
+Using `search_select` input, you can easily add ajax search to activeadmin
 
 <img src="./docs/images/select2-ajax-example.png" height="100" />
 
 [Read more!](docs/select2_search.md)
+
+#### Nested Select
+
+Using `nested_select` input, you can build related select inputs.
+
+<img src="./docs/images/select2-nested-select-default.gif" height="250" />
+
+[Read more!](docs/select2_nested_select.md)
 
 ### Paperclip Integration
 

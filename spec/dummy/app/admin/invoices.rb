@@ -52,8 +52,8 @@ ActiveAdmin.register Invoice do
                           minimum_input_length: 1,
                           fields: [:name, :information]
                         }
-    end
 
-    f.actions
+      f.actions
+    end
   end
 end

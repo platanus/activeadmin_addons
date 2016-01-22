@@ -71,7 +71,7 @@ $(function() {
             results: jQuery.map(data, function(resource) {
               return {
                 id: resource.id,
-                text: resource[displayName]
+                text: resource[displayName].toString()
               };
             })
           };
@@ -89,7 +89,7 @@ $(function() {
           });
 
           if((!parent || record[parent] == parentId) && matched) {
-            data.results.push({ id: record.id, text: record[displayName] });
+            data.results.push({ id: record.id, text: record[displayName].toString() });
           }
         });
 
