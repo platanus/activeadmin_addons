@@ -326,7 +326,7 @@ describe "Select 2", type: :feature do
         visit edit_admin_invoice_path(invoice)
       end
 
-      it "shows custom label)", js: true do
+      it "shows custom label", js: true do
         find("div.select2-container").click
         find(".select2-input").set("Cat")
         expect(page).to have_css(".select2-container .select2-chosen", text: /My shiny Cat #2/)

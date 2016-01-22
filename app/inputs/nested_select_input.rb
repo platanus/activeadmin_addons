@@ -20,7 +20,7 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
     hierarchy = get_hierarchy
     hierarchy_count = hierarchy.count
 
-    get_hierarchy.each_with_index do |level_data, idx|
+    hierarchy.each_with_index do |level_data, idx|
       next_idx = idx + 1
       parent_level_data = hierarchy[next_idx] if hierarchy_count != next_idx
       level_data[:parent_attribute] = parent_level_data[:attribute] if parent_level_data
@@ -31,13 +31,13 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
 
   def get_hierarchy
     hierarchy = []
-    levels = @options.keys.select { |key| key.to_s.start_with?("level") }
-    levels_count = levels.count
+    levels = @options.keys.select { |key| key.to_s.match(/level_[1-9]$/) }
+    reversed_levels = levels.reverse
 
-    levels.reverse.each_with_index do |level, idx|
-      level_number = levels_count - idx
-      validate_level_data!(level, level_number)
-      hierarchy << @options[level]
+    reversed_levels.each_with_index do |level_key, idx|
+      previous_level_key = reversed_levels[idx + 1]
+      validate_level_data!(level_key, previous_level_key)
+      hierarchy << @options[level_key]
     end
 
     raise("Undefined levels on nested_select") if hierarchy.empty?
@@ -45,12 +45,20 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
     hierarchy
   end
 
-  def validate_level_data!(level_key, level_number)
-    parts = level_key.to_s.split("_")
-    raise("Invalid level format. Must be :level_[1|2|n]") unless parts.count == 2
-    raise("Missing :level_#{level_number} key") if parts.last.to_i != level_number
+  def validate_level_data!(level_key, previous_level_key)
+    current_level_number = get_level_number(level_key)
+    previous_level_number = get_level_number(previous_level_key)
+
+    if !(current_level_number == previous_level_number + 1)
+      raise("Missing :level_#{current_level_number - 1} key")
+    end
+
     attribute = @options[level_key][:attribute]
     raise("Missing mandatory attribute level_key on #{level_key}") unless attribute
+  end
+
+  def get_level_number(level_key)
+    level_key.to_s.split("_").last.to_i
   end
 
   def select_html_options(level)
