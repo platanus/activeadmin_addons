@@ -11,3 +11,13 @@
     width: 12px;
   }
 }
+
+.nested_select {
+  .nested-select-container {
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      margin-bottom: 0px;
+    }
+  }
+}

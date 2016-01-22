@@ -98,6 +98,7 @@ $(function() {
 
       var select2Config = {
         width: '80%',
+        containerCssClass: 'nested-select-container',
         minimumInputLength: minimumInputLength,
         initSelection: function(element, callback) {
           var id = $(element).val();
