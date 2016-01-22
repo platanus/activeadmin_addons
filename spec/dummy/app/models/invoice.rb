@@ -26,4 +26,12 @@ class Invoice < ActiveRecord::Base
   def display_name
     number
   end
+
+  def skills
+    ["Animation", "Branding", "Creative Director"]
+  end
+
+  def contact
+    { "twitter" => "goku84", "facebook" => "kamehouse" }
+  end
 end

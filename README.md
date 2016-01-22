@@ -10,9 +10,6 @@ Set of addons to improve the activeadmin ui and make it as awesome as we can.
 - [Addons](#addons)
 	- [Filters](#filters)
 		- [Range Filter](#range-filter)
-	- [Boolean values](#boolean-values)
-		- [Bool Row](#bool-row)
-		- [Bool Column](#bool-column)
 	- [Select2](#select2)
 		- [Default](#default)
 		- [Tagging](#tagging)
@@ -23,6 +20,7 @@ Set of addons to improve the activeadmin ui and make it as awesome as we can.
 		- [For Any Attachment](#for-any-attachment)
 	- [AASM Integration](#aasm-integration)
 	- [Enum Integration](#enum-integration)
+	- [Boolean Values](#boolean-values)
 	- [Number Formatting](#number-formatting)
 	- [List](#list)
 
@@ -70,33 +68,10 @@ Installing this gem...
 To filter based on a range of values you can use `range_select` like this:
 
 ```ruby
-filter :barks_count, as: :range_select
+filter :number, as: :range_select
 ```
 
-<img src="./docs/images/filter-range.png" height="100" />
-
-### Boolean values
-
-#### Bool Row
-
-Modifies how boolean values are displayed in attributes_table control (the one used in show view)
-
-| key | value |
-|------|------|
-| paid | &#x2717; |
-| subscribed | &#x2714; |
-
-[Read more!](docs/bool_row.md)
-
-#### Bool Column
-
-Modifies how boolean values are displayed in index view
-
-| id | name | paid | subscribed |
-|------|------|------|------|
-| 123 | Felipe | &#x2717; | &#x2714; |
-
-[Read more!](docs/bool_column.md)
+<img src="./docs/images/filter-range.png" height="150" />
 
 ### Select2
 
@@ -104,7 +79,7 @@ Modifies how boolean values are displayed in index view
 
 With [select2](http://ivaynberg.github.io/select2/) the select control looks nicer, it works great with large collections and multiple selection.
 
-<img src="./docs/images/select2-example.png" height="200" />
+<img src="./docs/images/select2-default.gif" height="200" />
 
 [Read more!](docs/select2_default.md)
 
@@ -112,7 +87,7 @@ With [select2](http://ivaynberg.github.io/select2/) the select control looks nic
 
 Using tags input, you can add tags using select2.
 
-<img src="./docs/images/select2-tags-example.png" height="100" />
+<img src="./docs/images/select2-tags.gif" height="200" />
 
 [Read more!](docs/select2_tags.md)
 
@@ -120,7 +95,7 @@ Using tags input, you can add tags using select2.
 
 Using `search_select` input, you can easily add ajax search to activeadmin
 
-<img src="./docs/images/select2-ajax-example.png" height="100" />
+<img src="./docs/images/select2-search-select.gif" height="180" />
 
 [Read more!](docs/select2_search.md)
 
@@ -128,7 +103,7 @@ Using `search_select` input, you can easily add ajax search to activeadmin
 
 Using `nested_select` input, you can build related select inputs.
 
-<img src="./docs/images/select2-nested-select-default.gif" height="250" />
+<img src="./docs/images/select2-nested-select-default.gif" height="230" />
 
 [Read more!](docs/select2_nested_select.md)
 
@@ -136,9 +111,9 @@ Using `nested_select` input, you can build related select inputs.
 
 #### For Images
 
-Displays a paperclip image into index and show views.
+Displays a paperclip image into index and show views
 
-<img src="./docs/images/paperclip-image-column-example.png" height="200" />
+<img src="./docs/images/paperclip-image-column.png" height="380" />
 
 [Read more!](docs/paperclip_images.md)
 
@@ -146,7 +121,7 @@ Displays a paperclip image into index and show views.
 
 Displays a paperclip link with attachment related icon into index and show views.
 
-<img src="./docs/images/paperclip-attachment-column-example.png" height="250" />
+<img src="./docs/images/paperclip-attachment-column.png" height="250" />
 
 [Read more!](docs/paperclip_attachment.md)
 
@@ -154,7 +129,7 @@ Displays a paperclip link with attachment related icon into index and show views
 
 You can show [aasm](https://github.com/aasm/aasm) values as active admin tags.
 
-<img src="./docs/images/aasm-integration-example.png" height="100" />
+<img src="./docs/images/aasm-integration-row.png" height="150" />
 
 [Read more!](docs/aasm_integration.md)
 
@@ -162,23 +137,31 @@ You can show [aasm](https://github.com/aasm/aasm) values as active admin tags.
 
 You can show Rails' built in `enums` or [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
 
-<img src="./docs/images/enumerize-tag-column-example.png" height="150" />
+<img src="./docs/images/enumerize-tag-column.png" height="250" />
 
-[Read more!](docs/enumerize_integration.md)
+[Read more!](docs/enum_integration.md)
+
+### Boolean Values
+
+Modifies how boolean values are displayed
+
+<img src="./docs/images/bool-column.png" height="250" />
+
+[Read more!](docs/boolean_values.md)
 
 ### Number Formatting
 
 You can show numbers with format supported by [Rails NumberHelper](http://apidock.com/rails/v4.2.1/ActionView/Helpers/NumberHelper)
 
-<img src="./docs/images/number-column-example.png" height="150" />
+<img src="./docs/images/number-column.png" height="250" />
 
-[Read more!](docs/number.md)
+[Read more!](docs/number-formatting.md)
 
 ### List
 
 You can show `Array` or `Hash` values as html lists.
 
-<img src="./docs/images/list-row-example.png" height="150" />
+<img src="./docs/images/list-row.png" height="250" />
 
 [Read more!](docs/list.md)
 
@@ -200,4 +183,4 @@ activeadmin_addons is maintained by [platanus](http://platan.us).
 
 ## License
 
-ActiveAdminAddons is © 2015 Platanus, spa. It is free software and may be redistributed under the terms specified in the LICENSE file.
+ActiveAdminAddons is © 2016 Platanus, spa. It is free software and may be redistributed under the terms specified in the LICENSE file.

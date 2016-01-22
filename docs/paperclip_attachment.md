@@ -1,30 +1,28 @@
-### Paperclip Integration
+# Paperclip Integration
 
-#### Attachment Row
+## Attachment Row
 
 ```ruby
 show do
   attributes_table do
-    # another attributes...
-    attachment_row :document, label: "Download this"
+    attachment_row("My doc", :attachment, label: 'Download pdf file', truncate: false)
   end
 end
 ```
 
-<img src="./images/paperclip-attachment-row-example.png" height="200" />
+<img src="./images/paperclip-attachment-row.png" height="130" />
 
-#### Attachment Column
+## Attachment Column
 
 ```ruby
 index do
-  # another attributes...
-  attachment_column :document, truncate: false
+  attachment_column :document
 end
 ```
 
-<img src="./images/paperclip-attachment-column-example.png" height="300" />
+<img src="./images/paperclip-attachment-column.png" height="250" />
 
-#### Options
+## Options
 
-* You can pass `truncate` attribute to toggle truncating the filename. `attachment_column` truncates by default.
-* Pass `label` if you want to show another text instead of the filename
+* `truncate`: you can pass `truncate` attribute to toggle truncating the filename. `attachment_column` truncates by default.
+* `label`: if you want to show another text instead of the filename.

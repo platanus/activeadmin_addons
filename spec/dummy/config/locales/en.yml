@@ -1,5 +1,10 @@
 en:
   hello: Hello world
+  addons_list:
+    invoice:
+      contact:
+        twitter: TwiTTer
+        facebook: Face
   activeadmin:
     addons:
       boolean:

@@ -1,29 +1,27 @@
-### AASM Integration
+# AASM Integration
 
-#### State Row
+## State Row
 
 ```ruby
 show do
   attributes_table do
-    # another attribute...
     state_row :state
   end
 end
 ```
+<img src="./images/aasm-integration-row.png" height="150" />
 
-
-#### State Column
+## State Column
 
 ```ruby
 index do
-  # another attribute...
   state_column :state
 end
 ```
 
-<img src="./images/aasm-integration-example.png" height="100" />
+<img src="./images/aasm-integration-column.png" height="200" />
 
-The name of the state will be the class name (rejected approved etc), but you can pass a hash of options to map different states with tag colors
+The name of the state will be the class name (rejected, approved, etc.), but you can pass a hash of options to map different states with tag colors.
 
 ```ruby
 state_column(:state, states: { destroyed: "rejected" })

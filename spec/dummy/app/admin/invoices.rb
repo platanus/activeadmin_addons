@@ -2,6 +2,8 @@ ActiveAdmin.register Invoice do
   permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id,
     :city_id
 
+  filter :number, as: :range_select
+
   index do
     selectable_column
     id_column
@@ -10,6 +12,8 @@ ActiveAdmin.register Invoice do
     image_column :photo, style: :thumb
     attachment_column :attachment
     number_column :number, as: :currency, unit: "$", separator: ","
+    list_column :skills
+    list_column :contact
     actions
   end
 
@@ -18,8 +22,10 @@ ActiveAdmin.register Invoice do
       row :id
       tag_row :state
       bool_row :paid
+      list_row :skills, list_type: :ol
+      list_row :contact, localize: true
       image_row("Mi foto", :photo, style: :big, &:photo)
-      attachment_row("Mi documento", :attachment, truncate: false, &:attachment)
+      attachment_row("My doc", :attachment, label: 'Download file', truncate: false, &:attachment)
       row :legal_date
       number_row("Número", :number, as: :human, &:number)
       row :city
@@ -52,8 +58,8 @@ ActiveAdmin.register Invoice do
                           minimum_input_length: 1,
                           fields: [:name, :information]
                         }
-
-      f.actions
     end
+
+    f.actions
   end
 end

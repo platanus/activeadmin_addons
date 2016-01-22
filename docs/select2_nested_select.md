@@ -1,6 +1,6 @@
-### Select2
+# Select2
 
-#### Nested Select
+## Nested Select
 
 If you have the following Active Record models and Active Admin pages...
 
@@ -59,7 +59,7 @@ f.input :city_id, as: :nested_select,
                   }
 ```
 
-> Remeber: your custom endpoints need to work with ransack filters.
+> Remember: your custom endpoints need to work with Ransack filters.
 
 Another option is to pass the `collection` attribute. If you set this, the `url` attribute will be ignored (no ajax request will be executed) and you will work with preloaded collections.
 
@@ -71,13 +71,15 @@ f.input :city_id, as: :nested_select,
                   },
                   level_2: {
                     attribute: :region_id,
-                    collection: Region.actives
+                    collection: Region.active
                   },
                   level_3: {
                     attribute: :city_id,
                     collection: City.all
                   }
 ```
+
+### Options
 
 Nested select, allows you to customize the general behavior of the input:
 

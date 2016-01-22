@@ -1,41 +1,39 @@
-### List
+# List
 
-`list_[row|column]` takes as first param an attribute (or method) that must return an `Array` or `Hash`. Por example:
+`list_[row|column]` takes as first param an attribute (or method) that must return an `Array` or `Hash`. For example:
 
 ```ruby
-user.abilities
-#=> ["animation", "branding", "creative_director_art"]
-user.contact
-#=> {"twitter"=>"leanstwit", "facebook"=>"leansf"}
+resource.skills
+#=> ["Animation", "Branding", "Creative Director"]
+resource.contact
+#=> { "twitter" => "goku84", "facebook" => "kamehouse" }
 ```
 
-#### List Row
+## List Row
 
 ```ruby
 show do
   attributes_table do
-    # another attributes...
-    list_row :abilities, localize: true
+    list_row :skills, list_type: :ol
     list_row :contact, localize: true
   end
 end
 ```
 
-<img src="./images/list-row-example.png" height="150" />
+<img src="./images/list-row.png" height="250" />
 
-#### List Column
+## List Column
 
 ```ruby
 index do
-  # another attributes...
-  list_row :abilities, localize: true, list_type: :ol
-  list_row :contact, localize: true
+  list_column :skills
+  list_column :contact
 end
 ```
 
-<img src="./images/list-column-example.png" height="150" />
+<img src="./images/list-column.png" height="350" />
 
-#### Options
+## Options
 
 * `localize`: allows you to translate array values or hash keys using the following structure:
 
@@ -51,10 +49,10 @@ end
 ```yaml
 es:
   addons_list:
-    user:
-      abilities:
-        graphic_artist: Artista gráfico
-        multimedia_artist: Artista multimedia
+    resource:
+      contact:
+        twitter: TwiTTer
+        facebook: Face
 ```
 
 * `list_type`: allows you to pick between `:ul` (unordered list) and `:ol` (ordered list) types.
