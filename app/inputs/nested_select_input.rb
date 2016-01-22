@@ -71,6 +71,7 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
     opts["data-model"] = model_name
     opts["data-display_name"] = get_option(level, :display_name,  "name")
     opts["data-minimum_input_length"] = get_option(level, :minimum_input_length, 1)
+    opts["data-collection"] = (level[:collection] || nil).to_json
 
     opts["id"] = build_select_id(attribute)
     opts["data-url"] = build_url(attribute)
