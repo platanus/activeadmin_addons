@@ -123,7 +123,7 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
 
   def add_virtual_accessor(attribute)
     return unless attribute
-    @object.singleton_class.send(:attr_accessor, attribute)
+    @object.singleton_class.send(:attr_accessor, attribute) unless @object.respond_to?(attribute)
   end
 
   def translated_attribute(attribute)
