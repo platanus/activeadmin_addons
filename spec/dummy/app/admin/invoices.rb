@@ -2,7 +2,7 @@ ActiveAdmin.register Invoice do
   permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id,
     :city_id
 
-  filter :number, as: :range_select
+  filter :id, as: :range_select
 
   index do
     selectable_column
