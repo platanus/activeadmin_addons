@@ -2,7 +2,7 @@
 
 ## Nested Select
 
-If you have the following Active Record models and Active Admin pages...
+Lets say you have the following Active Record models
 
 ```ruby
 class Country < ActiveRecord::Base
@@ -15,7 +15,11 @@ end
 class City < ActiveRecord::Base
   belongs_to :region
 end
+```
 
+And the following Active Admin pages:
+
+```ruby
 ActiveAdmin.register Country do
   permit_params :name
 end
@@ -41,7 +45,7 @@ f.input :city_id, as: :nested_select,
 <img src="./images/select2-nested-select-default.gif" height="250" />
 
 By default, the nested select input uses the index action of the different levels to get the data. For example, the level 2 (region) will perform an ajax request to `/admin/regions&country_id_eq=[selected_country_id]` to get the regions for a given country.
-It's not mandatory to register the ActiveAdmin pages. But, you will need to pass the `url` attribute, on each level, to make it work.
+It's not mandatory to register the ActiveAdmin pages. But, if you don't, you'll need to pass the `url` attribute, on each level, to make it work.
 
 ```ruby
 f.input :city_id, as: :nested_select,
@@ -59,7 +63,7 @@ f.input :city_id, as: :nested_select,
                   }
 ```
 
-> Remember: your custom endpoints need to work with Ransack filters.
+> Remember: those custom endpoints need to work with Ransack filters.
 
 Another option is to pass the `collection` attribute. If you set this, the `url` attribute will be ignored (no ajax request will be executed) and you will work with preloaded collections.
 

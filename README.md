@@ -1,30 +1,29 @@
 # ActiveAdmin Addons [![Build Status](https://secure.travis-ci.org/platanus/activeadmin_addons.svg?branch=master)](http://travis-ci.org/platanus/activeadmin_addons)
 
-Set of addons to improve the activeadmin ui and make it as awesome as we can.
+ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you can optionally use to improve the ActiveAdmin UI and make it awesome. 
+
+## What you get:
+
+  - [Range Filter](#range-filter): Filter your results using a numeric range (i.e. age between 18-30).
+  - [Select2](#select2): Cool select boxes for everyone.
+  - [Paperclip Integration](#paperclip-integration): Show thumbnails or icons on your lists. 
+  - [AASM Integration](#aasm-integration): Nice looking tags for states
+  - [Enum Integration](#enum-integration): Nice looking tags for enums
+  - [Boolean Values](#boolean-values): Beautiful boolean values
+  - [Number Formatting](#number-formatting): Format you currencies with ease
+  - [List](#list): Show Arrays or Hashes like a list.
+
 
 **Table of Contents**
 
-- [Instalation](#instalation)
+- [Installation](#installation)
+- [Addons](#addons)
 - [Setup](#setup)
 - [Default behaviour Changes](#default-behaviour-changes)
 - [Addons](#addons)
-	- [Filters](#filters)
-		- [Range Filter](#range-filter)
-	- [Select2](#select2)
-		- [Default](#default)
-		- [Tagging](#tagging)
-		- [Ajax Search](#ajax-search)
-		- [Nested Select](#nested-select)
-	- [Paperclip Integration](#paperclip-integration)
-		- [For Images](#for-images)
-		- [For Any Attachment](#for-any-attachment)
-	- [AASM Integration](#aasm-integration)
-	- [Enum Integration](#enum-integration)
-	- [Boolean Values](#boolean-values)
-	- [Number Formatting](#number-formatting)
-	- [List](#list)
+	
 
-## Instalation
+## Installation
 
 Add this line to your application's Gemfile:
 
@@ -40,13 +39,13 @@ $ bundle
 
 ## Setup
 
-The **first** line in `app/assets/stylesheets/active_admin.css.scss` should be:
+On the **first** line of `app/assets/stylesheets/active_admin.css.scss` add:
 
 ```stylesheet
 //= require activeadmin_addons/all
 ```
 
-In `app/assets/javascripts/active_admin.js.coffee` add this line **after** `#= require active_admin/base`
+On `app/assets/javascripts/active_admin.js.coffee` add the following line **after** `#= require active_admin/base`
 
 ```javascript
 #= require activeadmin_addons/all
@@ -54,16 +53,15 @@ In `app/assets/javascripts/active_admin.js.coffee` add this line **after** `#= r
 
 ## Default behaviour Changes
 
-Installing this gem...
+Installing this gem will enable the following changes by default:
 
 * The default date input will be `:datepicker` instead of `:date_select`
-* Add better integration with [enumerize](https://github.com/brainspec/enumerize) on filters and selects
+* Filters and selects will offer integration with [enumerize](https://github.com/brainspec/enumerize) 
+* All select boxes will use select2
 
 ## Addons
 
-### Filters
-
-#### Range Filter
+### Range Filter
 
 To filter based on a range of values you can use `range_select` like this:
 
