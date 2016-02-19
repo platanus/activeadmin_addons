@@ -1,8 +1,8 @@
 # Select2
 
-## Search
+## Ajax Search
 
-To enable select2 search functionality you need to do the following:
+To enable select2 ajax search functionality you need to do the following:
 
 ```ruby
   f.input :category_id, as: :search_select, url: admin_categories_path,
