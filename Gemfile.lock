@@ -20,7 +20,6 @@ PATH
   remote: .
   specs:
     activeadmin_addons (0.3.1)
-      rails (>= 4)
       railties
       select2-rails (~> 3.5.9)
 
@@ -281,6 +280,7 @@ DEPENDENCIES
   paperclip
   poltergeist
   pry-rails (= 0.3.2)
+  rails (>= 4)
   rspec-rails (= 3.0.1)
   sass-rails (~> 4.0.2)
   selenium-webdriver
