@@ -85,7 +85,7 @@ describe "Select 2", type: :feature do
         register_form(Invoice, false) do |f|
           f.input :city_id, as: :nested_select,
                             level_1: { attribute: :country_id },
-                            level_2: { attribute: :region_id },
+                            level_2: { attribute: :region_id, url: "/fakeurl" },
                             level_3: { attribute: :city_id }
         end
 
@@ -97,6 +97,10 @@ describe "Select 2", type: :feature do
         expect(page.text).to_not match(/Chile/)
         expect(page.text).to_not match(/Metropolitana/)
         expect(page.text).to_not match(/Santiago/)
+      end
+
+      it "uses the custom url" do
+        expect(page.html).to match('fakeurl')
       end
     end
 
