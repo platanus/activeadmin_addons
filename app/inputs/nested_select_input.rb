@@ -106,6 +106,7 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
 
   def set_parent_value(level_data)
     parent_attribute = level_data[:parent_attribute]
+    return unless parent_attribute
     add_virtual_accessor(parent_attribute)
     instance = instance_from_attribute_name(level_data[:attribute])
     if instance && instance.respond_to?(parent_attribute)
