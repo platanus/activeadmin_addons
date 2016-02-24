@@ -117,7 +117,7 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
     return unless attribute
     attribute_value = @object.send(attribute)
     return unless attribute_value
-    klass = attribute.to_s.humanize.constantize
+    klass = attribute.to_s.chomp("_id").camelize.constantize
     klass.find_by_id(attribute_value)
   end
 
@@ -137,7 +137,7 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
       url << "#{ActiveAdmin.application.default_namespace}/"
     end
 
-    url << attribute.to_s.humanize.tableize
+    url << attribute.to_s.chomp("_id").tableize
 
     url.join("")
   end
