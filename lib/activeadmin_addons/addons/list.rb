@@ -28,8 +28,8 @@ class ListBuilder < ActiveAdminAddons::CustomBuilder
         @level.push(value)
         if list? value
           value = render_list(value)
-        else
-          value = localized_value(model, attribute) if !!options[:localize]
+        elsif !!options[:localize]
+          value = localized_value(model, attribute)
         end
         @level.pop
         context.concat(context.content_tag(:li, value))
@@ -41,7 +41,7 @@ class ListBuilder < ActiveAdminAddons::CustomBuilder
     context.content_tag(options[:list_type]) do
       _data.keys.each do |key|
         @level.push(key)
-        label =  !!options[:localize] ? localized_value(model, attribute) : key
+        label = !!options[:localize] ? localized_value(model, attribute) : key
         value = _data[key]
         value = render_list(value) if list? value
         @level.pop
