@@ -45,20 +45,24 @@ class ListBuilder < ActiveAdminAddons::CustomBuilder
         value = _data[key]
         value = render_list(value) if list? value
         @level.pop
-        context.concat(context.content_tag(:li) do
-          if value.blank?
-            context.content_tag(:span, label)
-          else
-            context.content_tag(:span) do
-              context.concat("#{label}:&nbsp".html_safe)
-              context.concat(context.content_tag(:span) do
-                context.content_tag(:i, value)
-              end)
-            end
-          end
-        end)
+        hash_to_html(value, label)
       end
     end
+  end
+
+  def hash_to_html(_value, _label)
+    context.concat(context.content_tag(:li) do
+      if _value.blank?
+        context.content_tag(:span, _label)
+      else
+        context.content_tag(:span) do
+          context.concat("#{_label}:&nbsp".html_safe)
+          context.concat(context.content_tag(:span) do
+            context.content_tag(:i, _value)
+          end)
+        end
+      end
+    end)
   end
 end
 
