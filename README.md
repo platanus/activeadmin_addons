@@ -17,7 +17,6 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 **Table of Contents**
 
 - [Installation](#installation)
-- [Setup](#setup)
 - [Addons](#addons)
 - [Default changes to behaviour](#default-changes-to-behaviour)
 - [Addons](#addons)
