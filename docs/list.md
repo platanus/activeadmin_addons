@@ -56,3 +56,43 @@ es:
 ```
 
 * `list_type`: allows you to pick between `:ul` (unordered list) and `:ol` (ordered list) types.
+
+## Nested Lists
+
+You can use `list_row` and `list_column` with nested data:
+
+```ruby
+{
+  title: "Detalle",
+  categories: ["home", "investment"],
+  picture: {
+    path: "invoice.png",
+    size: "5MB",
+    geo: {
+      lat: 12.34343,
+      lng: 34.4343
+    }
+  }
+}
+```
+
+When working with nested lists, the locales must be defined in the following way:
+
+```yaml
+es:
+  addons_list:
+    invoice:
+      details:
+        title: Título
+        categories: Categorías
+        categories_home: Hogar
+        categories_investment: Inversión
+        picture: Foto
+        picture_path: Path
+        picture_size: Tamaño
+        picture_geo: Geo
+        picture_geo_lat: Latitud
+        picture_geo_lng: Longitud
+```
+
+<img src="./images/list-nested.png" height="350" />

@@ -39,6 +39,25 @@ describe "List", type: :feature do
     end
   end
 
+  context "with nested values" do
+    before do
+      register_show(Invoice) do
+        list_row :details, localize: true
+      end
+
+      visit admin_invoice_path(Invoice.create)
+    end
+
+    it "shows nested html lists" do
+      expect(page.html).to include("<ul><li><span>Título:&nbsp<span><i>Detalle</i></span></span>\
+</li><li><span>Categorías:&nbsp<span><i><ul><li>Hogar</li><li>Inversión</li></ul></i></span>\
+</span></li><li><span>Foto:&nbsp<span><i><ul><li><span>Path:&nbsp<span><i>invoice.png</i></span>\
+</span></li><li><span>Tamaño:&nbsp<span><i>5MB</i></span></span></li><li><span>Geo:&nbsp<span><i>\
+<ul><li><span>Latitud:&nbsp<span><i>12.34343</i></span></span></li><li><span>Longitud:&nbsp<span>\
+<i>34.4343</i></span></span></li></ul></i></span></span></li></ul></i></span></span></li></ul>")
+    end
+  end
+
   context "with list_type option" do
     before do
       register_show(Invoice) do

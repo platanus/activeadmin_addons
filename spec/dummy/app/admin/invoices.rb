@@ -24,6 +24,7 @@ ActiveAdmin.register Invoice do
       bool_row :paid
       list_row :skills, list_type: :ol
       list_row :contact, localize: true
+      list_row :details, localize: true
       image_row("Mi foto", :photo, style: :big, &:photo)
       attachment_row("My doc", :attachment, label: 'Download file', truncate: false, &:attachment)
       row :legal_date

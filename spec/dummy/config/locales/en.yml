@@ -2,6 +2,17 @@ en:
   hello: Hello world
   addons_list:
     invoice:
+      details:
+        title: Título
+        categories: Categorías
+        categories_home: Hogar
+        categories_investment: Inversión
+        picture: Foto
+        picture_path: Path
+        picture_size: Tamaño
+        picture_geo: Geo
+        picture_geo_lat: Latitud
+        picture_geo_lng: Longitud
       contact:
         twitter: TwiTTer
         facebook: Face
