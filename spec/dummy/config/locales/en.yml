@@ -2,6 +2,9 @@ en:
   hello: Hello world
   addons_list:
     invoice:
+      nested:
+        picture_geo: Geolocalización
+        picture_geo_lat: Latitude
       contact:
         twitter: TwiTTer
         facebook: Face

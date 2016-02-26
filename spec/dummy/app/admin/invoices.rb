@@ -22,13 +22,34 @@ ActiveAdmin.register Invoice do
       row :id
       tag_row :state
       bool_row :paid
-      list_row :skills, list_type: :ol
-      list_row :contact, localize: true
+      # list_row :skills, list_type: :ol
+      # list_row :contact, localize: true
       image_row("Mi foto", :photo, style: :big, &:photo)
       attachment_row("My doc", :attachment, label: 'Download file', truncate: false, &:attachment)
       row :legal_date
       number_row("Número", :number, as: :human, &:number)
       row :city
+      list_row :array_nested do
+        [
+          [1, 2, 3],
+          {nombre: "hola"}
+        ]
+      end
+      list_row :nested, localize: true do |invoice|
+        {
+          name: "Sirius Black",
+          age: "30s",
+          hobbies: ["guitar", "program"],
+          picture: {
+            path: "blabla.png",
+            size: 48,
+            geo: {
+              lat: 12.34343,
+              lng: 34.4343
+            }
+          }
+        }
+      end
     end
   end
 
