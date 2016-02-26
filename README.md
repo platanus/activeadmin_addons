@@ -17,9 +17,9 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 **Table of Contents**
 
 - [Installation](#installation)
-- [Addons](#addons)
 - [Setup](#setup)
-- [Default behaviour Changes](#default-behaviour-changes)
+- [Addons](#addons)
+- [Default changes to behaviour](#default-changes-to-behaviour)
 - [Addons](#addons)
 	
 
@@ -37,21 +37,15 @@ And then execute:
 $ bundle
 ```
 
-## Setup
+After that, run the generator: 
 
-On the **first** line of `app/assets/stylesheets/active_admin.css.scss` add:
-
-```stylesheet
-//= require activeadmin_addons/all
+```bash
+$ rails g activeadmin_addons:install
 ```
 
-On `app/assets/javascripts/active_admin.js.coffee` add the following line **after** `#= require active_admin/base`
+check [here](docs/install_generator.md) to see more information about this generator.
 
-```javascript
-#= require activeadmin_addons/all
-```
-
-## Default behaviour Changes
+## Default changes to behaviour
 
 Installing this gem will enable the following changes by default:
 
