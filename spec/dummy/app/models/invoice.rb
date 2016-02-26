@@ -34,4 +34,19 @@ class Invoice < ActiveRecord::Base
   def contact
     { "twitter" => "goku84", "facebook" => "kamehouse" }
   end
+
+  def details
+    {
+      title: "Detalle",
+      categories: ["home", "investment"],
+      picture: {
+        path: "invoice.png",
+        size: "5MB",
+        geo: {
+          lat: 12.34343,
+          lng: 34.4343
+        }
+      }
+    }
+  end
 end
