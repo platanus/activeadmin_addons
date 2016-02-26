@@ -1,5 +1,4 @@
 class ListBuilder < ActiveAdminAddons::CustomBuilder
-
   def render
     options[:localize] = options.fetch(:localize, false)
     options[:list_type] = options.fetch(:list_type, :ul)
@@ -19,18 +18,20 @@ class ListBuilder < ActiveAdminAddons::CustomBuilder
     _data.is_a?(Array) || _data.is_a?(Hash)
   end
 
-  def localized_value(key, model, attribute)
-    I18n.t("addons_list.#{model.class.name.underscore}.#{attribute}.#{@level.join("_")}")
+  def localized_value(model, attribute)
+    I18n.t("addons_list.#{model.class.name.underscore}.#{attribute}.#{@level.join('_')}")
   end
 
   def render_array(_data)
     context.content_tag(options[:list_type]) do
       _data.each do |value|
+        @level.push(value)
         if list? value
           value = render_list(value)
         else
-          value = localized_value(value, model, attribute) if !!options[:localize]
+          value = localized_value(model, attribute) if !!options[:localize]
         end
+        @level.pop
         context.concat(context.content_tag(:li, value))
       end
     end
@@ -40,9 +41,10 @@ class ListBuilder < ActiveAdminAddons::CustomBuilder
     context.content_tag(options[:list_type]) do
       _data.keys.each do |key|
         @level.push(key)
-        label =  !!options[:localize] ? localized_value(key, model, attribute) : key
+        label =  !!options[:localize] ? localized_value(model, attribute) : key
         value = _data[key]
         value = render_list(value) if list? value
+        @level.pop
         context.concat(context.content_tag(:li) do
           if value.blank?
             context.content_tag(:span, label)
@@ -55,11 +57,9 @@ class ListBuilder < ActiveAdminAddons::CustomBuilder
             end
           end
         end)
-        @level.pop
       end
     end
   end
-
 end
 
 module ::ActiveAdmin
