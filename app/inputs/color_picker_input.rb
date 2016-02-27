@@ -38,7 +38,7 @@ class ColorPickerInput < Formtastic::Inputs::StringInput
   def input_html_options
     opts = {}
     opts["class"] = 'color-picker'
-    opts["data-palette"] = DEFAULT_PALETTE.to_json
+    opts["data-palette"] = (@options[:palette] || DEFAULT_PALETTE).to_json
     opts["value"] = @object.public_send(method)
     super.merge(opts)
   end

@@ -44,7 +44,7 @@ ActiveAdmin.register Invoice do
       f.input :number, as: :tags, collection: ["0002-00000001", "0002-00004684"]
       f.input :attachment
       f.input :photo
-      f.input :color, as: :color_picker
+      f.input :color, as: :color_picker, palette: Invoice.colors
 
       f.input :city_id, as: :nested_select,
                         fields: [:name], display_name: 'name',

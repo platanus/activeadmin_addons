@@ -49,4 +49,18 @@ class Invoice < ActiveRecord::Base
       }
     }
   end
+
+  def self.colors
+    [
+      "#DD2900",
+      "#D94000",
+      "#D55500",
+      "#D26A00",
+      "#CE7D00",
+      "#CA9000",
+      "#C6A300",
+      "#C2B400",
+      "#B9BF00"
+    ]
+  end
 end
