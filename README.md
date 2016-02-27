@@ -1,17 +1,18 @@
 # ActiveAdmin Addons [![Build Status](https://secure.travis-ci.org/platanus/activeadmin_addons.svg?branch=master)](http://travis-ci.org/platanus/activeadmin_addons)
 
-ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you can optionally use to improve the ActiveAdmin UI and make it awesome. 
+ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you can optionally use to improve the ActiveAdmin UI and make it awesome.
 
 ## What you get:
 
   - [Range Filter](#range-filter): Filter your results using a numeric range (i.e. age between 18-30).
   - [Select2](#select2): Cool select boxes for everyone.
-  - [Paperclip Integration](#paperclip-integration): Show thumbnails or icons on your lists. 
-  - [AASM Integration](#aasm-integration): Nice looking tags for states
-  - [Enum Integration](#enum-integration): Nice looking tags for enums
-  - [Boolean Values](#boolean-values): Beautiful boolean values
-  - [Number Formatting](#number-formatting): Format you currencies with ease
+  - [Paperclip Integration](#paperclip-integration): Show thumbnails or icons on your lists.
+  - [AASM Integration](#aasm-integration): Nice looking tags for states.
+  - [Enum Integration](#enum-integration): Nice looking tags for enums.
+  - [Boolean Values](#boolean-values): Beautiful boolean values.
+  - [Number Formatting](#number-formatting): Format you currencies with ease.
   - [List](#list): Show Arrays or Hashes like a list.
+  - [Color Picker](#color-picker) Select colors from a pretty popup.
 
 
 **Table of Contents**
@@ -20,7 +21,7 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 - [Addons](#addons)
 - [Default changes to behaviour](#default-changes-to-behaviour)
 - [Addons](#addons)
-	
+
 
 ## Installation
 
@@ -36,7 +37,7 @@ And then execute:
 $ bundle
 ```
 
-After that, run the generator: 
+After that, run the generator:
 
 ```bash
 $ rails g activeadmin_addons:install
@@ -49,7 +50,7 @@ check [here](docs/install_generator.md) to see more information about this gener
 Installing this gem will enable the following changes by default:
 
 * The default date input will be `:datepicker` instead of `:date_select`
-* Filters and selects will offer integration with [enumerize](https://github.com/brainspec/enumerize) 
+* Filters and selects will offer integration with [enumerize](https://github.com/brainspec/enumerize)
 * All select boxes will use select2
 
 ## Addons
@@ -155,6 +156,18 @@ You can show `Array` or `Hash` values as html lists.
 <img src="./docs/images/list-row.png" height="250" />
 
 [Read more!](docs/list.md)
+
+### Color Picker
+
+You can pick colors using [JQuery Palette Color Picker](https://github.com/carloscabo/jquery-palette-color-picker)
+
+```ruby
+f.input :color, as: :color_picker
+```
+
+<img src="./docs/images/color-picker.gif" height="280" />
+
+[Read more!](docs/color-picker.md)
 
 ## Contributing
 
