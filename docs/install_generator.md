@@ -1,6 +1,6 @@
 The install generator will automatically do these two changes to your files:
 
-1. The following line will be added as the **first** line of `app/assets/stylesheets/active_admin.css.scss`:
+1. The following line will be added as the **first** line of `app/assets/stylesheets/active_admin.scss`:
 
 ```stylesheet
 //= require activeadmin_addons/all
