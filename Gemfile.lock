@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    activeadmin_addons (0.5.0)
+    activeadmin_addons (0.6.0)
       railties
       select2-rails (~> 3.5.9)
 
