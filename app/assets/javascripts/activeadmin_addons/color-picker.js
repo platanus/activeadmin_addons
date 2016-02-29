@@ -1,4 +1,4 @@
-//= require palette-color-picker
+//= require ../../external/palette-color-picker/palette-color-picker
 //= require_self
 
 $(function() {
