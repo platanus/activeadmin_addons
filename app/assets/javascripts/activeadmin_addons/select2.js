@@ -3,21 +3,23 @@
 
 $(function() {
 
-  setupSelect2();
+  setupSelect2(document);
 
-  $(document).on('has_many_add:after', setupSelect2);
+  $(document).on('has_many_add:after', function(event, container){
+    setupSelect2(container);
+  });
 
-  function setupSelect2() {
+  function setupSelect2(container) {
     var INVALID_PARENT_ID = -1;
 
-    $('.select2-tags').each(function(i, el) {
+    $('.select2-tags', container).each(function(i, el) {
       $(el).select2({
         width: '80%',
         tags: $(el).data('collection')
       });
     });
 
-    $('select:not(.default-select)').each(function(i, el) {
+    $('select:not(.default-select)', container).each(function(i, el) {
       if ($(el).closest('.filter_form').length > 0) {
         $(el).select2({
           width: 'resolve'
@@ -30,7 +32,7 @@ $(function() {
     });
 
 
-    $('.select2-ajax').each(function(i, el) {
+    $('.select2-ajax', container).each(function(i, el) {
       var url = $(el).data('url');
       var fields = $(el).data('fields');
       var displayName = $(el).data('display_name');
