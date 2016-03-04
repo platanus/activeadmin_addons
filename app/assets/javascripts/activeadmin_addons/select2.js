@@ -2,7 +2,6 @@
 //= require_self
 
 $(function() {
-
   setupSelect2(document);
 
   $(document).on('has_many_add:after', function(event, container){
@@ -30,7 +29,6 @@ $(function() {
         });
       }
     });
-
 
     $('.select2-ajax', container).each(function(i, el) {
       var url = $(el).data('url');

@@ -24,7 +24,7 @@ describe "Enum tag", type: :feature do
     context "passing a block" do
       before do
         register_show(Invoice) do
-          tag_row(:state) do |invoice|
+          tag_row(:state) do
             invoice.state
           end
         end

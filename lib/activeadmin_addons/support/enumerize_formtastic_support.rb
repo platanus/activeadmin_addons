@@ -6,7 +6,7 @@ module ActiveAdminAddons
       alias_method_chain :input, :ransack
     end
 
-    def input_with_ransack(method, options={})
+    def input_with_ransack(method, options = {})
       if object.is_a?(::Ransack::Search)
         klass = object.klass
 

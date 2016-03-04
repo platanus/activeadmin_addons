@@ -65,7 +65,7 @@ describe "Paperclip Attachment", type: :feature do
   context "without a block" do
     before do
       register_show(Invoice) do
-        attachment_row(:attachment, truncate: false) do |invoice|
+        attachment_row(:attachment, truncate: false) do
           invoice.attachment
         end
       end

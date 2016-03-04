@@ -38,7 +38,7 @@ describe "Number", type: :feature do
   context "passing a block" do
     before do
       register_show(Invoice) do
-        number_row(:number, as: :human) do |invoice|
+        number_row(:number, as: :human) do
           invoice.number
         end
       end
