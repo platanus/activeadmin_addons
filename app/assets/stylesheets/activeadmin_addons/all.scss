@@ -27,3 +27,9 @@
 .palette-color-picker-bubble {
   z-index: 10;
 }
+
+input[type=text] {
+  &.date-time-picker {
+    width: 110px;
+  }
+}

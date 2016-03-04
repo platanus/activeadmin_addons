@@ -1,6 +1,6 @@
 ActiveAdmin.register Invoice do
   permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id,
-    :city_id, :amount, :color
+    :city_id, :amount, :color, :updated_at
 
   filter :id, as: :range_select
 
@@ -35,6 +35,14 @@ ActiveAdmin.register Invoice do
 
   form do |f|
     f.inputs "Details" do
+      f.input :updated_at, as: :date_time_picker,
+                           picker_options: {
+                             min_date: Date.current - 2.days,
+                             allow_times: [
+                               '12:10', '13:10', '15:10',
+                               '17:10', '18:10', '19:10'
+                             ]
+                           }
       f.input :state
       f.input :category_id, as: :search_select, url: admin_categories_path,
                             fields: [:name], display_name: 'name',
