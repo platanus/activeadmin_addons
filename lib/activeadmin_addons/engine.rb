@@ -2,7 +2,9 @@ module ActiveAdminAddons
   module Rails
     class Engine < ::Rails::Engine
       require 'select2-rails'
-      initializer "set boolean values addon" do |app|
+      require 'xdan-datetimepicker-rails'
+
+      initializer "initialize addons" do |app|
         require_relative './support/custom_builder'
         require_relative './addons/bool_values'
         require_relative './addons/paperclip_image'
@@ -13,7 +15,7 @@ module ActiveAdminAddons
         require_relative './addons/list'
         require_relative './support/enumerize_formtastic_support'
         require_relative './support/set_datepicker'
-        app.config.assets.precompile +=  %w(select.scss)
+        app.config.assets.precompile += %w(select.scss)
       end
     end
   end
