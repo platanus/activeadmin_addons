@@ -12,7 +12,8 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
   - [Boolean Values](#boolean-values): Beautiful boolean values.
   - [Number Formatting](#number-formatting): Format you currencies with ease.
   - [List](#list): Show Arrays or Hashes like a list.
-  - [Color Picker](#color-picker) Select colors from a pretty popup.
+  - [Color Picker](#color-picker): Select colors from a pretty popup.
+  - [Date Time Picker](#date-time-picker): Pick date and time comfortably.
 
 
 **Table of Contents**
@@ -167,6 +168,19 @@ f.input :color, as: :color_picker
 <img src="./docs/images/color-picker.gif" height="280" />
 
 [Read more!](docs/color-picker.md)
+
+### Date Time Picker
+
+You can pick dates with time using the xdan's [jQuery Plugin Date and Time Picker](https://github.com/xdan/datetimepicker)
+
+```ruby
+f.input :updated_at, as: :date_time_picker
+```
+
+<img src="./docs/images/date-time-picker.gif" height="280" />
+
+[Read more!](docs/date-time-picker.md)
+
 
 ## Contributing
 

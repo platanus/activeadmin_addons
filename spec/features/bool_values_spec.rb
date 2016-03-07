@@ -24,7 +24,7 @@ describe "Bool values", type: :feature do
   context "passing a block" do
     before do
       register_show(Invoice) do
-        bool_row(:paid) do |invoice|
+        bool_row(:paid) do
           false
         end
       end

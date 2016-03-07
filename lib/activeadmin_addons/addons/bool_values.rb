@@ -22,17 +22,10 @@ module ActiveAdminAddons
       value = I18n.t("default.#{key}", default: last_default, scope: scope) if value.empty?
 
       value.html_safe
-
-      #
-      # model_i18n = "activeadmin.addons.boolean.models.#{model_name}.#{key}"
-      # default_i18n = "activeadmin.addons.boolean.default.#{key}"
-      #
-      # I18n.t(model_i18n, default: I18n.t(default_i18n, default: last_default)).html_safe
     end
   end
 
   module BoolValues
-
     module ::ActiveAdmin
       module Views
         class TableFor

@@ -1,6 +1,5 @@
 module ActiveAdminAddons
   class EnumBuilder < CustomBuilder
-
     def render
       @is_enum = false
       @is_enum = :enumerize if data.is_a?('Enumerize::Value'.constantize)
@@ -14,7 +13,6 @@ module ActiveAdminAddons
     def display_data
       @is_enum == :enumerize ? data.text : data
     end
-
   end
 
   module ::ActiveAdmin
