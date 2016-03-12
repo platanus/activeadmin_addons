@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-describe "Paperclip Image", type: :feature do
+describe "Dragonfly Image", type: :feature do
   after do
     Invoice.all.each do |invoice|
-      invoice.photo = nil
+      invoice.dphoto = nil
       invoice.save!
     end
   end
 
   def create_photo_invoice
-    Invoice.create photo: File.new(ENGINE_RAILS_ROOT + 'spec/assets/Rails.png')
+    Invoice.create dphoto: File.new(ENGINE_RAILS_ROOT + 'spec/assets/Rails.png')
   end
 
   context "without options" do
     before do
       register_index(Invoice) do
-        image_column :photo
+        dragonfly_image_column :dphoto
       end
 
       create_photo_invoice
@@ -28,10 +28,10 @@ describe "Paperclip Image", type: :feature do
     end
   end
 
-  context "passing style option" do
+  context "passing size option" do
     before do
       register_index(Invoice) do
-        image_column :photo, style: :thumb
+        dragonfly_image_column :dphoto, size: '100x100'
       end
 
       create_photo_invoice
@@ -40,14 +40,14 @@ describe "Paperclip Image", type: :feature do
 
     it "shows the attachment as an image" do
       img = page.find('img')
-      expect(img[:src]).to match(%r{thumb/Rails.png})
+      expect(img[:src]).to match(/Rails.png/)
     end
   end
 
   context "passing a block" do
     before do
       register_show(Invoice) do
-        image_row(:photo, &:photo)
+        dragonfly_image_row(:dphoto, &:dphoto)
       end
 
       visit admin_invoice_path(create_photo_invoice)
@@ -62,7 +62,7 @@ describe "Paperclip Image", type: :feature do
   context "using a label" do
     before do
       register_show(Invoice) do
-        image_row("Mi foto", :photo)
+        dragonfly_image_row("Mi foto", :dphoto)
       end
 
       visit admin_invoice_path(create_photo_invoice)

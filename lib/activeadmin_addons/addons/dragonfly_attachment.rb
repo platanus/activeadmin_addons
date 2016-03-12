@@ -1,5 +1,5 @@
 module ActiveAdminAddons
-  class PaperclipAttachmentBuilder < CustomBuilder
+  class DragonflyAttachmentBuilder < CustomBuilder
     KNOWN_EXTENSIONS = %w{
       3gp 7z ace ai aif aiff amr asf asx bat bin bmp bup cab cbr cda cdl cdr chm
       dat divx dll dmg doc docx dss dvf dwg eml eps exe fla flv gif gz hqx htm html
@@ -21,11 +21,11 @@ module ActiveAdminAddons
     end
 
     def build_label
-      icon = icon_for_filename(data.original_filename)
+      icon = icon_for_filename(data.name)
       style = { width: "20", height: "20", style: "margin-right: 5px; vertical-align: middle;" }
       icon_img = context.image_tag(icon, style)
-      file_name = data.original_filename
-      file_name = context.truncate(data.original_filename) if options[:truncate] == true
+      file_name = data.name
+      file_name = context.truncate(data.name) if options[:truncate] == true
       label_text = options.fetch(:label, file_name)
 
       context.content_tag(:span) do
@@ -36,9 +36,9 @@ module ActiveAdminAddons
 
     def render
       return nil if data.nil?
-      raise 'you need to pass a paperclip attribute' unless data.respond_to?(:url)
+      raise 'you need to pass a dragonfly attribute' unless data.respond_to?(:url)
       options[:truncate] = options.fetch(:truncate, true)
-      return nil unless data.exists?
+      return nil unless data.stored?
       context.link_to(build_label, data.url, target: "_blank", class: "attachment-link")
     end
   end
@@ -46,13 +46,13 @@ module ActiveAdminAddons
   module ::ActiveAdmin
     module Views
       class TableFor
-        def attachment_column(*args, &block)
-          column(*args) { |model| PaperclipAttachmentBuilder.render(self, model, *args, &block) }
+        def dragonfly_attachment_column(*args, &block)
+          column(*args) { |model| DragonflyAttachmentBuilder.render(self, model, *args, &block) }
         end
       end
       class AttributesTable
-        def attachment_row(*args, &block)
-          row(*args) { |model| PaperclipAttachmentBuilder.render(self, model, *args, &block) }
+        def dragonfly_attachment_row(*args, &block)
+          row(*args) { |model| DragonflyAttachmentBuilder.render(self, model, *args, &block) }
         end
       end
     end

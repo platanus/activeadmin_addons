@@ -23,6 +23,12 @@ class Invoice < ActiveRecord::Base
 
   validates_attachment :photo, content_type: { content_type: /\Aimage\/.*\Z/ }
 
+  dragonfly_accessor :dphoto
+  validates_property :format, of: :dphoto, in: ['jpeg', 'png', 'gif', 'bmp']
+
+  dragonfly_accessor :dattachment
+  validates_property :mime_type, of: :dattachment, as: 'application/pdf'
+
   def display_name
     number
   end

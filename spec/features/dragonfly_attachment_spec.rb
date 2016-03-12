@@ -1,22 +1,22 @@
 require 'rails_helper'
 
-describe "Paperclip Attachment", type: :feature do
+describe "Dragonfly Attachment", type: :feature do
   after do
     Invoice.all.each do |invoice|
-      invoice.attachment = nil
+      invoice.dattachment = nil
       invoice.save!
     end
   end
 
   def create_attachment_invoice
-    Invoice.create attachment: File.new(
+    Invoice.create dattachment: File.new(
       ENGINE_RAILS_ROOT + 'spec/assets/entradas_para_dragon_ball_z.pdf')
   end
 
   context "without options" do
     before do
       register_show(Invoice) do
-        attachment_row :attachment, truncate: false
+        dragonfly_attachment_row :dattachment, truncate: false
       end
 
       visit admin_invoice_path(create_attachment_invoice)
@@ -35,7 +35,7 @@ describe "Paperclip Attachment", type: :feature do
   context "with custom link label" do
     before do
       register_index(Invoice) do
-        attachment_column :attachment, label: "Download"
+        dragonfly_attachment_column :dattachment, label: "Download"
       end
 
       create_attachment_invoice
@@ -50,7 +50,7 @@ describe "Paperclip Attachment", type: :feature do
   context "with truncated link label" do
     before do
       register_index(Invoice) do
-        attachment_column :attachment, truncate: true
+        dragonfly_attachment_column :dattachment, truncate: true
       end
 
       create_attachment_invoice
@@ -65,8 +65,8 @@ describe "Paperclip Attachment", type: :feature do
   context "without a block" do
     before do
       register_show(Invoice) do
-        attachment_row(:attachment, truncate: false) do
-          invoice.attachment
+        dragonfly_attachment_row(:dattachment, truncate: false) do
+          invoice.dattachment
         end
       end
 
@@ -81,7 +81,7 @@ describe "Paperclip Attachment", type: :feature do
   context "using a label" do
     before do
       register_show(Invoice) do
-        attachment_row("Mi documento", :attachment)
+        dragonfly_attachment_row("Mi documento", :dattachment)
       end
 
       visit admin_invoice_path(create_attachment_invoice)
