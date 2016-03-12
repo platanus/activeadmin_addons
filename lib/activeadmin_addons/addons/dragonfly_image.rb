@@ -3,7 +3,7 @@ module ActiveAdminAddons
     def render
       return nil if data.nil?
       raise 'you need to pass a dragonfly image attribute' unless data.respond_to?(:url)
-      size = options.fetch(:style, '100x100')
+      size = options.fetch(:size, '100x100')
       context.image_tag(data.thumb(size).url) if data.stored?
     end
   end
