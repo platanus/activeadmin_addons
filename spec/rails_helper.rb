@@ -9,6 +9,7 @@ require 'capybara/rails'
 require 'shoulda-matchers'
 require 'enumerize'
 require 'paperclip'
+require 'dragonfly'
 require 'capybara/poltergeist'
 require 'database_cleaner'
 

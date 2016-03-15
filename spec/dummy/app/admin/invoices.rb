@@ -11,6 +11,8 @@ ActiveAdmin.register Invoice do
     bool_column :paid
     image_column :photo, style: :thumb
     attachment_column :attachment
+    dragonfly_image_column :dphoto, size: '100x'
+    dragonfly_attachment_column :dattachment
     number_column :amount, as: :currency, unit: "$", separator: ","
     list_column :skills
     list_column :contact
@@ -27,6 +29,8 @@ ActiveAdmin.register Invoice do
       list_row :details, localize: true
       image_row("Mi foto", :photo, style: :big, &:photo)
       attachment_row("My doc", :attachment, label: 'Download file', truncate: false, &:attachment)
+      dragonfly_image_row('My dragonfly photo', :dphoto, size: '100x', &:dphoto)
+      dragonfly_attachment_row('My dragonfly attachment', :dattachment, label: 'Download file', truncate: false, &:dattachment)
       row :legal_date
       number_row("Monto", :amount, as: :human, &:amount)
       row :city

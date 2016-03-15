@@ -6,7 +6,10 @@ module ActiveAdminAddons
 
       initializer "initialize addons" do |app|
         require_relative './support/custom_builder'
+        require_relative './support/attachment_builder'
         require_relative './addons/bool_values'
+        require_relative './addons/dragonfly_image'
+        require_relative './addons/dragonfly_attachment'
         require_relative './addons/paperclip_image'
         require_relative './addons/paperclip_attachment'
         require_relative './addons/enum_tag'

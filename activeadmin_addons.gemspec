@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "capybara"
   s.add_development_dependency "enumerize"
   s.add_development_dependency "paperclip"
+  s.add_development_dependency "dragonfly"
   s.add_development_dependency "selenium-webdriver"
   s.add_development_dependency "poltergeist"
   s.add_development_dependency "database_cleaner"
