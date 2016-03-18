@@ -27,3 +27,15 @@ $approved-color: #08A510;
   &.rejected { background: $rejected-color; }
   &.approved { background: $approved-color; }
 }
+
+.bool-value {
+  font-size: 12px;
+
+  &.true-value {
+    color: $approved-color;
+  }
+
+  &.false-value {
+    color: $rejected-color;
+  }
+}
