@@ -30,6 +30,24 @@ index do
 end
 ```
 
+## Style
+
+You can set your own style for boolean values, adding the following code to `active_admin.scss` file.
+
+```scss
+.bool-value {
+  font-size: 12px;
+
+  &.true-value {
+    color: #08A510;
+  }
+
+  &.false-value {
+    color: #FF0000;
+  }
+}
+```
+
 ## i18n Support
 
 ### The default values are:

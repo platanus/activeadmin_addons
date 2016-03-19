@@ -8,16 +8,36 @@ describe "Bool values", type: :feature do
       end
     end
 
-    it "shows localized attribute true value" do
-      Invoice.create(paid: true)
-      visit admin_invoices_path
-      expect(page).to have_content 'pagada'
+    context "with true value" do
+      before do
+        Invoice.create(paid: true)
+        visit admin_invoices_path
+      end
+
+      it "shows localized attribute true value" do
+        expect(page).to have_content 'pagada'
+      end
+
+      it "shows valid class" do
+        col = find("td[class=\"col col-paid\"]").find("span")
+        expect(col[:class]).to eq("bool-value true-value")
+      end
     end
 
-    it "shows localized attribute false value" do
-      Invoice.create(paid: false)
-      visit admin_invoices_path
-      expect(page).to have_content 'no pagada'
+    context "with false value" do
+      before do
+        Invoice.create(paid: false)
+        visit admin_invoices_path
+      end
+
+      it "shows localized attribute true value" do
+        expect(page).to have_content 'no pagada'
+      end
+
+      it "shows valid class" do
+        col = find("td[class=\"col col-paid\"]").find("span")
+        expect(col[:class]).to eq("bool-value false-value")
+      end
     end
   end
 

@@ -21,7 +21,9 @@ module ActiveAdminAddons
       value = I18n.t("models.#{model_name}.#{key}", default: '', scope: scope) if value.empty?
       value = I18n.t("default.#{key}", default: last_default, scope: scope) if value.empty?
 
-      value.html_safe
+      context.content_tag(:span, class: "bool-value #{key.dasherize}") do
+        context.safe_concat(value.html_safe)
+      end
     end
   end
 
