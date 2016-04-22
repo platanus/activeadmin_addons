@@ -17,7 +17,7 @@ form do |f|
 
 ## Options
 
-You can pass to `picker_options`, all the options available on xdan's library
+You can pass to `picker_options`, all the options available on xdan's library. Notice `timepicker: false` to only show a date picker
 
 ```ruby
 form do |f|
@@ -28,7 +28,8 @@ form do |f|
                            allow_times: [
                              '12:10', '13:10', '15:10',
                              '17:10', '18:10', '19:10'
-                           ]
+                           ],
+                           timepicker: false
                          }
   end
 
