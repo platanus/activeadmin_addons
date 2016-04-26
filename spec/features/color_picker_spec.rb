@@ -29,7 +29,7 @@ describe "Color Picker", type: :feature do
         visit new_admin_invoice_path
       end
 
-      it "shows color picker btn"do
+      it "shows color picker btn" do
         expect(picker_btn[:class]).to eq("palette-color-picker-button")
       end
 

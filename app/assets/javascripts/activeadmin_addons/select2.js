@@ -12,10 +12,39 @@ $(function() {
     var INVALID_PARENT_ID = -1;
 
     $('.select2-tags', container).each(function(i, el) {
-      $(el).select2({
-        width: '80%',
-        tags: $(el).data('collection')
-      });
+      var model = $(el).data('model'),
+          method = $(el).data('method'),
+          selectOptions = {
+            width: '80%',
+            tags: $(el).data('collection')
+          };
+
+      if(!!model) {
+        selectOptions.createSearchChoice = function() { return null; };
+        var prefix = model + '_' + method;
+        $(el).on('select2-selecting', onItemAdded);
+        $(el).on('select2-removed', onItemRemoved);
+      }
+
+      $(el).select2(selectOptions);
+
+      function onItemRemoved(event) {
+        var itemId = '#' + prefix +  '_' + event.val;
+        $(itemId).remove();
+      }
+
+      function onItemAdded(event) {
+        var selectedItemsContainer = $('#' + prefix +  '_selected_values'),
+            itemName = model + '[' + method + '][]',
+            itemId = prefix + '_' + event.val;
+
+        $('<input>').attr({
+          id: itemId,
+          name: itemName,
+          type: 'hidden',
+          value: event.val
+        }).appendTo(selectedItemsContainer);
+      }
     });
 
     $('select:not(.default-select)', container).each(function(i, el) {

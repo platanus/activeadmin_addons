@@ -24,6 +24,12 @@ describe "Select 2", type: :feature do
     Invoice.first_or_create!(city: @santiago)
   end
 
+  def create_items
+    3.times.each do |idx|
+      Item.where(name: "Item #{idx + 1}").first_or_create!
+    end
+  end
+
   context "Default" do
     before do
       register_form(Invoice) do |f|
@@ -62,7 +68,7 @@ describe "Select 2", type: :feature do
       end
     end
 
-    context "with empty collection" do
+    context "with non empty collection" do
       before do
         register_form(Invoice) do |f|
           f.input :number, as: :tags, collection: ["#111", "#222", "#333"]
@@ -75,6 +81,50 @@ describe "Select 2", type: :feature do
       it "adds new tags", js: true do
         find("div.select2-container").click
         expect(page).to have_css(".select2-result", count: 3)
+      end
+    end
+
+    context "working with active record relations" do
+      before do
+        register_form(Invoice) do |f|
+          f.input :item_ids, as: :tags, collection: Item.all
+        end
+
+        invoice = Invoice.first_or_create!
+        create_items
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "shows preloaded items", js: true do
+        find("div.select2-container").click
+        expect(page).to have_css(".select2-result", count: 3)
+      end
+
+      context "with added item" do
+        before do
+          find("div.select2-container").click
+          @first_item = Item.first
+          @input = find(".select2-input")
+          @input.set(@first_item.name)
+          @input.native.send_keys(:return)
+        end
+
+        it "adds/removes hidden item", js: true do
+          item_id = "#invoice_item_ids_#{@first_item.id}"
+          input = find(item_id, visible: false)
+          expect(input.value).to eq(@first_item.id.to_s)
+          expect(input[:name]).to eq("invoice[item_ids][]")
+          remove_item_btn = find(".select2-search-choice-close")
+          remove_item_btn.native.send_keys(:return)
+          expect { find(item_id, visible: false) }.to raise_error
+        end
+
+        it "does not allow new items", js: true do
+          expect(page).to have_css("li.select2-search-choice", count: 1)
+          @input.set("Not preloaded item")
+          @input.native.send_keys(:return)
+          expect(page).to have_css("li.select2-search-choice", count: 1)
+        end
       end
     end
   end

@@ -1,6 +1,6 @@
 ActiveAdmin.register Invoice do
   permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id,
-    :city_id, :amount, :color, :updated_at
+    :city_id, :amount, :color, :updated_at, item_ids: []
 
   filter :id, as: :range_select
 
@@ -50,6 +50,7 @@ ActiveAdmin.register Invoice do
       f.input :paid
       f.input :amount
       f.input :number, as: :tags, collection: ["0002-00000001", "0002-00004684"]
+      f.input :item_ids, as: :tags, collection: Item.all, display_name: :full_name
       f.input :attachment
       f.input :photo
       f.input :color, as: :color_picker, palette: Invoice.colors
