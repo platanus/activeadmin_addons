@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227211518) do
+ActiveRecord::Schema.define(version: 20160426161032) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -95,6 +95,21 @@ ActiveRecord::Schema.define(version: 20160227211518) do
 
   add_index "invoices", ["category_id"], name: "index_invoices_on_category_id"
   add_index "invoices", ["city_id"], name: "index_invoices_on_city_id"
+
+  create_table "invoices_items", id: false, force: true do |t|
+    t.integer "invoice_id"
+    t.integer "item_id"
+  end
+
+  add_index "invoices_items", ["invoice_id"], name: "index_invoices_items_on_invoice_id"
+  add_index "invoices_items", ["item_id"], name: "index_invoices_items_on_item_id"
+
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "regions", force: true do |t|
     t.string   "name"
