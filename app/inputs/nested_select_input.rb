@@ -75,6 +75,7 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
 
     opts["id"] = build_select_id(attribute)
     opts["data-url"] = get_option(level, :url, build_url(attribute))
+    opts["data-response_root"] = (level[:response_root] || opts["data-url"].to_s.split('/').last)
     opts["data-selected"] = instance.try(opts["data-display_name"])
 
     opts.merge(select_html_parent_options(level[:parent_attribute]))

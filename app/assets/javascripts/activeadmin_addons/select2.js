@@ -65,6 +65,7 @@ $(function() {
       var displayName = $(el).data('display_name');
       var parent = $(el).data('parent');
       var model = $(el).data('model');
+      var responseRoot = $(el).data('response_root');
       var collection = $(el).data('collection');
       var minimumInputLength = $(el).data('minimum_input_length');
       var order = fields[0] + '_desc';
@@ -96,6 +97,10 @@ $(function() {
           return query;
         },
         results: function(data, page) {
+          if(data.constructor == Object) {
+            data = data[responseRoot];
+          }
+
           return {
             results: jQuery.map(data, function(resource) {
               return {
