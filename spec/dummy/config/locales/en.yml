@@ -16,6 +16,10 @@ en:
       contact:
         twitter: TwiTTer
         facebook: Face
+  activerecord:
+    attributes:
+      invoice:
+        item_ids: Items
   activeadmin:
     addons:
       boolean:
