@@ -15,7 +15,7 @@ module ActiveAdminAddons
         require_relative './addons/list'
         require_relative './support/enumerize_formtastic_support'
         require_relative './support/set_datepicker'
-        app.config.assets.precompile += %w(select.scss)
+        app.config.assets.precompile += %w(select.scss fileicons/*.png)
       end
     end
   end
