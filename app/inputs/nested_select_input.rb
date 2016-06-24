@@ -94,7 +94,7 @@ class NestedSelectInput < Formtastic::Inputs::StringInput
   end
 
   def model_name
-    @object.class.to_s.underscore.gsub('/', '_')
+    @object.class.to_s.underscore.tr("/", "_")
   end
 
   def build_select_id(attribute)
