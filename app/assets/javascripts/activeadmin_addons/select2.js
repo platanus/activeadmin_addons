@@ -149,7 +149,7 @@ $(function() {
       if (!!parent) {
         var parentSelector = '#' + model + '_' + parent;
 
-        $(parentSelector).on('change', function(e) {
+        $(el).parent().find(parentSelector).on('change', function(e) {
           selectInstance.val(null).trigger('change');
           parentId = e.val;
 
