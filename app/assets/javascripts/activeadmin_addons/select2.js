@@ -48,13 +48,22 @@ $(function() {
     });
 
     $('select:not(.default-select)', container).each(function(i, el) {
+      var firstOption = $('option', el).first(),
+          allowClear  = false;
+
+      if (firstOption.val() === "" && firstOption.text() === "") {
+        allowClear = true;
+      }
+
       if ($(el).closest('.filter_form').length > 0) {
         $(el).select2({
-          width: 'resolve'
+          width: 'resolve',
+          allowClear: allowClear
         });
       } else {
         $(el).select2({
-          width: '80%'
+          width: '80%',
+          allowClear: allowClear
         });
       }
     });
