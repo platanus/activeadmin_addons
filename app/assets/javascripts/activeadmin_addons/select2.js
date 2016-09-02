@@ -29,14 +29,14 @@ $(function() {
       $(el).select2(selectOptions);
 
       function onItemRemoved(event) {
-        var itemId = '#' + prefix +  '_' + event.val;
+        var itemId = '[id=\'' + prefix +  '_' + event.val + '\']';
         $(itemId).remove();
       }
 
       function onItemAdded(event) {
-          var selectedItemsContainer = $("[id='" + prefix + "_selected_values']"),
-            itemName = model + '[' + method + '][]',
-            itemId = prefix + '_' + event.val;
+        var selectedItemsContainer = $("[id='" + prefix + "_selected_values']"),
+          itemName = model + '[' + method + '][]',
+          itemId = prefix + '_' + event.val;
 
         $('<input>').attr({
           id: itemId,
