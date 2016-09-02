@@ -34,7 +34,7 @@ $(function() {
       }
 
       function onItemAdded(event) {
-        var selectedItemsContainer = $('#' + prefix +  '_selected_values'),
+          var selectedItemsContainer = $("[id='" + prefix + "_selected_values']"),
             itemName = model + '[' + method + '][]',
             itemId = prefix + '_' + event.val;
 
