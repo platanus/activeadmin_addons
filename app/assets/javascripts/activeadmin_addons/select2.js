@@ -73,6 +73,7 @@ $(function() {
       var fields = $(el).data('fields');
       var displayName = $(el).data('display_name');
       var parent = $(el).data('parent');
+      var width = $(el).data('width') || '80%';
       var model = $(el).data('model');
       var responseRoot = $(el).data('response_root');
       var collection = $(el).data('collection');
@@ -140,7 +141,7 @@ $(function() {
       };
 
       var select2Config = {
-        width: '80%',
+        width: width,
         containerCssClass: 'nested-select-container',
         minimumInputLength: minimumInputLength,
         initSelection: function(element, callback) {

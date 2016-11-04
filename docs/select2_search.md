@@ -11,6 +11,11 @@ To enable select2 ajax search functionality you need to do the following:
 
 <img src="./images/select2-search-select.gif" />
 
+## Filter usage
+
+To use on filters you need to use `as: :ajax_filter` with the same options.
+Notice that on filters you can't use the url helpers so the the url part can only accept strings. Ex. `url: '/admin/categories'`
+
 ### Options
 
 * `category_id`: Notice we're using the relation field name, not the realtion itself, so you can't use `f.input :category`.
