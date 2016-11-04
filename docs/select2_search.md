@@ -21,3 +21,6 @@ To enable select2 ajax search functionality you need to do the following:
 * `minimum_input_length`: **(optional)** Minimum number of characters required to initiate the
   search. It **defaults to**: `1`
 * `class`: **(optional)** You can pass extra classes for your field.
+* `multiple`: **(optional)** Set it to true if you need to select few options like tags select
+
+<img src="./images/select2-tags.gif" />

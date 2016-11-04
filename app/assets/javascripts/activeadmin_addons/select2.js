@@ -80,6 +80,7 @@ $(function() {
       var order = fields[0] + '_desc';
       var parentId = $(el).data('parent_id') || INVALID_PARENT_ID;
       var selectInstance;
+      var multiple = $(el).attr('multiple');
 
       var ajaxOptions = {
         url: url,
@@ -141,6 +142,7 @@ $(function() {
 
       var select2Config = {
         width: '80%',
+        multiple: multiple,
         containerCssClass: 'nested-select-container',
         minimumInputLength: minimumInputLength,
         initSelection: function(element, callback) {
