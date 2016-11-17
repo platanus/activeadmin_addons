@@ -10,12 +10,14 @@ $(function() {
 
   function setupSelect2(container) {
     var INVALID_PARENT_ID = -1;
+    var DEFAULT_SELECT_WIDTH = '80%';
 
     $('.select2-tags', container).each(function(i, el) {
       var model = $(el).data('model'),
           method = $(el).data('method'),
+          width = $(el).data('width'),
           selectOptions = {
-            width: '80%',
+            width: width || DEFAULT_SELECT_WIDTH,
             tags: $(el).data('collection')
           };
 
@@ -62,7 +64,7 @@ $(function() {
         });
       } else {
         $(el).select2({
-          width: '80%',
+          width: DEFAULT_SELECT_WIDTH,
           allowClear: allowClear
         });
       }
@@ -73,7 +75,7 @@ $(function() {
       var fields = $(el).data('fields');
       var displayName = $(el).data('display_name');
       var parent = $(el).data('parent');
-      var width = $(el).data('width') || '80%';
+      var width = $(el).data('width') || DEFAULT_SELECT_WIDTH;
       var model = $(el).data('model');
       var responseRoot = $(el).data('response_root');
       var collection = $(el).data('collection');

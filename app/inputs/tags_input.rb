@@ -2,6 +2,7 @@ class TagsInput < Formtastic::Inputs::StringInput
   def input_html_options
     opts = {}
     opts[:class] = "select2-tags"
+    opts["data-width"] = @options[:width] if @options[:width]
     super.merge(opts)
   end
 

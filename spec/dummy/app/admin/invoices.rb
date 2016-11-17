@@ -47,16 +47,17 @@ ActiveAdmin.register Invoice do
       f.input :state
       f.input :category_id, as: :search_select, url: admin_categories_path,
                             fields: [:name], display_name: 'name',
-                            minimum_input_length: 1
+                            minimum_input_length: 1, width: '50%'
       f.input :paid
       f.input :amount
-      f.input :number, as: :tags, collection: ["0002-00000001", "0002-00004684"]
+      f.input :number, as: :tags, collection: ["0002-00000001", "0002-00004684"], width: "400px"
       f.input :item_ids, as: :tags, collection: Item.all, display_name: :full_name
       f.input :attachment
       f.input :photo
       f.input :color, as: :color_picker, palette: Invoice.colors
 
       f.input :city_id, as: :nested_select,
+                        width: "150px",
                         fields: [:name], display_name: 'name',
                         minimum_input_length: 0,
                         level_1: {

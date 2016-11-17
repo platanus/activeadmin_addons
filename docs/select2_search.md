@@ -31,3 +31,4 @@ Notice that on filters you can't use the url helpers so the the url part can onl
 * `minimum_input_length`: **(optional)** Minimum number of characters required to initiate the
   search. It **defaults to**: `1`
 * `class`: **(optional)** You can pass extra classes for your field.
+* `width`: **(optional)** You can set the select input width (px or %).
