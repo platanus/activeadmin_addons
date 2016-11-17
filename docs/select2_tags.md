@@ -14,6 +14,12 @@ You can load previous created tags using `collection` option passing an array of
 f.input :names, as: :tags, collection: ['Julio', 'Emilio', 'Leandro']
 ```
 
+If you do not want to hide dropdown after selecting a tag, add the option:
+
+```ruby
+f.input :names, as: :tags, collection: ['Julio', 'Emilio', 'Leandro'], options: { close_on_select: false }
+```
+
 <img src="./images/select2-tags.gif" />
 
 ## Tagging with Active Record collections
