@@ -14,10 +14,12 @@ $(function() {
     $('.select2-tags', container).each(function(i, el) {
       var model = $(el).data('model'),
           method = $(el).data('method'),
+          options = $(el).data('options'),
           selectOptions = {
             width: '80%',
             tags: $(el).data('collection')
           };
+          $.extend(selectOptions, options)
 
       if(!!model) {
         selectOptions.createSearchChoice = function() { return null; };
