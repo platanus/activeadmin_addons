@@ -3,6 +3,7 @@ ActiveAdmin.register Invoice do
     :city_id, :amount, :color, :updated_at, item_ids: []
 
   filter :id, as: :range_select
+  filter :category_id, as: :ajax_filter, url: '/admin/categories', fields: [:name]
 
   index do
     selectable_column
