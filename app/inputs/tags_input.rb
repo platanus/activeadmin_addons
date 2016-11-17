@@ -37,7 +37,7 @@ class TagsInput < Formtastic::Inputs::StringInput
 
   def tag_options
     opts = input_html_options
-    opts["data-collection"] = (@options.fetch(:collection, [])).to_json
+    opts["data-collection"] = @options.fetch(:collection, []).to_json
     opts["data-options"] = camelize_keys(@options[:options]).to_json
     opts
   end

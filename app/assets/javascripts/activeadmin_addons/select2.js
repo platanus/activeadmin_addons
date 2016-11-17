@@ -19,7 +19,7 @@ $(function() {
             width: '80%',
             tags: $(el).data('collection')
           };
-          $.extend(selectOptions, options)
+          $.extend(selectOptions, options);
 
       if(!!model) {
         selectOptions.createSearchChoice = function() { return null; };

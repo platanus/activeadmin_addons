@@ -87,7 +87,10 @@ describe "Select 2", type: :feature do
     context "with non empty collection includes options" do
       before do
         register_form(Invoice) do |f|
-          f.input :number, as: :tags, collection: ["#111", "#222", "#333"], options: { close_on_select: false }
+          f.input :number,
+            as: :tags,
+            collection: ["#111", "#222", "#333"],
+            options: { close_on_select: false }
         end
 
         invoice = Invoice.first_or_create!
