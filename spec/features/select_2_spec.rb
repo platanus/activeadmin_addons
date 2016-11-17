@@ -84,6 +84,25 @@ describe "Select 2", type: :feature do
       end
     end
 
+    context "with non empty collection includes options" do
+      before do
+        register_form(Invoice) do |f|
+          f.input :number, as: :tags, collection: ["#111", "#222", "#333"], options: { close_on_select: false }
+        end
+
+        invoice = Invoice.first_or_create!
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "adds new tags, but select not closed", js: true do
+        find("div.select2-container").click
+        expect(page).to have_css(".select2-result", count: 3)
+
+        first(".select2-result-label").click
+        expect(page).to have_css(".select2-result", count: 2)
+      end
+    end
+
     context "working with active record relations" do
       before do
         register_form(Invoice) do |f|
