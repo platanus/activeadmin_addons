@@ -21,24 +21,38 @@ module ActiveAdminAddons
     end
 
     def build_label
-      icon = icon_for_filename(data.original_filename)
+      icon = icon_for_filename(file.original_filename)
       style = { width: "20", height: "20", style: "margin-right: 5px; vertical-align: middle;" }
       icon_img = context.image_tag(icon, style)
-      file_name = data.original_filename
-      file_name = context.truncate(data.original_filename) if options[:truncate] == true
-      label_text = options.fetch(:label, file_name)
+      text = label_text
 
       context.content_tag(:span) do
         context.concat(icon_img)
-        context.safe_concat(label_text)
+        context.safe_concat(text)
       end
     end
 
+    def label_text
+      label =
+        if options[:label].nil?
+          file.original_filename
+        elsif options[:label].is_a? Proc
+          options[:label].call(model).to_s
+        else
+          options[:label].to_s
+        end
+      options[:truncate] ? context.truncate(label) : label
+    end
+
     def render
-      raise 'you need to pass a paperclip attribute' unless data.respond_to?(:url)
+      raise 'you need to pass a paperclip attribute' unless file.respond_to?(:url)
       options[:truncate] = options.fetch(:truncate, true)
-      return nil unless data.exists?
-      context.link_to(build_label, data.url, target: "_blank", class: "attachment-link")
+      return nil unless file.exists?
+      context.link_to(build_label, file.url, target: "_blank", class: "attachment-link")
+    end
+
+    def file
+      model.send(attribute)
     end
   end
 

@@ -62,6 +62,23 @@ describe "Paperclip Attachment", type: :feature do
     end
   end
 
+  context "with proc given as label" do
+    before do
+      register_index(Invoice) do
+        attachment_column :attachment, label: proc { |inv| inv.city.name }
+      end
+
+      invoice = create_attachment_invoice
+      city = City.create(name: "Gothic City")
+      invoice.update(city: city)
+      visit admin_invoices_path
+    end
+
+    it "shows the attachent link" do
+      expect(page).to have_link("Gothic City")
+    end
+  end
+
   context "without a block" do
     before do
       register_show(Invoice) do
