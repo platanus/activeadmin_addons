@@ -19,7 +19,7 @@ class AjaxFilterInput < Formtastic::Inputs::StringInput
     opts = {}
     opts[:class] = ['select2-ajax'].concat([@options[:class]] || []).join(' ')
     opts["data-fields"] = (@options[:fields] || []).to_json
-    opts["data-url"] = @options[:url] || ""
+    opts["data-url"] = url
     opts["data-response_root"] = @options[:response_root] || @options[:url].to_s.split('/').last
     opts["data-display_name"] = @options[:display_name] || "name"
     opts["data-minimum_input_length"] = @options[:minimum_input_length] || 1
@@ -30,8 +30,16 @@ class AjaxFilterInput < Formtastic::Inputs::StringInput
 
   # rubocop:disable Style/RescueModifier
   def get_selected_value(display_name)
-    filter_class = method.to_s.chomp("_id").classify.constantize
-    selected_value = @object.conditions.first.values.first.value rescue nil
+    filter_class = method.to_s.chomp("_id").classify.constantize rescue @object.klass
+    selected_value = @object.conditions.find { |c| c.attributes.map(&:name).include?(method.to_s) }.values.first.value rescue nil
     filter_class.find(selected_value).send(display_name) if !!selected_value
+  end
+
+  def url
+    if @options[:url].is_a?(Proc)
+      template.instance_eval(&@options[:url]) || ""
+    else
+      @options[:url] || ""
+    end
   end
 end
