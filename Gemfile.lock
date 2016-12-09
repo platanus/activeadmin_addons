@@ -92,7 +92,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    enumerize (1.0.0)
+    enumerize (2.0.1)
       activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -148,7 +148,7 @@ GEM
     mime-types (2.6.1)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
-    minitest (5.8.0)
+    minitest (5.10.1)
     multi_json (1.11.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -277,7 +277,7 @@ DEPENDENCIES
   capybara
   database_cleaner
   devise
-  enumerize
+  enumerize (~> 2.0)
   factory_girl_rails (= 4.4.0)
   guard (~> 2.7.0)
   guard-rspec (~> 4.3)
