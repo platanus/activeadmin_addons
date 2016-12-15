@@ -31,7 +31,8 @@ class AjaxFilterInput < Formtastic::Inputs::StringInput
   # rubocop:disable Style/RescueModifier
   def get_selected_value(display_name)
     filter_class = method.to_s.chomp("_id").classify.constantize
-    selected_value = @object.conditions.first.values.first.value rescue nil
+    attribute = method.to_s
+    selected_value = @object.conditions.find { |c| c.attributes.any? { |a| a.name == attribute } }.value rescue nil
     filter_class.find(selected_value).send(display_name) if !!selected_value
   end
 end
