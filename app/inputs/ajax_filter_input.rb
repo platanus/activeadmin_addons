@@ -32,9 +32,9 @@ class AjaxFilterInput < Formtastic::Inputs::StringInput
   def get_selected_value(display_name)
     filter_class = method.to_s.chomp("_id").classify.constantize
     attribute = method.to_s
-    selected_value = @object.conditions.find { |condition|
+    selected_value = @object.conditions.find do |condition|
       condition.attributes.any? { |a| a.name == attribute }
-    }.value rescue nil
+    end.value rescue nil
     filter_class.find(selected_value).send(display_name) if !!selected_value
   end
 end
