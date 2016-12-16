@@ -45,6 +45,7 @@ module ActiveAdminAddons
     end
 
     def render
+      return nil if file.blank?
       raise 'you need to pass a paperclip attribute' unless file.respond_to?(:url)
       options[:truncate] = options.fetch(:truncate, true)
       return nil unless file.exists?
