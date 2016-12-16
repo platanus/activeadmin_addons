@@ -52,7 +52,10 @@ class TagsInput < Formtastic::Inputs::StringInput
     end
 
     opts["data-collection"] = @options[:collection].map do |item|
-      { id: item.id, text: item.send((@options[:display_name] || "name")) }
+      {
+        id: item.send((@options[:value] || "id")),
+        text: item.send((@options[:display_name] || "name"))
+      }
     end.to_json
 
     opts
