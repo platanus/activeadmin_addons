@@ -14,10 +14,10 @@ To enable select2 ajax search functionality you need to do the following:
 ## Filter Usage
 
 To use on filters you need to add `as: :ajax_filter` with same options.
-Notice that on filters you can't use the url helpers so the the url part can only accept strings.
+If you want to use url helpers, use a `proc` like on the example
 
 ```ruby
-  filter :category_id, as: :ajax_filter, url: '/admin/categories',
+  filter :category_id, as: :ajax_filter, url: proc { admin_categories_path },
          fields: [:name, :description], display_name: 'name', minimum_input_length: 2
 ```
 
