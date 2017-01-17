@@ -1,6 +1,6 @@
 class SearchSelectInput < Formtastic::Inputs::StringInput
   def input_html_options
-    relation = @object.send(attributized_method_name)
+    relation = !@object.nil? ? @object.send(attributized_method_name) : ''
     opts = {}
     opts[:class] = ['select2-ajax'].concat([@options[:class]] || []).join(' ')
     opts["data-fields"] = (@options[:fields] || []).to_json
