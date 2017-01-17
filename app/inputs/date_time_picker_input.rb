@@ -40,7 +40,7 @@ class DateTimePickerInput < Formtastic::Inputs::StringInput
   end
 
   def input_value(input_name = nil)
-    v = object.public_send(input_name || method)
+    v = !object.nil? ? object.public_send(input_name || method) : ''
 
     if v.is_a?(Time)
       return DateTime.new(v.year, v.month, v.day, v.hour, v.min, v.sec).strftime(format)
