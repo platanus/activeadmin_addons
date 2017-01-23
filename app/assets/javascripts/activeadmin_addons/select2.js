@@ -92,9 +92,9 @@ $(function() {
           var textQuery = { m: 'or' };
           fields.forEach(function(field) {
             if (field == "id") {
-              textQuery[field + '_eq'] = term
+              textQuery[field + '_eq'] = term;
             } else {
-              textQuery[field + '_contains'] = term
+              textQuery[field + '_contains'] = term;
             }
           });
 
