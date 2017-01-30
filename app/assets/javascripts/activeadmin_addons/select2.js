@@ -91,7 +91,11 @@ $(function() {
         data: function(term) {
           var textQuery = { m: 'or' };
           fields.forEach(function(field) {
-            textQuery[field + '_contains'] = term;
+            if (field == "id") {
+              textQuery[field + '_eq'] = term;
+            } else {
+              textQuery[field + '_contains'] = term;
+            }
           });
 
           var query =  {
