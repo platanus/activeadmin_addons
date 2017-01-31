@@ -40,6 +40,10 @@ class DateTimePickerInput < Formtastic::Inputs::StringInput
   end
 
   def input_value(input_name = nil)
+    if options[:input_html] && options[:input_html].key?(:value)
+      return options[:input_html][:value]
+    end
+
     v = !object.nil? ? object.public_send(input_name || method) : ''
 
     if v.is_a?(Time)
