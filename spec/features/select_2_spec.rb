@@ -389,5 +389,27 @@ describe "Select 2", type: :feature do
         expect(page).to have_css(".select2-container .select2-chosen", text: /My shiny Cat #2/)
       end
     end
+
+    context "with different order" do
+      before do
+        register_page(Category) {}
+
+        register_form(Invoice, false) do |f|
+          f.input :category_id,
+                  as: :search_select,
+                  url: admin_categories_path,
+                  order_by: :name_desc
+        end
+
+        invoice = create_invoice_with_categories
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "shows results ordered by name DESC", js: true do
+        find("div.select2-container").click
+        find(".select2-input").set("Cat")
+        expect(page).to have_css(".select2-results .select2-result:first-child", text: /Cat #2/)
+      end
+    end
   end
 end

@@ -10,6 +10,7 @@ class SearchSelectInput < Formtastic::Inputs::StringInput
     opts["data-minimum_input_length"] = @options[:minimum_input_length] || 1
     opts["data-width"] = @options[:width] if @options[:width]
     opts["data-selected"] = relation.try(opts["data-display_name"].to_sym)
+    opts["data-order"] = @options[:order_by] if @options[:order_by]
     super.merge opts
   end
 end

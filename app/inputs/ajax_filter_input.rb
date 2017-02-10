@@ -25,6 +25,7 @@ class AjaxFilterInput < Formtastic::Inputs::StringInput
     opts["data-minimum_input_length"] = @options[:minimum_input_length] || 1
     opts["data-width"] = @options[:width] || "100%"
     opts["data-selected"] = get_selected_value(opts["data-display_name"])
+    opts["data-order"] = @options[:order_by] if @options[:order_by]
     super.merge opts
   end
 

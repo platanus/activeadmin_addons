@@ -6,7 +6,8 @@ To enable select2 ajax search functionality you need to do the following:
 
 ```ruby
   f.input :category_id, as: :search_select, url: admin_categories_path,
-          fields: [:name, :description], display_name: 'name', minimum_input_length: 2
+          fields: [:name, :description], display_name: 'name', minimum_input_length: 2,
+          order_by: 'description_asc'
 ```
 
 <img src="./images/select2-search-select.gif" />
@@ -18,7 +19,8 @@ If you want to use url helpers, use a `proc` like on the example
 
 ```ruby
   filter :category_id, as: :ajax_filter, url: proc { admin_categories_path },
-         fields: [:name, :description], display_name: 'name', minimum_input_length: 2
+         fields: [:name, :description], display_name: 'name', minimum_input_length: 2,
+         order_by: 'description_asc'
 ```
 
 ### Options
@@ -32,3 +34,4 @@ If you want to use url helpers, use a `proc` like on the example
   search. It **defaults to**: `1`
 * `class`: **(optional)** You can pass extra classes for your field.
 * `width`: **(optional)** You can set the select input width (px or %).
+* `order_by`: **(optional)** Order (sort) results by a specific attribute, suffixed with `_desc` or `_asc`. Eg: `description_desc`. By **default** is used the first field in descending direction.

@@ -80,7 +80,7 @@ $(function() {
       var responseRoot = $(el).data('response_root');
       var collection = $(el).data('collection');
       var minimumInputLength = $(el).data('minimum_input_length');
-      var order = fields[0] + '_desc';
+      var order = $(el).data('order') || (fields[0] + '_desc');
       var parentId = $(el).data('parent_id') || INVALID_PARENT_ID;
       var selectInstance;
 
