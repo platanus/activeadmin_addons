@@ -159,7 +159,9 @@ $(function() {
             id: id,
             text: text
           });
-        }
+        },
+        placeholder: ' ',
+  			allowClear: true
       };
 
       if (!!parent) {
