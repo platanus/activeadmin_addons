@@ -1,16 +1,22 @@
 language: ruby
 sudo: false
 rvm:
-  - "2.2.2"
-
+  - 2.2.6
+  - 2.3.3
 script:
   - cd spec/dummy && RAILS_ENV=test bundle exec rake db:create db:migrate
   - cd ../.. && bundle exec rspec spec
-
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
-
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
 addons:
-  firefox: "31.0esr"
+  firefox: 31.0esr
+deploy:
+  provider: rubygems
+  api_key:
+    secure: PEMMDcT4SKPdv4xMJmIEpndOGePsV3kDOhUL0vEDjTeyxBrn+iBgHKF9itSYbUmOSTuOaiIVleYmuC6GoAmg4KcZIZvfCA61cGCX1ADU5nwh5FjC/tAEs8eShMR3RFG6wyykb4MdFkE2jVpm/W0pyciLgW2HrM6iYzI6X2iMn9E=
+  gem: activeadmin_addons
+  on:
+    tags: true
+    repo: platanus/activeadmin_addons
