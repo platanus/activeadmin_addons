@@ -68,9 +68,11 @@ $(function() {
         if ($label.length) {
           var $input = $parent.find('#' + $label.attr('for'))
 
-          $(el).on('change', function(value) {
-            $input.attr('name', 'q[' + $(this).val() + ']')
-          })
+          if (!$input.attr('id') == $(el).attr('id')) {
+            $(el).on('change', function(value) {
+              $input.attr('name', 'q[' + $(this).val() + ']')
+            })
+          }
         }
 
       } else {
