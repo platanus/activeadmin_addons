@@ -62,6 +62,17 @@ $(function() {
           width: 'resolve',
           allowClear: allowClear
         });
+
+        var $parent = $(el).parent(), $label = $parent.find('label');
+
+        if ($label.length) {
+          var $input = $parent.find('#' + $label.attr('for'))
+
+          $(el).on('change', function(value) {
+            $input.attr('name', 'q[' + $(this).val() + ']')
+          })
+        }
+
       } else {
         $(el).select2({
           width: DEFAULT_SELECT_WIDTH,
