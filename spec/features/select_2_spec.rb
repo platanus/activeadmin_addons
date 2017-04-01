@@ -59,7 +59,7 @@ describe "Select 2", type: :feature do
         visit edit_admin_invoice_path(invoice)
       end
 
-      it "shows select control as select 2", js: true do
+      it "shows normal select control", js: true do
         expect(ActiveadminAddons.default_select).to eq("select2")
         expect(page).to have_css("div.select2-container", count: 0)
         expect(page).to have_css("select", count: 1)
@@ -81,6 +81,24 @@ describe "Select 2", type: :feature do
       it "shows normal select control", js: true do
         expect(page).to have_css("div.select2-container", count: 0)
         expect(page).to have_css("select", count: 1)
+      end
+    end
+
+    context "when default config is Active Admin's default and select control has select 2 class" do
+      before do
+        ActiveadminAddons.default_select = 'default'
+
+        register_form(Invoice) do |f|
+          f.input :category, input_html: { class: "select2" }
+        end
+
+        invoice = create_invoice_with_categories
+        visit edit_admin_invoice_path(invoice)
+      end
+
+      it "shows select control as select 2", js: true do
+        expect(page).to have_css("div.select2-container", count: 1)
+        expect(page).to have_css("select", count: 0)
       end
     end
   end
