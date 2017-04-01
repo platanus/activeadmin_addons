@@ -49,26 +49,29 @@ $(function() {
       }
     });
 
-    $('select:not(.default-select)', container).each(function(i, el) {
-      var firstOption = $('option', el).first(),
-          allowClear  = false;
 
-      if (firstOption.val() === "" && firstOption.text() === "") {
-        allowClear = true;
-      }
+    if(ActiveadminAddons.config.defaultSelect == 'select2') {
+      $('select:not(.default-select)', container).each(function(i, el) {
+        var firstOption = $('option', el).first(),
+            allowClear  = false;
 
-      if ($(el).closest('.filter_form').length > 0) {
-        $(el).select2({
-          width: 'resolve',
-          allowClear: allowClear
-        });
-      } else {
-        $(el).select2({
-          width: DEFAULT_SELECT_WIDTH,
-          allowClear: allowClear
-        });
-      }
-    });
+        if (firstOption.val() === "" && firstOption.text() === "") {
+          allowClear = true;
+        }
+
+        if ($(el).closest('.filter_form').length > 0) {
+          $(el).select2({
+            width: 'resolve',
+            allowClear: allowClear
+          });
+        } else {
+          $(el).select2({
+            width: DEFAULT_SELECT_WIDTH,
+            allowClear: allowClear
+          });
+        }
+      });
+    }
 
     $('.select2-ajax', container).each(function(i, el) {
       var url = $(el).data('url');
