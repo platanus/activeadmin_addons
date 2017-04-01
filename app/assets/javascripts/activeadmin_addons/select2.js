@@ -186,6 +186,19 @@ $(function() {
           width: 'resolve',
           allowClear: allowClear
         });
+
+        var $parent = $(el).parent(), $label = $parent.find('label');
+
+        if ($label.length) {
+          var $input = $parent.find('#' + $label.attr('for'))
+
+          if (!$input.attr('id') == $(el).attr('id')) {
+            $(el).on('change', function(value) {
+              $input.attr('name', 'q[' + $(this).val() + ']')
+            })
+          }
+        }
+
       } else {
         $(select).select2({
           width: DEFAULT_SELECT_WIDTH,
