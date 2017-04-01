@@ -1,6 +1,12 @@
 module ActiveadminAddons
   module Generators
     class InstallGenerator < Rails::Generators::Base
+      source_root File.expand_path('../templates', __FILE__)
+
+      def create_initializer
+        template "initializer.rb", "config/initializers/activeadmin_addons.rb"
+      end
+
       def add_javascripts
         file_path = 'app/assets/javascripts/active_admin.js.coffee'
         line_to_add = "#= require activeadmin_addons/all\n"
