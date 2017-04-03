@@ -1,4 +1,4 @@
-class SearchSelectInput < Formtastic::Inputs::StringInput
+class SearchSelectInput < Formtastic::Inputs::SelectInput
   def input_html_options
     relation = !@object.nil? ? @object.send(attributized_method_name) : ''
     opts = {}
