@@ -11,6 +11,7 @@ class SearchSelectInput < Formtastic::Inputs::SelectInput
     opts["data-width"] = @options[:width] if @options[:width]
     opts["data-selected"] = relation.try(opts["data-display_name"].to_sym)
     opts["data-order"] = @options[:order_by] if @options[:order_by]
+    opts["data-per_page"] = @options[:per_page] if @options[:per_page]
     super.merge opts
   end
 end
