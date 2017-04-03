@@ -23,7 +23,9 @@ $(function() {
             width = $(el).data('width'),
             selectOptions = {
               width: width || DEFAULT_SELECT_WIDTH,
-              tags: $(el).data('collection')
+              tags: true,
+              multiple: true,
+              data: $(el).data('collection')
             };
 
         if(!!model) {
@@ -68,19 +70,20 @@ $(function() {
         var minimumInputLength = $(el).data('minimum_input_length');
         var order = $(el).data('order') || (fields[0] + '_desc');
         var parentId = $(el).data('parent_id') || INVALID_PARENT_ID;
+        var per_page = $(el).data('per_page');
         var selectInstance;
 
         var ajaxOptions = {
           url: url,
           dataType: 'json',
           delay: 250,
-          data: function(term) {
+          data: function(params) {
             var textQuery = { m: 'or' };
             fields.forEach(function(field) {
               if (field == "id") {
-                textQuery[field + '_eq'] = term;
+                textQuery[field + '_eq'] = params.term;
               } else {
-                textQuery[field + '_contains'] = term;
+                textQuery[field + '_contains'] = params.term;
               }
             });
 
@@ -96,9 +99,13 @@ $(function() {
               query.q[parent + '_eq'] = parentId;
             }
 
+            if (per_page) {
+              query.per_page = per_page
+            }
+
             return query;
           },
-          results: function(data, page) {
+          processResults: function(data, params) {
             if(data.constructor == Object) {
               data = data[responseRoot];
             }
@@ -136,16 +143,6 @@ $(function() {
           width: width,
           containerCssClass: 'nested-select-container',
           minimumInputLength: minimumInputLength,
-          initSelection: function(element, callback) {
-            var id = $(element).val();
-            var text = $(element).data('selected') || '';
-            $(element).data('selected', '');
-
-            callback({
-              id: id,
-              text: text
-            });
-          },
           placeholder: ' ',
           allowClear: true
         };
@@ -184,12 +181,14 @@ $(function() {
       if ($(select).closest('.filter_form').length > 0) {
         $(select).select2({
           width: 'resolve',
-          allowClear: allowClear
+          allowClear: allowClear,
+          placeholder: ' '
         });
       } else {
         $(select).select2({
           width: DEFAULT_SELECT_WIDTH,
-          allowClear: allowClear
+          allowClear: allowClear,
+          placeholder: ' '
         });
       }
     }
