@@ -82,6 +82,6 @@ class TagsInput < Formtastic::Inputs::SelectInput
   end
 
   def model_name
-    @object.class.to_s.underscore
+    @object.class.to_s.underscore.tr('/', '_')
   end
 end

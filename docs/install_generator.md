@@ -17,3 +17,5 @@ To undo, you can use
 ```bash
 $ rails d activeadmin_addons:install
 ```
+
+3. An initializer will be added. From there, you can change the Addons' default config.
