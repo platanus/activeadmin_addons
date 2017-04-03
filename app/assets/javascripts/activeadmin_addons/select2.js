@@ -60,12 +60,14 @@ $(function() {
       if ($(el).closest('.filter_form').length > 0) {
         $(el).select2({
           width: 'resolve',
-          allowClear: allowClear
+          allowClear: allowClear,
+          placeholder: ' '
         });
       } else {
         $(el).select2({
           width: DEFAULT_SELECT_WIDTH,
-          allowClear: allowClear
+          allowClear: allowClear,
+          placeholder: ' '
         });
       }
     });
