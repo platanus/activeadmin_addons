@@ -1,4 +1,4 @@
-//= require select2
+//= require select2-full
 //= require_self
 
 $(function() {
@@ -18,7 +18,9 @@ $(function() {
           width = $(el).data('width'),
           selectOptions = {
             width: width || DEFAULT_SELECT_WIDTH,
-            tags: $(el).data('collection')
+            tags: true,
+            multiple: true,
+            data: $(el).data('collection')
           };
 
       if(!!model) {
@@ -90,13 +92,13 @@ $(function() {
         url: url,
         dataType: 'json',
         delay: 250,
-        data: function(term) {
+        data: function(params) {
           var textQuery = { m: 'or' };
           fields.forEach(function(field) {
             if (field == "id") {
-              textQuery[field + '_eq'] = term;
+              textQuery[field + '_eq'] = params.term;
             } else {
-              textQuery[field + '_contains'] = term;
+              textQuery[field + '_contains'] = params.term;
             }
           });
 
@@ -114,7 +116,7 @@ $(function() {
 
           return query;
         },
-        results: function(data, page) {
+        processResults: function(data, params) {
           if(data.constructor == Object) {
             data = data[responseRoot];
           }
@@ -152,18 +154,8 @@ $(function() {
         width: width,
         containerCssClass: 'nested-select-container',
         minimumInputLength: minimumInputLength,
-        initSelection: function(element, callback) {
-          var id = $(element).val();
-          var text = $(element).data('selected') || '';
-          $(element).data('selected', '');
-
-          callback({
-            id: id,
-            text: text
-          });
-        },
         placeholder: ' ',
-  			allowClear: true
+        allowClear: true
       };
 
       if (!!parent) {
