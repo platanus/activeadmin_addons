@@ -1,4 +1,4 @@
-class SearchSelectInput < Formtastic::Inputs::StringInput
+class SearchSelectInput < Formtastic::Inputs::SelectInput
   def input_html_options
     relation = !@object.nil? ? @object.send(attributized_method_name) : ''
     opts = {}
@@ -11,6 +11,20 @@ class SearchSelectInput < Formtastic::Inputs::StringInput
     opts["data-width"] = @options[:width] if @options[:width]
     opts["data-selected"] = relation.try(opts["data-display_name"].to_sym)
     opts["data-order"] = @options[:order_by] if @options[:order_by]
+    opts["data-per_page"] = @options[:per_page] if @options[:per_page]
     super.merge opts
+  end
+
+  def collection
+    if !@object.nil?
+        { get_selected_value => @object[method] }
+    else
+        { '': '' }
+    end
+  end
+
+  def get_selected_value(display_name = @options[:display_name] || "name")
+    filter_class = method.to_s.chomp("_id").classify.constantize rescue @object.klass
+    filter_class.find(@object[method]).send(display_name) if !!@object[method]
   end
 end

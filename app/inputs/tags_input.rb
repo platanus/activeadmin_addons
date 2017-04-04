@@ -1,4 +1,4 @@
-class TagsInput < Formtastic::Inputs::StringInput
+class TagsInput < Formtastic::Inputs::SelectInput
   def input_html_options
     opts = {}
     opts[:class] = "select2-tags"
