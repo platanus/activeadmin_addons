@@ -14,4 +14,17 @@ class SearchSelectInput < Formtastic::Inputs::SelectInput
     opts["data-per_page"] = @options[:per_page] if @options[:per_page]
     super.merge opts
   end
+
+  def collection
+    if !@object.nil?
+        { get_selected_value => @object[method] }
+    else
+        { '': '' }
+    end
+  end
+
+  def get_selected_value(display_name = @options[:display_name] || "name")
+    filter_class = method.to_s.chomp("_id").classify.constantize rescue @object.klass
+    filter_class.find(@object[method]).send(display_name) if !!@object[method]
+  end
 end
