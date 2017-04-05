@@ -24,7 +24,6 @@ class SearchSelectInput < Formtastic::Inputs::SelectInput
   end
 
   def get_selected_value(display_name = @options[:display_name] || "name")
-    filter_class = method.to_s.chomp("_id").classify.constantize rescue @object.klass
-    filter_class.find(@object[method]).send(display_name) if !!@object[method]
+    @object.send(attributized_method_name).send(display_name) rescue ''
   end
 end
