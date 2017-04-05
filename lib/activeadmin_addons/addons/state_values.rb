@@ -19,7 +19,7 @@ module ActiveAdminAddons
     def state_attribute?
       model.class.respond_to?(:aasm) &&
         attribute.present? &&
-        model.class.aasm.attribute_name == attribute.to_sym
+        AASM::StateMachineStore.fetch(model.class, true).machine(attribute.to_sym)
     end
 
     def status_class_for_model
