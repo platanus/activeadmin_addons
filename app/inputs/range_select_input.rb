@@ -1,5 +1,4 @@
 class RangeSelectInput < Formtastic::Inputs::StringInput
-  include ActiveAdmin::Inputs::Filters::Base
 
   def to_html
     input_wrapping do
