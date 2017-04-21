@@ -39,7 +39,8 @@ class FilterAjaxFilterInput < Formtastic::Inputs::StringInput
       filter_class = association_name.classify.constantize rescue ransack.klass
     end
     selected_value = ransack.conditions
-      .find { |c| c.attributes.map(&:name).include?(method.to_s) }.values.first.value rescue nil
+                            .find { |c| c.attributes.map(&:name).include?(method.to_s) }
+                            .values.first.value rescue nil
     filter_class.find(selected_value).send(display_name) if !!selected_value
   end
 
