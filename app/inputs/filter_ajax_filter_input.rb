@@ -31,13 +31,16 @@ class FilterAjaxFilterInput < Formtastic::Inputs::StringInput
   # rubocop:disable Style/RescueModifier
   def get_selected_value(display_name)
     association_name = method.to_s.chomp("_id")
-    association = @object.base.ransack.klass.reflect_on_association(association_name.to_sym)
+    ransack = @object.base.ransack
+    association = ransack.klass.reflect_on_association(association_name.to_sym)
     if association.options && association.options.keys.include?(:class_name)
-      filter_class = association.options[:class_name].constantize rescue @object.base.ransack.klass
+      filter_class = association.options[:class_name].constantize rescue ransack.klass
     else
-      filter_class = association_name.classify.constantize rescue @object.base.ransack.klass
+      filter_class = association_name.classify.constantize rescue ransack.klass
     end
-    selected_value = @object.base.ransack.conditions.find { |c| c.attributes.map(&:name).include?(method.to_s) }.values.first.value rescue nil
+    selected_value = ransack.conditions.find {|c|
+        c.attributes.map(&:name).include?(method.to_s)
+    }.values.first.value rescue nil
     filter_class.find(selected_value).send(display_name) if !!selected_value
   end
 
