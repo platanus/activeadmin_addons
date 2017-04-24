@@ -71,6 +71,7 @@ $(function() {
         var order = $(el).data('order') || (fields[0] + '_desc');
         var parentId = $(el).data('parent_id') || INVALID_PARENT_ID;
         var per_page = $(el).data('per_page');
+        var multiple = $(el).data('multiple');
         var selectInstance;
 
         var ajaxOptions = {
@@ -100,7 +101,7 @@ $(function() {
             }
 
             if (per_page) {
-              query.per_page = per_page
+              query.per_page = per_page;
             }
 
             return query;
@@ -139,14 +140,6 @@ $(function() {
           query.callback(data);
         };
 
-        var select2Config = {
-          width: width,
-          containerCssClass: 'nested-select-container',
-          minimumInputLength: minimumInputLength,
-          placeholder: ' ',
-          allowClear: true
-        };
-
         if (!!parent) {
           var parentSelector = '#' + model + '_' + parent;
 
@@ -158,6 +151,18 @@ $(function() {
               parentId = INVALID_PARENT_ID;
             }
           });
+        }
+
+        var select2Config = {
+          width: width,
+          containerCssClass: 'nested-select-container',
+          minimumInputLength: minimumInputLength,
+          placeholder: ' ',
+          allowClear: true
+        };
+
+        if (multiple) {
+          select2Config.multiple = true;
         }
 
         if (collection) {
