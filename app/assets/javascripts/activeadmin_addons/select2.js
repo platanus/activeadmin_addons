@@ -187,13 +187,13 @@ $(function() {
         $(select).select2({
           width: 'resolve',
           allowClear: allowClear,
-          placeholder: ' '
+          placeholder: ' ',
         });
       } else {
         $(select).select2({
           width: DEFAULT_SELECT_WIDTH,
           allowClear: allowClear,
-          placeholder: ' '
+          placeholder: ' ',
         });
       }
     }

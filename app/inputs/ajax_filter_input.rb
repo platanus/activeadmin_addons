@@ -6,10 +6,10 @@ class AjaxFilterInput < Formtastic::Inputs::SelectInput
       [
         label_html,
         builder.select(eq_input_name,
-                        { get_selected_value => get_selected_id },
-                        { selected: get_selected_id },
-                        input_html_options
-                      )
+          { get_selected_value => get_selected_id },
+          { selected: get_selected_id },
+          input_html_options
+        )
       ].join("\n").html_safe
     end
   end

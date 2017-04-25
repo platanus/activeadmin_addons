@@ -21,9 +21,9 @@ class SearchSelectInput < Formtastic::Inputs::SelectInput
 
   def collection
     if !@object.nil?
-        { get_selected_value => @object[method] }
+      { get_selected_value => @object[method] }
     else
-        { '': '' }
+      { '': '' }
     end
   end
 
