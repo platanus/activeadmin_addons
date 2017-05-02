@@ -70,7 +70,7 @@ $(function() {
         var minimumInputLength = $(el).data('minimum_input_length');
         var order = $(el).data('order') || (fields[0] + '_desc');
         var parentId = $(el).data('parent_id') || INVALID_PARENT_ID;
-        var per_page = $(el).data('per_page');
+        var perPage = $(el).data('per_page');
         var multiple = $(el).data('multiple');
         var selectInstance;
 
@@ -100,8 +100,8 @@ $(function() {
               query.q[parent + '_eq'] = parentId;
             }
 
-            if (per_page) {
-              query.per_page = per_page;
+            if (perPage) {
+              query.per_page = perPage;
             }
 
             return query;
