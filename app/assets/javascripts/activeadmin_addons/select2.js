@@ -106,7 +106,7 @@ $(function() {
 
             return query;
           },
-          processResults: function(data, params) {
+          processResults: function(data) {
             if(data.constructor == Object) {
               data = data[responseRoot];
             }
@@ -158,7 +158,7 @@ $(function() {
           containerCssClass: 'nested-select-container',
           minimumInputLength: minimumInputLength,
           placeholder: ' ',
-          allowClear: true
+          allowClear: true,
         };
 
         if (multiple) {
