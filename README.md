@@ -85,6 +85,14 @@ Using tags input, you can add tags using select2.
 
 [Read more!](docs/select2_tags.md)
 
+#### Selected List
+
+This form control allows you to handle your many to many associations.
+
+<img src="./docs/images/select2-selected-list.gif" height="400" />
+
+[Read more!](docs/select2_selected_list.md)
+
 #### Ajax Search
 
 Using `search_select` input, you can easily add ajax search to activeadmin

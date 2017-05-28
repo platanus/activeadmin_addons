@@ -51,14 +51,18 @@ ActiveAdmin.register Invoice do
       f.input :paid
       f.input :amount
       f.input :number, as: :tags, collection: ["0002-00000001", "0002-00004684"], width: "400px"
-      f.input :item_ids, as: :tags, collection: Item.all, display_name: :full_name
+      f.input :item_ids, as: :selected_list,
+                         fields: [:name],
+                         display_name: :name,
+                         minimum_input_length: 1
       f.input :attachment
       f.input :photo
       f.input :color, as: :color_picker, palette: Invoice.colors
 
       f.input :city_id, as: :nested_select,
                         width: "150px",
-                        fields: [:name], display_name: 'name',
+                        fields: [:name],
+                        display_name: 'name',
                         minimum_input_length: 0,
                         level_1: {
                           attribute: :country_id,

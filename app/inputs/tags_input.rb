@@ -30,7 +30,7 @@ class TagsInput < Formtastic::Inputs::StringInput
     input_wrapping do
       [
         label_html,
-        render_hidden_items,
+        render_selected_hidden_items,
         builder.text_field(virtual_input_name, relation_tag_options)
       ].flatten.join("\n").html_safe
     end
@@ -68,7 +68,7 @@ class TagsInput < Formtastic::Inputs::StringInput
     attr_name.to_sym
   end
 
-  def render_hidden_items
+  def render_selected_hidden_items
     prefix = "#{model_name}_#{method}"
     attr_name = "#{model_name}[#{method}][]"
     template.content_tag(:div, id: "#{prefix}_selected_values") do
