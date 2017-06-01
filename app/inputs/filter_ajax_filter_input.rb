@@ -1,5 +1,4 @@
-class AjaxFilterInput < Formtastic::Inputs::StringInput
-  include ActiveAdmin::Inputs::Filters::Base
+class FilterAjaxFilterInput < Formtastic::Inputs::StringInput
 
   def to_html
     input_wrapping do
@@ -32,13 +31,13 @@ class AjaxFilterInput < Formtastic::Inputs::StringInput
   # rubocop:disable Style/RescueModifier
   def get_selected_value(display_name)
     association_name = method.to_s.chomp("_id")
-    association = @object.klass.reflect_on_association(association_name)
+    association = @object.base.ransack.klass.reflect_on_association(association_name.to_sym)
     if association.options && association.options.keys.include?(:class_name)
-      filter_class = association.options[:class_name].constantize rescue @object.klass
+      filter_class = association.options[:class_name].constantize rescue @object.base.ransack.klass
     else
-      filter_class = association_name.classify.constantize rescue @object.klass
+      filter_class = association_name.classify.constantize rescue @object.base.ransack.klass
     end
-    selected_value = @object.conditions.find { |c| c.attributes.map(&:name).include?(method.to_s) }.values.first.value rescue nil
+    selected_value = @object.base.ransack.conditions.find { |c| c.attributes.map(&:name).include?(method.to_s) }.values.first.value rescue nil
     filter_class.find(selected_value).send(display_name) if !!selected_value
   end
 
