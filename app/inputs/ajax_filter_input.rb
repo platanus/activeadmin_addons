@@ -1,4 +1,4 @@
-class AjaxFilterInput < Formtastic::Inputs::StringInput
+class AjaxFilterInput < Formtastic::Inputs::SelectInput
   include ActiveAdmin::Inputs::Filters::Base
 
   def to_html
