@@ -11,17 +11,18 @@ require 'enumerize'
 require 'paperclip'
 require 'capybara/poltergeist'
 require 'database_cleaner'
+require 'pry'
 
 # Uncomment to work with poltergeist instead of firefox
 # Capybara.javascript_driver = :poltergeist
-
-# ActiveAdmin.application.load_paths = [File.expand_path("../dummy/app/admin", __FILE__)]
 
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each { |f| require f }
 
 # Setup Some Admin stuff for us to play with
 include ActiveAdminHelpers
+include DataLoaders
+include CapybaraHelpers
 
 Paperclip.options[:log] = false
 
