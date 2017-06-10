@@ -1,36 +1,16 @@
-@import "select2";
-@import "jquery.xdan.datetimepicker";
-@import "../palette-color-picker";
-@import "../selected-list";
+@import 'select2';
+@import 'jquery.xdan.datetimepicker';
+@import '../palette-color-picker';
+@import 'inputs/ajax-filter';
+@import 'inputs/color-picker';
+@import 'inputs/date-time-picker';
+@import 'inputs/select2';
+@import 'inputs/selected-list';
 
-.filter_range_select {
-  input[type=number] {
-    padding-right: 0px;
-    width: 96px;
-  }
-  .separator {
-    display: inline-block;
-    text-align: center;
-    width: 12px;
-  }
-}
+$error-color: #932419;
 
-.nested_select {
-  .nested-select-container {
-    margin-bottom: 20px;
-
-    &:last-of-type {
-      margin-bottom: 0px;
-    }
-  }
-}
-
-.palette-color-picker-bubble {
-  z-index: 10;
-}
-
-input[type=text] {
-  &.date-time-picker {
-    width: 110px;
+li.error {
+  .select2-selection {
+    border-color: $error-color;
   }
 }

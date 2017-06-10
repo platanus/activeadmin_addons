@@ -3,7 +3,17 @@ ActiveAdmin.register Invoice do
     :city_id, :amount, :color, :updated_at, item_ids: []
 
   filter :id, as: :range_select
-  filter :category_id, as: :ajax_filter, url: '/admin/categories', fields: [:name]
+
+  filter :category_id, as: :ajax_filter,
+                       url: proc { current_admin_user.categories_url },
+                       fields: [:name],
+                       minimum_input_length: 0
+
+  filter :buyer_id, as: :ajax_filter,
+                    minimum_input_length: 0,
+                    url: '/admin/admin_users',
+                    fields: [:email],
+                    display_name: :email
 
   index do
     selectable_column
@@ -44,20 +54,34 @@ ActiveAdmin.register Invoice do
                                '17:10', '18:10', '19:10'
                              ]
                            }
+
       f.input :state
-      f.input :category_id, as: :search_select, url: admin_categories_path,
-                            fields: [:name], display_name: 'name',
-                            minimum_input_length: 1, width: '50%'
+
+      f.input :category_id, as: :search_select,
+                            url: proc { current_admin_user.categories_url },
+                            fields: [:name],
+                            display_name: 'name',
+                            minimum_input_length: 1,
+                            width: '50%'
       f.input :paid
+
       f.input :amount
-      f.input :number, as: :tags, collection: ["0002-00000001", "0002-00004684"], width: "400px"
+
+      f.input :number, as: :tags,
+                       collection: ["0002-00000001", "0002-00004684"],
+                       width: "400px"
+
       f.input :item_ids, as: :selected_list,
                          fields: [:name],
                          display_name: :name,
                          minimum_input_length: 1
+
       f.input :attachment
+
       f.input :photo
-      f.input :color, as: :color_picker, palette: Invoice.colors
+
+      f.input :color, as: :color_picker,
+                      palette: Invoice.colors
 
       f.input :city_id, as: :nested_select,
                         width: "150px",
