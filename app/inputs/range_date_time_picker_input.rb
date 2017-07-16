@@ -1,4 +1,6 @@
 class RangeDateTimePickerInput < DateTimePickerInput
+  include ActiveAdmin::Inputs::Filters::Base
+
   def to_html
     input_wrapping do
       [

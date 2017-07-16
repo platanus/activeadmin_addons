@@ -4,6 +4,8 @@ ActiveAdmin.register Invoice do
 
   filter :id, as: :range_select
   filter :category_id, as: :ajax_filter, url: '/admin/categories', fields: [:name]
+  filter :created_at, as: :range_date_time_picker
+  filter :updated_at
 
   index do
     selectable_column
