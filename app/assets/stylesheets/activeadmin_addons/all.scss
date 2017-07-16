@@ -3,6 +3,7 @@
 @import "../palette-color-picker";
 @import "../selected-list";
 
+
 .filter_range_select {
   input[type=number] {
     padding-right: 0px;
@@ -32,5 +33,18 @@
 input[type=text] {
   &.date-time-picker {
     width: 110px;
+  }
+}
+
+.range_date_time_picker {
+  input[type=text].date-time-picker {
+    padding-right: 0px;
+    width: 96px;
+  }
+
+  .separator {
+    display: inline-block;
+    text-align: center;
+    width: 12px;
   }
 }
