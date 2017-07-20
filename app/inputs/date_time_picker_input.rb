@@ -36,6 +36,7 @@ class DateTimePickerInput < Formtastic::Inputs::StringInput
     opts[:data].merge!(picker_options: datetime_picker_options)
     opts[:value] ||= input_value(input_name)
     opts[:maxlength] = 19
+    opts[:placeholder] = " "
     opts
   end
 

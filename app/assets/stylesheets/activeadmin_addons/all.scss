@@ -41,6 +41,9 @@ input[type=text] {
   input[type=text].date-time-picker {
     padding-right: 0px;
     width: $filter-two-inputs-width;
+    &:placeholder-shown {
+      background: white url("/assets/active_admin/datepicker/datepicker-input-icon.png") no-repeat 100% 7px;
+    }
   }
 
   .separator {
