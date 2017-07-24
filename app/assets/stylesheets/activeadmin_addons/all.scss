@@ -38,11 +38,12 @@ input[type=text] {
 }
 
 .filter_range_date_time_picker {
-  input[type=text].date-time-picker {
-    padding-right: 0px;
+  input[type=text] {
+    padding-right: 0;
     width: $filter-two-inputs-width;
+
     &:placeholder-shown {
-      background: white url("/assets/active_admin/datepicker/datepicker-input-icon.png") no-repeat 100% 7px;
+      background: "white" url("/assets/active_admin/datepicker/datepicker-input-icon.png") no-repeat 100% 7px;
     }
   }
 
