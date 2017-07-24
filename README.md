@@ -16,6 +16,7 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
   - [List](#list): Show Arrays or Hashes like a list.
   - [Color Picker](#color-picker): Select colors from a pretty popup.
   - [Date Time Picker](#date-time-picker): Pick date and time comfortably.
+  - [Date Time Picker Filter](#date-time-picker-filter): Filter your results using a date range. Using [Date Time Picker](#date-time-picker).
 
 
 **Table of Contents**
@@ -191,6 +192,15 @@ f.input :updated_at, as: :date_time_picker
 
 [Read more!](docs/date-time-picker.md)
 
+### Date Time Picker Range
+
+To filter based on a range of dates using [Date Time Picker](#date-time-picker) you can use `range_date_time_picker`:
+
+```ruby
+filter :date, as: :range_date_time_picker
+```
+
+<img src="./docs/images/range-date-time-picker.gif" height="280" />
 
 ## Contributing
 
