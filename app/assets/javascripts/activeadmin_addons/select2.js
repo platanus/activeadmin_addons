@@ -1,4 +1,4 @@
-//= require select2
+//= require select2-full
 //= require_self
 
 $(function() {
@@ -23,7 +23,9 @@ $(function() {
             width = $(el).data('width'),
             selectOptions = {
               width: width || DEFAULT_SELECT_WIDTH,
-              tags: $(el).data('collection')
+              tags: true,
+              multiple: true,
+              data: $(el).data('collection')
             };
 
         if(!!model) {
@@ -68,19 +70,21 @@ $(function() {
         var minimumInputLength = $(el).data('minimum_input_length');
         var order = $(el).data('order') || (fields[0] + '_desc');
         var parentId = $(el).data('parent_id') || INVALID_PARENT_ID;
+        var perPage = $(el).data('per_page');
+        var multiple = $(el).data('multiple');
         var selectInstance;
 
         var ajaxOptions = {
           url: url,
           dataType: 'json',
           delay: 250,
-          data: function(term) {
+          data: function(params) {
             var textQuery = { m: 'or' };
             fields.forEach(function(field) {
               if (field == "id") {
-                textQuery[field + '_eq'] = term;
+                textQuery[field + '_eq'] = params.term;
               } else {
-                textQuery[field + '_contains'] = term;
+                textQuery[field + '_contains'] = params.term;
               }
             });
 
@@ -96,9 +100,13 @@ $(function() {
               query.q[parent + '_eq'] = parentId;
             }
 
+            if (perPage) {
+              query.per_page = perPage;
+            }
+
             return query;
           },
-          results: function(data, page) {
+          processResults: function(data) {
             if(data.constructor == Object) {
               data = data[responseRoot];
             }
@@ -132,24 +140,6 @@ $(function() {
           query.callback(data);
         };
 
-        var select2Config = {
-          width: width,
-          containerCssClass: 'nested-select-container',
-          minimumInputLength: minimumInputLength,
-          initSelection: function(element, callback) {
-            var id = $(element).val();
-            var text = $(element).data('selected') || '';
-            $(element).data('selected', '');
-
-            callback({
-              id: id,
-              text: text
-            });
-          },
-          placeholder: ' ',
-          allowClear: true
-        };
-
         if (!!parent) {
           var parentSelector = '#' + model + '_' + parent;
 
@@ -161,6 +151,18 @@ $(function() {
               parentId = INVALID_PARENT_ID;
             }
           });
+        }
+
+        var select2Config = {
+          width: width,
+          containerCssClass: 'nested-select-container',
+          minimumInputLength: minimumInputLength,
+          placeholder: ' ',
+          allowClear: true,
+        };
+
+        if (multiple) {
+          select2Config.multiple = true;
         }
 
         if (collection) {
@@ -184,12 +186,14 @@ $(function() {
       if ($(select).closest('.filter_form').length > 0) {
         $(select).select2({
           width: 'resolve',
-          allowClear: allowClear
+          allowClear: allowClear,
+          placeholder: ' ',
         });
       } else {
         $(select).select2({
           width: DEFAULT_SELECT_WIDTH,
-          allowClear: allowClear
+          allowClear: allowClear,
+          placeholder: ' ',
         });
       }
     }
