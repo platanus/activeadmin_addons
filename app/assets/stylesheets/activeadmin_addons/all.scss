@@ -43,7 +43,7 @@ input[type=text] {
     width: $filter-two-inputs-width;
 
     &:placeholder-shown {
-      background: white url('/assets/active_admin/datepicker/datepicker-input-icon.png') no-repeat 100% 7px;
+      background: #fff url('/assets/active_admin/datepicker/datepicker-input-icon.png') no-repeat 100% 7px;
     }
   }
 
