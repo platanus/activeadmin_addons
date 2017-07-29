@@ -3,14 +3,14 @@ require 'rails_helper'
 describe "Range DateTime Picker Filter", type: :feature do
   before do
     register_page(Invoice) do
-      filter :updated_at, as: :range_date_time_picker      
+      filter :updated_at, as: :range_date_time_picker
     end
 
-    5.times { |i| Invoice.create() }
+    5.times { Invoice.create }
     Invoice.all.each do |invoice|
       invoice.updated_at = invoice.updated_at + invoice.id.days
       invoice.save
-    end    
+    end
     visit admin_invoices_path
   end
 
