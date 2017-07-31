@@ -22,7 +22,7 @@ class Invoice < ActiveRecord::Base
     thumb: "100x100>"
   }
 
-  validates_attachment :photo, content_type: { content_type: /\Aimage\/.*\Z/ }
+  validates_attachment :photo, content_type: { content_type: %r{\Aimage\/.*\Z} }
 
   def display_name
     number

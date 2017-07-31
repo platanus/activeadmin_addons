@@ -46,7 +46,7 @@ ActiveAdmin.register Invoice do
                            }
       f.input :state
       f.input :category_id, as: :search_select, url: admin_categories_path,
-                            fields: [:name], display_name: 'name',
+                            fields: [:name], display_name: 'description',
                             minimum_input_length: 1, width: '50%'
       f.input :paid
       f.input :amount
@@ -58,7 +58,6 @@ ActiveAdmin.register Invoice do
       f.input :attachment
       f.input :photo
       f.input :color, as: :color_picker, palette: Invoice.colors
-
       f.input :city_id, as: :nested_select,
                         width: "150px",
                         fields: [:name],

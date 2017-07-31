@@ -1,27 +1,17 @@
-@import "select2";
-@import "jquery.xdan.datetimepicker";
-@import "../palette-color-picker";
-@import "../selected-list";
+@import 'select2';
+@import 'jquery.xdan.datetimepicker';
+@import '../palette-color-picker';
+@import '../selected-list';
 
 .filter_range_select {
   input[type=number] {
-    padding-right: 0px;
     width: 96px;
+    padding-right: 0;
   }
   .separator {
     display: inline-block;
-    text-align: center;
     width: 12px;
-  }
-}
-
-.nested_select {
-  .nested-select-container {
-    margin-bottom: 20px;
-
-    &:last-of-type {
-      margin-bottom: 0px;
-    }
+    text-align: center;
   }
 }
 
@@ -33,4 +23,10 @@ input[type=text] {
   &.date-time-picker {
     width: 110px;
   }
+}
+
+// select 2
+
+.select2-search__field {
+  line-height: 20px;
 }
