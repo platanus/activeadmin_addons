@@ -16,7 +16,7 @@ $(function() {
       defaultSelect: false,
       validateOnBlur: false
     };
-    entries = $(container).find('input.date-time-picker');
+    entries = $(container).find('input.date-time-picker, textarea.date-time-picker');
     return entries.each(function(index, entry) {
       var options = $(entry).data('picker-options');
       return $(entry).datetimepicker($.extend(defaults, options));
