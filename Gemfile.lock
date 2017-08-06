@@ -21,6 +21,7 @@ PATH
   specs:
     activeadmin_addons (0.12.0)
       railties
+      require_all
       select2-rails (~> 4.0)
       xdan-datetimepicker-rails (~> 2.5.1)
 
@@ -204,6 +205,7 @@ GEM
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
+    require_all (1.4.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec (3.0.0)

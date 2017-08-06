@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ##### Changed
 
 * Update select 2 to version 4
+* Set DateTimePickerInput default options from gem's setup block.
 
 ### v0.12.0
 

@@ -18,7 +18,7 @@ describe "Date Time Picker", type: :feature do
         visit new_admin_invoice_path
       end
 
-      it "shows date time picker"do
+      it "shows date time picker" do
         expect(page).to have_css(".date-time-picker", count: 1)
       end
     end
@@ -42,7 +42,7 @@ describe "Date Time Picker", type: :feature do
         visit new_admin_invoice_path
       end
 
-      it "applies given options"do
+      it "applies given options" do
         picker_input.click
         expect(page).to have_css(".xdsoft_time_variant .xdsoft_time", count: 6)
         expect(page).to have_css(".xdsoft_today_button", count: 1)
@@ -51,16 +51,14 @@ describe "Date Time Picker", type: :feature do
 
     context "overriding default options" do
       before do
-        datetime_picker_input = Formtastic::Inputs::StringInput::DateTimePickerInput
-
         # This if for front-end javascript side
-        datetime_picker_input.default_datetime_picker_options = {
+        ActiveadminAddons.datetime_picker_default_options = {
           today_button: false,
           format: "d-m-Y H:i"
         }
 
         # This if for backend (Ruby)
-        datetime_picker_input.format = "%d-%m-%Y %H:%M"
+        ActiveadminAddons.datetime_picker_input_format = "%d-%m-%Y %H:%M"
 
         register_page(Invoice) do
           form do |f|
@@ -73,7 +71,7 @@ describe "Date Time Picker", type: :feature do
         visit edit_admin_invoice_path(@invoice)
       end
 
-      it "applies default options"do
+      it "applies default options" do
         expect(picker_input.value).to eq(@invoice.updated_at.strftime("%d-%m-%Y %H:%M"))
         picker_input.click
         expect(page).to_not have_css(".xdsoft_today_button", count: 1)

@@ -62,10 +62,12 @@ describe ActiveAdminAddons::InputOptionsHandler do
       instance.load_class("class-b")
 
       @attributes = {
-        "data-attr" => 6,
-        "data-fields" => "[\"a\"]",
-        "data-name" => "Leandro",
-        :class => "class-a class-b"
+        data: {
+          attr: 6,
+          fields: "[\"a\"]",
+          name: "Leandro"
+        },
+        class: "class-a class-b"
       }
     end
 

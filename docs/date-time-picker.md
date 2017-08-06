@@ -38,17 +38,19 @@ form do |f|
 
 ## Overriding defaults
 
-You can add, in a Rails initializer, default options like this:
+You can modify, in the gem's setup block, the default options like this:
 
 ```ruby
-datetime_picker_input = Formtastic::Inputs::StringInput::DateTimePickerInput
+ActiveadminAddons.setup do |config|
+  # Set default options for DateTimePickerInput. The options you can provide are the same as in
+  # xdan's datetimepicker library (https://github.com/xdan/datetimepicker/tree/2.5.4). Yo need to
+  # pass a ruby hash, avoid camelCase keys. For example: use min_date instead of minDate key.
+  config.datetime_picker_default_options = {
+    format: "d-m-Y H:i",
+    step: 10 # minutes
+  }
 
-# This if for front-end javascript side
-datetime_picker_input.default_datetime_picker_options = {
-  format: "d-m-Y H:i",
-  step: 10 # minutes
-}
-
-# This if for backend (Ruby)
-datetime_picker_input.format = "%d-%m-%Y %H:%M"
+  # Set DateTimePickerInput input format. This if for backend (Ruby)
+  config.datetime_picker_input_format = "%d-%m-%Y %H:%M"
+end
 ```
