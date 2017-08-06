@@ -194,7 +194,7 @@ describe ActiveAdminAddons::SelectHelpers do
       it "loads data-selected attribute" do
         instance.collection_to_select_options
         selected_option = { id: @item2.id, text: @item2.name }.to_json
-        expect(instance.control_attributes["data-selected"]).to eq(selected_option)
+        expect(instance.control_attributes[:data][:selected]).to eq(selected_option)
       end
     end
 

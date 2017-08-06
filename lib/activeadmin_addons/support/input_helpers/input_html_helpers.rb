@@ -27,6 +27,10 @@ module ActiveAdminAddons
       "#{prefixed_method}_empty"
     end
 
+    def build_separator
+      template.content_tag(:span, "-", class: "separator")
+    end
+
     def build_hidden_control(id, name, value = nil)
       builder.hidden_field(
         valid_method,

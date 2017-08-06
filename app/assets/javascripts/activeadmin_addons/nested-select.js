@@ -10,7 +10,7 @@ $.fn.select2.amd.define('select2/data/nestedCustomAdapter', ['select2/data/array
     var element = this.$element;
     var collection = element.data('collection');
     var parent = element.data('parent');
-    var parentId = element.data('parent_id') || -1;
+    var parentId = element.data('parent-id') || -1;
 
     collection.forEach(function(record) {
       var regex = new RegExp(params.term, 'i');
@@ -68,15 +68,15 @@ $(function() {
       var element = $(el);
       var url = element.data('url');
       var fields = element.data('fields');
-      var displayName = element.data('display_name');
+      var displayName = element.data('display-name');
       var parent = element.data('parent');
       var width = element.data('width') || '80%';
       var model = element.data('model');
-      var responseRoot = element.data('response_root');
+      var responseRoot = element.data('response-root');
       var collection = element.data('collection');
-      var minimumInputLength = element.data('minimum_input_length');
+      var minimumInputLength = element.data('minimum-input-length');
       var order = element.data('order') || (fields[0] + '_desc');
-      var parentId = element.data('parent_id') || INVALID_PARENT_ID;
+      var parentId = element.data('parent-id') || INVALID_PARENT_ID;
       var selectInstance;
 
       var select2Config = {
@@ -145,7 +145,7 @@ $(function() {
       function setParentValue(e) {
         selectInstance.val(null).trigger('select2:select').trigger('change');
         parentId = (e.params && e.params.data.id) ? e.params.data.id : INVALID_PARENT_ID;
-        element.data('parent_id', parentId);
+        element.data('parent-id', parentId);
       }
 
       if (!!parent) {

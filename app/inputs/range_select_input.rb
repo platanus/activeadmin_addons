@@ -1,29 +1,21 @@
-class RangeSelectInput < Formtastic::Inputs::StringInput
-  include ActiveAdmin::Inputs::Filters::Base
+class RangeSelectInput < ActiveAdminAddons::InputBase
+  include ActiveAdminAddons::FilterInput
 
-  def to_html
-    input_wrapping do
-      [
-        label_html,
-        builder.text_field(gt_input_name, input_html_options(gt_input_name)),
-        template.content_tag(:span, "-", class: "separator"),
-        builder.text_field(lt_input_name, input_html_options(lt_input_name)),
-      ].join("\n").html_safe
-    end
+  def render_custom_input
+    concat(label_html)
+    concat_text_field(gteq_input_name)
+    concat(build_separator)
+    concat_text_field(lteq_input_name)
   end
 
-  def gt_input_name
-    "#{method}_gteq"
+  def concat_text_field(control_name)
+    concat(builder.text_field(control_name, input_html_options(control_name)))
   end
 
-  alias :input_name :gt_input_name
+  alias :input_name :gteq_input_name
 
-  def lt_input_name
-    "#{method}_lteq"
-  end
-
-  def input_html_options(input_name = gt_input_name)
-    is_gt = (input_name == gt_input_name)
+  def input_html_options(input_name = gteq_input_name)
+    is_gt = (input_name == gteq_input_name)
 
     {
       type: "number",

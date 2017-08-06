@@ -41,4 +41,12 @@ describe ActiveAdminAddons::FilterInputMethods do
   describe "#eq_input_name" do
     it { expect(instance.eq_input_name).to eq("category_id_eq") }
   end
+
+  describe "#gteq_input_name" do
+    it { expect(instance.gteq_input_name).to eq("category_id_gteq") }
+  end
+
+  describe "#lteq_input_name" do
+    it { expect(instance.lteq_input_name).to eq("category_id_lteq") }
+  end
 end

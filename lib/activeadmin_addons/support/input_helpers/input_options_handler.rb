@@ -5,7 +5,8 @@ module ActiveAdminAddons
     end
 
     def load_data_attr(attr_name, options = {})
-      control_attributes["data-#{attr_name}"] = get_formatted_value(attr_name, options)
+      control_attributes[:data] ||= {}
+      control_attributes[:data][attr_name.to_sym] = get_formatted_value(attr_name, options)
     end
 
     def load_attr(attr_name, options = {})

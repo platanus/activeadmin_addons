@@ -18,5 +18,13 @@ module ActiveAdminAddons
     def eq_input_name
       "#{valid_method}_eq"
     end
+
+    def gteq_input_name
+      "#{method}_gteq"
+    end
+
+    def lteq_input_name
+      "#{method}_lteq"
+    end
   end
 end

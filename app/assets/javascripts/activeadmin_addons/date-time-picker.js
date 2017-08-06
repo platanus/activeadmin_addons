@@ -8,18 +8,19 @@ $(function() {
   });
 
   function setupDateTimePicker(container) {
-    var defaults, entries;
-    defaults = {
+    var defaults = {
       formatDate: 'y-m-d',
       format: 'Y-m-d H:i',
       allowBlank: true,
       defaultSelect: false,
-      validateOnBlur: false
+      validateOnBlur: false,
     };
-    entries = $(container).find('input.date-time-picker');
+
+    var entries = $(container).find('input.date-time-picker');
     return entries.each(function(index, entry) {
       var options = $(entry).data('picker-options');
-      return $(entry).datetimepicker($.extend(defaults, options));
+      var mixedOptions = $.extend(defaults, options);
+      return $(entry).datetimepicker(mixedOptions);
     });
   }
 });
