@@ -35,10 +35,10 @@ input[type=text] {
   }
 }
 
-.filter_range_date_time_picker {
-  textarea.date-time-picker {
-    padding-right: 14px;
-    width: 84px;
+.sidebar_section .filter_range_date_time_picker {
+  textarea {
+    padding-right: 35px;
+    width: 63px;
     background: #fff url('/assets/active_admin/datepicker/datepicker-input-icon.png') no-repeat 100% 19px;
     resize: none;
     line-height: 1.7em;
