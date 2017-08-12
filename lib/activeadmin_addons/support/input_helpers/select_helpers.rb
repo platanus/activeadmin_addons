@@ -10,7 +10,7 @@ module ActiveAdminAddons
         option = { id: value, text: value }
         option[:selected] = "selected" if selected_values.include?(value)
         option
-      end.uniq.to_json
+      end.uniq
     end
 
     def initial_collection_to_select_options
@@ -32,12 +32,12 @@ module ActiveAdminAddons
         yield(item, option) if block_given?
 
         if selected_collection.include?(item)
-          load_data_attr(:selected, value: option.to_json)
+          load_data_attr(:selected, value: option.dup, formatter: :to_json)
           option[:selected] = "selected"
         end
 
         option
-      end.uniq.to_json
+      end.uniq
     end
 
     def item_to_select_option(item)

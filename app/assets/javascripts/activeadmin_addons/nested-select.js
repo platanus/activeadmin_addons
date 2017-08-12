@@ -10,7 +10,7 @@ $.fn.select2.amd.define('select2/data/nestedCustomAdapter', ['select2/data/array
     var element = this.$element;
     var collection = element.data('collection');
     var parent = element.data('parent');
-    var parentId = element.data('parent-id') || -1;
+    var parentId = element.data('parent-id');
 
     collection.forEach(function(record) {
       var regex = new RegExp(params.term, 'i');
@@ -70,13 +70,13 @@ $(function() {
       var fields = element.data('fields');
       var displayName = element.data('display-name');
       var parent = element.data('parent');
-      var width = element.data('width') || '80%';
+      var width = element.data('width');
       var model = element.data('model');
       var responseRoot = element.data('response-root');
       var collection = element.data('collection');
       var minimumInputLength = element.data('minimum-input-length');
-      var order = element.data('order') || (fields[0] + '_desc');
-      var parentId = element.data('parent-id') || INVALID_PARENT_ID;
+      var order = element.data('order');
+      var parentId = element.data('parent-id');
       var selectInstance;
 
       var select2Config = {

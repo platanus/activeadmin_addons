@@ -11,11 +11,13 @@ $(function() {
       var method = $(el).data('method');
       var prefix = model + '_' + method;
       var isRelation = !!$(el).data('relation');
+      var collection = $(el).data('collection');
+      var width = $(el).data('width');
       var selectOptions = {
-        width: $(el).data('width') || '80%',
+        width: width,
         multiple: true,
         tags: true,
-        data: $(el).data('collection'),
+        data: collection,
       };
 
       if (!!isRelation) {

@@ -20,6 +20,10 @@ class SearchSelectInput < ActiveAdminAddons::InputBase
     load_data_attr(:display_name, default: "name")
     load_data_attr(:minimum_input_length, default: 1)
     load_data_attr(:width, default: "80%")
-    load_data_attr(:order, value: @options[:order_by])
+    load_data_attr(:order, value: @options[:order_by], default: default_order)
+  end
+
+  def default_order
+    get_data_attr_value(:fields).first.to_s + "_desc"
   end
 end
