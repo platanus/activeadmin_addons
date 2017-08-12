@@ -14,11 +14,15 @@ class SelectedListInput < ActiveAdminAddons::InputBase
     load_data_attr(:fields, default: ["name"], formatter: :to_json)
     load_data_attr(:display_name, default: "name")
     load_data_attr(:minimum_input_length, default: 1)
-    load_data_attr(:width)
-    load_data_attr(:order, value: @options[:order_by])
+    load_data_attr(:width, default: "100%")
+    load_data_attr(:order, value: @options[:order_by], default: default_order)
   end
 
   private
+
+  def default_order
+    get_data_attr_value(:fields).first.to_s + "_desc"
+  end
 
   def render_control_wrapper
     template.content_tag(:div, class: "selected-list-container") do

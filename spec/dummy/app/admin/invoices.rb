@@ -72,6 +72,7 @@ ActiveAdmin.register Invoice do
                        width: "400px"
 
       f.input :item_ids, as: :selected_list,
+                         width: "40%",
                          fields: [:name],
                          display_name: :name,
                          minimum_input_length: 1
@@ -84,7 +85,7 @@ ActiveAdmin.register Invoice do
                       palette: Invoice.colors
 
       f.input :city_id, as: :nested_select,
-                        width: "150px",
+                        width: "50%",
                         fields: [:name],
                         display_name: 'name',
                         minimum_input_length: 0,

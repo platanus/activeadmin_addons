@@ -17,16 +17,14 @@ $(function() {
       var url = $(el).data('url');
       var fields = $(el).data('fields');
       var displayName = $(el).data('display-name');
-      var width = $(el).data('width') || '100%';
       var method = $(el).data('method');
       var model = $(el).data('model');
       var prefix = model + '_' + method;
       var responseRoot = $(el).data('response-root');
       var minimumInputLength = $(el).data('minimum-input-length');
-      var order = $(el).data('order') || (fields[0] + '_desc');
+      var order = $(el).data('order');
 
       var selectOptions = {
-        width: width,
         minimumInputLength: minimumInputLength,
         allowClear: true,
         ajax: {

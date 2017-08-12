@@ -13,7 +13,7 @@ $(function() {
       var width = $(el).data('width');
       var responseRoot = $(el).data('response-root');
       var minimumInputLength = $(el).data('minimum-input-length');
-      var order = $(el).data('order') || (fields[0] + '_desc');
+      var order = $(el).data('order');
 
       var selectOptions = {
         width: width,

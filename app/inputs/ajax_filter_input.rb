@@ -3,7 +3,7 @@ class AjaxFilterInput < SearchSelectInput
 
   def load_control_attributes
     super
-    load_data_attr(:width, default: 'resolve')
+    load_data_attr(:width, default: "resolve")
   end
 
   def input_method

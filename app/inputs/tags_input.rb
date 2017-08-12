@@ -13,13 +13,13 @@ class TagsInput < ActiveAdminAddons::InputBase
     load_class("select2-tags")
     load_data_attr(:model, value: model_name)
     load_data_attr(:method, value: method)
-    load_data_attr(:width)
+    load_data_attr(:width, default: "80%")
 
     if active_record_select?
       load_data_attr(:relation, value: true)
-      load_data_attr(:collection, value: collection_to_select_options)
+      load_data_attr(:collection, value: collection_to_select_options, formatter: :to_json)
     else
-      load_data_attr(:collection, value: array_to_select_options)
+      load_data_attr(:collection, value: array_to_select_options, formatter: :to_json)
     end
   end
 

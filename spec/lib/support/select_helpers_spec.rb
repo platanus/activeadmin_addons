@@ -64,7 +64,7 @@ describe ActiveAdminAddons::SelectHelpers do
         { id: "2", text: "2", selected: "selected" }
       ]
 
-      expect(instance.array_to_select_options).to eq(result.to_json)
+      expect(instance.array_to_select_options).to eq(result)
     end
 
     context "with collection only" do
@@ -82,7 +82,7 @@ describe ActiveAdminAddons::SelectHelpers do
           { id: "3", text: "3" }
         ]
 
-        expect(instance.array_to_select_options).to eq(result.to_json)
+        expect(instance.array_to_select_options).to eq(result)
       end
     end
 
@@ -100,7 +100,7 @@ describe ActiveAdminAddons::SelectHelpers do
           { id: "3", text: "3" }
         ]
 
-        expect(instance.array_to_select_options).to eq(result.to_json)
+        expect(instance.array_to_select_options).to eq(result)
       end
     end
 
@@ -108,7 +108,7 @@ describe ActiveAdminAddons::SelectHelpers do
       let(:object) { create_invoice(number: nil) }
 
       it "returns empty array" do
-        expect(instance.array_to_select_options).to eq([].to_json)
+        expect(instance.array_to_select_options).to eq([])
       end
     end
   end
@@ -125,7 +125,7 @@ describe ActiveAdminAddons::SelectHelpers do
         { id: @item3.id, text: @item3.name, selected: "selected" }
       ]
 
-      expect(result).to eq(expected_result.to_json)
+      expect(result).to eq(expected_result)
     end
 
     it "edits options using a block" do
@@ -139,7 +139,7 @@ describe ActiveAdminAddons::SelectHelpers do
         { id: @item3.id, text: @item3.name, extra: "Item", selected: "selected" }
       ]
 
-      expect(result).to eq(expected_result.to_json)
+      expect(result).to eq(expected_result)
     end
 
     context "with collection only" do
@@ -163,7 +163,7 @@ describe ActiveAdminAddons::SelectHelpers do
           { id: @item3.id, text: @item3.name }
         ]
 
-        expect(result).to eq(expected_result.to_json)
+        expect(result).to eq(expected_result)
       end
     end
 
@@ -188,13 +188,13 @@ describe ActiveAdminAddons::SelectHelpers do
           { id: @item3.id, text: @item3.name }
         ]
 
-        expect(result).to eq(expected_result.to_json)
+        expect(result).to eq(expected_result)
       end
 
       it "loads data-selected attribute" do
         instance.collection_to_select_options
-        selected_option = { id: @item2.id, text: @item2.name }.to_json
-        expect(instance.control_attributes[:data][:selected]).to eq(selected_option)
+        selected_option = { id: @item2.id, text: @item2.name }
+        expect(instance.control_attributes[:data][:selected]).to eq(selected_option.to_json)
       end
     end
 
@@ -202,7 +202,7 @@ describe ActiveAdminAddons::SelectHelpers do
       let(:object) { create_invoice }
 
       it "returns empty array" do
-        expect(instance.collection_to_select_options).to eq([].to_json)
+        expect(instance.collection_to_select_options).to eq([])
       end
     end
   end
