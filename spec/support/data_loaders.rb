@@ -1,7 +1,7 @@
 module DataLoaders
   def create_items(count = 3)
     1.upto(count).each do |idx|
-      item = Item.where(name: "Item ##{idx}").first_or_create!
+      item = Item.where(name: "Item ##{idx}", description: "Desc #{idx}").first_or_create!
       instance_variable_set("@item#{idx}", item)
     end
   end

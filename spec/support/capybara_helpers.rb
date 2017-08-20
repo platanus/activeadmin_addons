@@ -57,6 +57,10 @@ module CapybaraHelpers
     page.find(:xpath, "//li[text()='#{display_name}']").click
   end
 
+  def expect_select2_data_option(option, value)
+    expect(page).to have_xpath("//select[@data-#{option}='#{value}']")
+  end
+
   def expect_select2_selection(text)
     expect(page).to have_css(".select2-selection__rendered", text: /#{text}/)
   end
