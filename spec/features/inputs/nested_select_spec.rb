@@ -5,15 +5,24 @@ describe "Nested Select", type: :feature do
     before do
       register_form(Invoice, false) do |f|
         f.input :city_id, as: :nested_select,
-                          level_1: { attribute: :country_id },
-                          level_2: { attribute: :region_id, url: "/fakeurl" },
-                          level_3: { attribute: :city_id }
+                          level_1: {
+                            attribute: :country_id,
+                            width: "30px"
+                          },
+                          level_2: {
+                            attribute: :region_id,
+                            url: "/fakeurl",
+                            response_root: "my_regions"
+                          },
+                          level_3: {
+                            attribute: :city_id
+                          }
       end
 
       visit edit_admin_invoice_path(create_invoice)
     end
 
-    it "shows empty select controls", js: true do
+    it "shows empty select controls" do
       expect(page.text).to_not match(/Chile/)
       expect(page.text).to_not match(/Metropolitana/)
       expect(page.text).to_not match(/Santiago/)
@@ -21,6 +30,16 @@ describe "Nested Select", type: :feature do
 
     it "uses the custom url" do
       expect(page.html).to match('fakeurl')
+    end
+
+    it "changes input width" do
+      on_input_ctx("invoice_region_id") { expect_select2_data_option("width", "30px") }
+    end
+
+    it "changes input width" do
+      on_input_ctx("invoice_region_id") do
+        expect_select2_data_option("response-root", "my_regions")
+      end
     end
   end
 
@@ -133,7 +152,8 @@ describe "Nested Select", type: :feature do
 
         register_form(Invoice, false) do |f|
           f.input :city_id, as: :nested_select,
-                            fields: [:name, :information], display_name: :id,
+                            fields: [:name, :information],
+                            display_name: :id,
                             minimum_input_length: 5,
                             level_1: { attribute: :region_id },
                             level_2: { attribute: :city_id }

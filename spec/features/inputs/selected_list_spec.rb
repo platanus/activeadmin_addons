@@ -5,10 +5,11 @@ describe "Selected List", type: :feature do
     expect(page).to have_css(".selected-item", count: count)
   end
 
-  def expect_to_add_item(item, items_count = 1)
-    pick_select2_entered_option(item.name)
+  def expect_to_add_item(item, items_count = 1, attribute = :name)
+    value = item.send(attribute)
+    pick_select2_entered_option(value)
     html_item = find(".selected-item#invoice_item_ids_#{item.id}")
-    expect(html_item.text).to match(item.name)
+    expect(html_item.text).to match(value)
     expect_added_count(items_count)
   end
 
@@ -61,6 +62,102 @@ describe "Selected List", type: :feature do
 
     it "loads saved items", js: true do
       expect_added_count(3)
+    end
+  end
+
+  context "with custom url" do
+    before do
+      register_form(Invoice, false) do |f|
+        f.input :item_ids, as: :selected_list, url: "/admin/items"
+      end
+
+      visit edit_admin_invoice_path(create_invoice)
+    end
+
+    it "adds new items", js: true do
+      expect_to_add_item(@item1, 1)
+    end
+  end
+
+  context "with custom response_root" do
+    before do
+      register_form(Invoice, false) do |f|
+        f.input :item_ids, as: :selected_list, response_root: "my_categories"
+      end
+
+      visit edit_admin_invoice_path(create_invoice)
+    end
+
+    it "pass response root as input data" do
+      expect_select2_data_option("response-root", "my_categories")
+    end
+  end
+
+  context "setting select width" do
+    before do
+      register_form(Invoice, false) do |f|
+        f.input :item_ids, as: :selected_list, width: "200px"
+      end
+
+      visit edit_admin_invoice_path(create_invoice)
+    end
+
+    it "changes input width" do
+      expect_select2_data_option("width", "200px")
+    end
+  end
+
+  context "searching by other attributes" do
+    before do
+      register_form(Invoice, false) do |f|
+        f.input :item_ids, as: :selected_list, display_name: :description, fields: [:description]
+      end
+
+      visit edit_admin_invoice_path(create_invoice)
+    end
+
+    it "shows nothing looking for name (default)", js: true do
+      fill_select2_input("Cat")
+      expect_select2_results_count_to_eq(0)
+    end
+
+    it "shows results looking for description", js: true do
+      fill_select2_input("Desc")
+      expect_select2_results_count_to_eq(3)
+    end
+
+    it "shows custom label", js: true do
+      expect_to_add_item(@item1, 1, :description)
+    end
+  end
+
+  context "setting minimum input length" do
+    before do
+      register_form(Invoice, false) do |f|
+        f.input :item_ids, as: :selected_list, minimum_input_length: 5
+      end
+
+      visit edit_admin_invoice_path(create_invoice)
+    end
+
+    it "shows length message", js: true do
+      open_select2_options
+      expect_select2_result_text_to_eq(1, "Please enter 5 or more characters")
+    end
+  end
+
+  context "with different order" do
+    before do
+      register_form(Invoice, false) do |f|
+        f.input :item_ids, as: :selected_list, order_by: :name_desc
+      end
+
+      visit edit_admin_invoice_path(create_invoice)
+    end
+
+    it "shows results ordered by name DESC", js: true do
+      fill_select2_input("Item")
+      expect_select2_result_text_to_eq(1, @item3.name)
     end
   end
 end
