@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Search Select", type: :feature do
+describe "Search Select Input", type: :feature do
   before do
     register_page(Category) {}
 

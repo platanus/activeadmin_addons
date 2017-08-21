@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Nested Select", type: :feature do
+describe "Nested Select Input", type: :feature do
   context "with nil city" do
     before do
       register_form(Invoice, false) do |f|

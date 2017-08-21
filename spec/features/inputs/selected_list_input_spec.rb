@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Selected List", type: :feature do
+describe "Selected List Input", type: :feature do
   def expect_added_count(count)
     expect(page).to have_css(".selected-item", count: count)
   end

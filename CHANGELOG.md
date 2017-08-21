@@ -6,8 +6,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ##### Changed
 
-* Update select 2 to version 4
+* Update select 2 to version 4.
 * Set DateTimePickerInput default options from gem's setup block.
+* Rename :ajax_filter to :search_select_filter.
+* Rename :range_select to :numeric_range_filter.
 
 ### v0.12.0
 
@@ -20,7 +22,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ##### Added
 
 * Add ability to enable select2 for specific select controls
-* Make default select configurable
+* Make default select configurable.
 * Add initializer to setup addons.
 * Add automatic deployment on tags push through travis.
 * Enable allowClear in select2_search.

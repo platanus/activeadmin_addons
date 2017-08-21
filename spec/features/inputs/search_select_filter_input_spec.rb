@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Search Select", type: :feature do
+describe "Search Select Filter Input", type: :feature do
   before do
     register_page(Region) {}
 
@@ -10,7 +10,7 @@ describe "Search Select", type: :feature do
   context "with initial state" do
     before do
       register_page(City, false) do
-        filter :region_id, as: :ajax_filter
+        filter :region_id, as: :search_select_filter
       end
 
       visit admin_cities_path

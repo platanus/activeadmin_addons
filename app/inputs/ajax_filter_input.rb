@@ -1,12 +1,6 @@
-class AjaxFilterInput < SearchSelectInput
-  include ActiveAdminAddons::FilterInput
-
-  def load_control_attributes
+class AjaxFilterInput < SearchSelectFilterInput
+  def to_html
+    warn "[DEPRECATION] use :search_select_filter instead of :ajax_filter"
     super
-    load_data_attr(:width, default: "resolve")
-  end
-
-  def input_method
-    eq_input_name
   end
 end
