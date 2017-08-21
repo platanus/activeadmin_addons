@@ -1,5 +1,5 @@
-/**
- * JQuery Palette Color Picker v1.01 by Carlos Cabo ( @putuko )
+/*!
+ * JQuery Palette Color Picker v1.13 by Carlos Cabo ( @putuko )
  * https://github.com/carloscabo/jquery-palette-color-picker
  */
 (function($) {
@@ -20,22 +20,39 @@
                   .attr('data-target', target),
       $bubble = $('<div>')
                   .addClass(ns+'-bubble'),
+
       // Final settings will be stored here
       settings = {},
+
       // Default settings
       defaults = {
         custom_class: null,
         colors: null,
-        position: 'upside',  // upside | downside
-        insert: 'before',    // default
-        clear_btn: 'first',  // default
-        timeout: 2000        // default
-      };
+        position: 'upside',   // upside | downside
+        insert: 'before',     // default
+        clear_btn: 'first',   // default
+        timeout: 2000,        // default
+        set_background: false, // default
+        close_all_but_this: false // default
+      },
+
+      click_handler = ('ontouchstart' in document.documentElement ? 'touchstart click' : 'click');
 
     // Init
     plugin.init = function() {
       // Extand settings with user options
       plugin.settings = $.extend({}, defaults, options);
+
+      // If input has not value add it
+      var
+        val = $el.attr('value');
+      if (typeof val === typeof undefined || val === false) {
+        val = '';
+        $el.attr('value', val);
+      }
+
+      // Backup initial value
+      $el.attr('data-initialvalue', $el.attr('value') );
 
       // If color were not passed as options get them from data-palette attribute
       if (plugin.settings.colors === null) {
@@ -69,8 +86,6 @@
               'data-name': key
             }).css('background-color', col);
 
-
-        // console.log(key + '===' +  current_value + ' - > '+(key === current_value)+' - t -'+(typeof key)+' '+(typeof current_value));
         if ( key === current_value ) {
           $sw.addClass('active');
           $button.css('background', col);
@@ -79,13 +94,15 @@
         $sw.appendTo( $bubble );
       });
 
-      // Create clear button
-      var
+      // Create clear button if not null
+      if (plugin.settings.clear_btn !== null) {
+        var
         $clear_btn = $('<span>').addClass('swatch clear').attr('title', 'Clear selection');
-      if (plugin.settings.clear_btn === 'last') {
-        $clear_btn.addClass('last').appendTo( $bubble );
-      } else {
-        $clear_btn.prependTo( $bubble );
+        if (plugin.settings.clear_btn === 'last') {
+          $clear_btn.addClass('last').appendTo( $bubble );
+        } else {
+          $clear_btn.prependTo( $bubble );
+        }
       }
 
       // Public
@@ -94,16 +111,73 @@
         $.removeData( $el[0] );
       };
 
+      // Clears all
+      plugin.clear = function() {
+        $bubble.find('.active').removeClass('active');
+        $button.removeAttr('style');
+        $el.val('');
+      };
+
+      // Reset to initial value
+      plugin.reset = function() {
+        // Dont had initial value
+        if ( $el.attr('data-initialvalue') === '' ) {
+          plugin.clear();
+        } else {
+          // Had initial value
+          var iv = $el.attr('data-initialvalue');
+          $bubble.find('[data-name="'+iv+'"]').trigger('click');
+        }
+      };
+
+      // reload value after it has been changed programatically
+      plugin.reload = function() {
+
+        var newVal = $el.val();
+        if (  newVal === '' || typeof newVal === typeof undefined || newVal === false ) {
+          // Doesn't have the value to load so loading initial value
+          plugin.reset();
+        } else {
+          // setting the value to new value
+          if($bubble.find('[data-name="'+newVal+'"]').length) {
+            // value will only be set if the color exists in options
+            $bubble.find('[data-name="'+newVal+'"]').trigger('click');
+          } else {
+            // setting to the initial value if color does not exists
+            plugin.reset();
+          }
+        }
+      };
+
       // Events
       // Simple click
-      $button.append( $bubble ).on('click', function(){
+      $button.append( $bubble ).on( click_handler, function(e){
+        e.preventDefault();
+        e.stopPropagation();
         var $b = $( this );
-        $b.toggleClass('active').find('.'+ns+'-bubble').fadeToggle();
-        if ($b.hasClass('active')) {
-          clearTimeout(plugin.timer);
-          plugin.timer = setTimeout(function(){
-            $b.trigger('pcp.fadeout');
-          }, plugin.settings.timeout);
+
+        // don't close on clicking the bubble
+        if (!$(e.target).hasClass(ns+'-bubble')) {
+
+          // Call the callback, if set
+          if (typeof plugin.settings.onbeforeshow_callback === 'function') {
+            plugin.settings.onbeforeshow_callback(this);
+          }
+
+          $b.toggleClass('active');
+          var $current_bubble = $b.find('.'+ns+'-bubble');
+          // Forces hiding other bubbles
+          if (plugin.settings.close_all_but_this) {
+            $('.'+ns+'-bubble').not($current_bubble).fadeOut();
+          }
+          $current_bubble.fadeToggle();
+
+          if ($b.hasClass('active')) {
+            clearTimeout(plugin.timer);
+            plugin.timer = setTimeout(function(){
+              $b.trigger('pcp.fadeout');
+            }, plugin.settings.timeout);
+          }
         }
       })
       // Fade timer
@@ -121,7 +195,9 @@
         }, plugin.settings.timeout);
       })
       // Click on swatches
-      .on('click', 'span.swatch', function(e){
+      .on(click_handler, '.'+ns+'-bubble span.swatch', function(e){
+        e.preventDefault();
+        e.stopPropagation();
         var
           col = $( this ).attr('data-color'),
           name = $( this ).attr('data-name'),
@@ -141,7 +217,17 @@
           $(this).addClass('active');
           $button.css('background', col);
         }
-        $( '[name="'+$button.attr('data-target')+'"]' ).val( name );
+
+        // Call the callback, if set
+        if (typeof plugin.settings.onchange_callback === "function") {
+          plugin.settings.onchange_callback(col);
+        }
+
+        if( plugin.settings.set_background === false ) {
+          $('[name="' + $button.attr('data-target') + '"]').val(name);
+        } else {
+          $('[name="' + $button.attr('data-target') + '"]').css({'background-color' : col});
+        }
       })['insert'+plugin.settings.insert]( $el );
 
       // Upside / downside, default is upside
@@ -150,6 +236,13 @@
       }
 
     };
+
+    // Close on clicking outside the palette
+    $('body').on(click_handler,function(event) {
+      if (!$(event.target).hasClass(ns+'-button')) {
+        $( $button ).removeClass('active').find('.'+ns+'-bubble').fadeOut();
+      }
+    });
 
     // Start
     plugin.init();
