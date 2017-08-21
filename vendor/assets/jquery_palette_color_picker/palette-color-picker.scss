@@ -15,7 +15,8 @@ $cpfp-background: #fff;
   /*background: url(palette-color-picker-icon.svg) center center no-repeat;*/
   cursor: pointer;
 
-  outline: 1px solid $cpfp-border;
+  box-shadow: 0 0 0 1px $cpfp-border;
+  /*outline: 1px solid $cpfp-border;*/
   border: 2px solid #fff;
 }
 
@@ -139,6 +140,15 @@ $cpfp-background: #fff;
       &.clear {
         width: 12.66%;
       }
+    }
+  }
+
+  // Force open on left side
+  &.force-left {
+    left: -178px;
+    &:after,
+    &:before {
+      left: 188px;
     }
   }
 
