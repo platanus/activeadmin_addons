@@ -77,7 +77,6 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cliver (0.3.2)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
@@ -163,11 +162,6 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-    poltergeist (1.7.0)
-      capybara (~> 2.1)
-      cliver (~> 0.3.1)
-      multi_json (~> 1.0)
-      websocket-driver (>= 0.2.0)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     pry (0.10.1)
@@ -265,9 +259,6 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.2.2)
-    websocket-driver (0.6.2)
-      websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.2)
     xdan-datetimepicker-rails (2.5.4)
       jquery-rails
       rails (>= 3.2.16)
@@ -288,7 +279,6 @@ DEPENDENCIES
   guard (~> 2.7.0)
   guard-rspec (~> 4.3)
   paperclip
-  poltergeist
   pry-rails (= 0.3.2)
   rails (>= 4)
   rspec-rails (= 3.0.1)
