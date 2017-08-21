@@ -12,7 +12,6 @@ class SearchSelectInput < ActiveAdminAddons::InputBase
   end
 
   def load_control_attributes
-    load_class("search-select")
     load_class(@options[:class])
     load_data_attr(:fields, default: ["name"], formatter: :to_json)
     load_data_attr(:url, default: url_from_method)

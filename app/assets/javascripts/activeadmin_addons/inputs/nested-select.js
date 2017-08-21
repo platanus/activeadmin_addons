@@ -64,7 +64,7 @@ $(function() {
   function configureSelect2(container) {
     var INVALID_PARENT_ID = -1;
 
-    $('.nested-select', container).each(function(i, el) {
+    $('.nested-level-input', container).each(function(i, el) {
       var element = $(el);
       var url = element.data('url');
       var fields = element.data('fields');

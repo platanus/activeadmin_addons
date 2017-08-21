@@ -13,7 +13,7 @@ $(function() {
       }
     });
 
-    $('.selected-list', container).each(function(i, el) {
+    $('.selected-list-input', container).each(function(i, el) {
       var url = $(el).data('url');
       var fields = $(el).data('fields');
       var displayName = $(el).data('display-name');

@@ -6,7 +6,7 @@ $(function() {
   });
 
   function setupSearchSelect(container) {
-    $('.search-select', container).each(function(i, el) {
+    $('.search-select-input, .search-select-filter-input, ajax-filter-input', container).each(function(i, el) {
       var url = $(el).data('url');
       var fields = $(el).data('fields');
       var displayName = $(el).data('display-name');

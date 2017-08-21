@@ -22,7 +22,6 @@
 
 class DateTimePickerInput < ActiveAdminAddons::InputBase
   def load_control_attributes
-    load_class("date-time-picker")
     load_class(@options[:class])
     load_data_attr(:picker_options, value: datetime_picker_options)
     load_attr(:maxlength, value: 19)

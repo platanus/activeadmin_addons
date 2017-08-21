@@ -6,7 +6,7 @@ $(function() {
   });
 
   function setupTags(container) {
-    $('.select2-tags', container).each(function(i, el) {
+    $('.tags-input', container).each(function(i, el) {
       var model = $(el).data('model');
       var method = $(el).data('method');
       var prefix = model + '_' + method;

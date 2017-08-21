@@ -14,7 +14,6 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
   private
 
   def load_control_attributes
-    load_class("nested-select")
     load_class(@options[:class])
     load_data_attr(:fields, default: ["name"], formatter: :to_json)
     load_data_attr(:model, value: model_name)

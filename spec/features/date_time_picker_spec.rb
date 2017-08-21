@@ -19,7 +19,7 @@ describe "Date Time Picker", type: :feature do
       end
 
       it "shows date time picker" do
-        expect(page).to have_css(".date-time-picker", count: 1)
+        expect(page).to have_css(".date-time-picker-input", count: 1)
       end
     end
 

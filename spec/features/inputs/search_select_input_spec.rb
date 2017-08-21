@@ -116,7 +116,7 @@ describe "Search Select Input", type: :feature do
     end
 
     it "hidden input with tester class" do
-      expect(page).to have_css("select.search-select.tester", visible: false)
+      expect(page).to have_css("select.search-select-input.tester", visible: false)
     end
   end
 
