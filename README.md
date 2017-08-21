@@ -57,12 +57,12 @@ Installing this gem will enable the following changes by default:
 
 ## Addons
 
-### Range Filter
+### Numeric Range Filter
 
-To filter based on a range of values you can use `range_select` like this:
+To filter based on a range of values you can use `numeric_range_filter` like this:
 
 ```ruby
-filter :number, as: :range_select
+filter :number, as: :numeric_range_filter
 ```
 
 <img src="./docs/images/filter-range.png" height="150" />

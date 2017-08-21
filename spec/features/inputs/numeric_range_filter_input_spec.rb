@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe "Range Filter", type: :feature do
+describe "Numeric Range Filter Input", type: :feature do
   before do
     register_page(Invoice) do
-      filter :position, as: :range_select
+      filter :position, as: :numeric_range_filter
 
       index do
         column :position

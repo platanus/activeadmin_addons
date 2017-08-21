@@ -2,14 +2,14 @@ ActiveAdmin.register Invoice do
   permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id,
     :city_id, :amount, :color, :updated_at, item_ids: []
 
-  filter :id, as: :range_select
+  filter :id, as: :numeric_range_filter
 
-  filter :category_id, as: :ajax_filter,
+  filter :category_id, as: :search_select_filter,
                        url: proc { current_admin_user.categories_url },
                        fields: [:name],
                        minimum_input_length: 0
 
-  filter :buyer_id, as: :ajax_filter,
+  filter :buyer_id, as: :search_select_filter,
                     minimum_input_length: 0,
                     url: '/admin/admin_users',
                     fields: [:email],

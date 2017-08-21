@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Tags", type: :feature do
+describe "Tags Input", type: :feature do
   context "with empty collection" do
     before do
       register_form(Invoice) do |f|
