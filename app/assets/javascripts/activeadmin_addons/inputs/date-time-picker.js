@@ -14,7 +14,7 @@ $(function() {
       validateOnBlur: false,
     };
 
-    var entries = $(container).find('input.date-time-picker');
+    var entries = $(container).find('input.date-time-picker-input');
     return entries.each(function(index, entry) {
       var options = $(entry).data('picker-options');
       var mixedOptions = $.extend(defaults, options);

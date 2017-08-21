@@ -32,7 +32,6 @@ class ColorPickerInput < ActiveAdminAddons::InputBase
   end
 
   def load_control_attributes
-    load_class("color-picker")
     load_data_attr(:palette, default: DEFAULT_PALETTE, formatter: :to_json)
   end
 end

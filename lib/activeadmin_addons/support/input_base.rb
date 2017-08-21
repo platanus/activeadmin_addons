@@ -5,6 +5,7 @@ module ActiveAdminAddons
     include InputHtmlHelpers
 
     def to_html
+      load_input_class
       load_control_attributes
       render_custom_input
       if parts.any?
@@ -20,6 +21,10 @@ module ActiveAdminAddons
 
     def parts_to_html
       parts.flatten.join("\n").html_safe
+    end
+
+    def load_input_class
+      load_class(self.class.to_s.underscore.dasherize)
     end
 
     def load_control_attributes

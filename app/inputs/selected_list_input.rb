@@ -5,7 +5,6 @@ class SelectedListInput < ActiveAdminAddons::InputBase
   end
 
   def load_control_attributes
-    load_class("selected-list")
     load_class(@options[:class])
     load_data_attr(:model, value: model_name)
     load_data_attr(:method, value: method)
