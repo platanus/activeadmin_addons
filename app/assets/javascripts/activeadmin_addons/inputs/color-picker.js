@@ -1,6 +1,3 @@
-//= require ../palette-color-picker
-//= require_self
-
 $(function() {
   setupColorPicker();
 

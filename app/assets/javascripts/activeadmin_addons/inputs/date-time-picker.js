@@ -1,5 +1,3 @@
-//= require jquery.xdan.datetimepicker.full
-
 $(function() {
   setupDateTimePicker(document);
 

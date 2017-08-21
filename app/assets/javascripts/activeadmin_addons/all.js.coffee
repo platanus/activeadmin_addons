@@ -1,10 +1,12 @@
 #= require select2-full
+#= require jquery.xdan.datetimepicker.full
+#= require palette-color-picker
 
 #= require ./config
-#= require ./select2
-#= require ./search-select
-#= require ./nested-select
-#= require ./tags
-#= require ./selected-list
-#= require ./date-time-picker
-#= require ./color-picker
+#= require ./inputs/select2
+#= require ./inputs/search-select
+#= require ./inputs/nested-select
+#= require ./inputs/tags
+#= require ./inputs/selected-list
+#= require ./inputs/date-time-picker
+#= require ./inputs/color-picker
