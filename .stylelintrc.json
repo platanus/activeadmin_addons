@@ -1,4 +1,7 @@
 {
+  "ignoreFiles": [
+    "vendor/**/*.scss"
+  ],
   "rules": {
     "declaration-bang-space-before": "always",
     "declaration-bang-space-after": "never",
@@ -21,7 +24,9 @@
     "no-duplicate-selectors": true,
     "max-nesting-depth": 3,
     "selector-pseudo-element-colon-notation": "double",
-    "selector-no-qualifying-type": true,
+    "selector-no-qualifying-type": [true, {
+      "ignore": ["attribute", "class", "id"]
+    }],
     "shorthand-property-no-redundant-values": true,
     "declaration-block-semicolon-newline-after": "always-multi-line",
     "selector-list-comma-newline-after": "always",

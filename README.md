@@ -6,7 +6,7 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 
 ## What you get:
 
-  - [Range Filter](#range-filter): Filter your results using a numeric range (i.e. age between 18-30).
+  - [Numeric Range Filter](#numeric-range-filter): Filter your results using a numeric range (i.e. age between 18-30).
   - [Select2](#select2): Cool select boxes for everyone.
   - [Paperclip Integration](#paperclip-integration): Show thumbnails or icons on your lists.
   - [AASM Integration](#aasm-integration): Nice looking tags for states.
@@ -57,12 +57,12 @@ Installing this gem will enable the following changes by default:
 
 ## Addons
 
-### Range Filter
+### Numeric Range Filter
 
-To filter based on a range of values you can use `range_select` like this:
+To filter based on a range of values you can use `numeric_range_filter` like this:
 
 ```ruby
-filter :number, as: :range_select
+filter :number, as: :numeric_range_filter
 ```
 
 <img src="./docs/images/filter-range.png" height="150" />
