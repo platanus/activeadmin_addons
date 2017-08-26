@@ -16,24 +16,33 @@ $(function() {
     setupAjaxSearch();
     setupTags();
 
+    function getSelectOptions($el) {
+      var base = {
+            tags : $el.data('collection'),
+            width: $el.data('width') || DEFAULT_SELECT_WIDTH,
+          };
+
+      return $.extend({}, base, $el.data('selectOptions') || {});
+    }
+
     function setupTags() {
       $('.select2-tags', container).each(function(i, el) {
-        var model = $(el).data('model'),
-            method = $(el).data('method'),
-            width = $(el).data('width'),
-            selectOptions = {
-              width: width || DEFAULT_SELECT_WIDTH,
-              tags: $(el).data('collection')
-            };
+        var $el = $(el);
+
+        var model = $el.data('model'),
+            method = $el.data('method'),
+            selectOptions = getSelectOptions($el);
 
         if(!!model) {
           selectOptions.createSearchChoice = function() { return null; };
+
           var prefix = model + '_' + method;
-          $(el).on('select2-selecting', onItemAdded);
-          $(el).on('select2-removed', onItemRemoved);
+
+          $el.on('select2-selecting', onItemAdded);
+          $el.on('select2-removed', onItemRemoved);
         }
 
-        $(el).select2(selectOptions);
+        $el.select2(selectOptions);
 
         function onItemRemoved(event) {
           var itemId = '[id=\'' + prefix +  '_' + event.val + '\']';
