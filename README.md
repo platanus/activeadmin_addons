@@ -6,7 +6,7 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 
 ## What you get:
 
-  - [Range Filter](#range-filter): Filter your results using a numeric range (i.e. age between 18-30).
+  - [Numeric Range Filter](#numeric-range-filter): Filter your results using a numeric range (i.e. age between 18-30).
   - [Select2](#select2): Cool select boxes for everyone.
   - [Paperclip Integration](#paperclip-integration): Show thumbnails or icons on your lists.
   - [AASM Integration](#aasm-integration): Nice looking tags for states.
