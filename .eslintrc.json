@@ -162,6 +162,8 @@
     "sort-imports": 0,
     "template-curly-spacing": 2,
     "yield-star-spacing": [2, "before"],
+    "import/no-unresolved": [0],
+    "import/named": 0,
     "array-bracket-spacing": [2, "never"],
     "block-spacing": [2, "always"],
     "brace-style": [2, "1tbs", {
