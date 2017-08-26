@@ -1,0 +1,155 @@
+$cpfp-width: 220px;
+$cpfp-button-size: 28px;
+$cpfp-border: #bbb;
+$cpfp-background: #fff;
+
+// Button
+.palette-color-picker-button {
+  position: relative;
+  display: inline-block;
+  width: $cpfp-button-size;
+  height: $cpfp-button-size;
+  margin-right: 8px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="#f5c86c" d="M2 2h8v8H2z"/><path fill="#f56c6c" d="M12 2h8v8h-8z"/><path fill="#f46ac6" d="M22 2h8v8h-8z"/><path fill="#c3f167" d="M2 12h8v8H2z"/><path fill="#f3f3f3" d="M12 12h8v8h-8z"/><path fill="#c76cf5" d="M22 12h8v8h-8z"/><path fill="#69e369" d="M2 22h8v8H2z"/><path fill="#6bc6f4" d="M12 22h8v8h-8z"/><path fill="#6b6bf5" d="M22 22h8v8h-8z"/><path d="M9 3v6H3V3h6m1-1H2v8h8V2zm9 1v6h-6V3h6m1-1h-8v8h8V2zm9 1v6h-6V3h6m1-1h-8v8h8V2zM9 13v6H3v-6h6m1-1H2v8h8v-8zm9 1v6h-6v-6h6m1-1h-8v8h8v-8zm9 1v6h-6v-6h6m1-1h-8v8h8v-8zM9 23v6H3v-6h6m1-1H2v8h8v-8zm9 1v6h-6v-6h6m1-1h-8v8h8v-8zm9 1v6h-6v-6h6m1-1h-8v8h8v-8z" opacity=".25"/></svg>') center center no-repeat;
+  background-size: cover;
+  /*background: url(palette-color-picker-icon.svg) center center no-repeat;*/
+  cursor: pointer;
+
+  box-shadow: 0 0 0 1px $cpfp-border;
+  /*outline: 1px solid $cpfp-border;*/
+  border: 2px solid #fff;
+}
+
+// Bubble
+.palette-color-picker-bubble {
+  display: none;
+  margin: 12px 0;
+  position: absolute;
+  bottom: 100%;
+  width: $cpfp-width;
+  padding: 10px 8px 8px 8px;
+  border: 1px solid $cpfp-border;
+  border-radius: 3px;
+  background-color: #fff;
+
+  // Arrow bottom
+  &:after,
+  &:before {
+  	top: 100%;
+  	left: 14px;
+  	border: solid transparent;
+  	content: ' ';
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+  }
+  &:after {
+  	border-color: transparent;
+  	border-top-color: $cpfp-background;
+  	border-width: 8px;
+  	margin-left: -8px;
+  }
+  &:before {
+  	border-color: transparent;
+  	border-top-color: $cpfp-border;
+  	border-width: 9px;
+  	margin-left: -9px;
+  }
+
+  // Open below
+  &.downside {
+    bottom: auto;
+    top: 100%;
+
+    // Arow on top
+    &:after, &:before {
+      top: auto;
+    	bottom: 100%;
+    }
+    &:after {
+    	border-top-color: transparent;
+    	border-bottom-color: $cpfp-background;
+    }
+    &:before {
+      border-top-color: transparent;
+    	border-bottom-color: $cpfp-border;
+    }
+  }
+
+  .swatch {
+    position: relative;
+    display: inline-block;
+    font: 0/0 a;
+    width: 12.66%;
+    padding-top: 11.00%;
+    margin: 1% 2%;
+    outline: 1px solid $cpfp-border;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    overflow: hidden;
+
+
+    &.active {
+      outline-color: #000;
+
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    &.clear {
+      background-color: #fff;
+      &:before {
+        position: absolute;
+        content: '';
+        display: block;
+        top: -1px;
+        left: 0;
+        width: 100px;
+        height: 2px;
+        background-color: #e00;
+
+        transform-origin: 0 0;
+        transform:  rotate(45deg);
+      }
+    }
+  }
+
+  // x2 width swatches
+  &.double {
+    .swatch {
+      width: 29.30%;
+      padding-top: 11.00%;
+      margin: 1% 2%;
+      &.clear {
+        &:before {
+          transform:  rotate(22.5deg);
+        }
+      }
+    }
+  }
+
+  // full width swatches
+  &.wide {
+    .swatch {
+      width: 96.2%;
+      padding-top: 11.00%;
+      margin: 1% 2%;
+      &.clear {
+        width: 12.66%;
+      }
+    }
+  }
+
+  // Force open on left side
+  &.force-left {
+    left: -178px;
+    &:after,
+    &:before {
+      left: 188px;
+    }
+  }
+
+}
