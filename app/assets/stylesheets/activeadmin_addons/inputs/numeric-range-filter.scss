@@ -1,0 +1,12 @@
+.filter_numeric_range_filter {
+  input[type=number] {
+    width: 96px;
+    padding-right: 0;
+  }
+
+  .separator {
+    display: inline-block;
+    width: 12px;
+    text-align: center;
+  }
+}

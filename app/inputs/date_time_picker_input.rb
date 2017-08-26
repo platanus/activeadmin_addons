@@ -20,34 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-class DateTimePickerInput < Formtastic::Inputs::StringInput
-  mattr_accessor :default_datetime_picker_options do
-    {}
+class DateTimePickerInput < ActiveAdminAddons::InputBase
+  def load_control_attributes
+    load_class(@options[:class])
+    load_data_attr(:picker_options, value: datetime_picker_options)
+    load_attr(:maxlength, value: 19)
+    load_attr(:value, value: formatted_input_value)
   end
 
-  mattr_accessor :format do
-    '%Y-%m-%d %H:%M'
-  end
-
-  def input_html_options(input_name = nil)
-    opts = {}
-    opts[:class] = [options[:class], 'date-time-picker'].compact.join(' ')
-    opts[:data] ||= {}
-    opts[:data].merge!(picker_options: datetime_picker_options)
-    opts[:value] ||= input_value(input_name)
-    opts[:maxlength] = 19
-    opts
-  end
-
-  def input_value(input_name = nil)
-    if options[:input_html] && options[:input_html].key?(:value)
-      return options[:input_html][:value]
-    end
-
-    v = !object.nil? ? object.public_send(input_name || method) : ''
+  def formatted_input_value
+    v = input_value
 
     if v.is_a?(Time)
-      return DateTime.new(v.year, v.month, v.day, v.hour, v.min, v.sec).strftime(format)
+      return DateTime.new(v.year, v.month, v.day, v.hour, v.min, v.sec).strftime(
+        ActiveadminAddons.datetime_picker_input_format
+      )
     end
 
     v.to_s
@@ -64,7 +51,7 @@ class DateTimePickerInput < Formtastic::Inputs::StringInput
   protected
 
   def default_picker_options
-    res = default_datetime_picker_options.map do |k, v|
+    res = ActiveadminAddons.datetime_picker_default_options.map do |k, v|
       if v.respond_to?(:call) || v.is_a?(Proc)
         [k, v.call]
       else
