@@ -1,4 +1,7 @@
 {
+  "ignoreFiles": [
+    "vendor/**/*.scss"
+  ],
   "rules": {
     "declaration-bang-space-before": "always",
     "declaration-bang-space-after": "never",

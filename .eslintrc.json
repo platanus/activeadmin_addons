@@ -7,7 +7,14 @@
   "parserOptions": {
     "ecmaVersion": 5
   },
-  "plugins": [],
+  "plugins": ["import"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".json"]
+      }
+    }
+  },
   "globals": {
     "angular": 1,
     "$": 1,
@@ -162,6 +169,32 @@
     "sort-imports": 0,
     "template-curly-spacing": 2,
     "yield-star-spacing": [2, "before"],
+    "import/no-unresolved": [0],
+    "import/named": 0,
+    "import/default": 0,
+    "import/namespace": 0,
+    "import/export": 2,
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
+    "import/no-deprecated": 0,
+    "import/no-extraneous-dependencies": [0, {
+      "devDependencies": false,
+      "optionalDependencies": false
+    }],
+    "import/no-mutable-exports": 2,
+    "import/no-commonjs": 0,
+    "import/no-amd": 2,
+    "import/no-nodejs-modules": 0,
+    "import/imports-first": [2, "absolute-first"],
+    "import/no-duplicates": 2,
+    "import/no-namespace": 0,
+    "import/extensions": [0, "never"],
+    "import/order": [0, {
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+      "newlines-between": "never"
+    }],
+    "import/newline-after-import": 2,
+    "import/prefer-default-export": 2,
     "array-bracket-spacing": [2, "never"],
     "block-spacing": [2, "always"],
     "brace-style": [2, "1tbs", {
