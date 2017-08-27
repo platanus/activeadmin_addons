@@ -32,6 +32,7 @@ ActiveAdmin.register Invoice do
     attributes_table do
       row :id
       tag_row :state
+      state_row :aasm_state
       bool_row :paid
       list_row :skills, list_type: :ol
       list_row :contact, localize: true

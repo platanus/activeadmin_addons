@@ -28,6 +28,8 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.12.0)
+      concurrent-ruby (~> 1.0)
     actionmailer (4.1.13)
       actionpack (= 4.1.13)
       actionview (= 4.1.13)
@@ -87,6 +89,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    concurrent-ruby (1.0.5)
     database_cleaner (1.5.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
@@ -269,6 +272,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activeadmin!
   activeadmin_addons!
   capybara
