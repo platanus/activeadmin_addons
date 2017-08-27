@@ -1,5 +1,5 @@
 module ActiveAdminAddons
-  class PaperclipAttachmentBuilder < CustomBuilder
+  class AttachmentBuilder < CustomBuilder
     KNOWN_EXTENSIONS = %w{
       3gp 7z ace ai aif aiff amr asf asx bat bin bmp bup cab cbr cda cdl cdr chm
       dat divx dll dmg doc docx dss dvf dwg eml eps exe fla flv gif gz hqx htm html
@@ -14,7 +14,7 @@ module ActiveAdminAddons
     end
 
     def for_ext(file_extension)
-      ext = file_extension.start_with?('.') ? file_extension[1..-1] : file_extension
+      ext = file_extension.start_with?(".") ? file_extension[1..-1] : file_extension
       ext.downcase!
       ext = "unknown" unless KNOWN_EXTENSIONS.include?(ext)
       "fileicons/file_extension_#{ext}.png"
@@ -33,19 +33,19 @@ module ActiveAdminAddons
     end
 
     def label_text
-      label =
-        if options[:label].nil?
-          file.original_filename
-        elsif options[:label].is_a? Proc
-          options[:label].call(model).to_s
-        else
-          options[:label].to_s
-        end
+      label = if options[:label].nil?
+                file.original_filename
+              elsif options[:label].is_a? Proc
+                options[:label].call(model).to_s
+              else
+                options[:label].to_s
+              end
+
       options[:truncate] ? context.truncate(label) : label
     end
 
     def render
-      raise 'you need to pass a paperclip attribute' unless file.respond_to?(:url)
+      raise "you need to pass a paperclip attribute" unless file.respond_to?(:url)
       options[:truncate] = options.fetch(:truncate, true)
       return nil unless file.exists?
       context.link_to(build_label, file.url, target: "_blank", class: "attachment-link")
@@ -55,19 +55,6 @@ module ActiveAdminAddons
       model.send(attribute)
     end
   end
-
-  module ::ActiveAdmin
-    module Views
-      class TableFor
-        def attachment_column(*args, &block)
-          column(*args) { |model| PaperclipAttachmentBuilder.render(self, model, *args, &block) }
-        end
-      end
-      class AttributesTable
-        def attachment_row(*args, &block)
-          row(*args) { |model| PaperclipAttachmentBuilder.render(self, model, *args, &block) }
-        end
-      end
-    end
-  end
 end
+
+ActiveAdminAddons::AttachmentBuilder.create_view_methods

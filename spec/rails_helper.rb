@@ -15,11 +15,6 @@ require 'pry'
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each { |f| require f }
 
-# Setup Some Admin stuff for us to play with
-include ActiveAdminHelpers
-include DataLoaders
-include CapybaraHelpers
-
 Paperclip.options[:log] = false
 
 RSpec.configure do |config|
@@ -27,7 +22,6 @@ RSpec.configure do |config|
   config.filter_run focus: true
   config.filter_run_excluding skip: true
   config.run_all_when_everything_filtered = true
-
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
@@ -42,4 +36,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.include ActiveAdminHelpers
+  config.include DataLoaders
+  config.include CapybaraHelpers
 end

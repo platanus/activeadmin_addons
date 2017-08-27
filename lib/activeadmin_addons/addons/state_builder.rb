@@ -30,19 +30,6 @@ module ActiveAdminAddons
       @class_bindings ||= DEFAULT_CLASS_BINDINGS.merge(options[:states] || {})
     end
   end
-
-  module ::ActiveAdmin
-    module Views
-      class TableFor
-        def state_column(*args, &block)
-          column(*args) { |model| StateBuilder.render(self, model, *args, &block) }
-        end
-      end
-      class AttributesTable
-        def state_row(*args, &block)
-          row(*args) { |model| StateBuilder.render(self, model, *args, &block) }
-        end
-      end
-    end
-  end
 end
+
+ActiveAdminAddons::StateBuilder.create_view_methods

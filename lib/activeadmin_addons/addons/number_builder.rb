@@ -12,25 +12,14 @@ module ActiveAdminAddons
 
     def render
       options[:as] = options.fetch(:as, :delimiter)
+
       if !NUMBER_TYPES.keys.include?(options[:as])
         raise "Invalid number type. Options are: #{NUMBER_TYPES.keys}"
       end
+
       context.send(NUMBER_TYPES[options[:as]], data, options)
     end
   end
-
-  module ::ActiveAdmin
-    module Views
-      class TableFor
-        def number_column(*args, &block)
-          column(*args) { |model| NumberBuilder.render(self, model, *args, &block) }
-        end
-      end
-      class AttributesTable
-        def number_row(*args, &block)
-          row(*args) { |model| NumberBuilder.render(self, model, *args, &block) }
-        end
-      end
-    end
-  end
 end
+
+ActiveAdminAddons::NumberBuilder.create_view_methods

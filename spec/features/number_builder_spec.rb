@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-describe "Number", type: :feature do
-  def create_number_invoice
-    Invoice.create(number: 4684.31)
-  end
+describe "Number Builder", type: :feature do
+  before { create_invoice(number: 4684.31) }
 
   context "without options" do
     before do
@@ -11,7 +9,6 @@ describe "Number", type: :feature do
         number_column :number
       end
 
-      create_number_invoice
       visit admin_invoices_path
     end
 
@@ -26,7 +23,6 @@ describe "Number", type: :feature do
         number_column :number, as: :currency, unit: "€", separator: ",", delimiter: '.'
       end
 
-      create_number_invoice
       visit admin_invoices_path
     end
 
@@ -43,7 +39,7 @@ describe "Number", type: :feature do
         end
       end
 
-      visit admin_invoice_path(create_number_invoice)
+      visit admin_invoice_path(@invoice)
     end
 
     it "shows formatted number" do
@@ -57,7 +53,7 @@ describe "Number", type: :feature do
         number_row("Mi número", :number, as: :percentage)
       end
 
-      visit admin_invoice_path(create_number_invoice)
+      visit admin_invoice_path(@invoice)
     end
 
     it "shows custom label" do

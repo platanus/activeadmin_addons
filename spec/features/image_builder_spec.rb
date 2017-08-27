@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Paperclip Image", type: :feature do
+describe "Image Builder", type: :feature do
   after do
     Invoice.all.each do |invoice|
       invoice.photo = nil
@@ -9,7 +9,7 @@ describe "Paperclip Image", type: :feature do
   end
 
   def create_photo_invoice
-    Invoice.create photo: File.new(ENGINE_RAILS_ROOT + 'spec/assets/Rails.png')
+    create_invoice(photo: File.new(ENGINE_RAILS_ROOT + 'spec/assets/Rails.png'))
   end
 
   context "without options" do

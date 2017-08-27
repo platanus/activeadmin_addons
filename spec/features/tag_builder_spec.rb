@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Enum tag", type: :feature do
+describe "Tag Builder", type: :feature do
   context "using Enumerize" do
     context "changing state value" do
       before do
@@ -8,7 +8,7 @@ describe "Enum tag", type: :feature do
           tag_column :state
         end
 
-        Invoice.create(state: :approved)
+        create_invoice(state: :approved)
         visit admin_invoices_path
       end
 
@@ -29,7 +29,7 @@ describe "Enum tag", type: :feature do
           end
         end
 
-        visit admin_invoice_path(Invoice.create)
+        visit admin_invoice_path(create_invoice)
       end
 
       it "localizes the value returned from the block" do
@@ -47,7 +47,7 @@ describe "Enum tag", type: :feature do
           tag_row("custom state", :state)
         end
 
-        visit admin_invoice_path(Invoice.create)
+        visit admin_invoice_path(create_invoice)
       end
 
       it "shows custom label" do
@@ -63,7 +63,7 @@ describe "Enum tag", type: :feature do
           tag_column :status
         end
 
-        Invoice.create(status: :archived)
+        create_invoice(status: :archived)
         visit admin_invoices_path
       end
 

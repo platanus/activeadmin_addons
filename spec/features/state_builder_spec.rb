@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "State Values", type: :feature do
+describe "State Builder", type: :feature do
   context "changing state value" do
     before do
       register_index(Invoice) do

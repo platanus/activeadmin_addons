@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Color Picker", type: :feature do
+describe "Color Builder", type: :feature do
   context "Form", js: true  do
     def picker_btn
       find("div[data-target=\"invoice[color]\"]")

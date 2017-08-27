@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Bool values", type: :feature do
+describe "Bool Builder", type: :feature do
   context "shows boolean fields" do
     before do
       register_index(Invoice) do
@@ -10,7 +10,7 @@ describe "Bool values", type: :feature do
 
     context "with true value" do
       before do
-        Invoice.create(paid: true)
+        create_invoice(paid: true)
         visit admin_invoices_path
       end
 
@@ -26,7 +26,7 @@ describe "Bool values", type: :feature do
 
     context "with false value" do
       before do
-        Invoice.create(paid: false)
+        create_invoice(paid: false)
         visit admin_invoices_path
       end
 
@@ -48,11 +48,11 @@ describe "Bool values", type: :feature do
           false
         end
       end
-      @invoice = Invoice.create
+
+      visit admin_invoice_path(create_invoice)
     end
 
     it "localizes the value returned from the block" do
-      visit admin_invoice_path(@invoice)
       expect(page).to have_content 'no pagada'
     end
   end
@@ -62,11 +62,12 @@ describe "Bool values", type: :feature do
       register_show(AdminUser) do
         bool_row(:id)
       end
-      @admin = AdminUser.create!(email: "admin@platan.us", password: "12345678")
+
+      create_admin
+      visit admin_admin_user_path(@admin)
     end
 
     it "shows the default true localized value" do
-      visit admin_admin_user_path(@admin)
       expect(page).to have_content 'ok'
     end
   end
@@ -76,11 +77,11 @@ describe "Bool values", type: :feature do
       register_show(Invoice) do
         bool_row(:id)
       end
-      @invoice = Invoice.create
+
+      visit admin_invoice_path(create_invoice)
     end
 
     it "shows the models default value" do
-      visit admin_invoice_path(@invoice)
       expect(page).to have_content 'he'
     end
   end
@@ -90,11 +91,11 @@ describe "Bool values", type: :feature do
       register_show(Invoice) do
         bool_row("Already paid", :paid)
       end
-      @invoice = Invoice.create
+
+      visit admin_invoice_path(create_invoice)
     end
 
     it "shows custom label" do
-      visit admin_invoice_path(@invoice)
       expect(page).to have_content 'Already Paid'
     end
   end

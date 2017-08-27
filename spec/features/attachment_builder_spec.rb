@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Paperclip Attachment", type: :feature do
+describe "Attachment Builder", type: :feature do
   after do
     Invoice.all.each do |invoice|
       invoice.attachment = nil
@@ -9,8 +9,8 @@ describe "Paperclip Attachment", type: :feature do
   end
 
   def create_attachment_invoice
-    Invoice.create attachment: File.new(
-      ENGINE_RAILS_ROOT + 'spec/assets/entradas_para_dragon_ball_z.pdf')
+    file_path = ENGINE_RAILS_ROOT + 'spec/assets/entradas_para_dragon_ball_z.pdf'
+    create_invoice(attachment: File.new(file_path))
   end
 
   context "without options" do
@@ -68,9 +68,9 @@ describe "Paperclip Attachment", type: :feature do
         attachment_column :attachment, label: proc { |inv| inv.city.name }
       end
 
-      invoice = create_attachment_invoice
+      create_attachment_invoice
       city = City.create(name: "Gothic City")
-      invoice.update(city: city)
+      @invoice.update(city: city)
       visit admin_invoices_path
     end
 

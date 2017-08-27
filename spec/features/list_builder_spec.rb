@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "List", type: :feature do
+describe "List Builder", type: :feature do
   context "wihtout options" do
     before do
       register_index(Invoice) do
@@ -8,13 +8,14 @@ describe "List", type: :feature do
         list_column :contact
       end
 
-      Invoice.create
+      create_invoice
       visit admin_invoices_path
     end
 
     it "shows list from array" do
       expect(page.html).to include(
-        "<ul><li>Animation</li><li>Branding</li><li>Creative Director</li></ul>")
+        "<ul><li>Animation</li><li>Branding</li><li>Creative Director</li></ul>"
+      )
     end
 
     it "shows list from hash" do
@@ -29,7 +30,7 @@ describe "List", type: :feature do
         list_column :contact, localize: true
       end
 
-      Invoice.create
+      create_invoice
       visit admin_invoices_path
     end
 
@@ -45,7 +46,7 @@ describe "List", type: :feature do
         list_row :details, localize: true
       end
 
-      visit admin_invoice_path(Invoice.create)
+      visit admin_invoice_path(create_invoice)
     end
 
     it "shows nested html lists" do
@@ -65,12 +66,13 @@ describe "List", type: :feature do
         list_row :contact
       end
 
-      visit admin_invoice_path(Invoice.create)
+      visit admin_invoice_path(create_invoice)
     end
 
     it "shows ordered list" do
       expect(page.html).to include(
-        "<ol><li>Animation</li><li>Branding</li><li>Creative Director</li></ol>")
+        "<ol><li>Animation</li><li>Branding</li><li>Creative Director</li></ol>"
+      )
     end
 
     it "shows unordred list" do
