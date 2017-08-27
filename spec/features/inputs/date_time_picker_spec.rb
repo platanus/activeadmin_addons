@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Date Time Picker", type: :feature do
+describe "Date Time Picker Input", type: :feature do
   context "Form", js: true do
     def picker_input
       find("#invoice_updated_at")
