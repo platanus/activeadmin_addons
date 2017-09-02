@@ -217,6 +217,8 @@ filter :category_id, as: :search_select_filter
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+If you want to collaborate, please check [the rules](docs/CONTRIBUTING.md) first.
+
 ## Credits
 
 Thank you [contributors](https://github.com/platanus/activeadmin_addons/graphs/contributors)!
