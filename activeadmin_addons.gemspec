@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/LineLength
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
@@ -14,11 +15,12 @@ Gem::Specification.new do |s|
   s.description = "Set of addons to help with the activeadmin ui"
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "railties"
-  s.add_dependency "select2-rails", "~> 3.5.9"
+  s.add_dependency "select2-rails", "~> 4.0"
   s.add_dependency "xdan-datetimepicker-rails", "~> 2.5.1"
+  s.add_dependency "require_all"
 
   s.add_development_dependency "rails", ">= 4"
   s.add_development_dependency "sqlite3"
@@ -31,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "capybara"
   s.add_development_dependency "enumerize", "~> 2.0"
   s.add_development_dependency "paperclip"
+  s.add_development_dependency "aasm"
   s.add_development_dependency "selenium-webdriver"
-  s.add_development_dependency "poltergeist"
   s.add_development_dependency "database_cleaner"
 end

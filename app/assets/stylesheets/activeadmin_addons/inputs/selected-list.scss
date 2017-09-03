@@ -1,0 +1,27 @@
+$selected-list-btn-color: #aaa;
+$selected-list-btn-hover-color: #333;
+
+.selected-list-container {
+  display: inline-block;
+  width: 80%;
+
+  .selected-item {
+    height: 25px;
+  }
+}
+
+.selected-item {
+  display: table;
+  cursor: pointer;
+
+  &::before {
+    color: $selected-list-btn-color;
+    content: '\2716\00a0\00a0';
+  }
+
+  &:hover {
+    &::before {
+      color: $selected-list-btn-hover-color;
+    }
+  }
+}

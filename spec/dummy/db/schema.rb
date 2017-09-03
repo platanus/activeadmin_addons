@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426161032) do
+ActiveRecord::Schema.define(version: 20170827225107) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(version: 20160426161032) do
     t.integer  "position"
     t.string   "color"
     t.float    "amount"
+    t.integer  "client_id"
+    t.string   "aasm_state"
   end
 
   add_index "invoices", ["category_id"], name: "index_invoices_on_category_id"

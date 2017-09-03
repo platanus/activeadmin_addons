@@ -1,10 +1,13 @@
 require 'enumerize'
 require 'paperclip'
+require 'aasm'
 
 class Invoice < ActiveRecord::Base
   extend ::Enumerize
   include Paperclip::Glue
+  include AASM
 
+  belongs_to :buyer, class_name: "AdminUser", foreign_key: :client_id
   belongs_to :category
   belongs_to :city
   has_and_belongs_to_many :items
@@ -22,7 +25,24 @@ class Invoice < ActiveRecord::Base
     thumb: "100x100>"
   }
 
-  validates_attachment :photo, content_type: { content_type: /\Aimage\/.*\Z/ }
+  validates_attachment :photo, content_type: { content_type: %r{\Aimage\/.*\Z} }
+
+  # Uncomment to test validations
+  # validates :city, :city_id, :category, :category_id, :updated_at, :number, :item_ids, :color,
+  #   :state, :amount, presence: true
+
+  aasm do
+    state :pending, initial: true
+    state :accepted, :rejected
+
+    event :accept do
+      transitions from: :pending, to: :accepted
+    end
+
+    event :reject do
+      transitions from: :pending, to: :rejected
+    end
+  end
 
   def display_name
     number

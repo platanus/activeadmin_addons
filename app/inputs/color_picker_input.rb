@@ -1,4 +1,4 @@
-class ColorPickerInput < Formtastic::Inputs::StringInput
+class ColorPickerInput < ActiveAdminAddons::InputBase
   DEFAULT_PALETTE = [
     "#000000",
     "#333333",
@@ -23,23 +23,15 @@ class ColorPickerInput < Formtastic::Inputs::StringInput
     "#FF99FF",
     "#FFCCCC",
     "#FFCC99",
-    "#FFFFFF",
+    "#FFFFFF"
   ]
 
-  def to_html
-    input_wrapping do
-      [
-        label_html,
-        builder.hidden_field(method, input_html_options),
-      ].join("\n").html_safe
-    end
+  def render_custom_input
+    concat(label_html)
+    concat(builder.hidden_field(method, input_html_options))
   end
 
-  def input_html_options
-    opts = {}
-    opts["class"] = 'color-picker'
-    opts["data-palette"] = (@options[:palette] || DEFAULT_PALETTE).to_json
-    opts["value"] = @object.public_send(method)
-    super.merge(opts)
+  def load_control_attributes
+    load_data_attr(:palette, default: DEFAULT_PALETTE, formatter: :to_json)
   end
 end
