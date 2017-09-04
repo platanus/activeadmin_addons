@@ -18,19 +18,17 @@ module ActiveAdminAddons
       valid_object.class
     end
 
+    def association_name
+      valid_method.to_s.singularize.chomp("_id")
+    end
+
     def method_model
-      association_name = valid_method.to_s.singularize.chomp("_id")
-      association_opts = object_class.reflect_on_association(association_name).try(:options)
-      association_klass = if association_opts && association_opts.has_key?(:class_name)
-                            association_opts[:class_name]
-                          else
-                            association_name.classify
-                          end
-      association_klass.constantize
+      object_class.reflect_on_association(association_name).try(:klass) ||
+        association_name.classify.constantize
     end
 
     def tableize_method
-      valid_method.to_s.singularize.chomp("_id").tableize
+      association_name.tableize
     end
 
     def input_related_items
