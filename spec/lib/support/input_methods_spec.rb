@@ -59,6 +59,15 @@ describe ActiveAdminAddons::InputMethods do
 
       it { expect(instance.method_model).to be(AdminUser) }
     end
+
+    context "when class_name isn't defined and object is a namespaced class" do
+      let(:object) { Store::Car.create name: "Fiesta", year: 2017 }
+      let(:method) { :manufacturer_id }
+
+      it "looks up the association with namespace" do
+        expect(instance.method_model).to be(Store::Manufacturer)
+      end
+    end
   end
 
   describe "#tableize_method" do
