@@ -12,6 +12,7 @@ $(function() {
       allowBlank: true,
       defaultSelect: false,
       validateOnBlur: false,
+      scrollInput: false,
     };
 
     var entries = $(container).find('input.date-time-picker-input');
