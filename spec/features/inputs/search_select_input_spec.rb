@@ -149,4 +149,24 @@ describe "Search Select Input", type: :feature do
       expect_select2_result_text_to_eq(1, @category2.name)
     end
   end
+
+  context "with different predicate" do
+    before do
+      register_form(Invoice, false) do |f|
+        f.input :category_id, as: :search_select, predicate: :end
+      end
+
+      visit edit_admin_invoice_path(@invoice)
+    end
+
+    it "does not show any result when searched with prefix", js: true do
+      fill_select2_input("Cat")
+      expect_select2_results_count_to_eq(0)
+    end
+
+    it "shows results when searched with suffix", js: true do
+      fill_select2_input("2")
+      expect_select2_result_text_to_eq(1, @category2.name)
+    end
+  end
 end

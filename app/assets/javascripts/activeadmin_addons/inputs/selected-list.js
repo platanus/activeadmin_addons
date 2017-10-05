@@ -14,15 +14,17 @@ $(function() {
     });
 
     $('.selected-list-input', container).each(function(i, el) {
-      var url = $(el).data('url');
-      var fields = $(el).data('fields');
-      var displayName = $(el).data('display-name');
-      var method = $(el).data('method');
-      var model = $(el).data('model');
+      var element = $(el);
+      var url = element.data('url');
+      var fields = element.data('fields');
+      var predicate = element.data('predicate');
+      var displayName = element.data('display-name');
+      var method = element.data('method');
+      var model = element.data('model');
       var prefix = model + '_' + method;
-      var responseRoot = $(el).data('response-root');
-      var minimumInputLength = $(el).data('minimum-input-length');
-      var order = $(el).data('order');
+      var responseRoot = element.data('response-root');
+      var minimumInputLength = element.data('minimum-input-length');
+      var order = element.data('order');
 
       var selectOptions = {
         minimumInputLength: minimumInputLength,
@@ -35,7 +37,7 @@ $(function() {
           data: function(params) {
             var textQuery = { m: 'or' };
             fields.forEach(function(field) {
-              textQuery[field + '_contains'] = params.term;
+              textQuery[field + '_' + predicate] = params.term;
             });
 
             var query = {
