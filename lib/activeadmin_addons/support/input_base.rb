@@ -42,5 +42,9 @@ module ActiveAdminAddons
     def concat(part)
       parts << part
     end
+
+    def input_html_model
+      input_html_options[:id].chomp('_' + method.to_s)
+    end
   end
 end

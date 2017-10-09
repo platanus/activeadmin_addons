@@ -10,7 +10,7 @@ class TagsInput < ActiveAdminAddons::InputBase
   end
 
   def load_control_attributes
-    load_data_attr(:model, value: model_name)
+    load_data_attr(:model, default: input_html_model)
     load_data_attr(:method, value: method)
     load_data_attr(:width, default: "80%")
 
