@@ -1,4 +1,6 @@
-class ColorPickerInput < ActiveAdminAddons::InputBase
+class ColorPickerInput < Formtastic::Inputs::StringInput
+  include ActiveAdminAddons::InputBase
+
   DEFAULT_PALETTE = [
     "#000000",
     "#333333",

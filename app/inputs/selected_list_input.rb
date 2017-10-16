@@ -1,4 +1,6 @@
-class SelectedListInput < ActiveAdminAddons::InputBase
+class SelectedListInput < Formtastic::Inputs::SelectInput
+  include ActiveAdminAddons::InputBase
+
   def render_custom_input
     concat(label_html)
     concat(render_control_wrapper)

@@ -1,4 +1,5 @@
-class SearchSelectInput < ActiveAdminAddons::InputBase
+class SearchSelectInput < Formtastic::Inputs::SelectInput
+  include ActiveAdminAddons::InputBase
   include ActiveAdminAddons::SelectHelpers
 
   def render_custom_input

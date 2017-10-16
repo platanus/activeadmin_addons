@@ -1,4 +1,5 @@
-class NumericRangeFilterInput < ActiveAdminAddons::InputBase
+class NumericRangeFilterInput < Formtastic::Inputs::StringInput
+  include ActiveAdminAddons::InputBase
   include ActiveAdminAddons::FilterInput
 
   def render_custom_input

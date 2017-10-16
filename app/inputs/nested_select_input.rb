@@ -1,4 +1,6 @@
-class NestedSelectInput < ActiveAdminAddons::InputBase
+class NestedSelectInput < Formtastic::Inputs::StringInput
+  include ActiveAdminAddons::InputBase
+
   def to_html
     for_each_level { |attribute, data| concat(builder.input(attribute, level_options(data))) }
     parts_to_html

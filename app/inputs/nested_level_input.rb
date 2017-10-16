@@ -1,4 +1,5 @@
-class NestedLevelInput < ActiveAdminAddons::InputBase
+class NestedLevelInput < Formtastic::Inputs::SelectInput
+  include ActiveAdminAddons::InputBase
   include ActiveAdminAddons::SelectHelpers
 
   def render_custom_input
