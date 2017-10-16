@@ -14,15 +14,14 @@ module ActiveAdminAddons
     end
 
     def initial_collection_to_select_options
-      initial_options = [[nil]] # add blank option
       selected = selected_item
 
       if selected
         selected_option = item_to_select_option(selected)
-        initial_options << [selected_option[:text], selected_option[:id]]
+        [[selected_option[:text], selected_option[:id]]]
+      else
+        [[nil]] # add blank option
       end
-
-      initial_options
     end
 
     def collection_to_select_options

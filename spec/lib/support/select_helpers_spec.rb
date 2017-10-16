@@ -42,7 +42,7 @@ describe ActiveAdminAddons::SelectHelpers do
   end
 
   describe "#initial_collection_to_select_options" do
-    it { expect(instance.initial_collection_to_select_options).to eq([[nil], ["Item #1", 1]]) }
+    it { expect(instance.initial_collection_to_select_options).to eq([["Item #1", 1]]) }
     check_invalid_options(:initial_collection_to_select_options)
 
     context "with no selected item" do
