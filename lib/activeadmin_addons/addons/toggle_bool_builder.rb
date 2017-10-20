@@ -4,6 +4,7 @@ module ActiveAdminAddons
 
     def render
       raise ArgumentError, 'Block should not be used in toggle bool columns' if block
+      return if conditional_eval_hide?
       context.div class: 'toggle-bool-switches-container' do
         [true, false].each do |value|
           context.span switch_image_for value
@@ -27,6 +28,16 @@ module ActiveAdminAddons
         'data-value': value,
         'data-url': context.resource_path(model)
       )
+    end
+
+    def conditional_eval_hide?
+      [:if, :unless].any? do |cond|
+        if options[cond]
+          raise ArgumentError, "'#{cond}' option should be a proc" unless options[cond].is_a?(Proc)
+          result = options[cond].call(model)
+          cond == :if ? !result : result
+        end
+      end
     end
   end
 end
