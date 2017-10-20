@@ -3,6 +3,7 @@ module ActiveAdminAddons
     SWITCHES_IMAGES_SIZE = "40x16"
 
     def render
+      raise ArgumentError, 'Block should not be used in toggle bool columns' if block
       context.div class: 'toggle-bool-switches-container' do
         [true, false].each do |value|
           context.span switch_image_for value
