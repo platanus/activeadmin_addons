@@ -17,7 +17,7 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
     load_class(@options[:class])
     load_data_attr(:fields, default: ["name"], formatter: :to_json)
     load_data_attr(:model, value: model_name)
-    load_data_attr(:display_name, default: "name")
+    load_data_attr(:display_name, default: default_display_name)
     load_data_attr(:minimum_input_length, default: 1)
     load_data_attr(:url, default: url_from_method)
     load_data_attr(:response_root, default: tableize_method)

@@ -62,5 +62,16 @@ module ActiveAdminAddons
       valid_object.singleton_class.send(:attr_accessor, attribute_name)
       attribute_name
     end
+
+    def default_display_name
+      (ActiveadminAddons.display_name_methods - association_methods).detect do |method|
+        valid_object.respond_to?(method)
+      end || :name
+    end
+
+    def association_methods
+      return [] unless object_class.respond_to? :reflect_on_all_associations
+      object_class.reflect_on_all_associations.map(&:name)
+    end
   end
 end
