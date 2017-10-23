@@ -22,6 +22,15 @@ module ActiveadminAddons
     @display_name_methods ||= ActiveAdmin.application.display_name_methods
   end
 
+  def default_display_name(object)
+    (display_name_methods - association_methods(object)).detect { |method| object.respond_to?(method) }
+  end
+
+  def association_methods(object)
+    return [] unless object.class.respond_to?(:reflect_on_all_associations)
+    object.class.reflect_on_all_associations.map(&:name)
+  end
+
   def setup
     yield self
     require "activeadmin_addons"

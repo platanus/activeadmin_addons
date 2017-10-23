@@ -64,14 +64,11 @@ module ActiveAdminAddons
     end
 
     def default_display_name
-      (ActiveadminAddons.display_name_methods - association_methods).detect do |method|
-        valid_object.respond_to?(method)
-      end || :name
+      ActiveadminAddons.default_display_name(valid_object)
     end
 
     def association_methods
-      return [] unless object_class.respond_to? :reflect_on_all_associations
-      object_class.reflect_on_all_associations.map(&:name)
+      ActiveadminAddons.association_methods(valid_object)
     end
   end
 end
