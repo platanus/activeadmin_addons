@@ -1,7 +1,10 @@
 module ActiveadminAddons
   extend self
 
-  attr_writer :default_select, :datetime_picker_default_options, :datetime_picker_input_format, :display_name_methods
+  attr_writer :default_select,
+              :datetime_picker_default_options,
+              :datetime_picker_input_format,
+              :display_name_methods
 
   def default_select
     return "select2" unless @default_select
@@ -23,7 +26,8 @@ module ActiveadminAddons
   end
 
   def default_display_name(object)
-    (display_name_methods - association_methods(object)).detect { |method| object.respond_to?(method) }
+    methods = display_name_methods - association_methods(object)
+    methods.detect { |method| object.respond_to?(method) }
   end
 
   def association_methods(object)

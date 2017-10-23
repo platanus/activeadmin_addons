@@ -42,9 +42,10 @@ module ActiveAdminAddons
 
     def item_to_select_option(item)
       return unless item
+      display_name = (valid_options[:display_name] || ActiveadminAddons.default_display_name(item))
       {
         id: item.send((valid_options[:value] || :id)),
-        text: item.send((valid_options[:display_name] || ActiveadminAddons.default_display_name(item)))
+        text: item.send(display_name)
       }
     end
 
