@@ -21,8 +21,8 @@ $(function() {
         alert(errorMsg);
       },
       success: function(data) {
-        boolSwitch.hide();
-        otherSwitch.show();
+        boolSwitch.addClass('hidden-switch');
+        otherSwitch.removeClass('hidden-switch');
         if(!boolSwitch.hasClass('notify-success')) return;
           $(function() {
              var successMsg = 'Update Successful!';
