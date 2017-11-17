@@ -15,7 +15,7 @@ module ActiveAdminAddons
     def switch_image_for(value)
       img_tag_class = 'toggle-bool-switch'
       img_tag_class += ' hidden-switch' if value == !data
-      img_tag_class += ' notify-success' if options[:notify]
+      img_tag_class += ' notify-success' if options[:success_message]
 
       context.image_tag(
         "switches/switch_#{value ? :on : :off}.png",
@@ -26,7 +26,8 @@ module ActiveAdminAddons
         'data-object_id': model.id,
         'data-field': attribute,
         'data-value': value,
-        'data-url': context.resource_path(model)
+        'data-url': context.resource_path(model),
+        'data-success_message': options[:success_message]
       )
     end
 

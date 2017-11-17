@@ -9,6 +9,7 @@ $(function() {
     var switchId = boolSwitch.attr('id');
     var otherSwitch = $('#' + switchId.substr(0, switchId.lastIndexOf('-') + 1) + otherValue);
     var url = boolSwitch.data('url');
+    var successMessage = boolSwitch.data('success_message');
     var data = { id: objectId };
     data[model] = {};
     data[model][field] = otherValue;
@@ -26,7 +27,7 @@ $(function() {
         if (!boolSwitch.hasClass('notify-success')) return;
         $(function() {
           var successMsg = 'Update Successful!';
-          setTimeout(alert(successMsg), 500);
+          setTimeout(alert(successMessage), 500);
         });
       },
       type: 'PATCH',
