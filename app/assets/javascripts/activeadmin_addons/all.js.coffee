@@ -10,3 +10,4 @@
 #= require ./inputs/selected-list
 #= require ./inputs/date-time-picker
 #= require ./inputs/color-picker
+#= require ./addons/toggle_bool

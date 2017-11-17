@@ -1,0 +1,11 @@
+.toggle-bool-switches-container {
+  text-align: center;
+
+  .toggle-bool-switch {
+    cursor: pointer;
+
+    &.hidden-switch {
+      display: none;
+    }
+  }
+}

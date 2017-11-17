@@ -13,6 +13,7 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 - [AASM Integration](#aasm-integration): nice looking tags for states.
 - [Enumerize and Rails Enum Integration](#enumerize-and-rails-enum-integration): nice looking tags for enums.
 - [Boolean Values](#boolean-values): beautiful boolean values.
+- [Toggleable Booleans](#toggleable-boolean-columns): have switches to toggle values directly at the index
 - [Number Formatting](#number-formatting): format you currencies with ease.
 - [List](#list): show Arrays or Hashes like a list.
 
@@ -104,6 +105,14 @@ Modifies how boolean values are displayed.
 <img src="./docs/images/bool-column.png" height="250" />
 
 [Read more!](docs/boolean_values.md)
+
+#### Toggleable Boolean Columns
+
+Have switches to toggle values directly at the index
+
+<img src="./docs/images/toggle-bool-column.png" height="250" />
+
+[Read more!](docs/toggle_bool.md)
 
 #### Number Formatting
 

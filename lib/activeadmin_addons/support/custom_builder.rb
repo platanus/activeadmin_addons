@@ -44,6 +44,10 @@ module ActiveAdminAddons
       @options ||= has_opts? ? args.last : {}
     end
 
+    def class_name
+      model.class.name.downcase
+    end
+
     # attachment_column :foto
     # attachment_column :foto, style: :hola
     # attachment_column "Mi Foto", :foto
