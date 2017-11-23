@@ -20,7 +20,7 @@ module ActiveAdminAddons
       context.image_tag(
         "switches/switch_#{value ? :on : :off}.png",
         size: SWITCHES_IMAGES_SIZE,
-        id: "toggle-#{class_name}-#{model.id}-#{attribute}-#{value}",
+        id: "toggle-#{class_name.demodulize}-#{model.id}-#{attribute}-#{value}",
         class: img_tag_class,
         'data-model': class_name,
         'data-object_id': model.id,
