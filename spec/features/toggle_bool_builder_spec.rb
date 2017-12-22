@@ -33,10 +33,9 @@ describe "Toggle Bool Builder", type: :feature do
 
       it 'toggles switch', js: true do
         switch_class = 'toggle-bool-switch'
-        hidden_class = "#{switch_class} hidden-switch"
-        on_switch = find("#toggle-invoice-#{@invoice.id}-active-true")
-        expect { on_switch.click }.to change { on_switch[:class] }
-          .from(switch_class).to(hidden_class)
+        hidden_class_selector = ".#{switch_class}.hidden-switch"
+        find("#toggle-invoice-#{@invoice.id}-active-true").click
+        expect(page).to have_css(hidden_class_selector)
       end
     end
 
