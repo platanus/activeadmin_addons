@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'factory_girl_rails'
 require 'capybara/rspec'
 require 'capybara/rails'
+require 'selenium-webdriver'
 require 'shoulda-matchers'
 require 'enumerize'
 require 'paperclip'
@@ -36,6 +37,20 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+
+  Capybara.register_driver :headless_chrome do |app|
+    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+      chromeOptions: { args: %w(headless) }
+    )
+    Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: capabilities)
+  end
+
+  # change to :chrome if you want to see the browser running.
+  Capybara.javascript_driver = :headless_chrome
 
   config.include ActiveAdminHelpers
   config.include DataLoaders

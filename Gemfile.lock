@@ -56,8 +56,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
@@ -66,16 +66,19 @@ GEM
       sass (~> 3.2)
       thor
     builder (3.2.2)
-    capybara (2.14.3)
+    capybara (2.17.0)
       addressable
-      mime-types (>= 1.16)
+      mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
-      xpath (~> 2.0)
+      xpath (>= 2.0, < 4.0)
+    capybara-selenium (0.0.6)
+      capybara
+      selenium-webdriver
     celluloid (0.16.0)
       timers (~> 4.0.0)
-    childprocess (0.5.6)
+    childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -153,11 +156,12 @@ GEM
     method_source (0.8.2)
     mime-types (2.99.3)
     mimemagic (0.3.0)
-    mini_portile2 (2.2.0)
+    mini_mime (1.0.0)
+    mini_portile2 (2.3.0)
     minitest (5.10.1)
     multi_json (1.11.2)
-    nokogiri (1.8.0)
-      mini_portile2 (~> 2.2.0)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     paperclip (4.3.0)
       activemodel (>= 3.2.0)
@@ -173,7 +177,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
-    public_suffix (2.0.5)
+    public_suffix (3.0.1)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -225,7 +229,7 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
-    rubyzip (1.1.7)
+    rubyzip (1.2.1)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -234,11 +238,9 @@ GEM
       sprockets-rails (~> 2.0)
     select2-rails (4.0.3)
       thor (~> 0.14)
-    selenium-webdriver (2.48.0)
+    selenium-webdriver (3.8.0)
       childprocess (~> 0.5)
-      multi_json (~> 1.0)
       rubyzip (~> 1.0)
-      websocket (~> 1.0)
     shoulda-matchers (2.6.1)
       activesupport (>= 3.0.0)
     slop (3.6.0)
@@ -261,12 +263,11 @@ GEM
       thread_safe (~> 0.1)
     warden (1.2.3)
       rack (>= 1.0)
-    websocket (1.2.2)
     xdan-datetimepicker-rails (2.5.4)
       jquery-rails
       rails (>= 3.2.16)
-    xpath (2.1.0)
-      nokogiri (~> 1.3)
+    xpath (3.0.0)
+      nokogiri (~> 1.8)
 
 PLATFORMS
   ruby
@@ -275,7 +276,7 @@ DEPENDENCIES
   aasm
   activeadmin!
   activeadmin_addons!
-  capybara
+  capybara-selenium
   database_cleaner
   devise
   enumerize (~> 2.0)
@@ -287,9 +288,8 @@ DEPENDENCIES
   rails (>= 4)
   rspec-rails (= 3.0.1)
   sass-rails (~> 4.0.2)
-  selenium-webdriver
   shoulda-matchers (= 2.6.1)
   sqlite3
 
 BUNDLED WITH
-   1.14.6
+   1.16.1
