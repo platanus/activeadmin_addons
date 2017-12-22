@@ -173,6 +173,7 @@ describe "Nested Select Input", type: :feature do
         msg = "Please enter 5 or more characters"
         on_input_ctx("invoice_region_id") { open_select2_options }
         expect_select2_result_text_to_eq(1, msg)
+        on_input_ctx("invoice_region_id") { select2_options_container.click }
         on_input_ctx("invoice_city_id") { open_select2_options }
         expect_select2_result_text_to_eq(1, msg)
       end
