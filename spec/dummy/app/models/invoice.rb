@@ -11,6 +11,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :category
   belongs_to :city
   has_and_belongs_to_many :items
+  has_and_belongs_to_many :other_items, class_name: 'Item'
 
   enumerize :state, in: [:pending, :rejected, :approved], default: :pending
 

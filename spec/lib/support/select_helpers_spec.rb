@@ -233,10 +233,10 @@ describe ActiveAdminAddons::SelectHelpers do
       it { expect(instance.active_record_select?).to eq(true) }
     end
 
-    context "when method does not represent an Active Record collection" do
+    context "when method does not represent an Active Record collection but collection is" do
       let(:method) { :number }
 
-      it { expect(instance.active_record_select?).to eq(false) }
+      it { expect(instance.active_record_select?).to eq(true) }
     end
   end
 

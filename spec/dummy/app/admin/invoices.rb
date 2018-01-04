@@ -1,6 +1,6 @@
 ActiveAdmin.register Invoice do
   permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id,
-    :city_id, :amount, :color, :updated_at, :active, item_ids: []
+    :city_id, :amount, :color, :updated_at, :active, item_ids: [], other_item_ids: []
 
   filter :id, as: :numeric_range_filter
 
@@ -79,6 +79,8 @@ ActiveAdmin.register Invoice do
                          fields: [:name],
                          display_name: :name,
                          minimum_input_length: 1
+
+      f.input :other_item_ids, as: :tags, collection: Item.all.limit(5)
 
       f.input :attachment
 
