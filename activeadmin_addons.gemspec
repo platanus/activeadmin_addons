@@ -30,10 +30,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "shoulda-matchers", "2.6.1"
   s.add_development_dependency "guard", "~> 2.7.0"
   s.add_development_dependency "guard-rspec", "~> 4.3"
-  s.add_development_dependency "capybara"
+  s.add_development_dependency "capybara-selenium"
   s.add_development_dependency "enumerize", "~> 2.0"
   s.add_development_dependency "paperclip"
   s.add_development_dependency "aasm"
-  s.add_development_dependency "selenium-webdriver"
   s.add_development_dependency "database_cleaner"
 end
