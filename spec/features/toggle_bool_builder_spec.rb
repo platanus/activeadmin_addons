@@ -25,20 +25,6 @@ describe "Toggle Bool Builder", type: :feature do
       end
     end
 
-    context "switch click" do
-      before do
-        @invoice = create_invoice(active: true)
-        visit admin_invoices_path
-      end
-
-      it 'toggles switch', js: true do
-        switch_class = 'toggle-bool-switch'
-        hidden_class_selector = ".#{switch_class}.hidden-switch"
-        find("#toggle-invoice-#{@invoice.id}-active-true").click
-        expect(page).to have_css(hidden_class_selector)
-      end
-    end
-
     context "with false value" do
       before do
         @invoice = create_invoice(active: false)
