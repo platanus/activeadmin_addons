@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+##### Unreleased
+
+##### Changed
+
+* Use Chrome instead of Firefox to run integration tests.
+* Update Rails to 4.2 version at least.
+
 ### v1.1.2
 
 ##### Fixed
