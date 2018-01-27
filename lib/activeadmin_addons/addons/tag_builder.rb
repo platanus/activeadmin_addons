@@ -8,7 +8,7 @@ module ActiveAdminAddons
                    end
 
       raise "you need to pass an enumerize or enum attribute" unless @enum_attr
-      context.status_tag(display_data, data)
+      context.status_tag(display_data, class: data)
     end
 
     def display_data

@@ -24,7 +24,7 @@ describe "Attachment Builder", type: :feature do
 
     it "shows the attachent icon" do
       icon = page.find('img')
-      expect(icon[:src]).to match(%r{/assets/fileicons/file_extension_pdf.png})
+      expect(icon[:src]).to match(%r{/assets/fileicons/file_extension_pdf})
     end
 
     it "shows the attachent link" do
