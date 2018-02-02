@@ -1,4 +1,5 @@
-class TagsInput < ActiveAdminAddons::InputBase
+class TagsInput < Formtastic::Inputs::SelectInput
+  include ActiveAdminAddons::InputBase
   include ActiveAdminAddons::SelectHelpers
 
   def render_custom_input

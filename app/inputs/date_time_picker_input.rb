@@ -20,7 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-class DateTimePickerInput < ActiveAdminAddons::InputBase
+class DateTimePickerInput < Formtastic::Inputs::StringInput
+  include ActiveAdminAddons::InputBase
+
   def load_control_attributes
     load_class(@options[:class])
     load_data_attr(:picker_options, value: datetime_picker_options)

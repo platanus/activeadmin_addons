@@ -1,5 +1,5 @@
 module ActiveAdminAddons
-  class InputBase < Formtastic::Inputs::StringInput
+  module InputBase
     include InputOptionsHandler
     include InputMethods
     include InputHtmlHelpers
