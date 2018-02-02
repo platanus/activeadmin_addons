@@ -69,7 +69,7 @@ module ActiveAdminAddons
     def calculate_attr_value(attr_name, attr_options)
       value = attr_options[:value] || @options[attr_name]
 
-      if value
+      if !empty_value?(value)
         if value.is_a?(Proc)
           return template.instance_eval(&value)
         else
@@ -81,6 +81,10 @@ module ActiveAdminAddons
       return unless default_value
       return default_value.call if default_value.is_a?(Proc)
       default_value
+    end
+
+    def empty_value?(value)
+      value.nil? || value == ""
     end
   end
 end
