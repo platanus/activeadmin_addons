@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### Unreleased
+
+##### Fixed
+
+* Add sass-rails as dependency to avoid sass syntax error.
+
 ### v1.2.0
 
 ##### Changed

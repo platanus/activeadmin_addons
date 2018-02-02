@@ -2,6 +2,7 @@ module ActiveAdminAddons
   module Rails
     class Engine < ::Rails::Engine
       require "select2-rails"
+      require "sass-rails"
       require "xdan-datetimepicker-rails"
       require "require_all"
 
