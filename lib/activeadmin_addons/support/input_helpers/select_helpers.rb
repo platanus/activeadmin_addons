@@ -56,7 +56,11 @@ module ActiveAdminAddons
     end
 
     def selected_collection
-      method_model.where(id: input_value)
+      if active_record_relation?(collection)
+        collection.model.where(id: input_value)
+      else
+        method_model.where(id: input_value)
+      end
     end
 
     def selected_item
