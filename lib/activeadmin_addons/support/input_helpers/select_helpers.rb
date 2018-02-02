@@ -56,15 +56,17 @@ module ActiveAdminAddons
     end
 
     def selected_collection
-      if active_record_relation?(collection)
-        collection.model.where(id: input_value)
-      else
-        method_model.where(id: input_value)
+      @selected_collection ||= begin
+        if active_record_relation?(collection)
+          collection.model.where(id: input_value)
+        else
+          method_model.where(id: input_value)
+        end
       end
     end
 
     def selected_item
-      selected_collection.first
+      @selected_item ||= selected_collection.first
     end
 
     private
