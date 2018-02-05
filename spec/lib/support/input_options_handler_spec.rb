@@ -8,7 +8,8 @@ describe ActiveAdminAddons::InputOptionsHandler do
       def initialize
         @options = {
           name: "Leandro",
-          last_name: proc { "Segovia" }
+          last_name: proc { "Segovia" },
+          active: false
         }
       end
 
@@ -69,6 +70,7 @@ describe ActiveAdminAddons::InputOptionsHandler do
       instance.load_data_attr(:attr, default: 6)
       instance.load_data_attr(:fields, value: ["a"], formatter: :to_json)
       instance.load_data_attr(:name)
+      instance.load_data_attr(:active, default: true)
       instance.load_class("class-a class-b")
       instance.load_class(nil)
       instance.load_class("  class-c    ")
@@ -77,7 +79,8 @@ describe ActiveAdminAddons::InputOptionsHandler do
         data: {
           attr: 6,
           fields: "[\"a\"]",
-          name: "Leandro"
+          name: "Leandro",
+          active: false
         },
         class: "class-a class-b class-c"
       }
