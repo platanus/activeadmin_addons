@@ -14,4 +14,3 @@ gemspec
 # gem "debugger"
 gem "activeadmin", github: "activeadmin"
 gem "devise"
-gem "sass-rails"
