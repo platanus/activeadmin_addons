@@ -160,4 +160,24 @@ describe "Selected List Input", type: :feature do
       expect_select2_result_text_to_eq(1, @item3.name)
     end
   end
+
+  context "with different predicate" do
+    before do
+      register_form(Invoice, false) do |f|
+        f.input :item_ids, as: :selected_list, order_by: :name_desc, predicate: :end
+      end
+
+      visit edit_admin_invoice_path(create_invoice)
+    end
+
+    it "does not show any result when searched with prefix", js: true do
+      fill_select2_input("Item")
+      expect_select2_results_count_to_eq(0)
+    end
+
+    it "shows results when searched with suffix", js: true do
+      fill_select2_input("2")
+      expect_select2_result_text_to_eq(1, @item2.name)
+    end
+  end
 end
