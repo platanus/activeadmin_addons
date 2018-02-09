@@ -18,7 +18,7 @@ GIT
 PATH
   remote: .
   specs:
-    activeadmin_addons (1.2.0)
+    activeadmin_addons (1.3.0)
       railties
       require_all
       sass-rails
