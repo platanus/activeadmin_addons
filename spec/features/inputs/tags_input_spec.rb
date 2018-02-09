@@ -89,7 +89,7 @@ describe "Tags Input", type: :feature do
         expect(input.value).to eq(@item1.id.to_s)
         expect(input[:name]).to eq("invoice[other_item_ids][]")
         find(".select2-selection__choice__remove").click
-        expect { find(item_id, visible: false) }.to raise_error
+        expect { find(item_id, visible: false) }.to raise_error(Capybara::ElementNotFound)
       end
     end
   end
