@@ -22,12 +22,12 @@ module ActiveAdminAddons
         size: SWITCHES_IMAGES_SIZE,
         id: "toggle-#{class_name}-#{model.id}-#{attribute}-#{value}",
         class: img_tag_class,
-        'data-model': class_name,
-        'data-object_id': model.id,
-        'data-field': attribute,
-        'data-value': value,
-        'data-url': context.resource_path(model),
-        'data-success_message': options[:success_message]
+        'data-model' => class_name,
+        'data-object_id' => model.id,
+        'data-field' => attribute,
+        'data-value' => value,
+        'data-url' => context.resource_path(model),
+        'data-success_message' => options[:success_message]
       )
     end
 
