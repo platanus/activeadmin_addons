@@ -104,7 +104,8 @@ ActiveAdmin.register Invoice do
                         level_3: {
                           attribute: :city_id,
                           minimum_input_length: 1,
-                          fields: [:name, :information]
+                          fields: [:name, :information],
+                          predicate: :start
                         }
     end
 

@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+##### Added
+
+* Add `predicate` option on Ajax search.
+
 ##### Fixed
 
 * Add sass-rails as dependency to avoid sass syntax error.

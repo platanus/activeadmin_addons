@@ -68,6 +68,7 @@ $(function() {
       var element = $(el);
       var url = element.data('url');
       var fields = element.data('fields');
+      var predicate = element.data('predicate');
       var displayName = element.data('display-name');
       var parent = element.data('parent');
       var width = element.data('width');
@@ -100,7 +101,7 @@ $(function() {
               if (field == 'id') {
                 textQuery[field + '_eq'] = params.term;
               } else {
-                textQuery[field + '_contains'] = params.term;
+                textQuery[field + '_' + predicate] = params.term;
               }
             });
 
