@@ -45,6 +45,19 @@ class Invoice < ActiveRecord::Base
     end
   end
 
+  aasm :shipping, column: :shipping_status do
+    state :stock, initial: true
+    state :transit, :received
+
+    event :ship do
+      transitions from: :stock, to: :transit
+    end
+
+    event :confirm do
+      transitions from: :transit, to: :received
+    end
+  end
+
   def display_name
     number
   end
