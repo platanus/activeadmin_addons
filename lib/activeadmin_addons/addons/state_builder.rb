@@ -11,7 +11,7 @@ module ActiveAdminAddons
     def render
       raise "you need to install AASM gem first" unless defined? AASM
       raise "the #{attribute} is not an AASM state" unless state_attribute?
-      context.status_tag(model.aasm.human_state, class: status_class_for_model)
+      context.status_tag(model.aasm(machine_name).human_state, class: status_class_for_model)
     end
 
     private
@@ -19,11 +19,15 @@ module ActiveAdminAddons
     def state_attribute?
       model.class.respond_to?(:aasm) &&
         attribute.present? &&
-        model.class.aasm.attribute_name == attribute.to_sym
+        model.class.aasm(machine_name).attribute_name == attribute.to_sym
     end
 
     def status_class_for_model
       class_bindings[data.to_sym] || data
+    end
+
+    def machine_name
+      @machine_name ||= options.fetch(:machine, :default)
     end
 
     def class_bindings
