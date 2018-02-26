@@ -80,8 +80,6 @@ describe ActiveAdminAddons::SelectHelpers do
           { id: 2, text: 2, selected: "selected" }
         ]
 
-        p instance
-
         expect(instance.array_to_select_options).to eq(result)
       end
     end
