@@ -185,4 +185,68 @@ describe "Nested Select Input", type: :feature do
       end
     end
   end
+
+  context "with nested resources" do
+    before do
+      register_page(Region, false) {}
+      register_page(Country, false) {}
+      register_page(City, false) {}
+
+      register_form(Department, false) do |f|
+        f.has_many :departments_cities, allow_destroy: true do |city|
+          city.input :city_id, as: :nested_select, required: true,
+                               display_name: :id,
+                               minimum_input_length: 0,
+                               level_1: { attribute: :country_id },
+                               level_2: { attribute: :region_id },
+                               level_3: { attribute: :city_id }
+        end
+      end
+      create_cities
+      visit new_admin_department_path
+    end
+
+    it "sets new values correctly", js: true do
+      click_add_nested
+      prefix = "department_departments_cities_attributes_"
+      santiago = @santiago.id
+      on_nested_ctx(1) do
+        on_input_ctx("#{prefix}0_country_id") do
+          open_select2_options
+          click_select2_option(@chile.id)
+        end
+        on_input_ctx("#{prefix}0_region_id") do
+          open_select2_options
+          click_select2_option(@metropolitana.id)
+        end
+        on_input_ctx("#{prefix}0_city_id") do
+          open_select2_options
+          click_select2_option(santiago)
+        end
+        expect_nested_select2_result_text_to_eq(3, santiago)
+      end
+
+      click_add_nested
+      on_nested_ctx(2) do
+        mendoza = @mendoza.id
+        on_input_ctx("#{prefix}1_country_id") do
+          open_select2_options
+          click_select2_option(@argentina.id)
+        end
+        on_input_ctx("#{prefix}1_region_id") do
+          open_select2_options
+          click_select2_option(@cuyo.id)
+        end
+        on_input_ctx("#{prefix}1_city_id") do
+          open_select2_options
+          click_select2_option(mendoza)
+        end
+        expect_nested_select2_result_text_to_eq(3, mendoza)
+      end
+
+      on_nested_ctx(1) do
+        expect_nested_select2_result_text_to_eq(3, santiago)
+      end
+    end
+  end
 end
