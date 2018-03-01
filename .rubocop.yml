@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
   - "vendor/**/*"
+  - "spec/dummy/db/*"
   - "db/**/*"
   - "bin/**/*"
   DisplayCopNames: false
