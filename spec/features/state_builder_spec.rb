@@ -53,4 +53,22 @@ describe "State Builder", type: :feature do
       expect(page).to have_content 'Custom State'
     end
   end
+
+  context "with a named states machine" do
+    before do
+      register_show(Invoice) do
+        state_row(:shipping_status, machine: :shipping)
+      end
+
+      visit admin_invoice_path(create_invoice)
+    end
+
+    it "shows set label" do
+      expect(page).to have_content('Stock')
+    end
+
+    it "shows valid css class" do
+      expect(page).to have_css('.stock')
+    end
+  end
 end
