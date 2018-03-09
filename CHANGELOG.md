@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### Unreleased
+
+##### Fixed
+
+* Use pessimistic version for require_all gem to avoid incompatible 2.0 version.
+
 ### v1.3.0
 
 ##### Added

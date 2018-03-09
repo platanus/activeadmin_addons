@@ -20,7 +20,7 @@ PATH
   specs:
     activeadmin_addons (1.3.0)
       railties
-      require_all
+      require_all (~> 1.5)
       sass-rails
       select2-rails (~> 4.0)
       xdan-datetimepicker-rails (~> 2.5.1)
