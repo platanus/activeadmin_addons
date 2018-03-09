@@ -10,7 +10,7 @@ script:
 addons:
   chrome: stable
 before_install:
-  - wget http://chromedriver.storage.googleapis.com/2.32/chromedriver_linux64.zip
+  - wget http://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
   - rm chromedriver_linux64.zip
   - sudo mv -f chromedriver /usr/local/bin/
