@@ -2,7 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-### Unreleased
+### 1.4.0
+
+##### Added
+
+* Add interactive tag selector for enums.
+* Add named AASM machines support.
+
+##### Removed
+
+* Remove useless coffee-rails dependency.
 
 ##### Fixed
 
