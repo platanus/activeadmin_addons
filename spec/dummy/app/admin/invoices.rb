@@ -18,7 +18,7 @@ ActiveAdmin.register Invoice do
   index do
     selectable_column
     id_column
-    tag_column :state
+    tag_column :state, interactive: true
     bool_column :paid
     image_column :photo, style: :thumb
     attachment_column :attachment
