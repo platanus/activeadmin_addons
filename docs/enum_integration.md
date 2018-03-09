@@ -48,3 +48,16 @@ $approved-color: #08A510;
   &.approved { background: $approved-color; }
 }
 ```
+
+## Interactive Tag Column
+
+`tag_column` also can receive the boolean parameter `interactive`. If `interactive` is true, it will render a select2 input to change the value of the attribute when the tag is clicked:
+
+```ruby
+index do
+  tag_column :state, interactive: true
+  tag_column :status, interactive: true
+end
+```
+
+<img src="./images/enumerize-interactive-tag-column.gif" height="250" />

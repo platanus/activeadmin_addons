@@ -1,0 +1,30 @@
+.tag-select-container {
+  max-width: 125px;
+  max-height: 50px;
+
+  .interactive-tag {
+    height: 28px;
+    width: 125px;
+
+    .status_tag {
+      cursor: pointer;
+    }
+  }
+
+  .interactive-tag-hidden {
+    display: none;
+  }
+
+  .select-container-hidden {
+    display: none;
+  }
+
+  .interactive-tag-select {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.select2-container {
+  margin: 0;
+}

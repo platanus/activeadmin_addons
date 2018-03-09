@@ -11,3 +11,4 @@
 //= require ./inputs/date-time-picker
 //= require ./inputs/color-picker
 //= require ./addons/toggle_bool
+//= require ./addons/interactive_select_tag
