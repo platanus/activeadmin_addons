@@ -6,10 +6,18 @@ The install generator will automatically do these two changes to your files:
 //= require activeadmin_addons/all
 ```
 
-2. The following line will be added on `app/assets/javascripts/active_admin.js.coffee` **after** `#= require active_admin/base`
+2. If your activeadmin installation uses an `app/assets/javascripts/active_admin.js.coffee` file,
+   the following line will be added **after** `#= require active_admin/base`:
+
+```coffeescript
+#= require activeadmin_addons/all
+```
+
+2. If your activeadmin installation uses an `app/assets/javascripts/active_admin.js` file,
+   the following line will be added **after** `//= require active_admin/base`:
 
 ```javascript
-#= require activeadmin_addons/all
+//= require activeadmin_addons/all
 ```
 
 To undo, you can use
