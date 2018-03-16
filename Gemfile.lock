@@ -19,6 +19,7 @@ PATH
   remote: .
   specs:
     activeadmin_addons (1.5.0)
+      active_material
       railties
       require_all (~> 1.5)
       sass-rails
@@ -49,6 +50,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_material (1.4.2)
     activejob (4.2.10)
       activesupport (= 4.2.10)
       globalid (>= 0.3.0)
@@ -333,4 +335,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
