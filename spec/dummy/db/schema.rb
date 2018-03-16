@@ -13,13 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20180222225709) do
 
-  create_table "active_admin_comments", force: true do |t|
-    t.string   "namespace"
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace",     limit: 255
     t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
+    t.string   "resource_id",   limit: 255, null: false
+    t.string   "resource_type", limit: 255, null: false
     t.integer  "author_id"
-    t.string   "author_type"
+    t.string   "author_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,17 +28,17 @@ ActiveRecord::Schema.define(version: 20180222225709) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
-  create_table "admin_users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,21 +46,21 @@ ActiveRecord::Schema.define(version: 20180222225709) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
-  create_table "cars", force: true do |t|
-    t.string  "name"
+  create_table "cars", force: :cascade do |t|
+    t.string  "name",            limit: 255
     t.integer "year"
     t.integer "manufacturer_id"
   end
 
-  create_table "categories", force: true do |t|
-    t.string   "name"
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "cities", force: true do |t|
-    t.string   "name"
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.integer  "region_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -69,44 +69,44 @@ ActiveRecord::Schema.define(version: 20180222225709) do
 
   add_index "cities", ["region_id"], name: "index_cities_on_region_id"
 
-  create_table "countries", force: true do |t|
-    t.string   "name"
+  create_table "countries", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "information"
   end
 
-  create_table "invoices", force: true do |t|
+  create_table "invoices", force: :cascade do |t|
     t.datetime "legal_date"
-    t.string   "number"
+    t.string   "number",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "paid"
-    t.string   "state"
+    t.string   "state",                   limit: 255
     t.integer  "status"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
+    t.string   "attachment_file_name",    limit: 255
+    t.string   "attachment_content_type", limit: 255
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
+    t.string   "photo_file_name",         limit: 255
+    t.string   "photo_content_type",      limit: 255
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "category_id"
     t.integer  "city_id"
     t.integer  "position"
-    t.string   "color"
+    t.string   "color",                   limit: 255
     t.float    "amount"
     t.integer  "client_id"
-    t.string   "aasm_state"
-    t.boolean  "active",                  default: true
+    t.string   "aasm_state",              limit: 255
+    t.boolean  "active",                              default: true
     t.string   "shipping_status"
   end
 
   add_index "invoices", ["category_id"], name: "index_invoices_on_category_id"
   add_index "invoices", ["city_id"], name: "index_invoices_on_city_id"
 
-  create_table "invoices_items", id: false, force: true do |t|
+  create_table "invoices_items", id: false, force: :cascade do |t|
     t.integer "invoice_id"
     t.integer "item_id"
   end
@@ -114,19 +114,19 @@ ActiveRecord::Schema.define(version: 20180222225709) do
   add_index "invoices_items", ["invoice_id"], name: "index_invoices_items_on_invoice_id"
   add_index "invoices_items", ["item_id"], name: "index_invoices_items_on_item_id"
 
-  create_table "items", force: true do |t|
-    t.string   "name"
+  create_table "items", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "manufacturers", force: true do |t|
-    t.string "name"
+  create_table "manufacturers", force: :cascade do |t|
+    t.string "name", limit: 255
   end
 
-  create_table "regions", force: true do |t|
-    t.string   "name"
+  create_table "regions", force: :cascade do |t|
+    t.string   "name",        limit: 255
     t.integer  "country_id"
     t.datetime "created_at"
     t.datetime "updated_at"
