@@ -5,6 +5,8 @@ describe "Select 2", type: :feature do
 
   context "when default config is select 2" do
     before do
+      ActiveadminAddons.default_select = 'select2'
+
       register_form(Invoice) do |f|
         f.input :category
       end
