@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('ready turbolinks:load', function() {
   $('.toggle-bool-switch').click(function(e) {
     var boolSwitch = $(e.target);
     var model = boolSwitch.data('model');

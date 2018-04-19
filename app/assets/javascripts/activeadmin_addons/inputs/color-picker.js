@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('ready turbolinks:load', function() {
   setupColorPicker();
 
   $(document).on('has_many_add:after', setupColorPicker);

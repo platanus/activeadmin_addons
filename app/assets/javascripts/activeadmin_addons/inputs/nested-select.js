@@ -54,7 +54,7 @@ $.fn.select2.amd.define('select2/data/nestedCustomAdapter', ['select2/data/array
   return CustomData;
 });
 
-$(function() {
+$(document).on('ready turbolinks:load', function() {
   configureSelect2(document);
 
   $(document).on('has_many_add:after', function(event, container) {
