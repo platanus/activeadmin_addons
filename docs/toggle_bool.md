@@ -4,7 +4,7 @@
 This addon features switches to toggle boolean attributes values directly at the index,
 avoiding the need of going the long way through the edit view to update a record.
 
-<img src="./images/toggle-bool-column.png" height="300" />
+<img src="./images/toggle-bool-column.gif" height="300" />
 
 ## Usage
 
