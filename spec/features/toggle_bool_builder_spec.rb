@@ -14,14 +14,9 @@ describe "Toggle Bool Builder", type: :feature do
         visit admin_invoices_path
       end
 
-      it "off switch is hidden" do
-        off_switch = find("#toggle-invoice-#{@invoice.id}-active-false")
-        expect(off_switch[:class]).to include("hidden-switch")
-      end
-
-      it "on switch is visible" do
-        on_switch = find("#toggle-invoice-#{@invoice.id}-active-true")
-        expect(on_switch[:class]).not_to include("hidden-switch")
+      it "switch is on" do
+        switch = find("#toggle-invoice-#{@invoice.id}-active")
+        expect(switch[:class]).to include("on")
       end
     end
 
@@ -31,14 +26,9 @@ describe "Toggle Bool Builder", type: :feature do
         visit admin_invoices_path
       end
 
-      it "off switch is visible" do
-        off_switch = find("#toggle-invoice-#{@invoice.id}-active-false")
-        expect(off_switch[:class]).not_to include("hidden-switch")
-      end
-
-      it "on switch is hidden" do
-        on_switch = find("#toggle-invoice-#{@invoice.id}-active-true")
-        expect(on_switch[:class]).to include("hidden-switch")
+      it "switch is off" do
+        switch = find("#toggle-invoice-#{@invoice.id}-active")
+        expect(switch[:class]).not_to include("on")
       end
     end
   end

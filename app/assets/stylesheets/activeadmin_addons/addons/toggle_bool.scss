@@ -1,11 +1,52 @@
+$inactive-bg: #6a7176;
+$inactive-shadow: #4d5256;
+$active-bg: #4dbcff;
+$active-shadow: #2f749e;
+$button-bg: #fff;
+$button-shadow: #dfe1e2;
+
+$box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 0 1px #fff inset;
+
 .toggle-bool-switches-container {
   text-align: center;
 
   .toggle-bool-switch {
     cursor: pointer;
 
-    &.hidden-switch {
-      display: none;
+    background: $inactive-bg;
+    background-image: linear-gradient(180deg, $inactive-bg, $inactive-shadow);
+    box-shadow: $box-shadow;
+
+    width: 40px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+
+    &::before {
+      content: '';
+
+      background: $button-bg;
+      background-image: linear-gradient(180deg, $button-bg, $button-shadow);
+      box-shadow: $box-shadow;
+
+      display: inline-block;
+      width: 20px;
+      height: 12px;
+      position: absolute;
+      left: 3px;
+      top: 2px;
+
+      transition: all .25s linear;
+      transform: translateX(0);
+    }
+
+    &.on {
+      background: $active-bg;
+      background-image: linear-gradient(180deg, $active-bg, $active-shadow);
+
+      &::before {
+        left: calc(100% - 23px);
+      }
     }
   }
 }

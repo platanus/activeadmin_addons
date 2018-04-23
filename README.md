@@ -110,7 +110,7 @@ Modifies how boolean values are displayed.
 
 Have switches to toggle values directly at the index
 
-<img src="./docs/images/toggle-bool-column.png" height="250" />
+<img src="./docs/images/toggle-bool-column.gif" height="250" />
 
 [Read more!](docs/toggle_bool.md)
 
