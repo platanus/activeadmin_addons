@@ -21,7 +21,7 @@ module ActiveAdminAddons
         'data-object_id' => model.id,
         'data-field' => attribute,
         'data-value' => data,
-        'data-url' => context.resource_path(model),
+        'data-url' => context.auto_url_for(model),
         'data-success_message' => options[:success_message]
       )
     end
