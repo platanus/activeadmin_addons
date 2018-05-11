@@ -1,1 +1,22 @@
-@import "active_material";
+@import 'active_material';
+
+// Step 0: Select
+.select2-container .select2-selection--single {
+  height: 42px;
+
+  .select2-selection__rendered {
+    line-height: 42px;
+  }
+
+  .select2-selection__arrow {
+    height: 40px;
+  }
+}
+
+// Step 1: Date Range Filters
+.input.date_range {
+  input.datepicker {
+    background: #fff asset-url('active_material/icons/event.svg') 10px no-repeat;
+    padding-left: 40px;
+  }
+}
