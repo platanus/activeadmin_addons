@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function() {
+var initializer = function() {
   configureSelect2(document);
 
   $(document).on('has_many_add:after', function(event, container) {
@@ -46,4 +46,7 @@ $(document).on('ready turbolinks:load', function() {
       });
     }
   }
-});
+};
+
+$(initializer);
+$(document).on('turbolinks:load', initializer);
