@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function() {
+var initializer = function() {
   $('.toggle-bool-switch').click(function(e) {
     var boolSwitch = $(e.target);
     var model = boolSwitch.data('model');
@@ -33,4 +33,7 @@ $(document).on('ready turbolinks:load', function() {
       type: 'PATCH',
     });
   });
-});
+};
+
+$(initializer);
+$(document).on('turbolinks:load', initializer);

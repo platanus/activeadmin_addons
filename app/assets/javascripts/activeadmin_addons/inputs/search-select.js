@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function() {
+var initializer = function() {
   setupSearchSelect(document);
 
   $(document).on('has_many_add:after', function(event, container) {
@@ -70,4 +70,7 @@ $(document).on('ready turbolinks:load', function() {
       $(el).select2(selectOptions);
     });
   }
-});
+};
+
+$(initializer);
+$(document).on('turbolinks:load', initializer);
