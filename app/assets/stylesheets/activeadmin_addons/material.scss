@@ -38,3 +38,16 @@
     width: calc(50% - 6px);
   }
 }
+
+// Errors
+li.error {
+  .select2-selection {
+    border-color: $am-theme-error;
+  }
+}
+
+.input.string.error input,
+.input.stringish.error input,
+.input.numberic.error input {
+  border-color: $am-theme-error;
+}
