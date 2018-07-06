@@ -23,8 +23,6 @@ ActiveAdmin.register Invoice do
     image_column :photo, style: :thumb
     attachment_column :attachment
     number_column :amount, as: :currency, unit: "$", separator: ","
-    list_column :skills
-    list_column :contact
     toggle_bool_column :active
     actions
   end
