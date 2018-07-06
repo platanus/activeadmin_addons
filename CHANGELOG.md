@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### Unreleased
+
+##### Fixed
+
+* Use chromedriver-helper gem to avoid "unable to connect to chromedriver".
+
 ### 1.5.0
 
 ##### Added
