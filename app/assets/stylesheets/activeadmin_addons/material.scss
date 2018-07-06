@@ -29,3 +29,12 @@
     padding-left: 40px;
   }
 }
+
+// Numeric Range Filter
+.filter_numeric_range_filter {
+  &.input.string input,
+  &.input.stringish input,
+  &.input.numberic input {
+    width: calc(50% - 6px);
+  }
+}
