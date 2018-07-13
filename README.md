@@ -32,6 +32,10 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 - [Numeric Range Filter](#numeric-range-filter): filter your results using a numeric range (i.e. age between 18-30).
 - [Search Select Filter](#search-select-filter): filter your results using the ajax select input.
 
+#### Themes
+- [No Theme](#no-theme): ActiveAdmin default style.
+- [Material Theme](#material-theme): Material Design style provide by [active_material](https://github.com/vigetlabs/active_material).
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -217,6 +221,31 @@ filter :category_id, as: :search_select_filter
 ```
 
 <img src="./docs/images/filter-search-select.png" height="160" />
+
+### Themes
+
+#### NO Theme
+Use default active_admin theme.
+
+#### Material Theme
+Show material design theme using [active_material](https://github.com/vigetlabs/active_material). If you want to use it, you should run the generator using the flag `theme` as follow:
+
+```ruby
+rails g activeadmin_addons:install --theme material
+```
+
+Also, you can modify primary color, and all other theme colors, in the first lines of the file: ` app/assets/stylesheets/active_admin.scss`
+```scss
+$am-theme-primary: YOUR-COLOR;
+...
+other colors
+...
+@import 'activeadmin_addons/material';
+```
+
+Take care of defining these variables before the import of `@import 'activeadmin_addons/material';`.
+
+For material documentation you should go to [gem documentation](http://code.viget.com/active_material/docs/api/).
 
 ## Contributing
 
