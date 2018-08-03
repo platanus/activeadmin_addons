@@ -22,7 +22,7 @@ PATH
       active_material
       railties
       require_all (~> 1.5)
-      sass-rails
+      sass
       select2-rails (~> 4.0)
       xdan-datetimepicker-rails (~> 2.5.1)
 
@@ -331,6 +331,7 @@ DEPENDENCIES
   pry-rails
   rails (~> 4.2)
   rspec-rails
+  sass-rails
   shoulda-matchers
   sqlite3
 
