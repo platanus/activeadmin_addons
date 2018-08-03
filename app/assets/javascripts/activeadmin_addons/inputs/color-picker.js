@@ -1,4 +1,4 @@
-$(function() {
+var initializer = function() {
   setupColorPicker();
 
   $(document).on('has_many_add:after', setupColorPicker);
@@ -10,4 +10,7 @@ $(function() {
       });
     });
   }
-});
+};
+
+$(initializer);
+$(document).on('turbolinks:load', initializer);

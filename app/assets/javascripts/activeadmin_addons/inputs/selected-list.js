@@ -1,4 +1,4 @@
-$(function() {
+var initializer = function() {
   setupSelectedList(document);
 
   $(document).on('has_many_add:after', function(event, container) {
@@ -101,4 +101,7 @@ $(function() {
       }
     });
   }
-});
+};
+
+$(initializer);
+$(document).on('turbolinks:load', initializer);
