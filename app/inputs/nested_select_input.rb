@@ -81,7 +81,8 @@ class NestedSelectInput < ActiveAdminAddons::InputBase
   end
 
   def build_virtual_attr(attribute_name)
-    fail "#{attribute_name} is already defined" if @object.respond_to?(attribute_name)
-    @object.singleton_class.send(:attr_accessor, attribute_name)
+    if !@object.respond_to?(attribute_name) && !@object.respond_to?("#{attribute_name}=")
+      @object.singleton_class.send(:attr_accessor, attribute_name)
+    end
   end
 end
