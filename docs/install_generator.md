@@ -3,7 +3,7 @@ The install generator will automatically do these two changes to your files:
 1. The following line will be added as the **first** line of `app/assets/stylesheets/active_admin.scss`:
 
 ```stylesheet
-//= require activeadmin_addons/all
+@import 'activeadmin_addons/all'
 ```
 
 2. If your activeadmin installation uses an `app/assets/javascripts/active_admin.js.coffee` file,
