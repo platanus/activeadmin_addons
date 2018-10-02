@@ -13,6 +13,10 @@ module ActiveAdminAddons
       toggle_classes += ' on' if data
       toggle_classes += ' notify-success' if options[:success_message]
 
+      config = context.active_admin_resource_for(model.class)
+      return unless config
+      url = config.route_instance_path(model, {})
+
       context.span(
         '',
         id: "toggle-#{class_name}-#{model.id}-#{attribute}",
@@ -21,7 +25,7 @@ module ActiveAdminAddons
         'data-object_id' => model.id,
         'data-field' => attribute,
         'data-value' => data,
-        'data-url' => context.auto_url_for(model),
+        'data-url' => url,
         'data-success_message' => options[:success_message]
       )
     end
