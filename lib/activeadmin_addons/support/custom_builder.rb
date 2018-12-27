@@ -45,7 +45,7 @@ module ActiveAdminAddons
     end
 
     def class_name
-      model.class.name.demodulize.underscore
+      model.class.base_class.name.demodulize.underscore
     end
 
     # attachment_column :foto
