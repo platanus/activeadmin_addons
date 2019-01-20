@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222225709) do
+ActiveRecord::Schema.define(version: 20190119184401) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -46,6 +46,22 @@ ActiveRecord::Schema.define(version: 20180222225709) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "animals", force: :cascade do |t|
+    t.string   "type"
+    t.string   "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "animals_groups", id: false, force: :cascade do |t|
+    t.integer "group_id",  null: false
+    t.integer "animal_id", null: false
+  end
+
+  add_index "animals_groups",
+    ["group_id", "animal_id"],
+    name: "index_animals_groups_on_group_id_and_animal_id"
+
   create_table "cars", force: :cascade do |t|
     t.string  "name",            limit: 255
     t.integer "year"
@@ -74,6 +90,11 @@ ActiveRecord::Schema.define(version: 20180222225709) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "information"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "invoices", force: :cascade do |t|

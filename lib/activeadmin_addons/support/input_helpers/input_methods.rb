@@ -1,7 +1,8 @@
 module ActiveAdminAddons
   module InputMethods
     def model_name
-      valid_object.class.to_s.underscore.tr('/', '_')
+      raise "blank object_name given" if @object_name.blank?
+      @object_name
     end
 
     def valid_method
