@@ -16,6 +16,10 @@ f.input :names, as: :tags, collection: ['Julio', 'Emilio', 'Leandro']
 
 <img src="./images/select2-tags.gif" />
 
+### Options
+
+* `sorted`: **(optional)** You can pass an optional `sorted` to keep the collection as it is. It **defaults to**: `false`
+
 ## Tagging with Active Record collections
 
 To use tagging functionality with Active Record collections you need to do something like this:

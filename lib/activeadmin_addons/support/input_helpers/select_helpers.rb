@@ -6,7 +6,8 @@ module ActiveAdminAddons
     def array_to_select_options
       selected_values = input_value.is_a?(Array) ? input_value : input_value.to_s.split(",")
       array = collection.map(&:to_s) + selected_values
-      array.sort.map do |value|
+      array.sort! unless options[:sorted]
+      array.map do |value|
         option = { id: value, text: value }
         option[:selected] = "selected" if selected_values.include?(value)
         option
