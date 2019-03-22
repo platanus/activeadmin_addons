@@ -1,21 +1,14 @@
 language: ruby
 sudo: false
 rvm:
-  - 2.2.6
-  - 2.3.3
   - 2.5.0
 script:
-  - cd spec/dummy && RAILS_ENV=test bundle exec rake db:create db:migrate
-  - cd ../.. && bundle exec rspec spec
-addons:
-  chrome: stable
+  - cd spec/dummy  && RAILS_ENV=test bundle exec rake db:create db:migrate
+  - cd ../..  && bundle exec rspec spec
 before_install:
-  - wget http://chromedriver.storage.googleapis.com/2.36/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip
-  - rm chromedriver_linux64.zip
-  - sudo mv -f chromedriver /usr/local/bin/
-  - sudo chmod +x /usr/local/bin/chromedriver
-  - google-chrome-stable --headless --no-sandbox
+  - sudo apt-get update && sudo apt-get install -y $(grep -v '^\s*$' ./Aptfile | tr "\n" " ")
+  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+- curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && (sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb || sudo apt-get -fy install) && rm -rf /tmp/google-chrome-stable_current_amd64.deb && /opt/google/chrome/google-chrome --version
 deploy:
   provider: rubygems
   api_key:
