@@ -7,11 +7,8 @@ script:
   - cd ../..  && bundle exec rspec spec
 before_install:
   - wget http://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip
-  - rm chromedriver_linux64.zip
-  - sudo mv -f chromedriver /usr/local/bin/
-  - sudo chmod +x /usr/local/bin/chromedriver
-  - chromedriver -v
+  - sudo unzip chromedriver_linux64.zip -d /usr/local/sbin
+  - export GOOGLE_CHROME_BIN=/usr/bin/google-chrome
   - sudo apt-get update && sudo apt-get install -y $(grep -v '^\s*$' ./Aptfile | tr "\n" " ")
   - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   - curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && (sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb || sudo apt-get -fy install) && rm -rf /tmp/google-chrome-stable_current_amd64.deb && sudo sed 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' /opt/google/chrome/google-chrome
