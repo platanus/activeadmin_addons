@@ -5,13 +5,11 @@ rvm:
 script:
   - cd spec/dummy  && RAILS_ENV=test bundle exec rake db:create db:migrate
   - cd ../..  && bundle exec rspec spec
+addons:
+  chrome: stable
 before_install:
-  - wget http://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip
-  - sudo unzip chromedriver_linux64.zip -d /usr/local/sbin
-  - export GOOGLE_CHROME_BIN=/usr/bin/google-chrome
-  - sudo apt-get update && sudo apt-get install -y $(grep -v '^\s*$' ./Aptfile | tr "\n" " ")
-  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && (sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb || sudo apt-get -fy install) && rm -rf /tmp/google-chrome-stable_current_amd64.deb && sudo sed 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' /opt/google/chrome/google-chrome
+  - gem install chromedriver-helper -v 1.2.0
+  - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 deploy:
   provider: rubygems
   api_key:
@@ -20,3 +18,5 @@ deploy:
   on:
     tags: true
     repo: platanus/activeadmin_addons
+before_script:
+  - chromedriver-update 73.0.3683.68
