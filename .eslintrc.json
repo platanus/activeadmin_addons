@@ -1,11 +1,10 @@
 {
   "env": {
-    "es6": false,
-    "browser": true,
-    "jquery": true
+    "es6": true
   },
   "parserOptions": {
-    "ecmaVersion": 5
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
   "plugins": ["import"],
   "settings": {
@@ -15,12 +14,9 @@
       }
     }
   },
-  "globals": {
-    "angular": 1,
-    "$": 1,
-    "_": 1,
-    "ActiveadminAddons": 1
-  },
+  "extends": [
+    "plugin:vue/strongly-recommended"
+  ],
   "rules": {
     "accessor-pairs": 0,
     "array-callback-return": 2,
@@ -37,7 +33,7 @@
       "allowKeywords": true
     }],
     "dot-location": [2, "property"],
-    "eqeqeq": [0],
+    "eqeqeq": [2],
     "guard-for-in": 2,
     "no-alert": 1,
     "no-case-declarations": 2,
@@ -64,16 +60,18 @@
     }],
     "no-lone-blocks": 2,
     "no-loop-func": 2,
-    "no-magic-numbers": [0],
+    "no-magic-numbers": [2, {
+      "ignore": [0, 1]
+    }],
     "no-multi-spaces": 2,
-    "no-multi-str": 0,
+    "no-multi-str": 2,
     "no-native-reassign": 2,
     "no-new": 2,
     "no-new-func": 2,
     "no-new-wrappers": 2,
     "no-octal": 2,
     "no-octal-escape": 2,
-    "no-param-reassign": [0, {
+    "no-param-reassign": [2, {
       "props": false
     }],
     "no-proto": 2,
@@ -97,7 +95,7 @@
     }],
     "no-with": 2,
     "radix": 2,
-    "vars-on-top": 0,
+    "vars-on-top": 2,
     "wrap-iife": [2, "any"],
     "yoda": 2,
     "comma-dangle": [2, "always-multiline"],
@@ -148,24 +146,33 @@
     "no-confusing-arrow": [2, {
       "allowParens": true
     }],
-    "no-const-assign": 0,
-    "no-dupe-class-members": 0,
-    "no-duplicate-imports": 0,
-    "no-new-symbol": 0,
+    "no-const-assign": 2,
+    "no-dupe-class-members": 2,
+    "no-duplicate-imports": 2,
+    "no-new-symbol": 2,
     "no-restricted-imports": 0,
     "no-this-before-super": 0,
     "no-useless-computed-key": 2,
     "no-useless-constructor": 2,
-    "no-var": 0,
-    "object-shorthand": [2, "never"],
-    "prefer-arrow-callback": 0,
-    "prefer-const": 0,
+    "no-var": 2,
+    "object-shorthand": [2, "always", {
+      "ignoreConstructors": false,
+      "avoidQuotes": true
+    }],
+    "prefer-arrow-callback": [2, {
+      "allowNamedFunctions": false,
+      "allowUnboundThis": true
+    }],
+    "prefer-const": [2, {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": true
+    }],
     "prefer-reflect": 0,
     "no-caller": 2,
-    "prefer-rest-params": 0,
-    "prefer-spread": 0,
-    "prefer-template": 0,
-    "require-yield": 0,
+    "prefer-rest-params": 2,
+    "prefer-spread": 2,
+    "prefer-template": 2,
+    "require-yield": 2,
     "sort-imports": 0,
     "template-curly-spacing": 2,
     "yield-star-spacing": [2, "before"],
@@ -239,19 +246,19 @@
     "linebreak-style": [2, "unix"],
     "lines-around-comment": 0,
     "max-depth": [2, 4],
-    "max-len": [0],
+    "max-len": [2, 120],
     "max-nested-callbacks": [2, 4],
     "max-params": [1, 4],
-    "max-statements": [0, 10],
+    "max-statements": [1, 10],
     "max-statements-per-line": [2, {
       "max": 1
     }],
-    "new-cap": [0, {
+    "new-cap": [2, {
       "newIsCap": true
     }],
     "new-parens": 2,
     "newline-after-var": 0,
-    "newline-before-return": 0,
+    "newline-before-return": 2,
     "newline-per-chained-call": [2, {
       "ignoreChainWithDepth": 3
     }],
@@ -273,7 +280,7 @@
     "no-spaced-func": 2,
     "no-ternary": 0,
     "no-trailing-spaces": 2,
-    "no-underscore-dangle": [0],
+    "no-underscore-dangle": [1],
     "no-unneeded-ternary": [2, {
       "defaultAssignment": false
     }],
@@ -304,14 +311,13 @@
     "sort-vars": 0,
     "space-before-blocks": 2,
     "space-before-function-paren": [2, {
-      "anonymous": "never",
-      "named": "never",
-      "asyncArrow": "never"
+      "anonymous": "always",
+      "named": "never"
     }],
     "space-in-parens": [2, "never"],
     "space-infix-ops": 2,
     "space-unary-ops": 0,
-    "spaced-comment": [0],
+    "spaced-comment": [2],
     "wrap-regex": 0,
     "init-declarations": 0,
     "no-catch-shadow": 2,
@@ -326,6 +332,6 @@
       "vars": "local",
       "args": "after-used"
     }],
-    "no-use-before-define": 0
+    "no-use-before-define": 2
   }
 }
