@@ -6,6 +6,12 @@ script:
   - cd spec/dummy  && RAILS_ENV=test bundle exec rake db:create db:migrate
   - cd ../..  && bundle exec rspec spec
 before_install:
+  - wget http://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - rm chromedriver_linux64.zip
+  - sudo mv -f chromedriver /usr/local/bin/
+  - sudo chmod +x /usr/local/bin/chromedriver
+  - chromedriver --version
   - sudo apt-get update && sudo apt-get install -y $(grep -v '^\s*$' ./Aptfile | tr "\n" " ")
   - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   - curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && (sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb || sudo apt-get -fy install) && rm -rf /tmp/google-chrome-stable_current_amd64.deb && cat /opt/google/chrome/google-chrome
