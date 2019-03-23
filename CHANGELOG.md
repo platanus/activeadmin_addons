@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### 1.7.1
+
+##### Fixed
+* `toggle_bool_column` fails working with decorated objects.
+
 ### 1.7.0
 
 ##### Added
@@ -9,9 +14,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ##### Changed
 * Image and attachment builders don't ask for file existence anymore.
-
-##### Fixed
-* `toggle_bool_column` fails working with decorated objects.
 
 ### 1.6.0
 
