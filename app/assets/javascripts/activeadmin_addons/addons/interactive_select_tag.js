@@ -68,6 +68,7 @@ var initializer = function() {
         url: url,
         data: data,
         dataType: 'json',
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         error: function() {
           var errorMsg = 'Error: Update Unsuccessful';
           console.log(errorMsg);
