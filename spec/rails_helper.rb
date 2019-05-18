@@ -4,6 +4,7 @@ require 'spec_helper'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'factory_bot_rails'
+require 'webdrivers'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'selenium-webdriver'
@@ -38,12 +39,19 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # Cache the download of chrome driver for 1 day
+  Webdrivers.cache_time = 86_400
+
+  # Allow override of default path to Chrome (we use this in Travis)
+  Selenium::WebDriver::Chrome.path = ENV['CHROME_PATH'] if ENV['CHROME_PATH']
+
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
   Capybara.register_driver :headless_chrome do |app|
-    options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
+    args = ['no-sandbox', 'headless', 'disable-gpu', 'remote-debugging-port=9222']
+    options = Selenium::WebDriver::Chrome::Options.new(args: args)
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
 
