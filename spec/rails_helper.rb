@@ -44,6 +44,7 @@ RSpec.configure do |config|
 
   Capybara.register_driver :headless_chrome do |app|
     options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
+    options.add_option('w3c',false)
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
 

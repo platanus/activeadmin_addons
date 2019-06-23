@@ -2,16 +2,7 @@ module ActiveAdminAddons
   module Rails
     class Engine < ::Rails::Engine
       require "select2-rails"
-      require "sass"
-      begin
-        require 'sassc-rails'
-      rescue LoadError
-        begin
-          require 'sass-rails'
-        rescue LoadError
-          raise "Couldn't find 'sass-rails' or 'sassc-rails' gems in your application."
-        end
-      end
+      require "sassc-rails"
       require "xdan-datetimepicker-rails"
       require "require_all"
       require "active_material"

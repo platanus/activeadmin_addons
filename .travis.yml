@@ -7,10 +7,10 @@ script:
   - cd spec/dummy && RAILS_ENV=test bundle exec rake db:create db:migrate
   - cd ../.. && bundle exec rspec spec
 addons:
-  chrome: stable
+  chrome: beta
 before_install:
   - gem install chromedriver-helper
-  - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+  - google-chrome-beta --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 deploy:
   provider: rubygems
   api_key:
@@ -19,5 +19,3 @@ deploy:
   on:
     tags: true
     repo: platanus/activeadmin_addons
-before_script:
-  - chromedriver-update 73.0.3683.68
