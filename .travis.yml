@@ -9,6 +9,7 @@ script:
 addons:
   chrome: stable
 before_install:
+  - gem install bundler:1.16.5
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 env:
   - CHROME_PATH=/usr/bin/google-chrome-stable
