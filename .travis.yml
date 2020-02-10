@@ -9,8 +9,9 @@ script:
 addons:
   chrome: stable
 before_install:
-  - gem install chromedriver-helper
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
+env:
+  - CHROME_PATH=/usr/bin/google-chrome-stable
 deploy:
   provider: rubygems
   api_key:
@@ -19,5 +20,3 @@ deploy:
   on:
     tags: true
     repo: platanus/activeadmin_addons
-before_script:
-  - chromedriver-update 73.0.3683.68
