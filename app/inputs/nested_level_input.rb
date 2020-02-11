@@ -5,7 +5,7 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
     concat(label_html)
 
     select_control = builder.select(
-      method, initial_collection_to_select_options, {}, input_html_options
+      input_name, initial_collection_to_select_options, {}, input_html_options
     )
 
     concat(select_control)
