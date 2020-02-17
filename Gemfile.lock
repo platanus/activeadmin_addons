@@ -23,6 +23,7 @@ PATH
       railties
       require_all (~> 1.5)
       sassc
+      sassc-rails
       select2-rails (~> 4.0)
       xdan-datetimepicker-rails (~> 2.5.1)
 
@@ -329,7 +330,6 @@ DEPENDENCIES
   pry-rails
   rails (~> 4.2)
   rspec-rails
-  sassc-rails
   shoulda-matchers
   sqlite3
   webdrivers
