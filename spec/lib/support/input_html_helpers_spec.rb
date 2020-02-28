@@ -7,20 +7,22 @@ describe ActiveAdminAddons::InputHtmlHelpers do
 
       attr_reader :method
 
-      def initialize(object, method)
+      def initialize(object, object_name, method)
         @object = object
+        @object_name = object_name
         @method = method
       end
     end
   end
 
+  let(:object_name) { 'invoice' }
   let(:object) do
     create_categories
     create_invoice(category: @category1)
   end
 
   let(:method) { :category_id }
-  let(:instance) { dummy_class.new(object, method) }
+  let(:instance) { dummy_class.new(object, object_name, method) }
 
   describe "#prefixed_method" do
     it { expect(instance.prefixed_method).to eq("invoice_category_id") }

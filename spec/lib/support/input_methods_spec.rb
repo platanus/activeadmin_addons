@@ -7,13 +7,15 @@ describe ActiveAdminAddons::InputMethods do
 
       attr_reader :method
 
-      def initialize(object, method)
+      def initialize(object, object_name, method)
         @object = object
+        @object_name = object_name
         @method = method
       end
     end
   end
 
+  let(:object_name) { 'invoice' }
   let(:object) do
     create_categories
     create_items
@@ -21,7 +23,7 @@ describe ActiveAdminAddons::InputMethods do
   end
 
   let(:method) { :category_id }
-  let(:instance) { dummy_class.new(object, method) }
+  let(:instance) { dummy_class.new(object, object_name, method) }
 
   def self.check_invalid_method(method_name)
     context "with nil method" do
@@ -45,9 +47,20 @@ describe ActiveAdminAddons::InputMethods do
     end
   end
 
+  def self.check_invalid_object_name(method_name)
+    context "with nil object_name" do
+      let(:object_name) { nil }
+
+      it "raises error" do
+        error = "blank object_name given"
+        expect { instance.send(method_name) }.to raise_error(error)
+      end
+    end
+  end
+
   describe "#model_name" do
     it { expect(instance.model_name).to eq("invoice") }
-    check_invalid_object(:model_name)
+    check_invalid_object_name(:model_name)
   end
 
   describe "#method_model" do
