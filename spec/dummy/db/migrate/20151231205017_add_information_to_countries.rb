@@ -1,4 +1,4 @@
-class AddInformationToCountries < ActiveRecord::Migration
+class AddInformationToCountries < ActiveRecord::Migration[4.2]
   def change
     add_column :countries, :information, :text
   end

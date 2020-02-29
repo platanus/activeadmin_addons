@@ -1,5 +1,5 @@
 require "paperclip"
-class AddAttachmentToInvoices < ActiveRecord::Migration
+class AddAttachmentToInvoices < ActiveRecord::Migration[4.2]
   include Paperclip::Schema::Statements
 
   def change
