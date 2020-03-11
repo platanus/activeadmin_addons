@@ -1,8 +1,8 @@
 AllCops:
   Exclude:
   - "vendor/**/*"
-  - "spec/dummy/db/*"
-  - "db/**/*"
+  - "spec/dummy/db/schema.rb"
+  - "db/schema.rb"
   - "bin/**/*"
   DisplayCopNames: false
   TargetRubyVersion: 2.5
