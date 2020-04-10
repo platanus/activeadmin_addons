@@ -69,6 +69,7 @@ var initializer = function() {
       var url = element.data('url');
       var fields = element.data('fields');
       var predicate = element.data('predicate');
+      var filters = element.data('filters');
       var displayName = element.data('display-name');
       var parent = element.data('parent');
       var width = element.data('width');
@@ -116,6 +117,8 @@ var initializer = function() {
             if (!!parent) {
               query.q[parent + '_eq'] = parentId;
             }
+
+            Object.assign(query.q, filters);
 
             return query;
           },
