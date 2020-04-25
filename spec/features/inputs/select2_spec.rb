@@ -76,4 +76,21 @@ describe "Select 2", type: :feature do
       expect(page).to have_selector("select.select2")
     end
   end
+
+  context "when building ActiveAdmin html" do
+    describe "the <body> element" do
+      it "is present in the document only once" do
+        visit admin_invoices_path
+
+        expect(page.all('body').size).to eq 1
+      end
+
+      it "contains the data-default-select attribute" do
+        visit admin_invoices_path
+
+        body = find("body")
+        expect(body['data-default-select']).to eq ActiveadminAddons.default_select
+      end
+    end
+  end
 end
