@@ -185,6 +185,83 @@ describe "Nested Select Input", type: :feature do
       end
     end
   end
+  context "with filters", focus: true  do
+    before do
+      register_page(Country, false) {}
+      register_page(Region, false) {}
+      register_page(City, false) {}
+
+      register_form(Invoice, false) do |f|
+        f.input :city_id, as: :nested_select,
+                          level_1: { attribute: :country_id },
+                          level_2: {
+                            attribute: :region_id,
+                            filters: { name_contains: 'Met' }
+                            },
+                          level_3: { attribute: :city_id }
+      end
+
+      create_cities
+      create_invoice(city: @colina)
+      visit edit_admin_invoice_path(@invoice)
+    end
+
+    it "shows filled select controls based on defined city_id", js: true do
+      on_input_ctx("invoice_country_id") { expect_select2_selection("Chile") }
+      on_input_ctx("invoice_region_id") { expect_select2_selection("Metropolitana") }
+      on_input_ctx("invoice_city_id") { expect_select2_selection("Colina") }
+    end
+
+    context "updating medium level" do
+      before do
+        on_input_ctx("invoice_region_id") { open_select2_options }
+        select2_input.set("a")
+      end
+
+      it "shows no results based on entered text", js: true do
+        expect_select2_results_count_to_eq(1)
+      end
+    end
+  end
+
+  context "without filters", focus: true  do
+    before do
+      register_page(Country, false) {}
+      register_page(Region, false) {}
+      register_page(City, false) {}
+
+      register_form(Invoice, false) do |f|
+        f.input :city_id, as: :nested_select,
+                          level_1: { attribute: :country_id },
+                          level_2: {
+                            attribute: :region_id,
+                            # filters: { name_contains: 'Met' }
+                            },
+                          level_3: { attribute: :city_id }
+      end
+
+      create_cities
+      create_invoice(city: @colina)
+      visit edit_admin_invoice_path(@invoice)
+    end
+
+    it "shows filled select controls based on defined city_id", js: true do
+      on_input_ctx("invoice_country_id") { expect_select2_selection("Chile") }
+      on_input_ctx("invoice_region_id") { expect_select2_selection("Metropolitana") }
+      on_input_ctx("invoice_city_id") { expect_select2_selection("Colina") }
+    end
+
+    context "updating medium level" do
+      before do
+        on_input_ctx("invoice_region_id") { open_select2_options }
+        select2_input.set("a")
+      end
+
+      it "shows no results based on entered text", js: true do
+        expect_select2_results_count_to_eq(2)
+      end
+    end
+  end
 
   context "with nested resources" do
     before do
