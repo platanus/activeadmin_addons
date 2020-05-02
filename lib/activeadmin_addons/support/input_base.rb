@@ -16,7 +16,10 @@ module ActiveAdminAddons
     end
 
     def input_html_options
-      super.merge(control_attributes)
+      # maxwidth and size are added by Formtastic::Inputs::StringInput
+      # but according to the HTML standard these are not valid attributes
+      # on the inputs provided by this module
+      super.except(:maxlength, :size).merge(control_attributes)
     end
 
     def parts_to_html
