@@ -185,7 +185,7 @@ describe "Nested Select Input", type: :feature do
       end
     end
   end
-  context "with filters", focus: true  do
+  context "with filters"  do
     before do
       register_page(Country, false) {}
       register_page(Region, false) {}
@@ -224,7 +224,7 @@ describe "Nested Select Input", type: :feature do
     end
   end
 
-  context "without filters", focus: true  do
+  context "without filters"  do
     before do
       register_page(Country, false) {}
       register_page(Region, false) {}
@@ -233,10 +233,7 @@ describe "Nested Select Input", type: :feature do
       register_form(Invoice, false) do |f|
         f.input :city_id, as: :nested_select,
                           level_1: { attribute: :country_id },
-                          level_2: {
-                            attribute: :region_id,
-                            # filters: { name_contains: 'Met' }
-                            },
+                          level_2: { attribute: :region_id },
                           level_3: { attribute: :city_id }
       end
 
