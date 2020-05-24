@@ -3,6 +3,7 @@ module ActiveAdminAddons
     def render
       raise ArgumentError, 'Block should not be used in toggle bool columns' if block
       return if conditional_eval_hide?
+
       context.div class: 'toggle-bool-switches-container' do
         context.span toggle
       end
@@ -12,6 +13,7 @@ module ActiveAdminAddons
       toggle_classes = 'toggle-bool-switch'
       toggle_classes += ' on' if data
       toggle_classes += ' notify-success' if options[:success_message]
+      return unless enabled_controller_action?(:update)
 
       context.span(
         '',
@@ -21,7 +23,7 @@ module ActiveAdminAddons
         'data-object_id' => model.id,
         'data-field' => attribute,
         'data-value' => data,
-        'data-url' => context.auto_url_for(model),
+        'data-url' => resource_url,
         'data-success_message' => options[:success_message]
       )
     end
@@ -30,6 +32,7 @@ module ActiveAdminAddons
       [:if, :unless].any? do |cond|
         if options[cond]
           raise ArgumentError, "'#{cond}' option should be a proc" unless options[cond].is_a?(Proc)
+
           result = options[cond].call(model)
           cond == :if ? !result : result
         end

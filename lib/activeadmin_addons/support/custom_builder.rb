@@ -36,6 +36,26 @@ module ActiveAdminAddons
 
     protected
 
+    def resource_url
+      admin_resource&.route_instance_path(model, {})
+    end
+
+    def enabled_controller_action?(action)
+      admin_controller_actions.include?(action)
+    end
+
+    def admin_controller_actions
+      (admin_controller&.action_methods&.to_a || []).map(&:to_sym)
+    end
+
+    def admin_controller
+      context&.controller
+    end
+
+    def admin_resource
+      context.active_admin_resource_for(model.class)
+    end
+
     def data
       @data ||= block ? block.call(model) : model.send(attribute)
     end
