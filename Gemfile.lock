@@ -1,19 +1,3 @@
-GIT
-  remote: git://github.com/activeadmin/activeadmin.git
-  revision: a92ee4d2394f3f5b8ee15de7f26e4ce754834842
-  specs:
-    activeadmin (2.6.1)
-      arbre (~> 1.2, >= 1.2.1)
-      formtastic (~> 3.1)
-      formtastic_i18n (~> 0.4)
-      inherited_resources (~> 1.7)
-      jquery-rails (~> 4.2)
-      kaminari (~> 1.0, >= 1.0.1)
-      railties (>= 5.2, < 6.1)
-      ransack (~> 2.1, >= 2.1.1)
-      sassc-rails (~> 2.1)
-      sprockets (>= 3.0, < 4.1)
-
 PATH
   remote: .
   specs:
@@ -54,6 +38,17 @@ GEM
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_material (1.4.2)
+    activeadmin (2.7.0)
+      arbre (~> 1.2, >= 1.2.1)
+      formtastic (~> 3.1)
+      formtastic_i18n (~> 0.4)
+      inherited_resources (~> 1.7)
+      jquery-rails (~> 4.2)
+      kaminari (~> 1.0, >= 1.0.1)
+      railties (>= 5.2, < 6.1)
+      ransack (~> 2.1, >= 2.1.1)
+      sassc-rails (~> 2.1)
+      sprockets (>= 3.0, < 4.1)
     activejob (5.2.4.1)
       activesupport (= 5.2.4.1)
       globalid (>= 0.3.6)
@@ -332,7 +327,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
-  activeadmin!
+  activeadmin
   activeadmin_addons!
   capybara-selenium
   database_cleaner
