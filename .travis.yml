@@ -1,15 +1,16 @@
 language: ruby
 sudo: false
 rvm:
-  - 2.3.3
-  - 2.5.0
+  - 2.5.7
+  - 2.6.5
+  - 2.7.0
 script:
   - cd spec/dummy && RAILS_ENV=test bundle exec rake db:create db:migrate
   - cd ../.. && bundle exec rspec spec
 addons:
   chrome: stable
 before_install:
-  - gem install bundler:1.16.5
+  - gem install bundler:1.17.2
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 env:
   - CHROME_PATH=/usr/bin/google-chrome-stable

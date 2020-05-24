@@ -4,6 +4,7 @@ AllCops:
   - "spec/dummy/db/schema.rb"
   - "db/schema.rb"
   - "bin/**/*"
+  - "spec/dummy/db/schema.rb"
   DisplayCopNames: false
   TargetRubyVersion: 2.5
 Rails:
