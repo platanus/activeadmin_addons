@@ -64,4 +64,21 @@ describe "Toggle Bool Builder", type: :feature do
       end
     end
   end
+
+  context "with disabled update action" do
+    before do
+      register_page(Invoice) do
+        actions :index, :show
+
+        index do
+          toggle_bool_column :active
+        end
+      end
+
+      @invoice = create_invoice(active: true)
+      visit admin_invoices_path
+    end
+
+    it { expect(page).not_to have_css("#toggle-invoice-#{@invoice.id}-active") }
+  end
 end
