@@ -4,7 +4,7 @@ PATH
     activeadmin_addons (1.7.1)
       active_material
       railties
-      require_all (~> 1.5)
+      require_all (~> 2.0)
       sassc
       sassc-rails
       xdan-datetimepicker-rails (~> 2.5.1)
@@ -241,7 +241,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
-    require_all (1.5.0)
+    require_all (2.0.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)

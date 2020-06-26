@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "active_material"
   s.add_dependency "railties"
-  s.add_dependency "require_all", "~> 1.5"
+  s.add_dependency "require_all", "~> 2.0"
   s.add_dependency "sassc"
   s.add_dependency "sassc-rails"
   s.add_dependency "xdan-datetimepicker-rails", "~> 2.5.1"

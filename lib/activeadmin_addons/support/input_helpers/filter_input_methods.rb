@@ -1,3 +1,5 @@
+require_relative "input_methods"
+
 module ActiveAdminAddons
   module FilterInputMethods
     include InputMethods
