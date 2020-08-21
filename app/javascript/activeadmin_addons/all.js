@@ -1,14 +1,14 @@
-//= require select2.full
-//= require jquery.xdan.datetimepicker.full
-//= require palette-color-picker
-//
-//= require ./config
-//= require ./inputs/select2
-//= require ./inputs/search-select
-//= require ./inputs/nested-select
-//= require ./inputs/tags
-//= require ./inputs/selected-list
-//= require ./inputs/date-time-picker
-//= require ./inputs/color-picker
-//= require ./addons/toggle_bool
-//= require ./addons/interactive_select_tag
+import 'select2';
+import 'jquery-datetimepicker';
+import './vendor/jquery_palette_color_picker/palette-color-picker';
+
+import './config';
+import './inputs/select2';
+import './inputs/search-select';
+import './inputs/nested-select';
+import './inputs/tags';
+import './inputs/selected-list';
+import './inputs/date-time-picker';
+import './inputs/color-picker';
+import './addons/toggle_bool';
+import './addons/interactive_select_tag';
