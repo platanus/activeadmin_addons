@@ -1,0 +1,9 @@
+{
+  "name": "activeadmin_addons",
+  "version": "1.7.1",
+  "description": "Set of addons to help with the activeadmin ui",
+  "main": "app/assets/javascripts/activeadmin_addons/all.js",
+  "repository": "https://github.com/platanus/activeadmin_addons.git",
+  "author": "Platanus <rubygems@platan.us>",
+  "license": "MIT"
+}
