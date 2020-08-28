@@ -6,7 +6,7 @@ var initializer = function() {
   });
 
   function configureSelect2(container) {
-    if (ActiveadminAddons.config.defaultSelect == 'select2') {
+    if (window.ActiveadminAddons.config.defaultSelect == 'select2') {
       $('select:not(.default-select)', container).each(function(i, el) {
         setupSelect2(el);
       });
