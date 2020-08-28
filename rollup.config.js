@@ -1,7 +1,7 @@
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
-import babel from "rollup-plugin-babel";
-import { uglify } from "rollup-plugin-uglify";
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
+import { uglify } from 'rollup-plugin-uglify';
 import { stripIndent } from 'common-tags';
 
 const uglifyOptions = {
@@ -17,15 +17,15 @@ const uglifyOptions = {
       //= require select2.full
       //= require jquery.xdan.datetimepicker.full
     ` + '\n'
-  }
-}
+  },
+};
 
 export default {
-  input: "app/javascript/activeadmin_addons/all.js",
+  input: 'app/javascript/activeadmin_addons/all.js',
   output: {
-    file: "app/assets/javascripts/activeadmin_addons/all.js",
-    format: "umd",
-    name: "ActiveAdmin Addons"
+    file: 'app/assets/javascripts/activeadmin_addons/all.js',
+    format: 'umd',
+    name: 'ActiveAdmin Addons',
   },
   plugins: [
     resolve(),
@@ -37,5 +37,5 @@ export default {
   external: [
     'jquery-datetimepicker',
     'select2',
-  ]
-}
+  ],
+};
