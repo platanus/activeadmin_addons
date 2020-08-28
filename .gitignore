@@ -13,3 +13,4 @@ spec/dummy/public/system
 .tags_sorted_by_file
 vendor/bundle
 node_modules
+src

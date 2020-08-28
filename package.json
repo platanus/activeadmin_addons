@@ -2,12 +2,16 @@
   "name": "activeadmin_addons",
   "version": "1.7.1",
   "description": "Set of addons to help with the activeadmin ui",
-  "main": "app/assets/javascripts/activeadmin_addons/all.js",
+  "main": "src/all.js",
+  "files": [
+    "src/*"
+  ],
   "repository": "https://github.com/platanus/activeadmin_addons.git",
   "author": "Platanus <rubygems@platan.us>",
   "license": "MIT",
   "scripts": {
-    "build": "rollup --config rollup.config.js"
+    "build": "rollup --config rollup.config.js",
+    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/activeadmin_addons src/stylesheets && cp src/stylesheets/imports/webpack/*.scss src/stylesheets/imports && cp -R app/javascript/activeadmin_addons/* src"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
