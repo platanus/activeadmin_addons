@@ -5,14 +5,14 @@ module ActiveadminAddons
         file_path = 'app/javascript/packs/active_admin.js'
         reference = "import \"@activeadmin/activeadmin\";\n"
 
-        inject_into_file("#{file_path}", js_assets, after: reference)
+        inject_into_file(file_path, js_assets, after: reference)
       end
 
       def add_stylesheets
         file_path = 'app/javascript/stylesheets/active_admin.scss'
 
         begin
-          prepend_file("#{file_path}", css_assets)
+          prepend_file(file_path, css_assets)
         end
       end
 
@@ -28,7 +28,7 @@ module ActiveadminAddons
       end
 
       def css_assets
-        "@import 'activeadmin_addons/src/stylesheets/all';\n" 
+        "@import 'activeadmin_addons/src/stylesheets/all';\n"
       end
     end
   end
