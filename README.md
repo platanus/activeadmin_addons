@@ -228,6 +228,8 @@ filter :category_id, as: :search_select_filter
 Use default active_admin theme.
 
 #### Material Theme
+##### Not compatible when Active Admin has been installed in webpack mode
+
 Show material design theme using [active_material](https://github.com/vigetlabs/active_material). If you want to use it, you should run the generator using the flag `theme` as follow:
 
 ```ruby
@@ -251,9 +253,10 @@ For material documentation you should go to [gem documentation](http://code.vige
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+3. If you changed the javascript/scss files, run `yarn build`.
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create new Pull Request
 
 If you want to collaborate, please check [the rules](docs/CONTRIBUTING.md) first.
 
