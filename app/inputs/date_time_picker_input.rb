@@ -25,6 +25,7 @@ class DateTimePickerInput < ActiveAdminAddons::InputBase
     load_class(@options[:class])
     load_data_attr(:picker_options, value: datetime_picker_options)
     load_attr(:maxlength, value: 19)
+    load_attr(:autocomplete, value: 'off')
     load_attr(:value, value: formatted_input_value)
   end
 
