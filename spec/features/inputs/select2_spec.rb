@@ -40,6 +40,17 @@ describe "Select 2", type: :feature do
           expect_select2_options_count_to_eq(5)
         end
       end
+
+      context 'when initial value is not in inputs collection' do
+        before do
+          invoice.update!(number: selection)
+          visit edit_admin_invoice_path(invoice)
+        end
+
+        it "includes initial value as option", js: true do
+          expect_select2_options_count_to_eq(5)
+        end
+      end
     end
 
     context "with tags: false option" do
