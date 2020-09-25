@@ -73,6 +73,9 @@ module ActiveAdminHelpers
       # it allover the place
       ActiveAdmin.application.authentication_method = false
       ActiveAdmin.application.current_user_method = false
+
+      pack_path = Pathname.new("spec/dummy/app/javascript/packs/active_admin.js")
+      ActiveAdmin.application.use_webpacker = pack_path.exist?
     end
 
     yield
