@@ -25,3 +25,7 @@ Now, if you want to enable [select2](http://ivaynberg.github.io/select2/) for a 
 ```
 f.input :created_at, input_html: { class: "select2" }
 ```
+
+### Options
+
+* `tags`: **(optional)** boolean option, by **default** it's `false`. If `true`, it allows dynamic option creation [as described here](https://select2.org/tagging). It will also add the input's initial value to the select options if it's not in the supplied collection. Note that, unlike the `tags_input`, this does not allow multiple values. Only available for form inputs, not filters.
