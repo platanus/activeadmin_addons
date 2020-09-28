@@ -15,7 +15,11 @@ The gem is a [Rails engine](http://guides.rubyonrails.org/v4.2/engines.html). So
 To run the application quickly, you can execute in the root of the gem the following command:
 
 ```
+# To use sprockets
 bin/setup
+
+# To use webpacker
+bin/setup --use_webpacker
 ```
 
 This command loads the dummy app with test data and an admin user with:
@@ -39,6 +43,10 @@ If you're using homebrew on OS X you can do: `brew install chromedriver`.
 To run the tests you can do, in the root of the gem,
 
 ```
+# For running the full setup (sprockets and webpacker)
+bundle exec rake tests
+
+# For running in the current environment
 bundle exec rspec
 ```
 
