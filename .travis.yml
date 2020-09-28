@@ -5,11 +5,11 @@ rvm:
   - 2.6.5
   - 2.7.0
 script:
-  - cd spec/dummy && RAILS_ENV=test bundle exec rake db:create db:migrate
-  - cd ../.. && bundle exec rspec spec
+  - bundle exec rake tests
 addons:
   chrome: stable
 before_install:
+  - nvm install --lts
   - gem install bundler:1.17.2
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 env:
