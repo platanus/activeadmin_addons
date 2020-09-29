@@ -2,6 +2,28 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### Unreleased
+
+##### Added
+* Added filters option in nested selects [#301](https://github.com/platanus/activeadmin_addons/pull/301)
+* Date range filters and date picker inputs now has `autocomplete: 'off'` by default [#320](https://github.com/platanus/activeadmin_addons/pull/320)
+* Added `tags` option to default select2 inputs [#322](https://github.com/platanus/activeadmin_addons/pull/322)
+
+##### Fixed
+* Added CSRF header for interactive select tag [#262](https://github.com/platanus/activeadmin_addons/pull/262)
+* Replaced deprecated `chromedriver-helper` gem with `webdrivers` to avoid chromedriver version error [#265](https://github.com/platanus/activeadmin_addons/pull/265)
+* Manually install bundler in CI [#286](https://github.com/platanus/activeadmin_addons/pull/286)
+* Avoid generating second body element [#302](https://github.com/platanus/activeadmin_addons/pull/302)
+* Avoid showing `toggle_bool_column` if update action is disabled [#306](https://github.com/platanus/activeadmin_addons/pull/306)
+* Moved `sassc-rails` from dev dependencies to normal dependencies [#294](https://github.com/platanus/activeadmin_addons/pull/294)
+
+##### Changed
+* Updated ruby to 2.7 and rails to 5.2.4.1 [#293](https://github.com/platanus/activeadmin_addons/pull/293)
+* Replaced EOL'd sass with sassc [#292](https://github.com/platanus/activeadmin_addons/pull/292)
+* Remove unsupported `select2-rails` gem, vendor files directly [#264](https://github.com/platanus/activeadmin_addons/pull/264) and bump select2 to 4.0.13 [#296](https://github.com/platanus/activeadmin_addons/pull/296)
+* Updated `require_all` gem to 2.0 [#313](https://github.com/platanus/activeadmin_addons/pull/313)
+* Dependabot bumps for devise, rack, loofah
+
 ### 1.7.1
 
 ##### Fixed
