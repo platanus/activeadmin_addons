@@ -353,7 +353,7 @@ DEPENDENCIES
   shoulda-matchers
   sqlite3
   webdrivers
-  webpacker (~> 5.x)
+  webpacker (~> 5.0)
 
 BUNDLED WITH
    1.17.2
