@@ -4,7 +4,6 @@ module FakeDataLoader
   extend DataLoaders
 
   def self.load_data
-    create_admin
     create_categories(5)
     create_items(10)
     create_cities

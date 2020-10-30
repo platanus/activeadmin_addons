@@ -22,11 +22,7 @@ bin/setup
 bin/setup --use_webpacker
 ```
 
-This command loads the dummy app with test data and an admin user with:
-
-* email: `admin@platan.us`
-* password: `12345678`
-
+This command loads the dummy app with test data.
 To navigate the application you can run, inside the `/spec/dummy` directory:
 
 ```

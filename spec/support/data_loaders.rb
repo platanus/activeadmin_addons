@@ -33,8 +33,4 @@ module DataLoaders
   def create_invoice(data = {})
     @invoice = Invoice.first_or_create!(data)
   end
-
-  def create_admin
-    @admin = AdminUser.create!(email: "admin@platan.us", password: "12345678")
-  end
 end
