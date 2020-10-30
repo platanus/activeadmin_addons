@@ -14,4 +14,3 @@ gemspec
 # gem "debugger"
 gem "activeadmin"
 gem "devise"
-gem "webpacker", "~> 5.0"
