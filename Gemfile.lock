@@ -73,7 +73,6 @@ GEM
       activesupport (>= 3.0.0)
     arel (9.0.0)
     ast (2.4.0)
-    bcrypt (3.1.13)
     builder (3.2.4)
     capybara (3.31.0)
       addressable
@@ -92,12 +91,6 @@ GEM
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     database_cleaner (1.8.2)
-    devise (4.7.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     diff-lcs (1.3)
     enumerize (2.3.1)
       activesupport (>= 3.2)
@@ -181,7 +174,6 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    orm_adapter (0.5.0)
     paperclip (6.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -307,8 +299,6 @@ GEM
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
     unicode-display_width (1.4.1)
-    warden (1.2.8)
-      rack (>= 2.0.6)
     webdrivers (4.2.0)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
@@ -331,7 +321,6 @@ DEPENDENCIES
   activeadmin_addons!
   capybara-selenium
   database_cleaner
-  devise
   enumerize (~> 2.0)
   factory_bot_rails
   guard
