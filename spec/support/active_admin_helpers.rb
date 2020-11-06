@@ -52,6 +52,7 @@ module ActiveAdminHelpers
   def reload_routes!(_show_routes = false)
     Rails.application.reload_routes!
     return unless _show_routes
+
     Rails.application.routes.routes.each do |route|
       puts route.path.spec.to_s
     end
