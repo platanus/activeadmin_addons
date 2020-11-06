@@ -23,6 +23,9 @@ bin/setup --use_webpacker
 ```
 
 This command loads the dummy app with test data.
+
+The command leaves some automatically generated files from the setup process, these files should be (manually) ignored if you want to commit a change. If you want to clean these files you can run `bin/clean` but be warned that it will remove any non-committed change from the `spec/dummy` folder.
+
 To navigate the application you can run, inside the `/spec/dummy` directory:
 
 ```
