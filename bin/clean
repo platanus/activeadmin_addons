@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Exit if any subcommand fails
+set -e
+
+git restore -s@ -SW spec/dummy
+cd spec/dummy
+git checkout .
+git clean -f -d

@@ -7,5 +7,33 @@ set -e
 gem install bundler --conservative
 bundle check || bundle install
 
+git restore -s@ -SW spec/dummy
+
+if [ "$1" = "--use_webpacker" ]; then
+  yarn prepublishOnly
+fi
+
 cd spec/dummy
+git checkout .
+git clean -f -d
 rake db:setup
+bundle config frozen false
+if [ "$1" = "--use_webpacker" ]; then
+  bundle add webpacker  --version "~>5.0"
+  bundle exec rails webpacker:install
+  bundle exec rails generate active_admin:install --skip-users --skip-comments --use_webpacker
+else
+  set +e
+  bundle remove webpacker
+  yarn remove @activeadmin/activeadmin @rails/webpacker activeadmin_addons webpack-dev-server
+  set -e
+  bundle exec rails generate active_admin:install --skip-users --skip-comments
+fi
+bundle exec rails g activeadmin_addons:install
+
+if [ "$1" = "--use_webpacker" ]; then
+  yarn add file:./../..
+  rm -rf node_modules/activeadmin_addons/spec
+  rm -rf node_modules/activeadmin_addons/vendor
+  cd ../..
+fi

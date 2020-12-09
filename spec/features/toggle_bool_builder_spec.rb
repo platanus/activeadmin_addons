@@ -3,17 +3,19 @@ require 'rails_helper'
 describe "Toggle Bool Builder", type: :feature do
   context "when using inside another resource" do
     before do
-      load_resources(true) do
-        ActiveAdmin.register(Invoice)
-        ActiveAdmin.register(Category) do
-          show do
-            attributes_table do
-              row :id
-            end
-            table_for resource.invoices do
-              toggle_bool_column :active
-            end
-          end
+      register_page(Invoice) do
+        index do
+          toggle_bool_column :active
+        end
+      end
+
+      register_show(Category, false) do
+        attributes_table do
+          row :id
+        end
+
+        table_for resource.invoices do
+          toggle_bool_column :active
         end
       end
     end
@@ -30,8 +32,10 @@ describe "Toggle Bool Builder", type: :feature do
 
   context "shows corresponding switch" do
     before do
-      register_index(Invoice) do
-        toggle_bool_column :active
+      register_page(Invoice) do
+        index do
+          toggle_bool_column :active
+        end
       end
     end
 
@@ -63,22 +67,5 @@ describe "Toggle Bool Builder", type: :feature do
         expect(switch[:class]).not_to include("on")
       end
     end
-  end
-
-  context "with disabled update action" do
-    before do
-      register_page(Invoice) do
-        actions :index, :show
-
-        index do
-          toggle_bool_column :active
-        end
-      end
-
-      @invoice = create_invoice(active: true)
-      visit admin_invoices_path
-    end
-
-    it { expect(page).not_to have_css("#toggle-invoice-#{@invoice.id}-active") }
   end
 end

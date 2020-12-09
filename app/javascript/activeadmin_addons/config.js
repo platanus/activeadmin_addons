@@ -1,5 +1,5 @@
 var initializer = function() {
-  ActiveadminAddons = {
+  window.ActiveadminAddons = {
     config: {
       defaultSelect: $('body').data('default-select'),
     },

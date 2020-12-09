@@ -57,21 +57,6 @@ describe "Bool Builder", type: :feature do
     end
   end
 
-  context "passing attributes without localization values" do
-    before do
-      register_show(AdminUser) do
-        bool_row(:id)
-      end
-
-      create_admin
-      visit admin_admin_user_path(@admin)
-    end
-
-    it "shows the default true localized value" do
-      expect(page).to have_content 'ok'
-    end
-  end
-
   context "using model localization options" do
     before do
       register_show(Invoice) do

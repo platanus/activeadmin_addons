@@ -56,12 +56,6 @@ describe ActiveAdminAddons::InputMethods do
     it { expect(instance.method_model).to be(Category) }
     check_invalid_method(:method_model)
 
-    context "when association has defined class_name option" do
-      let(:method) { :buyer_id }
-
-      it { expect(instance.method_model).to be(AdminUser) }
-    end
-
     context "when class_name isn't defined and object is a namespaced class" do
       let(:object) { Store::Car.create name: "Fiesta", year: 2017 }
       let(:method) { :manufacturer_id }

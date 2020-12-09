@@ -52,6 +52,7 @@ module ActiveAdminHelpers
   def reload_routes!(_show_routes = false)
     Rails.application.reload_routes!
     return unless _show_routes
+
     Rails.application.routes.routes.each do |route|
       puts route.path.spec.to_s
     end
@@ -73,6 +74,9 @@ module ActiveAdminHelpers
       # it allover the place
       ActiveAdmin.application.authentication_method = false
       ActiveAdmin.application.current_user_method = false
+
+      pack_path = Pathname.new("spec/dummy/app/javascript/packs/active_admin.js")
+      ActiveAdmin.application.use_webpacker = pack_path.exist?
     end
 
     yield

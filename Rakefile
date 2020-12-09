@@ -14,5 +14,11 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-Bundler::GemHelper.install_tasks
+task :tests do
+  sh "bin/setup"
+  sh "rspec"
+  sh "bin/setup --use_webpacker"
+  sh "rspec"
+end
 
+Bundler::GemHelper.install_tasks

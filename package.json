@@ -1,0 +1,30 @@
+{
+  "name": "activeadmin_addons",
+  "version": "1.0.0",
+  "description": "Set of addons to help with the activeadmin ui",
+  "main": "src/all.js",
+  "files": [
+    "src/*"
+  ],
+  "repository": "https://github.com/platanus/activeadmin_addons.git",
+  "author": "Platanus <rubygems@platan.us>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/activeadmin_addons src/stylesheets && cp src/stylesheets/imports/webpack/*.scss src/stylesheets/imports && cp -R app/javascript/activeadmin_addons/* src"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "common-tags": "^1.8.0",
+    "rollup": "^2.26.4",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.4"
+  },
+  "dependencies": {
+    "jquery-datetimepicker": "^2.5.21",
+    "select2": "^4.0.13"
+  }
+}

@@ -7,7 +7,6 @@ class Invoice < ActiveRecord::Base
   include Paperclip::Glue
   include AASM
 
-  belongs_to :buyer, class_name: "AdminUser", foreign_key: :client_id
   belongs_to :category
   belongs_to :city
   has_and_belongs_to_many :items
