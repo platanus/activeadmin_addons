@@ -6,9 +6,7 @@ module CapybaraHelpers
   end
 
   def click_filter_btn
-    within("#filters_sidebar_section") do
-      click_button("Filter")
-    end
+    page.execute_script("document.getElementsByClassName('filter_form')[0].submit()")
   end
 
   def expect_text(text)
