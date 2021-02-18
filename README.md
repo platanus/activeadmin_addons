@@ -29,6 +29,7 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 #### Filters
 
 - [Numeric Range Filter](#numeric-range-filter): filter your results using a numeric range (i.e. age between 18-30).
+- [Date Time Picker Filter](#date-time-picker-filter): filter your results using a datetime range.
 - [Search Select Filter](#search-select-filter): filter your results using the ajax select input.
 
 #### Themes
@@ -210,6 +211,16 @@ filter :number, as: :numeric_range_filter
 ```
 
 <img src="./docs/images/filter-range.png" height="150" />
+
+#### Date Time Picker Filter
+
+To filter based on a range of datetimes you can use `date_time_picker_filter` like this:
+
+```ruby
+filter :created_at, as: :date_time_picker_filter
+```
+
+<img src="./docs/images/data-time-picker-range.png" height="150" />
 
 #### Search Select Filter
 

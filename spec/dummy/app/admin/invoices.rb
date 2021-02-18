@@ -9,6 +9,8 @@ ActiveAdmin.register Invoice do
                        fields: [:name],
                        minimum_input_length: 0
 
+  filter :created_at, as: :date_time_picker_filter
+
   index do
     selectable_column
     id_column
@@ -18,6 +20,7 @@ ActiveAdmin.register Invoice do
     attachment_column :attachment
     number_column :amount, as: :currency, unit: "$", separator: ","
     toggle_bool_column :active
+    column :created_at
     actions
   end
 
