@@ -27,7 +27,7 @@ The install generator will automatically do these two changes to your files depe
 1. The following line will be added as the **first** line of `app/javascript/stylesheets/active_admin.scss`
 
 ```stylesheet
-@import 'activeadmin_addons/all'
+@import 'activeadmin_addons/src/stylesheets/all'
 ```
 
 2. The following line will be added **after** `import "@activeadmin/activeadmin"` in `app/javascript/packs/active_admin.js`
