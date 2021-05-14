@@ -10,7 +10,7 @@ addons:
   chrome: stable
 before_install:
   - nvm install --lts
-  - gem install bundler:1.17.2
+  - gem install bundler:2.1.4
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 env:
   - CHROME_PATH=/usr/bin/google-chrome-stable
