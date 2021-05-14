@@ -16,7 +16,7 @@ fi
 cd spec/dummy
 git checkout .
 git clean -f -d
-rake db:setup
+bundle exec rake db:setup
 bundle config frozen false
 if [ "$1" = "--use_webpacker" ]; then
   bundle add webpacker  --version "~>5.0"
