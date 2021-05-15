@@ -39,14 +39,18 @@ rails s
 The gem is tested using [rspec](https://github.com/rspec/rspec-rails), [capybara](https://github.com/teamcapybara/capybara#using-capybara-with-rspec) and [selenium-webdriver](https://github.com/SeleniumHQ/selenium/tree/master/rb) with chrome. So, **you need to have chromedriver installed**.
 If you're using homebrew on OS X you can do: `brew install chromedriver`.
 
-To run the tests you can do, in the root of the gem,
+To run the tests you can do, in the root of the gem:
 
 ```
 # For running the full setup (sprockets and webpacker)
 bundle exec rake tests
 
-# For running in the current environment
+# For running with webpacker only
 bundle exec rspec
+```
+
+# For running with webpacker only
+export SPROCKETS=true; bundle exec rspec
 ```
 
 - The addons specs we put them inside `/spec/features`.

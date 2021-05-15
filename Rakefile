@@ -15,10 +15,8 @@ RDoc::Task.new(:rdoc) do |rdoc|
 end
 
 task :tests do
-  sh "bin/setup"
-  sh "rspec"
-  sh "bin/setup --use_webpacker"
-  sh "rspec"
+  system "export SPROCKETS=true; rspec ./spec/features"
+  system "export SPROCKETS=false; rspec"
 end
 
 Bundler::GemHelper.install_tasks

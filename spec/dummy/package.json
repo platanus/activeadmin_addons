@@ -1,4 +1,14 @@
 {
   "name": "activeadmin_addons_dummy_app",
-  "version": "1.7.1"
+  "version": "1.7.1",
+  "dependencies": {
+    "@activeadmin/activeadmin": "^2.9.0",
+    "@rails/webpacker": "5.3.0",
+    "activeadmin_addons": "file:./../..",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.2"
+  }
 }
