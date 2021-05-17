@@ -15,17 +15,10 @@ The gem is a [Rails engine](http://guides.rubyonrails.org/v4.2/engines.html). So
 To run the application quickly, you can execute in the root of the gem the following command:
 
 ```
-# To use sprockets
 bin/setup
-
-# To use webpacker
-bin/setup --use_webpacker
 ```
 
 This command loads the dummy app with test data.
-
-The command leaves some automatically generated files from the setup process, these files should be (manually) ignored if you want to commit a change. If you want to clean these files you can run `bin/clean` but be warned that it will remove any non-committed change from the `spec/dummy` folder.
-
 To navigate the application you can run, inside the `/spec/dummy` directory:
 
 ```
@@ -47,9 +40,8 @@ bundle exec rake tests
 
 # For running with webpacker only
 bundle exec rspec
-```
 
-# For running with webpacker only
+# For running with sprockets only
 export SPROCKETS=true; bundle exec rspec
 ```
 
