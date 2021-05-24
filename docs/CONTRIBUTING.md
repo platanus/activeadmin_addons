@@ -39,10 +39,10 @@ To run the tests you can do, in the root of the gem:
 bundle exec rake tests
 
 # For running with webpacker only
-bundle exec rspec
+bundle exec rake webpack_tests
 
 # For running with sprockets only
-export SPROCKETS=true; bundle exec rspec
+bundle exec rake sprockets_tests
 ```
 
 - The addons specs we put them inside `/spec/features`.

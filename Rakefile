@@ -14,9 +14,17 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-task :tests do
-  system "export SPROCKETS=true; rspec ./spec/features"
+task :sprockets_tests do
+  system "export SPROCKETS=true; yarn build; rspec ./spec/features"
+end
+
+task :webpack_tests do
   system "export SPROCKETS=false; rspec"
+end
+
+task :tests do
+  system "rake sprockets_tests"
+  system "rake webpack_tests"
 end
 
 Bundler::GemHelper.install_tasks
