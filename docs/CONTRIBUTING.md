@@ -36,6 +36,9 @@ To run the tests you can do, in the root of the gem:
 
 ```
 # For running the full setup (sprockets and webpacker)
+bundle exec rake all_tests
+
+# For running helper specs (/lib directory)
 bundle exec rake tests
 
 # For running with webpacker only
