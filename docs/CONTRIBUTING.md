@@ -22,7 +22,13 @@ This command loads the dummy app with test data.
 To navigate the application you can run, inside the `/spec/dummy` directory:
 
 ```
-rails s
+bin/rails s
+```
+
+If you are using webpacker, it can be useful to run:
+
+```
+bin/webpack-dev-server
 ```
 
 > It is a good idea to add to the dummy app any new functionality. See for example the file: `/spec/dummy/app/admin/invoices.rb`
