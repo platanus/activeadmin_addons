@@ -55,8 +55,7 @@ RSpec.configure do |config|
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
 
-  # change to :chrome if you want to see the browser running.
-  Capybara.javascript_driver = :headless_chrome
+  Capybara.javascript_driver = ENV.fetch('JS_DRIVER', :headless_chrome).to_sym
 
   config.include ActiveAdminHelpers
   config.include DataLoaders
