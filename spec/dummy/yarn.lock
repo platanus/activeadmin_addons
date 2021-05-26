@@ -1146,18 +1146,11 @@ acorn@^6.4.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.4.2.tgz#35866fd710528e92de10cf06016498e47e39e1e6"
   integrity sha512-XtGIhXwF8YM8bJhGxG5kXgjkEuNGLTkoYqVE+KMR+aspr4KGYmKYg7yUe3KghyQ9yheNwLnjmzh/7+gfDBmHCQ==
 
-activeadmin_addons@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/activeadmin_addons/-/activeadmin_addons-1.0.0.tgz#e271913d7d4e971398ac102202f5038be08439b0"
-  integrity sha512-t0aCFCh8EJO5pJJTnSBQCTgQr+eAhZ+naomFdJxzvku76IANRM1NT8Ox8q+SGA+hf9DTSJLfUwLSRBRc6z63Cw==
-  dependencies:
-    jquery-datetimepicker "^2.5.21"
-    select2 "^4.0.13"
-
-"activeadmin_addons@file:./../..":
+"activeadmin_addons@file:../..":
   version "1.0.0"
   dependencies:
     jquery-datetimepicker "^2.5.21"
+    script-loader "^0.7.2"
     select2 "^4.0.13"
 
 aggregate-error@^3.0.0:
@@ -5537,6 +5530,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+raw-loader@~0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
+  integrity sha1-DD0L6u2KAclm2Xh793goElKpeao=
+
 read-cache@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/read-cache/-/read-cache-1.0.0.tgz#e664ef31161166c9751cdbe8dbcf86b5fb58f774"
@@ -5834,6 +5832,13 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.6"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+script-loader@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/script-loader/-/script-loader-0.7.2.tgz#2016db6f86f25f5cf56da38915d83378bb166ba7"
+  integrity sha512-UMNLEvgOAQuzK8ji8qIscM3GIrRCWN6MmMXGD4SD5l6cSycgGsCo0tX5xRnfQcoghqct0tjHjcykgI1PyBE2aA==
+  dependencies:
+    raw-loader "~0.5.1"
 
 select-hose@^2.0.0:
   version "2.0.0"
