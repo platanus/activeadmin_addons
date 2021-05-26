@@ -19,16 +19,30 @@ bin/setup
 ```
 
 This command loads the dummy app with test data.
-To navigate the application you can run, inside the `/spec/dummy` directory:
+To navigate the application you can run, inside the `/spec/dummy` directory...
+
+**With webpack:**
 
 ```
 bin/rails s
 ```
 
-If you are using webpacker, it can be useful to run:
+And in another tab:
 
 ```
 bin/webpack-dev-server
+```
+
+**With Sprockets:**
+
+```
+export SPROCKETS=true; bin/rails s
+```
+
+And if you change the javascript, you will need to run the following command:
+
+```
+bundle exec rake prepare_assets
 ```
 
 > It is a good idea to add to the dummy app any new functionality. See for example the file: `/spec/dummy/app/admin/invoices.rb`
