@@ -16,6 +16,31 @@ f.input :names, as: :tags, collection: ['Julio', 'Emilio', 'Leandro']
 
 <img src="./images/select2-tags.gif" />
 
+### Postgres array columns
+
+Tagging works with postgres array columns: elements of the array will be loaded as individual tags. However, minor tweaking for both the create and update methods may be needed. For example you could do this:
+
+```ruby
+ActiveAdmin.register Event do
+  permit_params short_names: []
+
+  form do |f|
+    f.inputs do
+      f.input :short_names, as: :tags
+    end
+    actions
+  end
+
+  before_action :split_short_names, only: [:update, :create]
+
+  controller do
+    def split_short_names
+      params['event']['short_names'] = params['event']['short_names'].split(',')
+    end
+  end
+end
+```
+
 ## Tagging with Active Record collections
 
 To use tagging functionality with Active Record collections you need to do something like this:

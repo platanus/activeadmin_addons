@@ -48,6 +48,10 @@ module ActiveAdminAddons
       @input_association_value ||= valid_object.send(association_name)
     end
 
+    def joined_input_value
+      @joined_input_value ||= input_value.join(',')
+    end
+
     def translated_method
       valid_object.class.human_attribute_name(valid_method)
     end
