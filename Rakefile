@@ -19,10 +19,7 @@ task :prepare_assets do
   system "rm -rf spec/dummy/public/packs-test"
   system "yarn install"
   system "yarn build"
-  system "yarn prepublishOnly"
   system "(cd spec/dummy && yarn install)"
-  system "rm -rf spec/dummy/node_modules/activeadmin_addons/spec"
-  system "rm -rf spec/dummy/node_modules/activeadmin_addons/vendor"
 end
 
 task :tests do

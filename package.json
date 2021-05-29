@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/activeadmin_addons src/stylesheets && cp src/stylesheets/imports/webpack/*.scss src/stylesheets/imports && cp -R app/javascript/activeadmin_addons/* src"
+    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/activeadmin_addons src/stylesheets && cp -R app/javascript/activeadmin_addons/* src"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",

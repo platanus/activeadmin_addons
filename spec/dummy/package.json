@@ -4,7 +4,6 @@
   "dependencies": {
     "@activeadmin/activeadmin": "^2.9.0",
     "@rails/webpacker": "5.3.0",
-    "activeadmin_addons": "file:./../..",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
