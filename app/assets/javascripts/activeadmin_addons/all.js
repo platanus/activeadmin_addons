@@ -163,16 +163,16 @@
       });
     };
   })(jQuery);
-  var initializer = function() {
+  var initializer$9 = function() {
     window.ActiveadminAddons = {
       config: {
         defaultSelect: $("body").data("default-select")
       }
     };
   };
-  $(initializer);
-  $(document).on("turbolinks:load", initializer);
-  var initializer$1 = function() {
+  $(initializer$9);
+  $(document).on("turbolinks:load", initializer$9);
+  var initializer$8 = function() {
     configureSelect2(document);
     $(document).on("has_many_add:after", function(event, container) {
       configureSelect2(container);
@@ -212,9 +212,9 @@
       }
     }
   };
-  $(initializer$1);
-  $(document).on("turbolinks:load", initializer$1);
-  var initializer$2 = function() {
+  $(initializer$8);
+  $(document).on("turbolinks:load", initializer$8);
+  var initializer$7 = function() {
     setupSearchSelect(document);
     $(document).on("has_many_add:after", function(event, container) {
       setupSearchSelect(container);
@@ -282,8 +282,8 @@
       });
     }
   };
-  $(initializer$2);
-  $(document).on("turbolinks:load", initializer$2);
+  $(initializer$7);
+  $(document).on("turbolinks:load", initializer$7);
   $.fn.select2.amd.define("select2/data/nestedCustomAdapter", [ "select2/data/array", "select2/utils" ], function(ArrayData, Utils) {
     function CustomData($element, options) {
       CustomData.__super__.constructor.call(this, $element, options);
@@ -330,7 +330,7 @@
     };
     return CustomData;
   });
-  var initializer$3 = function() {
+  var initializer$6 = function() {
     configureSelect2(document);
     $(document).on("has_many_add:after", function(event, container) {
       configureSelect2(container);
@@ -428,9 +428,9 @@
       });
     }
   };
-  $(initializer$3);
-  $(document).on("turbolinks:load", initializer$3);
-  var initializer$4 = function() {
+  $(initializer$6);
+  $(document).on("turbolinks:load", initializer$6);
+  var initializer$5 = function() {
     setupTags(document);
     $(document).on("has_many_add:after", function(event, container) {
       setupTags(container);
@@ -494,9 +494,9 @@
       });
     }
   };
-  $(initializer$4);
-  $(document).on("turbolinks:load", initializer$4);
-  var initializer$5 = function() {
+  $(initializer$5);
+  $(document).on("turbolinks:load", initializer$5);
+  var initializer$4 = function() {
     setupSelectedList(document);
     $(document).on("has_many_add:after", function(event, container) {
       setupSelectedList(container);
@@ -588,9 +588,9 @@
       });
     }
   };
-  $(initializer$5);
-  $(document).on("turbolinks:load", initializer$5);
-  var initializer$6 = function() {
+  $(initializer$4);
+  $(document).on("turbolinks:load", initializer$4);
+  var initializer$3 = function() {
     setupDateTimePicker(document);
     $(document).on("has_many_add:after", ".has_many_container", function(event, fieldset) {
       return setupDateTimePicker(fieldset);
@@ -612,9 +612,9 @@
       });
     }
   };
-  $(initializer$6);
-  $(document).on("turbolinks:load", initializer$6);
-  var initializer$7 = function() {
+  $(initializer$3);
+  $(document).on("turbolinks:load", initializer$3);
+  var initializer$2 = function() {
     setupColorPicker();
     $(document).on("has_many_add:after", setupColorPicker);
     function setupColorPicker() {
@@ -625,9 +625,9 @@
       });
     }
   };
-  $(initializer$7);
-  $(document).on("turbolinks:load", initializer$7);
-  var initializer$8 = function() {
+  $(initializer$2);
+  $(document).on("turbolinks:load", initializer$2);
+  var initializer$1 = function() {
     $(".toggle-bool-switch").click(function(e) {
       var boolSwitch = $(e.target);
       var objectId = boolSwitch.data("object_id");
@@ -664,9 +664,9 @@
       });
     });
   };
-  $(initializer$8);
-  $(document).on("turbolinks:load", initializer$8);
-  var initializer$9 = function() {
+  $(initializer$1);
+  $(document).on("turbolinks:load", initializer$1);
+  var initializer = function() {
     configureInteractiveSelect(document);
     $(document).on("has_many_add:after", function(event, container) {
       configureInteractiveSelect(container);
@@ -748,6 +748,6 @@
       }
     });
   };
-  $(initializer$9);
-  $(document).on("turbolinks:load", initializer$9);
+  $(initializer);
+  $(document).on("turbolinks:load", initializer);
 });
