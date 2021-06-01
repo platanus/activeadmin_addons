@@ -51,9 +51,9 @@ describe "Date Time Picker Input", type: :feature do
 
     context "overriding default options" do
       before do
-        # This if for front-end javascript side
+        # This if for frontend (js)
         ActiveadminAddons.datetime_picker_default_options = {
-          today_button: false,
+          todayButton: false,
           format: "d-m-Y H:i"
         }
 

@@ -15,21 +15,34 @@ The gem is a [Rails engine](http://guides.rubyonrails.org/v4.2/engines.html). So
 To run the application quickly, you can execute in the root of the gem the following command:
 
 ```
-# To use sprockets
 bin/setup
-
-# To use webpacker
-bin/setup --use_webpacker
 ```
 
 This command loads the dummy app with test data.
+To navigate the application you can run, inside the `/spec/dummy` directory...
 
-The command leaves some automatically generated files from the setup process, these files should be (manually) ignored if you want to commit a change. If you want to clean these files you can run `bin/clean` but be warned that it will remove any non-committed change from the `spec/dummy` folder.
-
-To navigate the application you can run, inside the `/spec/dummy` directory:
+**With webpack:**
 
 ```
-rails s
+bin/rails s
+```
+
+And in another tab:
+
+```
+bin/webpack-dev-server
+```
+
+**With Sprockets:**
+
+```
+export SPROCKETS=true; bin/rails s
+```
+
+And if you change the javascript, you will need to run the following command:
+
+```
+bundle exec rake prepare_assets
 ```
 
 > It is a good idea to add to the dummy app any new functionality. See for example the file: `/spec/dummy/app/admin/invoices.rb`
@@ -39,14 +52,20 @@ rails s
 The gem is tested using [rspec](https://github.com/rspec/rspec-rails), [capybara](https://github.com/teamcapybara/capybara#using-capybara-with-rspec) and [selenium-webdriver](https://github.com/SeleniumHQ/selenium/tree/master/rb) with chrome. So, **you need to have chromedriver installed**.
 If you're using homebrew on OS X you can do: `brew install chromedriver`.
 
-To run the tests you can do, in the root of the gem,
+To run the tests you can do, in the root of the gem:
 
 ```
 # For running the full setup (sprockets and webpacker)
+bundle exec rake all_tests
+
+# For running helper specs (/lib directory)
 bundle exec rake tests
 
-# For running in the current environment
-bundle exec rspec
+# For running with webpacker only
+bundle exec rake webpack_tests
+
+# For running with sprockets only
+bundle exec rake sprockets_tests
 ```
 
 - The addons specs we put them inside `/spec/features`.
