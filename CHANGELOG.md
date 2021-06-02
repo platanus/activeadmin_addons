@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Unreleased
 
 ##### Added
+* Added date time picker filter [#333](https://github.com/platanus/activeadmin_addons/pull/333)
 * Added filters option in nested selects [#301](https://github.com/platanus/activeadmin_addons/pull/301)
 * Date range filters and date picker inputs now has `autocomplete: 'off'` by default [#320](https://github.com/platanus/activeadmin_addons/pull/320)
 * Added `tags` option to default select2 inputs [#322](https://github.com/platanus/activeadmin_addons/pull/322)
