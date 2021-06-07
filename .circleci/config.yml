@@ -1,20 +1,29 @@
 version: 2.1
+
+env-vars: &env-vars
+  RAILS_ENV: test
+  NODE_ENV: test
+  BUNDLE_PATH: vendor/bundle
+  SPROCKETS: false
+
 orbs:
   ruby: circleci/ruby@0.1.2
   browser-tools: circleci/browser-tools@1.1.3
-jobs:
-  test:
+
+executors:
+  main-executor:
     parameters:
       ruby-version:
+        description: "Ruby version"
+        default: "2.7"
         type: string
     docker:
-      - image: circleci/ruby:<< parameters.ruby-version >>-node
-        environment:
-          RAILS_ENV: test
-          NODE_ENV: test
-          BUNDLE_PATH: vendor/bundle
-          SPROCKETS: false
-    executor: ruby/default
+      - image: circleci/ruby:<<parameters.ruby-version>>-node
+        environment: *env-vars
+
+commands:
+  setup:
+    description: checkout code, restore cache, install dependencies, save cache
     steps:
       - checkout
       - browser-tools/install-chrome
@@ -41,8 +50,38 @@ jobs:
           command: |
             bundle exec rake prepare_assets
             (cd spec/dummy && bundle exec rake webpacker:compile)
+
+jobs:
+  lint:
+    executor: main-executor
+    steps:
+      - setup
       - run:
-          name: Utils Tests
+          name: Install reviewdog
+          command: |
+            curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b ./bin
+      - run:
+          name: Get files to lint
+          command: git diff origin/master --name-only --diff-filter=d > tmp/files_to_lint
+      - run:
+          name: Run rubocop
+          shell: /bin/bash
+          command: |
+            cat tmp/files_to_lint | grep -E '.+\.(rb)$' | xargs bundle exec rubocop --force-exclusion \
+            | ./bin/reviewdog -reporter=github-pr-review -f=rubocop
+  test:
+    parameters:
+      ruby-version:
+        description: "Ruby version"
+        default: "2.7"
+        type: string
+    executor:
+      name: main-executor
+      ruby-version: <<parameters.ruby-version>>
+    steps:
+      - setup
+      - run:
+          name: Run Utils Tests
           command: |
             RSPEC_JUNIT_ARGS="-r rspec_junit_formatter -f RspecJunitFormatter -o test_results/utils-rspec.xml"
             RSPEC_FORMAT_ARGS="-f progress --no-color -p 10"
@@ -63,10 +102,13 @@ jobs:
             bundle exec rspec ./spec/features $RSPEC_FORMAT_ARGS $RSPEC_JUNIT_ARGS
       - store_test_results:
           path: test_results
+
 workflows:
   version: 2
-  test:
+  test_and_lint:
     jobs:
+      - lint:
+          context: org-global
       - test:
           matrix:
             parameters:
