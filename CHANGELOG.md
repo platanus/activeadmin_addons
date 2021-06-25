@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-### Unreleased
+### 1.8.0
 
 ##### Added
 * Added date time picker filter [#333](https://github.com/platanus/activeadmin_addons/pull/333)
