@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Remove unsupported `select2-rails` gem, vendor files directly [#264](https://github.com/platanus/activeadmin_addons/pull/264) and bump select2 to 4.0.13 [#296](https://github.com/platanus/activeadmin_addons/pull/296)
 * Updated `require_all` gem to 2.0 [#313](https://github.com/platanus/activeadmin_addons/pull/313)
 * Dependabot bumps for devise, rack, loofah
+* Release with circle ci instead of travis
 
 ### 1.7.1
 

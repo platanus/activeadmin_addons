@@ -103,6 +103,20 @@ jobs:
       - store_test_results:
           path: test_results
 
+  deploy:
+    executor: main-executor
+    steps:
+      - setup
+      - run:
+          name: Setup rubygems
+          command: bash .circleci/setup-rubygems.sh
+      - run:
+          name: Publish to rubygems
+          command: |
+            gem build activeadmin_addons.gemspec
+            version_tag=$(git describe --tags)
+            gem push activeadmin_addons-${version_tag#v}.gem
+
 workflows:
   version: 2
   test_and_lint:
@@ -113,3 +127,10 @@ workflows:
           matrix:
             parameters:
               ruby-version: ["2.5", "2.6", "2.7"]
+      - deploy:
+          context: org-global
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
