@@ -259,6 +259,17 @@ Take care of defining these variables before the import of `@import 'activeadmin
 
 For material documentation you should go to [gem documentation](http://code.viget.com/active_material/docs/api/).
 
+## Publishing
+
+On master/main branch...
+
+1. Change `VERSION` in `lib/activeadmin_addons/version.rb`.
+2. Change `Unreleased` title to current version in `CHANGELOG.md`.
+3. Run `bundle install`.
+4. Commit new release. For example: `Releasing v1.0.0`.
+5. Create tag. For example: `git tag v1.0.0`.
+6. Push tag. For example: `git push origin v1.0.0`.
+
 ## Contributing
 
 1. Fork it
@@ -280,4 +291,4 @@ activeadmin_addons is maintained by [platanus](http://platan.us).
 
 ## License
 
-ActiveAdminAddons is © 2016 Platanus, spa. It is free software and may be redistributed under the terms specified in the LICENSE file.
+ActiveAdminAddons is © 2021 Platanus, spa. It is free software and may be redistributed under the terms specified in the LICENSE file.
