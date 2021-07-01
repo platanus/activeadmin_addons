@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### Unreleased
+
+##### Fixed
+* Removes vendor directory from build to reduce gem size
+
 ### 1.8.0
 
 ##### Added

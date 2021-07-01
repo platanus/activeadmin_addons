@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.description = "Set of addons to help with the activeadmin ui"
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib,vendor/assets}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "active_material"
   s.add_dependency "railties"
