@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    activeadmin_addons (1.8.1)
+    activeadmin_addons (1.8.2)
       active_material
       railties
       require_all
