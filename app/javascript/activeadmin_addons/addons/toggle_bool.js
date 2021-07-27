@@ -36,4 +36,4 @@ var initializer = function() {
 };
 
 $(initializer);
-$(document).on('turbolinks:load', initializer);
+$(document).on('turbolinks:load turbo:load', initializer);
