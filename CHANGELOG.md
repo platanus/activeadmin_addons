@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ##### Fixed
 
 * `tags` option not working with `active_admin_form_for` [#364](https://github.com/platanus/activeadmin_addons/pull/364)
+* Changed `DateRangeInput#input_html_options` override based on `input_html_options_for` existence [#366](https://github.com/platanus/activeadmin_addons/pull/366)
 
 ### 1.8.2
 
