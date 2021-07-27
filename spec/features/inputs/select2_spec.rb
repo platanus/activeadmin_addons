@@ -25,30 +25,55 @@ describe "Select 2", type: :feature do
       let(:invoice) { create_invoice }
       let(:selection) { '#444' }
 
-      before do
-        register_form(Invoice) do |f|
-          f.input :number, as: :select, collection: ["#111", "#222", "#333"], tags: true
-        end
-      end
-
-      context 'when entering option not in collection' do
-        before { visit edit_admin_invoice_path(invoice) }
-
-        it "adds new option", js: true do
-          expect_select2_options_count_to_eq(4)
-          fill_select2_input(selection)
-          expect_select2_options_count_to_eq(5)
-        end
-      end
-
-      context 'when initial value is not in inputs collection' do
+      context "with AA form" do
         before do
-          invoice.update!(number: selection)
-          visit edit_admin_invoice_path(invoice)
+          register_form(Invoice) do |f|
+            f.input :number, as: :select, collection: ["#111", "#222", "#333"], tags: true
+          end
         end
 
-        it "includes initial value as option", js: true do
-          expect_select2_options_count_to_eq(5)
+        context 'when entering option not in collection' do
+          before { visit edit_admin_invoice_path(invoice) }
+
+          it "adds new option", js: true do
+            expect_select2_options_count_to_eq(4)
+            fill_select2_input(selection)
+            expect_select2_options_count_to_eq(5)
+          end
+        end
+
+        context 'when initial value is not in inputs collection' do
+          before do
+            invoice.update!(number: selection)
+            visit edit_admin_invoice_path(invoice)
+          end
+
+          it "includes initial value as option", js: true do
+            expect_select2_options_count_to_eq(5)
+          end
+        end
+      end
+
+      context "with custom form" do
+        before do
+          register_page(Invoice) do
+            config.filters = false
+            sidebar 'Filters' do
+              active_admin_form_for(:q) do |f|
+                f.input :number, as: :select, collection: ["#111", "#222", "#333"], tags: true
+              end
+            end
+          end
+        end
+
+        context 'when entering option not in collection' do
+          before { visit admin_invoices_path }
+
+          it "adds new option", js: true do
+            expect_select2_options_count_to_eq(4)
+            fill_select2_input(selection)
+            expect_select2_options_count_to_eq(5)
+          end
         end
       end
     end
