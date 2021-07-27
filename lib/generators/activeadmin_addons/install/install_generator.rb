@@ -8,11 +8,19 @@ module ActiveadminAddons
       end
 
       def setup_assets
-        if ActiveAdmin.application.use_webpacker
+        if use_webpacker?
           generate "activeadmin_addons:webpacker"
         else
           generate "activeadmin_addons:assets"
         end
+      end
+
+      private
+
+      def use_webpacker?
+        ActiveAdmin.application.use_webpacker
+      rescue NoMethodError
+        false
       end
     end
   end
