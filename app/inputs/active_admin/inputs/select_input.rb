@@ -4,7 +4,11 @@ class ActiveAdmin::Inputs::SelectInput < Formtastic::Inputs::SelectInput
   end
 
   def raw_collection
-    field_value = object.send(method)
+    field_value = begin
+                    object.send(method)
+                  rescue NoMethodError
+                    nil
+                  end
 
     @options[:tags].present? && field_value.present? ? (super.to_a << field_value).uniq : super
   end

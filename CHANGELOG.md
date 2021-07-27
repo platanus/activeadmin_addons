@@ -2,12 +2,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-### ### 1.8.2
+### Unreleased
+
+##### Fixed
+
+* `tags` option not working with `active_admin_form_for` [#364](https://github.com/platanus/activeadmin_addons/pull/364)
+
+### 1.8.2
 
 ##### Fixed
 * Removes vendor directory from build to reduce gem size
 
-### 1.8.0
+### 1.8.0 and 1.8.1
+
+Versions 1.8.0 and 1.8.1 were yanked by what was described in version 1.8.2. Sorry for the inconvenience.
+Related issues:
+- https://github.com/platanus/activeadmin_addons/issues/357
+- https://github.com/platanus/activeadmin_addons/issues/362
 
 ##### Added
 * Added date time picker filter [#333](https://github.com/platanus/activeadmin_addons/pull/333)
