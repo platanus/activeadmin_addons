@@ -43,9 +43,8 @@ class DateTimePickerInput < ActiveAdminAddons::InputBase
 
   def datetime_picker_options
     @datetime_picker_options ||= begin
-      opts = options.fetch(:picker_options, {})
-      opts = Hash[opts.map { |k, v| [k.to_s.camelcase(:lower), v] }]
-      default_picker_options.merge(opts)
+      opts = default_picker_options.merge(options.fetch(:picker_options, {}))
+      Hash[opts.map { |k, v| [k.to_s.camelcase(:lower), v] }]
     end
   end
 

@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### Unreleased
+
+##### Fixed
+
+* Datepicker options not overriding default options properly [#368](https://github.com/platanus/activeadmin_addons/pull/368)
+* Invalid default datepicker type for pure Formtastic forms [#367](https://github.com/platanus/activeadmin_addons/pull/367)
+
 ### 1.8.3
 
 ##### Fixed

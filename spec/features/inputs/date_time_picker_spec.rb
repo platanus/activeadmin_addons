@@ -49,12 +49,13 @@ describe "Date Time Picker Input", type: :feature do
       end
     end
 
-    context "overriding default options" do
+    context "with default options" do
       before do
         # This if for frontend (js)
         ActiveadminAddons.datetime_picker_default_options = {
-          todayButton: false,
-          format: "d-m-Y H:i"
+          today_button: false,
+          format: "d-m-Y H:i",
+          timepicker: false
         }
 
         # This if for backend (Ruby)
@@ -62,7 +63,7 @@ describe "Date Time Picker Input", type: :feature do
 
         register_page(Invoice) do
           form do |f|
-            f.input :updated_at, as: :date_time_picker
+            f.input :updated_at, as: :date_time_picker, picker_options: { timepicker: true }
             f.actions
           end
         end
@@ -74,7 +75,8 @@ describe "Date Time Picker Input", type: :feature do
       it "applies default options" do
         expect(picker_input.value).to eq(@invoice.updated_at.strftime("%d-%m-%Y %H:%M"))
         picker_input.click
-        expect(page).to_not have_css(".xdsoft_today_button", count: 1)
+        expect(page).to have_css(".xdsoft_today_button", visible: false)
+        expect(page).to have_css(".xdsoft_timepicker")
       end
     end
   end
