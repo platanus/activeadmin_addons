@@ -41,6 +41,7 @@ module ActiveAdminAddons
     def load_class(class_attr)
       @css_classes ||= []
       return if class_attr.blank?
+
       class_attr = class_attr.strip
       @css_classes << class_attr
       class_attr
@@ -49,6 +50,7 @@ module ActiveAdminAddons
     def get_data_attr_value(attr_name)
       item = data_attr_options[attr_name.to_sym]
       return unless item
+
       item[:value]
     end
 
@@ -56,13 +58,14 @@ module ActiveAdminAddons
 
     def formatted_option_value(item)
       return item[:value].send(item[:formatter]) if item[:formatter]
+
       item[:value]
     end
 
     def load_option_attr(attr_name, options)
       value = calculate_attr_value(attr_name, options)
       item = { value: value }
-      item[:formatter] = options[:formatter] unless options[:formatter].blank?
+      item[:formatter] = options[:formatter] if options[:formatter].present?
       item
     end
 
@@ -80,6 +83,7 @@ module ActiveAdminAddons
       default_value = attr_options[:default]
       return unless default_value
       return default_value.call if default_value.is_a?(Proc)
+
       default_value
     end
 
