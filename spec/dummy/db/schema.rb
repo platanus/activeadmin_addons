@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_02_28_122115) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.datetime "legal_date"
+    t.date "legal_date"
     t.string "number"
     t.datetime "created_at"
     t.datetime "updated_at"

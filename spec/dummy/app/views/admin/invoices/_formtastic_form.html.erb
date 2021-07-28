@@ -1,0 +1,4 @@
+<%= semantic_form_for Invoice.new, url: "/" do |f| %>
+  <%= f.input :legal_date, as: :date_picker, hint: "example with formtastic date picker" %>
+  <%= f.input :legal_date, hint: "example with formtastic default" %>
+<% end %>
