@@ -15,6 +15,7 @@ class NestedSelectInput < ActiveAdminAddons::InputBase
   def hierarchy
     data = get_levels_data
     raise("Undefined levels on nested_select") if data.empty?
+
     set_parent_attributes(data)
     data.reverse
   end
@@ -67,17 +68,26 @@ class NestedSelectInput < ActiveAdminAddons::InputBase
     parent_attribute = level_data[:parent_attribute]
     build_virtual_attr(parent_attribute)
     instance = instance_from_attribute_name(level_data[:attribute])
-    if instance && instance.respond_to?(parent_attribute)
+    if instance&.respond_to?(parent_attribute)
       @object.send("#{parent_attribute}=", instance.send(parent_attribute))
     end
   end
 
   def instance_from_attribute_name(attribute)
     return unless attribute
+
     attribute_value = @object.send(attribute)
     return unless attribute_value
-    klass = attribute.to_s.chomp("_id").camelize.constantize
-    klass.find_by_id(attribute_value)
+
+    klass = class_from_attribute(attribute)
+    klass.find_by(id: attribute_value)
+  end
+
+  def class_from_attribute(attribute)
+    association_name = attribute.to_s.chomp("_id")
+    association_name.camelize.constantize
+  rescue NameError
+    object_class.reflect_on_association(association_name).klass
   end
 
   def build_virtual_attr(attribute_name)
