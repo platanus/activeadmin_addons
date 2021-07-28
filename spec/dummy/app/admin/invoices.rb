@@ -40,6 +40,10 @@ ActiveAdmin.register Invoice do
       row :city
       bool_row :active
     end
+
+    panel "Formtastic form" do
+      render partial: "formtastic_form"
+    end
   end
 
   form do |f|
@@ -78,6 +82,8 @@ ActiveAdmin.register Invoice do
       f.input :other_item_ids, as: :tags, collection: Item.all.limit(5)
 
       f.input :attachment
+
+      f.input :legal_date
 
       f.input :photo
 
