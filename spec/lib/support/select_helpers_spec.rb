@@ -18,7 +18,7 @@ describe ActiveAdminAddons::SelectHelpers do
   let(:object) do
     create_categories
     create_items
-    create_invoice(items: Item.all, category: @category1)
+    create_invoice(items: Item.all, number: 1, category: @category1)
   end
 
   let(:options) do
@@ -263,5 +263,17 @@ describe ActiveAdminAddons::SelectHelpers do
 
   describe "#selected_item" do
     it { expect(instance.selected_item).to eq(Item.first) }
+
+    context "with belongs to association method" do
+      let(:method) { :category_id }
+
+      it { expect(instance.selected_item).to eq(Category.first) }
+    end
+
+    context "with no association method" do
+      let(:method) { :number }
+
+      it { expect(instance.selected_item).to eq("1") }
+    end
   end
 end

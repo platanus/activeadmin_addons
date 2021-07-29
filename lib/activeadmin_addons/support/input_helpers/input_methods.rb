@@ -6,11 +6,13 @@ module ActiveAdminAddons
 
     def valid_method
       raise "invalid method given" if method.blank?
+
       method
     end
 
     def valid_object
       raise "blank object given" if @object.blank?
+
       @object
     end
 
@@ -42,6 +44,10 @@ module ActiveAdminAddons
       @input_value ||= valid_object.send(valid_method)
     end
 
+    def input_association_value
+      @input_association_value ||= valid_object.send(association_name)
+    end
+
     def translated_method
       valid_object.class.human_attribute_name(valid_method)
     end
@@ -60,6 +66,7 @@ module ActiveAdminAddons
     def build_virtual_attr
       attribute_name = "virtual_#{valid_method}_attr"
       fail "#{attribute_name} is already defined" if valid_object.respond_to?(attribute_name)
+
       valid_object.singleton_class.send(:attr_accessor, attribute_name)
       attribute_name
     end

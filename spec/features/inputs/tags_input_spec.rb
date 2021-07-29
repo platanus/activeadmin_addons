@@ -66,7 +66,7 @@ describe "Tags Input", type: :feature do
     end
   end
 
-  context "working with active record relations but alisa" do
+  context "working with active record relations but alias" do
     before do
       register_form(Invoice) do |f|
         f.input :other_item_ids, as: :tags, collection: Item.all

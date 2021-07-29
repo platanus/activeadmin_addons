@@ -4,8 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+##### Changed
+
+* Select2: get input AR model from object when possible. It's not possible working with virtual attributes [#369](https://github.com/platanus/activeadmin_addons/pull/368)
 ##### Fixed
 
+* Nested select: get association class from reflect_on_association AR method [#369](https://github.com/platanus/activeadmin_addons/pull/368)
 * Datepicker options not overriding default options properly [#368](https://github.com/platanus/activeadmin_addons/pull/368)
 * Invalid default datepicker type for pure Formtastic forms [#367](https://github.com/platanus/activeadmin_addons/pull/367)
 

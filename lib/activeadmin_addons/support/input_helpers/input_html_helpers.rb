@@ -16,6 +16,7 @@ module ActiveAdminAddons
 
     def method_to_input_id(id)
       raise "invalid input id" if id.blank?
+
       "#{prefixed_method}_#{id}"
     end
 
