@@ -67,7 +67,11 @@ module ActiveAdminAddons
     end
 
     def selected_item
-      @selected_item ||= selected_collection.first
+      @selected_item ||= begin
+                           input_association_value
+                         rescue NoMethodError
+                           selected_collection.first
+                         end
     end
 
     private

@@ -108,6 +108,19 @@ describe ActiveAdminAddons::InputMethods do
     check_invalid_object(:input_value)
   end
 
+  describe "#input_association_value" do
+    it { expect(instance.input_association_value).to eq(@invoice.category) }
+
+    context "when method is a related collection" do
+      let(:method) { :item_ids }
+
+      it { expect { instance.input_association_value }.to raise_error(NoMethodError) }
+    end
+
+    check_invalid_method(:input_association_value)
+    check_invalid_object(:input_association_value)
+  end
+
   describe "#translated_method" do
     it { expect(instance.translated_method).to eq("Category") }
     check_invalid_method(:translated_method)
