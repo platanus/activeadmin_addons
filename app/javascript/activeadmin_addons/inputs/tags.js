@@ -9,6 +9,7 @@ var initializer = function() {
     $('.tags-input', container).each(function(i, el) {
       var model = $(el).data('model');
       var method = $(el).data('method');
+      var original_name = $(el).attr('name');
       var prefix = model + '_' + method;
       var isRelation = !!$(el).data('relation');
       var collection = $(el).data('collection');
@@ -55,7 +56,8 @@ var initializer = function() {
         if (isRelation) {
           var value = event.params.data.id;
           var selectedItemsContainer = $("[id='" + prefix + "_selected_values']");
-          var itemName = model + '[' + method + '][]';
+          // take 
+          var itemName = original_name.replace("virtual_","").replace("_attr","");
           var itemId = prefix + '_' + value;
 
           $('<input>').attr({

@@ -7,8 +7,13 @@ module ActiveAdminAddons
     end
 
     def method_to_input_name
-      "#{model_name}[#{valid_method}]"
+      "#{input_name_embedded_or_not}[#{valid_method}]"
     end
+
+    def input_name_embedded_or_not
+      @builder.object_name
+    end
+
 
     def method_to_input_array_name
       "#{method_to_input_name}[]"
