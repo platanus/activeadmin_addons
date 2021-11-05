@@ -60,7 +60,8 @@ var initializer = function() {
           // take 
           var itemName = original_name.replace("virtual_","").replace("_attr","");
           var itemId = prefix + '_' + value;
-
+            console.log(itemId);
+            console.log(itemName);
           $('<input>').attr({
             id: itemId,
             name: itemName,
