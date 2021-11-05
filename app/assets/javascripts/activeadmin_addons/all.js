@@ -465,7 +465,7 @@
           });
         }
         function fillHiddenInput() {
-          var id_target = original_name.replace("[","_").replace("]","").replace("virtual","").replace("_attr]","]");
+          var id_target = original_name.replace("[","_").replace("]","").replace("virtual_","").replace("_attr]","]");
           console.log(id_target);
           var hiddenInput = $("#" + id_target);
           hiddenInput.val(getSelectedItems().join());
