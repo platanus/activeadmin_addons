@@ -464,12 +464,12 @@
             return $(item).attr("title");
           });
         }
-        function fillHiddenInput() {
-          var id_target = original_name.replace("[","_").replace("]","").replace("virtual_","").replace("_attr]","]");
+      function fillHiddenInput() {
+          var id_target = original_name.replace("[virtual_","[").replace("_attr]","]");
           console.log(id_target);
-          var hiddenInput = $("input#" + id_target);
-          hiddenInput.val(getSelectedItems().join());
-        }
+          var hiddenInput = $("input[name='" + id_target+"']");
+        hiddenInput.val(getSelectedItems().join());
+      }
         function onItemRemoved(event) {
           if (isRelation) {
             var itemId = "[id='" + prefix + "_" + event.params.data.id + "']";

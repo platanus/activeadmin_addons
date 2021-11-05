@@ -39,9 +39,9 @@ var initializer = function() {
       }
 
       function fillHiddenInput() {
-          var id_target = original_name.replace("[","_").replace("]","").replace("virtual_","").replace("_attr]","]");
+          var id_target = original_name.replace("[virtual_","[").replace("_attr]","]");
           console.log(id_target);
-          var hiddenInput = $("input#" + id_target);
+          var hiddenInput = $("input[name='" + id_target+"']");
         hiddenInput.val(getSelectedItems().join());
       }
 
