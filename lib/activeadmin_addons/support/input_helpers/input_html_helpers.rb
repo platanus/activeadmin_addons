@@ -3,7 +3,7 @@ module ActiveAdminAddons
     include InputMethods
 
     def prefixed_method
-      "#{model_name}_#{valid_method}"
+      "#{input_name_embedded_or_not_as_prefix}_#{valid_method}"
     end
 
     def method_to_input_name
@@ -12,6 +12,10 @@ module ActiveAdminAddons
 
     def input_name_embedded_or_not
       @builder.object_name
+    end
+
+    def input_name_embedded_or_not_as_prefix
+      input_name_embedded_or_not.gsub("[","_").gsub("]","")
     end
 
 

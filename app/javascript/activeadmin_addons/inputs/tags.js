@@ -40,6 +40,7 @@ var initializer = function() {
 
       function fillHiddenInput() {
         var hiddenInput = $('#' + prefix);
+        console.log("PREFIX::: "+prefix);
         hiddenInput.val(getSelectedItems().join());
       }
 
