@@ -465,10 +465,9 @@
           });
         }
         function fillHiddenInput() {
-          var hiddenInput = $("#" + prefix);
-          console.log("PREFIX::: "+prefix);
-          console.log(original_name);
-
+          var id_target = original_name.replace("[","_").replace("]","").replace("virtual","").replace("_attr]","]");
+          console.log(id_target);
+          var hiddenInput = $("#" + id_target);
           hiddenInput.val(getSelectedItems().join());
         }
         function onItemRemoved(event) {
