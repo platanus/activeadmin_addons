@@ -467,7 +467,7 @@
         function fillHiddenInput() {
           var id_target = original_name.replace("[","_").replace("]","").replace("virtual_","").replace("_attr]","]");
           console.log(id_target);
-          var hiddenInput = $("#" + id_target);
+          var hiddenInput = $("input#" + id_target);
           hiddenInput.val(getSelectedItems().join());
         }
         function onItemRemoved(event) {
