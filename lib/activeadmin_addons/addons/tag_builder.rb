@@ -45,9 +45,13 @@ module ActiveAdminAddons
         'data-model' => class_name,
         'data-object_id' => model.id,
         'data-field' => attribute,
-        'data-url' => context.resource_path(model),
+        'data-url' => data_url,
         'data-value' => data
       }
+    end
+
+    def data_url
+      options[:url].present? ? "#{options[:url]}#{model.id}" : context.resource_path(model)
     end
 
     def interactive_tag_params

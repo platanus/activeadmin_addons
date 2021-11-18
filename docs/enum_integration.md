@@ -61,3 +61,23 @@ end
 ```
 
 <img src="./images/enumerize-interactive-tag-column.gif" height="250" />
+
+In case you have a nested resource you can use the custom option `:url` to change the default url, this option expects a path without the resource id. Let's say you have the `User` model that `has_many: :documents`, then the show method will look like this:
+
+```ruby
+# Admin User File
+# ...
+show do
+  attributes_table do
+    # ...
+  end
+
+  panel 'Documents' do
+    table_for user.documents do
+      tag_column(:state, intercative: true, url: '/admin/documents/')
+    end
+  end
+end
+```
+
+Note that you have to add the `permit_params :state` in the admin `Document` file.

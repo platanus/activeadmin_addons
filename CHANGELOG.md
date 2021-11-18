@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### Added
+- Create a custom option `:url` for the `TagBuilder` class used in the Enumerize/Enum integration (`tag_column` and `tag_row`). This allows to change the path which is used for the PATCH update.
+
 ##### Changed
 
 * Select2: get input AR model from object when possible. It's not possible working with virtual attributes [#369](https://github.com/platanus/activeadmin_addons/pull/368)
