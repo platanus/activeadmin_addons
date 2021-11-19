@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Nested select: get association class from reflect_on_association AR method [#369](https://github.com/platanus/activeadmin_addons/pull/368)
 * Datepicker options not overriding default options properly [#368](https://github.com/platanus/activeadmin_addons/pull/368)
 * Invalid default datepicker type for pure Formtastic forms [#367](https://github.com/platanus/activeadmin_addons/pull/367)
+* Tag builder generating wrong path with nested resources.
 
 ### 1.8.3
 
