@@ -61,3 +61,28 @@ end
 ```
 
 <img src="./images/enumerize-interactive-tag-column.gif" height="250" />
+
+### Important
+
+If you have:
+
+```ruby
+ActiveAdmin.register Invoice do
+  index do
+    tag_column :state, interactive: true
+  end
+end
+```
+
+By using the toggle button, you'll make a request to `PATCH /admin/invoices/:id`. Because of this, you will need to have the show and update actions activated on `admin/invoices.rb`.
+
+```ruby
+ActiveAdmin.register Invoice do
+  actions :show, :update # if you remove this line, all CRUD actions will be enabled. So, don't do something like this: `actions :index` or the interactive feature won't work.
+
+  index do
+    tag_column :state, interactive: true
+  end
+end
+```
+
