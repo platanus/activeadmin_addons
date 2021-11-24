@@ -4,15 +4,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+### 1.9.0
+
 ##### Changed
 
-* Select2: get input AR model from object when possible. It's not possible working with virtual attributes [#369](https://github.com/platanus/activeadmin_addons/pull/368)
+* Select2: get input AR model from object when possible. It's not possible working with virtual attributes [#369](https://github.com/platanus/activeadmin_addons/pull/369)
 ##### Fixed
 
-* Nested select: get association class from reflect_on_association AR method [#369](https://github.com/platanus/activeadmin_addons/pull/368)
+* Nested select: get association class from reflect_on_association AR method [#369](https://github.com/platanus/activeadmin_addons/pull/369)
 * Datepicker options not overriding default options properly [#368](https://github.com/platanus/activeadmin_addons/pull/368)
 * Invalid default datepicker type for pure Formtastic forms [#367](https://github.com/platanus/activeadmin_addons/pull/367)
-* Tag builder generating wrong path with nested resources.
+* Tag builder generating wrong path with nested resources. [#383](https://github.com/platanus/activeadmin_addons/pull/383)
 
 ### 1.8.3
 
