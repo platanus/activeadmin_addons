@@ -171,7 +171,7 @@
     };
   };
   $(initializer$9);
-  $(document).on("turbolinks:load", initializer$9);
+  $(document).on("turbolinks:load turbo:load", initializer$9);
   var initializer$8 = function() {
     configureSelect2(document);
     $(document).on("has_many_add:after", function(event, container) {
@@ -213,7 +213,7 @@
     }
   };
   $(initializer$8);
-  $(document).on("turbolinks:load", initializer$8);
+  $(document).on("turbolinks:load turbo:load", initializer$8);
   var initializer$7 = function() {
     setupSearchSelect(document);
     $(document).on("has_many_add:after", function(event, container) {
@@ -283,7 +283,7 @@
     }
   };
   $(initializer$7);
-  $(document).on("turbolinks:load", initializer$7);
+  $(document).on("turbolinks:load turbo:load", initializer$7);
   $.fn.select2.amd.define("select2/data/nestedCustomAdapter", [ "select2/data/array", "select2/utils" ], function(ArrayData, Utils) {
     function CustomData($element, options) {
       CustomData.__super__.constructor.call(this, $element, options);
@@ -429,7 +429,7 @@
     }
   };
   $(initializer$6);
-  $(document).on("turbolinks:load", initializer$6);
+  $(document).on("turbolinks:load turbo:load", initializer$6);
   var initializer$5 = function() {
     setupTags(document);
     $(document).on("has_many_add:after", function(event, container) {
@@ -495,7 +495,7 @@
     }
   };
   $(initializer$5);
-  $(document).on("turbolinks:load", initializer$5);
+  $(document).on("turbolinks:load turbo:load", initializer$5);
   var initializer$4 = function() {
     setupSelectedList(document);
     $(document).on("has_many_add:after", function(event, container) {
@@ -589,7 +589,7 @@
     }
   };
   $(initializer$4);
-  $(document).on("turbolinks:load", initializer$4);
+  $(document).on("turbolinks:load turbo:load", initializer$4);
   var initializer$3 = function() {
     setupDateTimePicker(document);
     $(document).on("has_many_add:after", ".has_many_container", function(event, fieldset) {
@@ -613,7 +613,7 @@
     }
   };
   $(initializer$3);
-  $(document).on("turbolinks:load", initializer$3);
+  $(document).on("turbolinks:load turbo:load", initializer$3);
   var initializer$2 = function() {
     setupColorPicker();
     $(document).on("has_many_add:after", setupColorPicker);
@@ -626,7 +626,7 @@
     }
   };
   $(initializer$2);
-  $(document).on("turbolinks:load", initializer$2);
+  $(document).on("turbolinks:load turbo:load", initializer$2);
   var initializer$1 = function() {
     $(".toggle-bool-switch").click(function(e) {
       var boolSwitch = $(e.target);
@@ -665,7 +665,7 @@
     });
   };
   $(initializer$1);
-  $(document).on("turbolinks:load", initializer$1);
+  $(document).on("turbolinks:load turbo:load", initializer$1);
   var initializer = function() {
     configureInteractiveSelect(document);
     $(document).on("has_many_add:after", function(event, container) {
@@ -749,5 +749,5 @@
     });
   };
   $(initializer);
-  $(document).on("turbolinks:load", initializer);
+  $(document).on("turbolinks:load turbo:load", initializer);
 });
