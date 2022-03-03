@@ -23,6 +23,14 @@ If you want to use url helpers, use a `proc` like on the example
          order_by: 'description_asc'
 ```
 
+In case you need to filter with an attribute of another table you need to include the `method_model` option. In the classic User has many Post's and Post has many Comment's example, in the Comment index you could add this filter:
+
+```ruby
+  filter :posts_user_id, as: :search_select_filter, url: proc { admin_users_path },
+         fields: [:name, :email], display_name: 'email', minimum_input_length: 2,
+         order_by: 'description_asc', method_model: User
+```
+
 ### Options
 
 * `category_id`: Notice we're using the relation field name, not the relation itself, so you can't use `f.input :category`.
@@ -35,4 +43,5 @@ If you want to use url helpers, use a `proc` like on the example
 * `class`: **(optional)** You can pass extra classes for your field.
 * `width`: **(optional)** You can set the select input width (px or %).
 * `order_by`: **(optional)** Order (sort) results by a specific attribute, suffixed with `_desc` or `_asc`. Eg: `description_desc`. By **default** is used the first field in descending direction.
-* `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `contains`
+* `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `contains`.
+* `method_model`: **(optional)** Use in case you need to search or filter an attribute of another table.
