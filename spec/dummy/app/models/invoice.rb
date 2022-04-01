@@ -6,6 +6,7 @@ class Invoice < ActiveRecord::Base
   extend ::Enumerize
   include Paperclip::Glue
   include AASM
+  include ImageUploader::Attachment(:picture)
 
   belongs_to :category
   belongs_to :city
