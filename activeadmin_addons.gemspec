@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "factory_bot_rails"
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-rspec"
+  s.add_development_dependency "image_processing"
   s.add_development_dependency "paperclip"
   s.add_development_dependency "pry-rails"
   s.add_development_dependency "puma"
@@ -40,6 +41,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec_junit_formatter"
   s.add_development_dependency "rubocop", "~> 0.65.0"
   s.add_development_dependency "shoulda-matchers"
+  s.add_development_dependency "shrine", "~> 3.0"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "webdrivers"
 end
