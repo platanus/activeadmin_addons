@@ -78,13 +78,13 @@ Displays a paperclip link with attachment related icon into index and show views
 
 [Read more!](docs/paperclip_attachment.md)
 
-#### Paperclip Image
+#### Images
 
-Displays a paperclip image into index and show views
+Display images in the index and show views. This implementation supports [Shrine](https://github.com/shrinerb/shrine) and [Paperclip](https://github.com/thoughtbot/paperclip).
 
 <img src="./docs/images/paperclip-image-column.png" height="380" />
 
-[Read more!](docs/paperclip_images.md)
+[Read more!](docs/images.md)
 
 #### AASM Integration
 
