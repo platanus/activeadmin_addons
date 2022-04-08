@@ -12,64 +12,140 @@ describe "Image Builder", type: :feature do
     create_invoice(photo: File.new(ENGINE_RAILS_ROOT + 'spec/assets/Rails.png'))
   end
 
-  context "without options" do
-    before do
-      register_index(Invoice) do
-        image_column :photo
+  def create_picture_invoice
+    create_invoice(picture: File.new(ENGINE_RAILS_ROOT + 'spec/assets/Rails.png'))
+  end
+
+  describe '#shrine' do
+    context "without options" do
+      before do
+        register_index(Invoice) do
+          image_column :picture
+        end
+
+        create_picture_invoice
+        visit admin_invoices_path
       end
 
-      create_photo_invoice
-      visit admin_invoices_path
+      it "shows the attachent as an image" do
+        img = page.find('img')
+        expect(img[:src]).not_to be(nil)
+      end
     end
 
-    it "shows the attachent as an image" do
-      img = page.find('img')
-      expect(img[:src]).to match(/Rails.png/)
+    context "passing style option" do
+      let(:invoice) { create_picture_invoice }
+
+      before do
+        register_index(Invoice) do
+          image_column :picture, style: :jpg_small
+        end
+
+        invoice.picture_derivatives!
+        invoice.save!
+        visit admin_invoices_path
+      end
+
+      it "shows the attachent as an image" do
+        img = page.find('img')
+        expect(img[:src]).not_to be(nil)
+      end
+
+      it 'has the derivative' do
+        expect(invoice.picture_derivatives).to include(:jpg_small)
+      end
+    end
+
+    context "passing a block" do
+      before do
+        register_show(Invoice) do
+          image_row(:picture, &:picture)
+        end
+
+        visit admin_invoice_path(create_picture_invoice)
+      end
+
+      it "shows the attachent as an image" do
+        img = page.find('img')
+        expect(img[:src]).not_to be(nil)
+      end
+    end
+
+    context "using a label" do
+      before do
+        register_show(Invoice) do
+          image_row("My Picture", :picture)
+        end
+
+        visit admin_invoice_path(create_picture_invoice)
+      end
+
+      it "shows custom label" do
+        expect(page).to have_content("My Picture")
+      end
     end
   end
 
-  context "passing style option" do
-    before do
-      register_index(Invoice) do
-        image_column :photo, style: :thumb
+  describe '#paperclip' do
+    context "without options" do
+      before do
+        register_index(Invoice) do
+          image_column :photo
+        end
+
+        create_photo_invoice
+        visit admin_invoices_path
       end
 
-      create_photo_invoice
-      visit admin_invoices_path
+      it "shows the attachent as an image" do
+        img = page.find('img')
+        expect(img[:src]).to match(/Rails.png/)
+      end
     end
 
-    it "shows the attachent as an image" do
-      img = page.find('img')
-      expect(img[:src]).to match(%r{thumb/Rails.png})
-    end
-  end
+    context "passing style option" do
+      before do
+        register_index(Invoice) do
+          image_column :photo, style: :thumb
+        end
 
-  context "passing a block" do
-    before do
-      register_show(Invoice) do
-        image_row(:photo, &:photo)
+        create_photo_invoice
+        visit admin_invoices_path
       end
 
-      visit admin_invoice_path(create_photo_invoice)
+      it "shows the attachent as an image" do
+        img = page.find('img')
+        expect(img[:src]).to match(%r{thumb/Rails.png})
+      end
     end
 
-    it "shows the attachent as an image" do
-      img = page.find('img')
-      expect(img[:src]).to match(/Rails.png/)
-    end
-  end
+    context "passing a block" do
+      before do
+        register_show(Invoice) do
+          image_row(:photo, &:photo)
+        end
 
-  context "using a label" do
-    before do
-      register_show(Invoice) do
-        image_row("Mi foto", :photo)
+        visit admin_invoice_path(create_photo_invoice)
       end
 
-      visit admin_invoice_path(create_photo_invoice)
+      it "shows the attachent as an image" do
+        img = page.find('img')
+        expect(img[:src]).to match(/Rails.png/)
+      end
     end
 
-    it "shows custom label" do
-      expect(page).to have_content("Mi Foto")
+    context "using a label" do
+      before do
+        register_show(Invoice) do
+          image_row("Mi foto", :photo)
+        end
+
+        visit admin_invoice_path(create_photo_invoice)
+      end
+
+      it "shows custom label" do
+        expect(page).to have_content("Mi Foto")
+      end
     end
   end
 end

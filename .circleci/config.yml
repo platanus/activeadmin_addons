@@ -33,6 +33,12 @@ commands:
           - bundler-dependencies-{{ checksum "Gemfile.lock" }}
           - bundler-dependencies-
       - run:
+          name: Install apt and vips buildpack dependencies
+          command: |
+            cd spec/dummy/
+            xargs -a Aptfile sudo apt-get install
+            sudo apt-get install libvips
+      - run:
           name: Install bundle dependencies
           command: |
             BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")
