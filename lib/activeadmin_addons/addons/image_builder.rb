@@ -1,5 +1,3 @@
-require 'pry'
-
 module ActiveAdminAddons
   class ImageBuilder < CustomBuilder
     def render
