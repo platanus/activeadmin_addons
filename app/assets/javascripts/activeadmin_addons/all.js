@@ -253,10 +253,7 @@
               });
               var query = {
                 order: order,
-                q: {
-                  groupings: [ textQuery ],
-                  combinator: "and"
-                }
+                q: textQuery
               };
               return query;
             },
@@ -537,10 +534,7 @@
               });
               var query = {
                 order: order,
-                q: {
-                  groupings: [ textQuery ],
-                  combinator: "and"
-                }
+                q: textQuery
               };
               return query;
             },
