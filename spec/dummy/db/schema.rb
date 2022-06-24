@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_01_181023) do
+ActiveRecord::Schema.define(version: 2022_06_17_213244) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2022_04_01_181023) do
     t.boolean "active", default: true
     t.string "shipping_status"
     t.text "picture_data"
+    t.text "description"
     t.index ["category_id"], name: "index_invoices_on_category_id"
     t.index ["city_id"], name: "index_invoices_on_city_id"
   end
