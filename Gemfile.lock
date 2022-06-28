@@ -12,8 +12,6 @@ PATH
       active_material
       railties
       require_all
-      sassc
-      sassc-rails
       xdan-datetimepicker-rails (~> 2.5.1)
 
 GEM
