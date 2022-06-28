@@ -1,6 +1,6 @@
 ActiveAdmin.register Invoice do
   permit_params :legal_date, :number, :paid, :state, :attachment, :photo, :category_id, :city_id,
-    :amount, :color, :updated_at, :picture, :active, item_ids: [], other_item_ids: []
+    :amount, :color, :updated_at, :picture, :active, :description, item_ids: [], other_item_ids: []
 
   filter :id, as: :numeric_range_filter
 
@@ -21,6 +21,7 @@ ActiveAdmin.register Invoice do
     attachment_column :attachment
     number_column :amount, as: :currency, unit: "$", separator: ","
     toggle_bool_column :active
+    markdown_column :description
     column :created_at
     actions
   end
@@ -40,6 +41,7 @@ ActiveAdmin.register Invoice do
       row :legal_date
       number_row("Monto", :amount, as: :human, &:amount)
       row :city
+      markdown_row(:description)
       bool_row :active
     end
 
@@ -84,6 +86,8 @@ ActiveAdmin.register Invoice do
       f.input :other_item_ids, as: :tags, collection: Item.all.limit(5)
 
       f.input :attachment
+
+      f.input :description
 
       f.input :legal_date
 
