@@ -15,4 +15,6 @@ gemspec
 gem "activeadmin"
 gem "mimemagic", github: "mimemagicrb/mimemagic", ref: "01f92d86d15d85cfd0f20dabd025dcbd36a8a60f"
 
+gem "sassc", require: ENV["SPROCKETS"] == "true"
+gem "sassc-rails", require: ENV["SPROCKETS"] == "true"
 gem "webpacker", "~> 5.0", require: ENV["SPROCKETS"] != "true"
