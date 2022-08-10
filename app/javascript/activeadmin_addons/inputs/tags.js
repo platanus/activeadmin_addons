@@ -18,6 +18,7 @@ var initializer = function() {
         multiple: true,
         tags: true,
         data: collection,
+        tokenSeparators: $(el).data('tokenSeparators')
       };
 
       if (!!isRelation) {
