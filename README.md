@@ -134,6 +134,14 @@ You can show `Array` or `Hash` values as html lists.
 
 [Read more!](docs/list.md)
 
+#### Markdown
+
+You can render text as markdown.
+
+<img src="./docs/images/markdown-row.png" height="250" />
+
+[Read more!](docs/markdown.md)
+
 ### Inputs
 
 #### Select2 Input

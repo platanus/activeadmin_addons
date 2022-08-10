@@ -11,6 +11,7 @@ PATH
     activeadmin_addons (1.9.0)
       active_material
       railties
+      redcarpet
       require_all
       xdan-datetimepicker-rails (~> 2.5.1)
 
@@ -247,6 +248,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (3.5.1)
     regexp_parser (1.6.0)
     require_all (3.0.0)
     responders (3.0.0)
