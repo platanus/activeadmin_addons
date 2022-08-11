@@ -447,7 +447,8 @@
           width: width,
           multiple: true,
           tags: true,
-          data: collection
+          data: collection,
+          tokenSeparators: $(el).data("tokenSeparators") || [ "," ]
         };
         if (!!isRelation) {
           selectOptions.createTag = function() {
