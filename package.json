@@ -1,5 +1,5 @@
 {
-  "name": "activeadmin_addons",
+  "name": "@joker-7777/activeadmin_addons",
   "version": "1.0.0",
   "description": "Set of addons to help with the activeadmin ui",
   "main": "src/all.js",
@@ -7,7 +7,7 @@
     "src/*"
   ],
   "repository": "https://github.com/platanus/activeadmin_addons.git",
-  "author": "Platanus <rubygems@platan.us>",
+  "author": "Johannes Köhler <johannes@kenhub.com>",
   "license": "MIT",
   "scripts": {
     "build": "rollup --config rollup.config.js",
