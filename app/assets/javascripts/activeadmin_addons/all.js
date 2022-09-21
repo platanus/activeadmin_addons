@@ -457,6 +457,13 @@
         $(el).on("select2:select", onItemAdded);
         $(el).on("select2:unselect", onItemRemoved);
         $(el).select2(selectOptions);
+        if ($(el).data("sortable")) addSorting();
+        function addSorting() {
+          $(el).next().find("ul.select2-selection__rendered").sortable({
+            containment: "parent",
+            update: fillHiddenInput
+          });
+        }
         function getSelectedItems() {
           var choices = $(el).parent("li.input").find(".select2-selection__choice");
           return $.map(choices, function(item) {
