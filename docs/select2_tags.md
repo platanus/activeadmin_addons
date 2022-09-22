@@ -43,3 +43,4 @@ f.input :performer_ids, as: :tags, collection: Performer.all, display_name: :ful
 * `display_name`: **(optional)** You can pass an optional `display_name` to set the attribute (or method) to show results on the select. It **defaults to**: `name`
 * `value`: **(optional)** You can pass an optional `value` to set the attribute (or method) to use when an item is selected. It **defaults to**: `id`
 * `width`: **(optional)** You can set the select input width (px or %).
+* `sortable`: **(optional)** It **defaults** to: `false`
