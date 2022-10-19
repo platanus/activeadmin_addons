@@ -4,7 +4,6 @@ GIT
   ref: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
   specs:
     mimemagic (0.3.5)
-
 PATH
   remote: .
   specs:
@@ -13,9 +12,8 @@ PATH
       railties
       redcarpet
       require_all
-      sassc
+      sassc (~> 2.3.0)
       xdan-datetimepicker-rails (~> 2.5.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -356,10 +354,9 @@ GEM
 
 PLATFORMS
   ruby
-
 DEPENDENCIES
   aasm
-  activeadmin
+  activeadmin (~> 2.9.0)
   activeadmin_addons!
   capybara-selenium
   database_cleaner
@@ -383,6 +380,5 @@ DEPENDENCIES
   sqlite3
   webdrivers
   webpacker (~> 5.0)
-
 BUNDLED WITH
    2.3.4

@@ -1,7 +1,7 @@
 module ActiveAdminAddons
   module Rails
     class Engine < ::Rails::Engine
-      require 'sassc'
+      require 'sassc', "~> 2.3.0"
       require "xdan-datetimepicker-rails"
       require "require_all"
       require "active_material"
