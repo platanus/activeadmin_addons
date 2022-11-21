@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe "Attachment Builder", type: :feature do
+  before do
+    if Gem::Dependency.new('', '~> 3').match?('', RUBY_VERSION)
+      skip("Paperclip doesn't support Ruby 3")
+    end
+  end
+
   after do
     Invoice.all.each do |invoice|
       invoice.attachment = nil
