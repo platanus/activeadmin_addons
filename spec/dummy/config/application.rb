@@ -26,6 +26,5 @@ module Dummy
     # config.i18n.default_locale = :de
     config.secret_key_base = 'TODO Put something here'
     config.action_controller.permit_all_parameters = true
-    config.active_record.sqlite3.represent_boolean_as_integer = true
   end
 end
