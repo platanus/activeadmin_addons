@@ -87,6 +87,12 @@ describe "Image Builder", type: :feature do
   end
 
   describe '#paperclip' do
+    before do
+      if Gem::Dependency.new('', '~> 3').match?('', RUBY_VERSION)
+        skip("Paperclip doesn't support Ruby 3")
+      end
+    end
+
     context "without options" do
       before do
         register_index(Invoice) do
