@@ -3,6 +3,7 @@ import merge from 'lodash.merge';
 
 import searchSelect from './slim-select-search';
 import simpleTagsSelect from './slim-select-simple-tags';
+import nestedSelect from './slim-select-nested';
 
 const SELECT_CLASS = 'select:not(.default-select)';
 const SLIM_SELECT_CLASS = 'select.slim-select';
@@ -10,6 +11,7 @@ const SLIM_SELECT_CLASS = 'select.slim-select';
 const selectTypes = {
   searchSelect,
   simpleTagsSelect,
+  nestedSelect,
 };
 
 // eslint-disable-next-line max-statements
