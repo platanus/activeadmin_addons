@@ -1,10 +1,16 @@
 import SlimSelect from 'slim-select';
 import merge from 'lodash.merge';
 
+import searchSelect from './slim-select-search';
+import simpleTagsSelect from './slim-select-simple-tags';
+
 const SELECT_CLASS = 'select:not(.default-select)';
 const SLIM_SELECT_CLASS = 'select.slim-select';
 
-const selectTypes = {};
+const selectTypes = {
+  searchSelect,
+  simpleTagsSelect,
+};
 
 // eslint-disable-next-line max-statements
 function setupSelect(el) {

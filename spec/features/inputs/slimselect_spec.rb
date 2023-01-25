@@ -1,17 +1,15 @@
 require "rails_helper"
 
-describe "Select 2", type: :feature do
-  let!(:initial_default_select) { ActiveadminAddons.default_select }
+describe "Slim Select", type: :feature do
+  it { expect(ActiveadminAddons.default_select).to eq('slim-select') }
 
-  after do
-    ActiveadminAddons.default_select = initial_default_select
+  after(:all) do
+    ActiveadminAddons.default_select = 'slim-select'
   end
 
-  it { expect(ActiveadminAddons.default_select).to eq('select2') }
-
-  context "when default config is select 2" do
+  context "when default config is slim select" do
     before do
-      ActiveadminAddons.default_select = 'select2'
+      ActiveadminAddons.default_select = 'slim-select'
 
       register_form(Invoice) do |f|
         f.input :category
@@ -21,10 +19,9 @@ describe "Select 2", type: :feature do
       visit edit_admin_invoice_path(create_invoice(category: @category2))
     end
 
-    it "shows select control as select 2", js: true do
-      expect_select2_options_count_to_eq(3)
+    it "shows select control as slim-select", js: true do
+      expect_slimselect_options_count_to_eq(3)
       expect(page).not_to have_selector("select.default-select")
-      expect(page).not_to have_selector("select.select2")
     end
 
     context "with tags: true option" do
@@ -42,9 +39,9 @@ describe "Select 2", type: :feature do
           before { visit edit_admin_invoice_path(invoice) }
 
           it "adds new option", js: true do
-            expect_select2_options_count_to_eq(4)
-            fill_select2_input(selection)
-            expect_select2_options_count_to_eq(5)
+            expect_slimselect_options_count_to_eq(4)
+            add_slimselect_option(selection)
+            expect_slimselect_options_count_to_eq(5)
           end
         end
 
@@ -55,7 +52,7 @@ describe "Select 2", type: :feature do
           end
 
           it "includes initial value as option", js: true do
-            expect_select2_options_count_to_eq(5)
+            expect_slimselect_options_count_to_eq(5)
           end
         end
       end
@@ -76,9 +73,9 @@ describe "Select 2", type: :feature do
           before { visit admin_invoices_path }
 
           it "adds new option", js: true do
-            expect_select2_options_count_to_eq(4)
-            fill_select2_input(selection)
-            expect_select2_options_count_to_eq(5)
+            expect_slimselect_options_count_to_eq(4)
+            add_slimselect_option(selection)
+            expect_slimselect_options_count_to_eq(5)
           end
         end
       end
@@ -99,15 +96,15 @@ describe "Select 2", type: :feature do
         before { visit edit_admin_invoice_path(create_invoice) }
 
         it "doesn't add new option", js: true do
-          expect_select2_options_count_to_eq(4)
-          fill_select2_input(selection)
-          expect_select2_options_count_to_eq(4)
+          expect_slimselect_options_count_to_eq(4)
+          expect { add_slimselect_option(selection) }.to raise_error(Capybara::ElementNotFound)
+          expect_slimselect_options_count_to_eq(0)
         end
       end
     end
   end
 
-  context "when default config is select 2 and select control has default-select class" do
+  context "when default config is slim select and select control has default-select class" do
     before do
       register_form(Invoice) do |f|
         f.input :category, input_html: { class: "default-select" }
@@ -118,9 +115,7 @@ describe "Select 2", type: :feature do
     end
 
     it "shows normal select control", js: true do
-      expect_select2_options_count_to_eq(0)
-      expect(page).to have_selector("select.default-select")
-      expect(page).not_to have_selector("select.select2")
+      expect { expect_slimselect_options_count_to_eq(0) }.to raise_error(Capybara::ElementNotFound)
     end
   end
 
@@ -137,28 +132,28 @@ describe "Select 2", type: :feature do
     end
 
     it "shows normal select control", js: true do
-      expect_select2_options_count_to_eq(0)
+      expect { expect_slimselect_options_count_to_eq(0) }.to raise_error(Capybara::ElementNotFound)
       expect(page).not_to have_selector("select.default-select")
-      expect(page).not_to have_selector("select.select2")
+      expect(page).not_to have_selector("select[data-id]")
     end
   end
 
-  context "when default config is Active Admin's default and select control has select 2 class" do
+  context "when default config is Active Admin's default and select control has slim-select class" do
     before do
       ActiveadminAddons.default_select = 'default'
 
       register_form(Invoice) do |f|
-        f.input :category, input_html: { class: "select2" }
+        f.input :category, input_html: { class: "slim-select" }
       end
 
       create_categories
       visit edit_admin_invoice_path(create_invoice(category: @category2))
     end
 
-    it "shows select control as select 2", js: true do
-      expect_select2_options_count_to_eq(3)
+    it "shows select control as slim select", js: true do
+      expect_slimselect_options_count_to_eq(3)
       expect(page).not_to have_selector("select.default-select")
-      expect(page).to have_selector("select.select2")
+      expect(page).to have_selector("select[data-id]", visible: false)
     end
   end
 

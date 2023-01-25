@@ -32,7 +32,7 @@ describe "Search Select Filter Input", type: :feature do
 
     context "setting value", js: true do
       before do
-        pick_select2_entered_option("Metropolitana")
+        pick_slimselect_entered_option("Metropolitana")
         click_filter_btn
       end
 
