@@ -5,6 +5,7 @@ import searchSelect from './slim-select-search';
 import simpleTagsSelect from './slim-select-simple-tags';
 import nestedSelect from './slim-select-nested';
 import selectedListSelect from './slim-select-selected-list';
+import tagsSelect from './slim-select-tags';
 
 const SELECT_CLASS = 'select:not(.default-select)';
 const SLIM_SELECT_CLASS = 'select.slim-select';
@@ -14,6 +15,7 @@ const selectTypes = {
   simpleTagsSelect,
   nestedSelect,
   selectedListSelect,
+  tagsSelect,
 };
 
 // eslint-disable-next-line max-statements

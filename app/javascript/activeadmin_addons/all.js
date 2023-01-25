@@ -6,3 +6,4 @@ import './inputs/slim-select';
 import './inputs/date-time-picker';
 import './inputs/color-picker';
 import './addons/toggle_bool';
+import './addons/slim-select-interactive-tag';
