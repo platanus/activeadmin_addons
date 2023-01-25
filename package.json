@@ -29,6 +29,6 @@
   "dependencies": {
     "jquery-datetimepicker": "^2.5.21",
     "script-loader": "^0.7.2",
-    "select2": "^4.0.13"
+    "slim-select": "2.3.3"
   }
 }
