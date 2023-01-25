@@ -21,79 +21,6 @@ module CapybaraHelpers
     expect(page).to have_css(css)
   end
 
-  # Select 2 helpers
-
-  def select2_options_container
-    find(".select2-container")
-  end
-
-  def select2_input
-    find(".select2-search__field")
-  end
-
-  def open_select2_options
-    select2_options_container.click
-  end
-
-  def fill_select2_input(item_text)
-    open_select2_options
-    select2_input.set(item_text)
-  end
-
-  def fill_select2_input_and_press_return(item_text)
-    fill_select2_input(item_text)
-    select2_input.native.send_keys(:return)
-  end
-
-  def pick_select2_entered_option(item_text, display_name = nil)
-    display_name = item_text unless display_name
-    fill_select2_input(item_text)
-    click_select2_option(display_name)
-  end
-
-  def click_select2_option(display_name)
-    page.find(:xpath, "//li[text()='#{display_name}']").click
-  end
-
-  def expect_select2_data_option(option, value)
-    expect(page).to have_xpath("//select[@data-#{option}='#{value}']")
-  end
-
-  def expect_select2_selection(text)
-    expect(page).to have_css(".select2-selection__rendered", text: /#{text}/)
-  end
-
-  def expect_select2_empty_selection
-    expect(page).not_to have_css(".select2-selection__rendered")
-  end
-
-  def expect_select2_choices_count_to_eq(count)
-    expect(page).to have_css("li.select2-selection__choice", count: count)
-  end
-
-  def expect_select2_options_count_to_eq(count)
-    expect(page).to have_css("select.select2-hidden-accessible option", count: count)
-  end
-
-  def expect_select2_result_text_to_eq(result_number, text)
-    expect(page).to have_css(
-      "li.select2-results__option:nth-child(#{result_number})", text: /#{text}/
-    )
-  end
-
-  def expect_select2_results_count_to_eq(count)
-    klass = "li.select2-results__option"
-    no_results = "No results found"
-
-    if count.zero?
-      expect(page).to have_css(klass, count: 1)
-      expect(page).to have_content(no_results)
-    else
-      expect(page).to have_css(klass, count: count)
-      expect(page).not_to have_content(no_results)
-    end
-  end
-
   def click_add_nested
     find("a.has_many_add").click
   end
@@ -104,9 +31,89 @@ module CapybaraHelpers
     end
   end
 
-  def expect_nested_select2_result_text_to_eq(result_number, text)
+  def expect_slimselect_options_count_to_eq(count, id=nil)
+    id = slimselect_original_select_id unless id
+    expect(page).to have_css(".ss-content[data-id=#{id}] .ss-option", count: count, visible: :all)
+  end
+
+  def slimselect_original_select_id
+    find("select[data-id]", visible: false)['data-id']
+  end
+
+  def slimselect_element
+    find(".ss-main")
+  end
+
+  def slimselect_popover(id = nil)
+    page.document.find(".ss-content[data-id=#{id || slimselect_original_select_id}]")
+  end
+
+  def open_slimselect_options
+    slimselect_element.click
+    sleep 0.5
+  end
+
+  def slimselect_search_input(id = nil)
+    slimselect_popover(id).find(".ss-search input")
+  end
+
+  def fill_slimselect_input(item_text)
+    open_slimselect_options
+    slimselect_search_input.set(item_text)
+  end
+
+  def slimselect_addable_button
+    slimselect_popover.find(".ss-addable")
+  end
+
+  def add_slimselect_option(item_text)
+    fill_slimselect_input(item_text)
+    slimselect_addable_button.click
+  end
+
+  def click_slimselect_option(option_text, id = nil)
+    slimselect_popover(id).find(".ss-option", text: option_text).click
+  end
+
+  def pick_slimselect_entered_option(item_text, display_name = nil)
+    display_name = item_text unless display_name
+    fill_slimselect_input(item_text)
+    click_slimselect_option(display_name)
+  end
+
+  def expect_slimselect_data_option(option, value)
+    expect(page).to have_xpath("//select[@data-#{option}='#{value}']")
+  end
+
+  def expect_slimselect_selection(text)
+    expect(page).to have_css(".ss-main", text: /#{text}/)
+  end
+
+  def expect_slimselect_empty_selection
+    expect(page).to have_css(".ss-main", text: /Select Value/)
+  end
+
+  def expect_slimselect_result_text_to_eq(result_number, text)
+    expect(page).to have_css(
+      "div.ss-option:nth-child(#{result_number})", text: /#{text}/
+    )
+  end
+
+  def expect_slimselect_error(text)
+    expect(page).to have_css(".ss-error", text: text)
+  end
+
+  def expect_nested_slimselect_result_text_to_eq(result_number, text)
     expect(page).to have_css(
       "li.nested_level:nth-child(#{result_number})", text: /#{text}/
     )
+  end
+
+  def close_slimselect_options(id = nil)
+    slimselect_search_input(id || slimselect_original_select_id).native.send_keys(:escape)
+  end
+
+  def expect_slimselect_popover_is_closed(id = nil)
+    expect(page.document).not_to have_css(".ss-content[data-id=#{id || slimselect_original_select_id}]")
   end
 end
