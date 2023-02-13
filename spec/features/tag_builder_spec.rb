@@ -102,22 +102,7 @@ describe "Tag Builder", type: :feature do
   end
 
   context "using Rails Enum" do
-    context "changing state value" do
-      before do
-        register_index(Invoice) do
-          tag_column :status
-        end
-
-        create_invoice(status: :archived)
-        visit admin_invoices_path
-      end
-
-      it "shows set value" do
-        expect(page).to have_css('.archived')
-      end
-    end
-
-    context 'with interactive option' do
+    shared_examples 'interactive select rendering' do
       let!(:invoice) { create_invoice(status: :active) }
 
       before do
@@ -159,6 +144,72 @@ describe "Tag Builder", type: :feature do
         expect(page).to have_css(".interactive-tag-select[data-object_id=\"#{invoice.id}\"]")
         expect(page).to have_css('.interactive-tag-select[data-field="status"]')
         expect(page).to have_css('.interactive-tag-select[data-value="active"]')
+      end
+    end
+
+    context 'with no translations' do
+      around do |example|
+        I18n.with_locale('de') do
+          example.run
+        end
+      end
+
+      context "without interactive option" do
+        before do
+          register_index(Invoice) do
+            tag_column :status
+          end
+
+          create_invoice(status: :archived)
+          visit admin_invoices_path
+        end
+
+        it "shows untranslated text as value" do
+          expect(page.find('td.col-status').text).to eq('Archived')
+        end
+      end
+
+      context 'with interactive option' do
+        include_examples 'interactive select rendering'
+
+        it 'renders an option for each enum value, with translated text' do
+          option_selector = '.interactive-tag-select option'
+          expect(page.find("#{option_selector}[value='active']").text).to eq('active')
+          expect(page.find("#{option_selector}[value='archived']").text).to eq('archived')
+        end
+      end
+    end
+
+    context 'with translations' do
+      around do |example|
+        I18n.with_locale('en') do
+          example.run
+        end
+      end
+
+      context "without interactive option" do
+        before do
+          register_index(Invoice) do
+            tag_column :status
+          end
+
+          create_invoice(status: :archived)
+          visit admin_invoices_path
+        end
+
+        it "shows translated text as value" do
+          expect(page.find('td.col-status').text).to eq('Archivado')
+        end
+      end
+
+      context 'with interactive option' do
+        include_examples 'interactive select rendering'
+
+        it 'renders an option for each enum value, with translated text' do
+          option_selector = '.interactive-tag-select option'
+          expect(page.find("#{option_selector}[value='active']").text).to eq('Activo')
+          expect(page.find("#{option_selector}[value='archived']").text).to eq('Archivado')
+        end
       end
     end
   end
