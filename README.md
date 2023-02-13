@@ -300,3 +300,5 @@ activeadmin_addons is maintained by [platanus](http://platan.us).
 ## License
 
 ActiveAdminAddons is © 2021 Platanus, spa. It is free software and may be redistributed under the terms specified in the LICENSE file.
+
+debugging ci
