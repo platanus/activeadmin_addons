@@ -1,5 +1,6 @@
 version: 2.1
 
+ruby-image: &ruby-image cimg/ruby:<<parameters.ruby-version>>
 env-vars: &env-vars
   RAILS_ENV: test
   NODE_ENV: test
@@ -7,8 +8,6 @@ env-vars: &env-vars
   SPROCKETS: false
 
 orbs:
-  ruby: circleci/ruby@1.8.0
-  node: circleci/node@5.0.2
   browser-tools: circleci/browser-tools@1.1.3
 
 executors:
@@ -19,7 +18,7 @@ executors:
         default: "2.7"
         type: string
     docker:
-      - image: cimg/ruby:<<parameters.ruby-version>>-node
+      - image: *ruby-image
         environment: *env-vars
 
 commands:
@@ -52,6 +51,13 @@ commands:
       - run:
           name: Setup database
           command: (cd spec/dummy && bundle exec rake db:setup)
+      - run:
+          name: Install node and yarn
+          command: |
+            curl -sL https://deb.nodesource.com/setup_$(cat .node-version).x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            curl -o- -sL https://yarnpkg.com/install.sh | bash
+            sudo ln -s $HOME/.yarn/bin/yarn /usr/local/bin/yarn
       - run:
           name: Prepare Assets
           command: |
