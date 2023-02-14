@@ -38,6 +38,7 @@ commands:
             cd spec/dummy/
             xargs -a Aptfile sudo apt-get install
             sudo apt-get install libvips
+            sudo apt-get install file
       - run:
           name: Install bundle dependencies
           command: |
