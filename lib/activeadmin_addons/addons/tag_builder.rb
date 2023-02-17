@@ -25,9 +25,9 @@ module ActiveAdminAddons
 
         context.div(interactive_tag_select_params) do
           context.select do
-            possible_values.each do |val|
-              context.option(value: val, selected: val == data) do
-                context.text_node val.capitalize
+            possible_values.each do |label, value|
+              context.option(value: value, selected: value == data) do
+                context.text_node label
               end
             end
           end
@@ -36,7 +36,11 @@ module ActiveAdminAddons
     end
 
     def display_data
-      @enum_attr == :enumerize ? data.text : data
+      if @enum_attr == :enumerize
+        data.text
+      else
+        EnumUtils.translate_enum_option(model.class, attribute.to_s, data)
+      end
     end
 
     def interactive_params(klass)
@@ -69,9 +73,9 @@ module ActiveAdminAddons
     def possible_values
       klass = model.class
       if @enum_attr == :enumerize
-        klass.enumerized_attributes[attribute.to_s].values
+        klass.enumerized_attributes[attribute.to_s].values.map { |value| [value.capitalize, value] }
       else
-        klass.defined_enums[attribute.to_s].keys
+        EnumUtils.options_for_select(klass, attribute.to_s)
       end
     end
 

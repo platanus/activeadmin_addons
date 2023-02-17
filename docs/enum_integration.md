@@ -86,3 +86,19 @@ ActiveAdmin.register Invoice do
 end
 ```
 
+## Translation
+
+Tag row and column, as well as the interactive option of the latter, support automatic translation with `I18n` when using Rails built-in `enums`. For this, you just have to define the translations in the correct path in your YAML files:
+
+```yaml
+# en.yml
+en:
+  activerecord:
+    attributes:
+      invoice:
+        statuses:
+          active: Activo
+          archived: Archivado
+```
+
+This is the same structure used for tanslation of select inputs in filters and edit/create forms.

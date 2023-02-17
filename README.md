@@ -64,6 +64,7 @@ Installing this gem will enable the following changes by default:
 
 * The default date input will be `:datepicker` instead of `:date_select`
 * Filters and selects will offer integration with [enumerize](https://github.com/brainspec/enumerize)
+* Select filters will show translated values when used with Rails built-in `enums`
 * All select boxes will use select2
 
 ## Addons

@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### Changed
+
+* Added translation support for Rails built-in enums in select filters and tag column/row [#442](https://github.com/platanus/activeadmin_addons/pull/442)
+
 ### 1.9.0
 
 ##### Changed

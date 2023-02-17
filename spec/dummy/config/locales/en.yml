@@ -20,6 +20,9 @@ en:
     attributes:
       invoice:
         item_ids: Items
+        statuses:
+          active: Activo
+          archived: Archivado
   activeadmin:
     addons:
       boolean:
