@@ -1,6 +1,12 @@
 require "rails_helper"
 
 describe "Select 2", type: :feature do
+  let!(:initial_default_select) { ActiveadminAddons.default_select }
+
+  after do
+    ActiveadminAddons.default_select = initial_default_select
+  end
+
   it { expect(ActiveadminAddons.default_select).to eq('select2') }
 
   context "when default config is select 2" do
