@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib,vendor/assets}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "active_material"
+  s.add_dependency "dartsass-rails"
   s.add_dependency "railties"
   s.add_dependency "redcarpet"
   s.add_dependency "require_all"
