@@ -4,6 +4,7 @@ GIT
   ref: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
   specs:
     mimemagic (0.3.5)
+
 PATH
   remote: .
   specs:
@@ -12,8 +13,8 @@ PATH
       railties
       redcarpet
       require_all
-      sassc (~> 2.3.0)
       xdan-datetimepicker-rails (~> 2.5.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -58,15 +59,15 @@ GEM
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_material (1.5.2)
-    activeadmin (2.13.1)
+    activeadmin (2.9.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1, < 5.0)
       formtastic_i18n (~> 0.4)
       inherited_resources (~> 1.7)
       jquery-rails (~> 4.2)
       kaminari (~> 1.0, >= 1.2.1)
-      railties (>= 6.1, < 7.1)
-      ransack (>= 2.1.1, < 4)
+      railties (>= 5.2, < 6.2)
+      ransack (~> 2.1, >= 2.1.1)
     activejob (6.1.7)
       activesupport (= 6.1.7)
       globalid (>= 0.3.6)
@@ -145,7 +146,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    has_scope (0.8.0)
+    has_scope (0.8.1)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
     i18n (1.12.0)
@@ -255,7 +256,7 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.6)
-    ransack (3.0.1)
+    ransack (2.6.0)
       activerecord (>= 6.0.4)
       activesupport (>= 6.0.4)
       i18n
@@ -265,9 +266,9 @@ GEM
     redcarpet (3.5.1)
     regexp_parser (1.6.0)
     require_all (3.0.0)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
+    responders (3.1.0)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rexml (3.2.5)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -306,8 +307,6 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.2.0)
-    sassc (2.4.0)
-      ffi (~> 1.9)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -329,7 +328,6 @@ GEM
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.1)
-    tilt (2.0.11)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.4.1)
@@ -354,6 +352,7 @@ GEM
 
 PLATFORMS
   ruby
+
 DEPENDENCIES
   aasm
   activeadmin (~> 2.9.0)
@@ -380,5 +379,6 @@ DEPENDENCIES
   sqlite3
   webdrivers
   webpacker (~> 5.0)
+
 BUNDLED WITH
    2.3.4
