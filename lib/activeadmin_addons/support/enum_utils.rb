@@ -9,6 +9,8 @@ module ActiveAdminAddons
     end
 
     def self.translate_enum_option(klass, enum_name, enum_option_name)
+      return if enum_option_name.blank?
+
       klass_key = klass.model_name.i18n_key
       key = "activerecord.attributes.#{klass_key}.#{enum_name.pluralize}.#{enum_option_name}"
       I18n.t(key, default: enum_option_name)

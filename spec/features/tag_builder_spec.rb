@@ -192,13 +192,28 @@ describe "Tag Builder", type: :feature do
           register_index(Invoice) do
             tag_column :status
           end
-
-          create_invoice(status: :archived)
-          visit admin_invoices_path
         end
 
-        it "shows translated text as value" do
-          expect(page.find('td.col-status').text).to eq('Archivado')
+        context 'with value' do
+          before do
+            create_invoice(status: :archived)
+            visit admin_invoices_path
+          end
+
+          it "shows translated text as value" do
+            expect(page.find('td.col-status').text).to eq('Archivado')
+          end
+        end
+
+        context 'without value' do
+          before do
+            create_invoice(status: nil)
+            visit admin_invoices_path
+          end
+
+          it "shows text for nil value" do
+            expect(page.find('td.col-status').text).to eq('No')
+          end
         end
       end
 
