@@ -52,13 +52,43 @@ describe ActiveAdminAddons::EnumUtils do
   end
 
   describe '#translate_enum_option' do
-    let(:enum_option_to_translate) { 'value1' }
+    context 'with enum option name present in enum' do
+      let(:enum_option_to_translate) { 'value1' }
 
-    it 'returns correct translation' do
-      translation = described_class.translate_enum_option(
-        model_class, 'some_enum', enum_option_to_translate
-      )
-      expect(translation).to eq(enum_translations[enum_option_to_translate.to_sym])
+      it 'returns correct translation' do
+        translation = described_class.translate_enum_option(
+          model_class, 'some_enum', enum_option_to_translate
+        )
+        expect(translation).to eq(enum_translations[enum_option_to_translate.to_sym])
+      end
+    end
+
+    context 'with enum option name not present in enum' do
+      let(:enum_option_to_translate) { 'unknown_value' }
+
+      before do
+        allow(I18n).to receive(:t).with(
+          translation_key(enum_option_to_translate), default: enum_option_to_translate.to_s
+        ).and_return(enum_option_to_translate)
+      end
+
+      it 'returns untranslated enum option name' do
+        translation = described_class.translate_enum_option(
+          model_class, 'some_enum', enum_option_to_translate
+        )
+        expect(translation).to eq(enum_option_to_translate)
+      end
+    end
+
+    context 'with blank enum option name' do
+      let(:enum_option_to_translate) { nil }
+
+      it 'returns nil' do
+        translation = described_class.translate_enum_option(
+          model_class, 'some_enum', enum_option_to_translate
+        )
+        expect(translation).to eq(nil)
+      end
     end
   end
 end
