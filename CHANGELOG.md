@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+### 1.10.0
+
 #### Added
 
 * Added Shrine support for image row and column [#396](https://github.com/platanus/activeadmin_addons/pull/396)

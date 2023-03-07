@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    activeadmin_addons (1.9.0)
+    activeadmin_addons (1.10.0)
       active_material
       railties
       redcarpet
@@ -265,7 +265,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redcarpet (3.5.1)
+    redcarpet (3.6.0)
     regexp_parser (1.6.0)
     require_all (3.0.0)
     responders (3.0.1)
@@ -338,7 +338,7 @@ GEM
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.1)
-    tilt (2.0.11)
+    tilt (2.1.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.4.1)
