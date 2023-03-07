@@ -4,8 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
-#### Changed
+#### Added
 
+* Added Shrine support for image row and column [#396](https://github.com/platanus/activeadmin_addons/pull/396)
+* Added Markdown row and column [#409](https://github.com/platanus/activeadmin_addons/pull/409)
 * Added translation support for Rails built-in enums in select filters and tag column/row [#442](https://github.com/platanus/activeadmin_addons/pull/442)
 
 ### 1.9.0
