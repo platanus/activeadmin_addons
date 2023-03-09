@@ -21,12 +21,16 @@ const selectTypes = {
 // eslint-disable-next-line max-statements
 function setupSelect(el) {
   const emptyOption = el.querySelector('option[value=""]');
-  if (emptyOption) emptyOption.dataset.placeholder = true;
+  if (!emptyOption) {
+    el.insertAdjacentHTML('afterbegin', '<option value=""></option>');
+  }
+  el.querySelector('option[value=""]').dataset.placeholder = true;
 
   el.style.width = el.dataset.width || '80%';
   let settings = {
     select: el,
     settings: {
+      allowDeselect: true,
       placeholderText: 'Select Value',
     },
   };

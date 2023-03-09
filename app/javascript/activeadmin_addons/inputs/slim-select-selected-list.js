@@ -18,6 +18,9 @@ function settings(el) {
   const args = { url, fields, predicate, displayName, responseRoot, minimumInputLength, order };
 
   return {
+    settings: {
+      allowDeselect: false,
+    },
     events: {
       // eslint-disable-next-line max-statements
       afterChange: (newVal) => {
