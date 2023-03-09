@@ -15,7 +15,7 @@ function settings() {
   };
 }
 
-export default {
+export {
   classes,
   init,
   settings,

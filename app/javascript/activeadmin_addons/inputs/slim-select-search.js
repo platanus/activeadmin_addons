@@ -31,7 +31,7 @@ function settings(el) {
   };
 }
 
-export default {
+export {
   settings,
   classes,
 };

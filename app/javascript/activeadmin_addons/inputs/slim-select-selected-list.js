@@ -95,7 +95,7 @@ function init() {
   mutationObserver();
 }
 
-export default {
+export {
   settings,
   classes,
   init,

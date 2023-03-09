@@ -60,7 +60,7 @@ function init(el) {
   el.multiple = true;
 }
 
-export default {
+export {
   settings,
   classes,
   init,

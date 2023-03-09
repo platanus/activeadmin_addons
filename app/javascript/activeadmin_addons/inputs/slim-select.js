@@ -1,11 +1,11 @@
 import SlimSelect from 'slim-select';
 import merge from 'lodash.merge';
 
-import searchSelect from './slim-select-search';
-import simpleTagsSelect from './slim-select-simple-tags';
-import nestedSelect from './slim-select-nested';
-import selectedListSelect from './slim-select-selected-list';
-import tagsSelect from './slim-select-tags';
+import * as searchSelect from './slim-select-search';
+import * as simpleTagsSelect from './slim-select-simple-tags';
+import * as nestedSelect from './slim-select-nested';
+import * as selectedListSelect from './slim-select-selected-list';
+import * as tagsSelect from './slim-select-tags';
 
 const SELECT_CLASS = 'select:not(.default-select)';
 const SLIM_SELECT_CLASS = 'select.slim-select';
