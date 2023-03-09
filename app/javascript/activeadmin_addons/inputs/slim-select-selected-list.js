@@ -24,6 +24,8 @@ function settings(el) {
     events: {
       // eslint-disable-next-line max-statements
       afterChange: (newVal) => {
+        if (!newVal || newVal[0] && !newVal[0].value) return;
+
         const selectedItemsContainer = document.querySelector(`[id='${prefix}_selected_values']`);
         const itemName = `${model}[${method}][]`;
 
@@ -47,6 +49,7 @@ function settings(el) {
           item.appendChild(hiddenInput);
           selectedItemsContainer.appendChild(item);
         });
+        el.slim.setSelected();
       },
       search: (search, currentData) => {
         args.textQuery = { m: 'or' };
