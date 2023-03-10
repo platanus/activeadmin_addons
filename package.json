@@ -1,6 +1,6 @@
 {
   "name": "activeadmin_addons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Set of addons to help with the activeadmin ui",
   "main": "src/all.js",
   "files": [

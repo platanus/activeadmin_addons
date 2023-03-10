@@ -13,6 +13,7 @@ class TagsInput < ActiveAdminAddons::InputBase
     load_data_attr(:model, value: model_name)
     load_data_attr(:method, value: method)
     load_data_attr(:width, default: "80%")
+    load_data_attr(:sortable)
 
     if active_record_select?
       load_data_attr(:relation, value: true)
