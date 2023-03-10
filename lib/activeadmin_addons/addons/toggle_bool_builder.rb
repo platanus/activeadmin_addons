@@ -24,7 +24,9 @@ module ActiveAdminAddons
         'data-field' => attribute,
         'data-value' => data,
         'data-url' => resource_url,
-        'data-success_message' => options[:success_message]
+        'data-success_message' => options[:success_message],
+        'data-confirm_toggle_true_message' => options[:confirm_toggle_true_message],
+        'data-confirm_toggle_false_message' => options[:confirm_toggle_false_message]
       )
     end
 
