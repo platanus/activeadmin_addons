@@ -10,14 +10,11 @@ require 'capybara/rails'
 require 'selenium-webdriver'
 require 'shoulda-matchers'
 require 'enumerize'
-require 'paperclip'
 require 'database_cleaner'
 require 'pry'
 
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each { |f| require f }
-
-Paperclip.options[:log] = false
 
 RSpec.configure do |config|
   config.use_instantiated_fixtures = false
