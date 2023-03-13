@@ -1,4 +1,4 @@
-# Select2
+# Slim Select
 
 ## Nested Select
 
@@ -42,7 +42,7 @@ f.input :city_id, as: :nested_select,
                   level_3: { attribute: :city_id }
 ```
 
-<img src="./images/select2-nested-select-default.gif" height="250" />
+<img src="./images/slim-select-nested-select.gif" />
 
 By default, the nested select input uses the index action of the different levels to get the data. For example, the level 2 (region) will perform an ajax request to `/admin/regions&country_id_eq=[selected_country_id]` to get the regions for a given country.
 It's not mandatory to register the ActiveAdmin pages. But, if you don't, you'll need to pass the `url` attribute, on each level, to make it work.
@@ -97,13 +97,13 @@ Nested select, allows you to customize the general behavior of the input:
 f.input :city_id, as: :nested_select,
                   fields: [:name, :id],
                   display_name: :id,
-                  minimum_input_length: 3,
+                  minimum_input_length: 1,
                   level_1: { attribute: :country_id },
                   level_2: { attribute: :region_id },
                   level_3: { attribute: :city_id }
 ```
 
-<img src="./images/select2-nested-select-general-options.gif" height="250" />
+<img src="./images/slim-select-nested-select-general-options.gif" />
 
 Also, you can redefine general options on each level.
 
@@ -130,7 +130,7 @@ f.input :city_id, as: :nested_select,
 
 > `response_root` is not valid as general configuration. You need to define this attribute by level.
 
-<img src="./images/select2-nested-select-level-options.gif" height="250" />
+<img src="./images/slim-select-nested-select-level-options.png" />
 
 If you are using ajax search, you can define custom filters. For example, if you have:
 

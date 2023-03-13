@@ -1,8 +1,8 @@
-# Select2
+# Slim Select
 
 ## Ajax Search
 
-To enable select2 ajax search functionality you need to do the following:
+To enable Slim Select ajax search functionality you need to do the following:
 
 ```ruby
   f.input :category_id, as: :search_select, url: admin_categories_path,
@@ -10,7 +10,7 @@ To enable select2 ajax search functionality you need to do the following:
           order_by: 'description_asc'
 ```
 
-<img src="./images/select2-search-select.gif" />
+<img src="./images/slim-select-search-select.gif" />
 
 ## Filter Usage
 

@@ -136,45 +136,45 @@ You can render text as markdown.
 
 ### Inputs
 
-#### Select2 Input
+#### Slim Select Input
 
-With [select2](http://ivaynberg.github.io/select2/) the select control looks nicer, it works great with large collections.
+With [Slim Select](https://slimselectjs.com/) the select control looks nicer, it works great with large collections.
 
-<img src="./docs/images/select2-default.gif" height="200" />
+<img src="./docs/images/slim-select.gif" />
 
-[Read more!](docs/select2_default.md)
+[Read more!](docs/slim-select_default.md)
 
 #### Tag Input
 
-Using tags input, you can add tags using select2.
+Using tags input, you can add tags using slim select.
 
-<img src="./docs/images/select2-tags.gif" height="200" />
+<img src="./docs/images/slim-select-tags.gif" />
 
-[Read more!](docs/select2_tags.md)
+[Read more!](docs/slim-select_tags.md)
 
 #### Selected List Input
 
 This form control allows you to handle your many to many associations.
 
-<img src="./docs/images/select2-selected-list.gif" height="400" />
+<img src="./docs/images/slim-select-selected-list.gif" />
 
-[Read more!](docs/select2_selected_list.md)
+[Read more!](docs/slim-select_selected_list.md)
 
 #### Search Select Input
 
 Using `search_select` input, you can easily add ajax search to activeadmin.
 
-<img src="./docs/images/select2-search-select.gif" height="180" />
+<img src="./docs/images/slim-select-search-select.gif" />
 
-[Read more!](docs/select2_search.md)
+[Read more!](docs/slim-select_search.md)
 
 #### Nested Select Input
 
 Using `nested_select` input, you can build related select inputs.
 
-<img src="./docs/images/select2-nested-select-default.gif" height="230" />
+<img src="./docs/images/slim-select-nested-select.gif" />
 
-[Read more!](docs/select2_nested_select.md)
+[Read more!](docs/slim-select_nested_select.md)
 
 ### Color Picker Input
 
