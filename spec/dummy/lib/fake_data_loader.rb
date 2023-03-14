@@ -9,7 +9,6 @@ module FakeDataLoader
     create_cities
 
     Invoice.create!(
-      attachment: File.new('../../spec/assets/entradas_para_dragon_ball_z.pdf'),
       number: "0002-00000001,0002-00004684,4684",
       aasm_state: :accepted,
       color: '#C6A300',
@@ -22,7 +21,7 @@ module FakeDataLoader
     )
 
     Invoice.create!(
-      photo: File.new('../../spec/assets/Rails.png'),
+      picture: File.new('../../spec/assets/Rails.png'),
       number: "0002-00004684",
       color: '#D94000',
       city: @mendoza,

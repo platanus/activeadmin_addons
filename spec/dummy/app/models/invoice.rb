@@ -1,10 +1,8 @@
 require 'enumerize'
-require 'paperclip'
 require 'aasm'
 
 class Invoice < ActiveRecord::Base
   extend ::Enumerize
-  include Paperclip::Glue
   include AASM
   include ImageUploader::Attachment(:picture)
 
@@ -17,16 +15,6 @@ class Invoice < ActiveRecord::Base
 
   enum status: { active: 0, archived: 1 }
 
-  has_attached_file :attachment
-  validates_attachment :attachment, content_type: { content_type: "application/pdf" }
-
-  has_attached_file :photo, styles: {
-    big: "600x600>",
-    medium: "300x300>",
-    thumb: "100x100>"
-  }
-
-  validates_attachment :photo, content_type: { content_type: %r{\Aimage\/.*\Z} }
 
   # Uncomment to test validations
   # validates :city, :city_id, :category, :category_id, :updated_at, :number, :item_ids, :color,

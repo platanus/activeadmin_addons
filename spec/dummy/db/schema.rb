@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_17_213244) do
+ActiveRecord::Schema.define(version: 2023_03_13_193813) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -76,14 +76,6 @@ ActiveRecord::Schema.define(version: 2022_06_17_213244) do
     t.boolean "paid"
     t.string "state"
     t.integer "status"
-    t.string "attachment_file_name"
-    t.string "attachment_content_type"
-    t.bigint "attachment_file_size"
-    t.datetime "attachment_updated_at"
-    t.string "photo_file_name"
-    t.string "photo_content_type"
-    t.bigint "photo_file_size"
-    t.datetime "photo_updated_at"
     t.integer "category_id"
     t.integer "city_id"
     t.integer "position"

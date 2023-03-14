@@ -7,8 +7,7 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 
 #### Rows/Columns
 
-- [Paperclip Attachment](#paperclip-attachment): show file icons on your show/index views.
-- [Paperclip Image](#paperclip-image): show thumbnails on your show/index views.
+- [Shrine Image](#shrine-image): show thumbnails on your show/index views.
 - [AASM Integration](#aasm-integration): nice looking tags for states.
 - [Enumerize and Rails Enum Integration](#enumerize-and-rails-enum-integration): nice looking tags for enums.
 - [Boolean Values](#boolean-values): beautiful boolean values.
@@ -71,17 +70,9 @@ Installing this gem will enable the following changes by default:
 
 ### Rows/Columns
 
-#### Paperclip Attachment
-
-Displays a paperclip link with attachment related icon into index and show views.
-
-<img src="./docs/images/paperclip-attachment-column.png" height="250" />
-
-[Read more!](docs/paperclip_attachment.md)
-
 #### Images
 
-Display images in the index and show views. This implementation supports [Shrine](https://github.com/shrinerb/shrine) and [Paperclip](https://github.com/thoughtbot/paperclip).
+Display images in the index and show views. This implementation supports [Shrine](https://github.com/shrinerb/shrine).
 
 <img src="./docs/images/paperclip-image-column.png" height="380" />
 
