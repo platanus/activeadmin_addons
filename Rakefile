@@ -18,7 +18,6 @@ task :prepare_assets do
   system "rm -rf spec/dummy/public/packs"
   system "rm -rf spec/dummy/public/packs-test"
   system "yarn install"
-  system "yarn build"
   system "(cd spec/dummy && yarn install)"
 end
 

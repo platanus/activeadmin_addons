@@ -1,6 +1,6 @@
-@import 'imports/jquery-datepicker';
+@import 'jquery-datetimepicker/build/jquery.datetimepicker.min.css';
 @import 'vendor/palette-color-picker';
-@import 'imports/slimselect';
+@import 'slim-select';
 
 $error-color: #932419;
 
@@ -9,6 +9,6 @@ $error-color: #932419;
 @import 'inputs/color-picker';
 @import 'inputs/date-time-picker';
 @import 'inputs/selected-list';
-@import 'inputs/slim-select.scss';
+@import 'inputs/slim-select';
 @import 'addons/toggle_bool';
 @import 'addons/interactive_select_tag';
