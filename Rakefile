@@ -23,23 +23,8 @@ end
 
 task :tests do
   system "rspec ./spec/lib"
-end
-
-task :sprockets_tests do
   system "rake prepare_assets"
-  system "export SPROCKETS=true; rspec ./spec/features"
-end
-
-task :webpack_tests do
-  system "rake prepare_assets"
-  system "export SPROCKETS=false; rspec ./spec/features"
-end
-
-task :all_tests do
-  system "rake prepare_assets"
-  system "rake tests"
-  system "export SPROCKETS=true; rspec ./spec/features"
-  system "export SPROCKETS=false; rspec ./spec/features"
+  system "rspec ./spec/features"
 end
 
 Bundler::GemHelper.install_tasks

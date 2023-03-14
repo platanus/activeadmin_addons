@@ -11,7 +11,8 @@ module ActiveadminAddons
         if use_webpacker?
           generate "activeadmin_addons:webpacker"
         else
-          generate "activeadmin_addons:assets"
+          puts "ActiveAdmin Addons requires ActiveAdmin installed with webpacker. "\
+          "Please run 'rails generate active_admin:install --webpacker' and then 'rails generate activeadmin_addons:install'"
         end
       end
 

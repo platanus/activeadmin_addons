@@ -331,5 +331,5 @@ ActiveAdmin.setup do |config|
   # By default, Active Admin uses Sprocket's asset pipeline.
   # You can switch to using Webpacker here.
   #
-  config.use_webpacker = ENV["SPROCKETS"] != "true"
+  config.use_webpacker = true
 end
