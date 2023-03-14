@@ -9,7 +9,6 @@ PATH
   remote: .
   specs:
     activeadmin_addons (1.10.0)
-      active_material
       railties
       redcarpet
       require_all
@@ -58,7 +57,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_material (1.5.2)
     activeadmin (2.13.1)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1, < 5.0)
