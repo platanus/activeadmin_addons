@@ -22,8 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency "railties"
   s.add_dependency "redcarpet"
   s.add_dependency "require_all"
-  s.add_dependency "sassc"
-  s.add_dependency "sassc-rails"
   s.add_dependency "xdan-datetimepicker-rails", "~> 2.5.1"
 
   s.add_development_dependency "aasm"
