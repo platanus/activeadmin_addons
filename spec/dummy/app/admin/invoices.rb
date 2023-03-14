@@ -33,7 +33,6 @@ ActiveAdmin.register Invoice do
       list_row :skills, list_type: :ol
       list_row :contact, localize: true
       list_row :details, localize: true
-      attachment_row("My doc", :attachment, label: 'Download file', truncate: false, &:attachment)
       image_row("Mi picture", :picture, image_options: { width: 100 }, &:picture)
       row :legal_date
       number_row("Monto", :amount, as: :human, &:amount)
