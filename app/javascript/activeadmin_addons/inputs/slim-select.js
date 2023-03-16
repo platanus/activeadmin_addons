@@ -26,7 +26,7 @@ function setupSelect(el) {
   }
   el.querySelector('option[value=""]').dataset.placeholder = true;
 
-  el.style.width = el.dataset.width || '80%';
+  el.style.width = el.dataset.width;
   let settings = {
     select: el,
     settings: {
