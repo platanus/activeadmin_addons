@@ -2479,10 +2479,9 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-slim-select@2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/slim-select/-/slim-select-2.4.3.tgz#6d6bc7d94cc239b245be210b6ee04effd13d143f"
-  integrity sha512-6BI2pC7ApGqfRgrMVi79IcJY8dZ1/AzWuSRS7oMhmcHGhKj/xpoa0b1VpGpRp8mpWFkQB/I/cpk/WvYREJCJ5A==
+"slim-select@https://github.com/platanus/slim-select#b23791ceb150e73b9209b9978c56261347c510ed":
+  version "2.4.4"
+  resolved "https://github.com/platanus/slim-select#b23791ceb150e73b9209b9978c56261347c510ed"
 
 source-map@^0.5.0:
   version "0.5.7"
