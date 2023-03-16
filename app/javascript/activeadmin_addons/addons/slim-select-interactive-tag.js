@@ -67,7 +67,9 @@ function setupInteractiveTag(containerEl) {
   tag.addEventListener('click', () => {
     selectContainer.classList.remove('select-container-hidden');
     tag.classList.add('interactive-tag-hidden');
-    slimSelect.open();
+    window.setTimeout(() => {
+      slimSelect.open();
+    }, 0);
   });
 }
 
