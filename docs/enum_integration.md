@@ -51,7 +51,7 @@ $approved-color: #08A510;
 
 ## Interactive Tag Column
 
-`tag_column` also can receive the boolean parameter `interactive`. If `interactive` is true, it will render a select2 input to change the value of the attribute when the tag is clicked:
+`tag_column` also can receive the boolean parameter `interactive`. If `interactive` is true, it will render a slim select input to change the value of the attribute when the tag is clicked:
 
 ```ruby
 index do

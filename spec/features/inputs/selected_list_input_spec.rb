@@ -7,10 +7,11 @@ describe "Selected List Input", type: :feature do
 
   def expect_to_add_item(item, items_count = 1, attribute = :name)
     value = item.send(attribute)
-    pick_select2_entered_option(value)
+    pick_slimselect_entered_option(value)
     html_item = find(".selected-item#invoice_item_ids_#{item.id}")
     expect(html_item.text).to match(value)
     expect_added_count(items_count)
+    sleep 0.5
   end
 
   def expect_to_remove_item(item, items_count = 0)
@@ -89,7 +90,7 @@ describe "Selected List Input", type: :feature do
     end
 
     it "pass response root as input data" do
-      expect_select2_data_option("response-root", "my_categories")
+      expect_slimselect_data_option("response-root", "my_categories")
     end
   end
 
@@ -103,7 +104,7 @@ describe "Selected List Input", type: :feature do
     end
 
     it "changes input width" do
-      expect_select2_data_option("width", "200px")
+      expect_slimselect_data_option("width", "200px")
     end
   end
 
@@ -117,13 +118,13 @@ describe "Selected List Input", type: :feature do
     end
 
     it "shows nothing looking for name (default)", js: true do
-      fill_select2_input("Cat")
-      expect_select2_results_count_to_eq(0)
+      fill_slimselect_input("Cat")
+      expect_slimselect_options_count_to_eq(0)
     end
 
     it "shows results looking for description", js: true do
-      fill_select2_input("Desc")
-      expect_select2_results_count_to_eq(3)
+      fill_slimselect_input("Desc")
+      expect_slimselect_options_count_to_eq(3)
     end
 
     it "shows custom label", js: true do
@@ -141,8 +142,8 @@ describe "Selected List Input", type: :feature do
     end
 
     it "shows length message", js: true do
-      open_select2_options
-      expect_select2_result_text_to_eq(1, "Please enter 5 or more characters")
+      fill_slimselect_input("A")
+      expect_slimselect_error("Please enter 5 or more characters")
     end
   end
 
@@ -156,8 +157,8 @@ describe "Selected List Input", type: :feature do
     end
 
     it "shows results ordered by name DESC", js: true do
-      fill_select2_input("Item")
-      expect_select2_result_text_to_eq(1, @item3.name)
+      fill_slimselect_input("Item")
+      expect_slimselect_result_text_to_eq(1, @item3.name)
     end
   end
 
@@ -171,13 +172,13 @@ describe "Selected List Input", type: :feature do
     end
 
     it "does not show any result when searched with prefix", js: true do
-      fill_select2_input("Item")
-      expect_select2_results_count_to_eq(0)
+      fill_slimselect_input("Item")
+      expect_slimselect_options_count_to_eq(0)
     end
 
     it "shows results when searched with suffix", js: true do
-      fill_select2_input("2")
-      expect_select2_result_text_to_eq(1, @item2.name)
+      fill_slimselect_input("2")
+      expect_slimselect_result_text_to_eq(1, @item2.name)
     end
   end
 end

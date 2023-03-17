@@ -2,6 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import { uglify } from 'rollup-plugin-uglify';
+import copy from 'rollup-plugin-copy';
 import { stripIndent } from 'common-tags';
 
 const uglifyOptions = {
@@ -10,14 +11,13 @@ const uglifyOptions = {
   output: {
     beautify: true,
     indent_level: 2,
-    preamble: stripIndent`
+    preamble: `${stripIndent`
       /* eslint-disable */
       /**
        * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/activeadmin_addons/' and run \`yarn build\`
        */
-      //= require select2.full
       //= require jquery.xdan.datetimepicker.full
-    ` + '\n'
+    `}\n`,
   },
 };
 
@@ -29,6 +29,16 @@ export default {
     name: 'ActiveAdmin Addons',
   },
   plugins: [
+    copy({
+      targets: [
+        {
+          src: 'node_modules/slim-select/dist/slimselect.css',
+          dest: 'app/assets/stylesheets/activeadmin_addons/imports',
+          transform: (contents) => contents.toString().replace('/*# sourceMappingURL=slimselect.css.map */', ''),
+        },
+      ],
+      verbose: true,
+    }),
     resolve(),
     commonjs(),
     babel(),
@@ -37,6 +47,5 @@ export default {
   // Use client's yarn dependencies instead of bundling everything
   external: [
     'jquery-datetimepicker',
-    'select2',
   ],
 };

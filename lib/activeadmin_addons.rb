@@ -4,7 +4,7 @@ module ActiveadminAddons
   attr_writer :default_select, :datetime_picker_default_options, :datetime_picker_input_format
 
   def default_select
-    return "select2" unless @default_select
+    return "slim-select" unless @default_select
     @default_select
   end
 

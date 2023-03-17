@@ -34,7 +34,7 @@ describe "Select Filter Input", type: :feature do
 
       context 'when selecting a value', js: true do
         before do
-          pick_select2_entered_option('Activo, si se considera')
+          pick_slimselect_entered_option('Activo, si se considera')
           click_filter_btn
         end
 
@@ -66,7 +66,7 @@ describe "Select Filter Input", type: :feature do
 
       context 'when selecting a value', js: true do
         before do
-          pick_select2_entered_option('Archivado')
+          pick_slimselect_entered_option('Archivado')
           click_filter_btn
         end
 

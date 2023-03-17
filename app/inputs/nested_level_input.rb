@@ -15,6 +15,7 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
 
   def load_control_attributes
     load_class(@options[:class])
+    load_data_attr(:association, value: association_name)
     load_data_attr(:fields, default: ["name"], formatter: :to_json)
     load_data_attr(:predicate, default: "contains")
     load_data_attr(:filters)
@@ -23,7 +24,7 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
     load_data_attr(:minimum_input_length, default: 1)
     load_data_attr(:url, default: url_from_method)
     load_data_attr(:response_root, default: tableize_method)
-    load_data_attr(:width, default: "80%")
+    load_data_attr(:width)
     load_data_attr(:order,
       value: @options[:order_by],
       default: get_data_attr_value(:fields).first.to_s + "_desc")

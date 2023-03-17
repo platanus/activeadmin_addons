@@ -1,4 +1,4 @@
-# Select2
+# Slim Select
 
 ## Selected List
 
@@ -24,7 +24,7 @@ f.input :performer_ids, as: :selected_list
 
 To get...
 
-<img src="./images/select2-selected-list.gif" />
+<img src="./images/slim-select-selected-list.gif" />
 
 > Remember: the input name must be: `performer_ids` not `performers` and you need to add to `permit_params` the `performer_ids: []` key.
 

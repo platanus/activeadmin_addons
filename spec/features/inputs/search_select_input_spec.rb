@@ -23,8 +23,8 @@ describe "Search Select Input", type: :feature do
     end
 
     it "shows other categories after search", js: true do
-      fill_select2_input("Cat")
-      expect_select2_results_count_to_eq(2)
+      fill_slimselect_input("Cat")
+      expect_slimselect_options_count_to_eq(2)
     end
   end
 
@@ -38,13 +38,13 @@ describe "Search Select Input", type: :feature do
     end
 
     it "shows nothing looking for name (default)", js: true do
-      fill_select2_input("Cat")
-      expect_select2_results_count_to_eq(0)
+      fill_slimselect_input("Cat")
+      expect_slimselect_options_count_to_eq(0)
     end
 
     it "shows results looking for description", js: true do
-      fill_select2_input("Desc")
-      expect_select2_results_count_to_eq(2)
+      fill_slimselect_input("Desc")
+      expect_slimselect_options_count_to_eq(2)
     end
   end
 
@@ -58,8 +58,8 @@ describe "Search Select Input", type: :feature do
     end
 
     it "shows other categories after search", js: true do
-      fill_select2_input("Cat")
-      expect_select2_results_count_to_eq(2)
+      fill_slimselect_input("Cat")
+      expect_slimselect_options_count_to_eq(2)
     end
   end
 
@@ -73,7 +73,7 @@ describe "Search Select Input", type: :feature do
     end
 
     it "pass response root as input data" do
-      expect_select2_data_option("response-root", "my_categories")
+      expect_slimselect_data_option("response-root", "my_categories")
     end
   end
 
@@ -87,8 +87,8 @@ describe "Search Select Input", type: :feature do
     end
 
     it "shows length message", js: true do
-      open_select2_options
-      expect_select2_result_text_to_eq(1, "Please enter 5 or more characters")
+      fill_slimselect_input("a")
+      expect_slimselect_error("Please enter 5 or more characters")
     end
   end
 
@@ -102,7 +102,7 @@ describe "Search Select Input", type: :feature do
     end
 
     it "changes input width" do
-      expect_select2_data_option("width", "200px")
+      expect_slimselect_data_option("width", "200px")
     end
   end
 
@@ -130,8 +130,8 @@ describe "Search Select Input", type: :feature do
     end
 
     it "shows custom label", js: true do
-      pick_select2_entered_option("Cat", @category1.description)
-      expect_select2_selection(@category1.description)
+      pick_slimselect_entered_option("Cat", @category1.description)
+      expect_slimselect_selection(@category1.description)
     end
   end
 
@@ -145,8 +145,8 @@ describe "Search Select Input", type: :feature do
     end
 
     it "shows results ordered by name DESC", js: true do
-      fill_select2_input("Cat")
-      expect_select2_result_text_to_eq(1, @category2.name)
+      fill_slimselect_input("Cat")
+      expect_slimselect_result_text_to_eq(1, @category2.name)
     end
   end
 
@@ -160,13 +160,13 @@ describe "Search Select Input", type: :feature do
     end
 
     it "does not show any result when searched with prefix", js: true do
-      fill_select2_input("Cat")
-      expect_select2_results_count_to_eq(0)
+      fill_slimselect_input("Cat")
+      expect_slimselect_options_count_to_eq(0)
     end
 
     it "shows results when searched with suffix", js: true do
-      fill_select2_input("2")
-      expect_select2_result_text_to_eq(1, @category2.name)
+      fill_slimselect_input("2")
+      expect_slimselect_result_text_to_eq(1, @category2.name)
     end
   end
 end
