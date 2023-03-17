@@ -1,17 +1,20 @@
-require 'enumerize'
 require 'aasm'
 
 class Invoice < ActiveRecord::Base
-  extend ::Enumerize
   include AASM
   include ImageUploader::Attachment(:picture)
+  after_initialize :set_default_state, if: :new_record?
 
   belongs_to :category
   belongs_to :city
   has_and_belongs_to_many :items
   has_and_belongs_to_many :other_items, class_name: 'Item'
 
-  enumerize :state, in: [:pending, :rejected, :approved], default: :pending
+  enum state: {
+    pending: 'pending',
+    rejected: 'rejected',
+    approved: 'approved'
+  }
 
   enum status: { active: 0, archived: 1 }
 
@@ -85,5 +88,9 @@ class Invoice < ActiveRecord::Base
       "#C2B400",
       "#B9BF00"
     ]
+  end
+
+  def set_default_state
+    self.state ||= 'pending'
   end
 end
