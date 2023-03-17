@@ -9,7 +9,6 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'selenium-webdriver'
 require 'shoulda-matchers'
-require 'enumerize'
 require 'database_cleaner'
 require 'pry'
 

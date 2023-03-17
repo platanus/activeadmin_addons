@@ -9,7 +9,7 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 
 - [Shrine Image](#shrine-image): show thumbnails on your show/index views.
 - [AASM Integration](#aasm-integration): nice looking tags for states.
-- [Enumerize and Rails Enum Integration](#enumerize-and-rails-enum-integration): nice looking tags for enums.
+- [Rails Enum Integration](#rails-enum-integration): nice looking tags for enums.
 - [Boolean Values](#boolean-values): beautiful boolean values.
 - [Toggleable Booleans](#toggleable-boolean-columns): have switches to toggle values directly at the index
 - [Number Formatting](#number-formatting): format you currencies with ease.
@@ -61,7 +61,6 @@ Check [here](docs/install_generator.md) to see more information about this gener
 Installing this gem will enable the following changes by default:
 
 * The default date input will be `:datepicker` instead of `:date_select`
-* Filters and selects will offer integration with [enumerize](https://github.com/brainspec/enumerize)
 * Select filters will show translated values when used with Rails built-in `enums`
 * All select boxes will use select2
 
@@ -85,9 +84,9 @@ You can show [aasm](https://github.com/aasm/aasm) values as active admin tags.
 
 [Read more!](docs/aasm_integration.md)
 
-#### Enumerize and Rails Enum Integration
+#### Rails Enum Integration
 
-You can show Rails' built in `enums` or [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
+You can show Rails' built in `enums` as active admin tags.
 
 <img src="./docs/images/enumerize-tag-column.png" height="250" />
 
