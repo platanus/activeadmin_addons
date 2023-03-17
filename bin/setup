@@ -5,7 +5,6 @@ set -e
 
 rm -rf node_modules
 rm -rf spec/dummy/node_modules
-export SPROCKETS=false
 gem install bundler --conservative
 bundle check || bundle install
 bundle exec rake prepare_assets

@@ -33,7 +33,6 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 
 #### Themes
 - [No Theme](#no-theme): ActiveAdmin default style.
-- [Material Theme](#material-theme): Material Design style provide by [active_material](https://github.com/vigetlabs/active_material).
 
 ## Installation
 
@@ -236,28 +235,6 @@ filter :category_id, as: :search_select_filter
 
 #### NO Theme
 Use default active_admin theme.
-
-#### Material Theme
-##### Not compatible when Active Admin has been installed in webpack mode
-
-Show material design theme using [active_material](https://github.com/vigetlabs/active_material). If you want to use it, you should run the generator using the flag `theme` as follow:
-
-```ruby
-rails g activeadmin_addons:install --theme material
-```
-
-Also, you can modify primary color, and all other theme colors, in the first lines of the file: ` app/assets/stylesheets/active_admin.scss`
-```scss
-$am-theme-primary: YOUR-COLOR;
-...
-other colors
-...
-@import 'activeadmin_addons/material';
-```
-
-Take care of defining these variables before the import of `@import 'activeadmin_addons/material';`.
-
-For material documentation you should go to [gem documentation](http://code.viget.com/active_material/docs/api/).
 
 ## Publishing
 

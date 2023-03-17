@@ -74,7 +74,7 @@ module ActiveAdminHelpers
       # it allover the place
       ActiveAdmin.application.authentication_method = false
       ActiveAdmin.application.current_user_method = false
-      ActiveAdmin.application.use_webpacker = ENV["SPROCKETS"] != "true"
+      ActiveAdmin.application.use_webpacker = true
     end
 
     yield

@@ -36,6 +36,10 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.around :each, :feature do |ex|
+    ex.run_with_retry retry: 3
+  end
+
   # Cache the download of chrome driver for 1 day
   Webdrivers.cache_time = 86_400
 

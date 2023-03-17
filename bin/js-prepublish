@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Exit if any subcommand fails
+set -e
+
+rm -rf src
+mkdir src
+cp -R app/javascript/activeadmin_addons/* src
+# temporary fix for https://github.com/brianvoe/slim-select/issues/269
+cp node_modules/slim-select/dist/slimselect.css src/stylesheets/imports/slimselect.css

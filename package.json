@@ -10,22 +10,12 @@
   "author": "Platanus <rubygems@platan.us>",
   "license": "MIT",
   "scripts": {
-    "build": "rollup --config rollup.config.js",
-    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/activeadmin_addons src/stylesheets && cp -R app/javascript/activeadmin_addons/* src"
+    "prepublishOnly": "./bin/js-prepublish"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/preset-env": "^7.11.0",
-    "common-tags": "^1.8.0",
     "eslint": "^8.27.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-platanus": "^0.1.0",
-    "rollup": "^2.26.4",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.4"
+    "eslint-plugin-platanus": "^0.1.0"
   },
   "dependencies": {
     "jquery-datetimepicker": "^2.5.21",
