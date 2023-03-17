@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rails", "~> 6.1", ">= 6.1.4.4"
   s.add_development_dependency "rexml"
   s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "rspec-retry"
   s.add_development_dependency "rspec_junit_formatter"
   s.add_development_dependency "rubocop", "~> 0.65.0"
   s.add_development_dependency "shoulda-matchers"
