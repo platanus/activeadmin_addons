@@ -1077,14 +1077,10 @@ side-channel@^1.0.4:
     get-intrinsic "^1.0.2"
     object-inspect "^1.9.0"
 
-slash@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
-  integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
-
-"slim-select@https://github.com/platanus/slim-select#b23791ceb150e73b9209b9978c56261347c510ed":
-  version "2.4.4"
-  resolved "https://github.com/platanus/slim-select#b23791ceb150e73b9209b9978c56261347c510ed"
+slim-select@^2.4.5:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/slim-select/-/slim-select-2.4.5.tgz#7453d9469c4ce6d6121608a8e384561e62057382"
+  integrity sha512-64plTJiYwJJqvOQrf3Ty8BvgC3GbNPlGelT7AdhLZ8Ax0z7hxyhHHc5Mfhp1BUVkDSt0+gTpRZH2McIrjia68Q==
 
 string.prototype.trimend@^1.0.5:
   version "1.0.6"
