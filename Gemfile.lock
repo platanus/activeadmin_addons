@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    activeadmin_addons (1.10.0)
+    activeadmin_addons (2.0.0.beta.0)
       railties
       redcarpet
       require_all
