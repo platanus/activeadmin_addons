@@ -57,7 +57,7 @@ ActiveAdmin.register Invoice do
                              ]
                            }
 
-      f.input :state
+      f.input :state, as: :select
 
       f.input :category_id, as: :search_select,
                             url: proc { "/admin/categories" },

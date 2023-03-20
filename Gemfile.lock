@@ -114,8 +114,6 @@ GEM
     diff-lcs (1.3)
     down (5.2.4)
       addressable (~> 2.8)
-    enumerize (2.5.0)
-      activesupport (>= 3.2)
     erubi (1.11.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
@@ -347,7 +345,6 @@ DEPENDENCIES
   activeadmin_addons!
   capybara-selenium
   database_cleaner
-  enumerize (~> 2.0)
   factory_bot_rails
   guard
   guard-rspec

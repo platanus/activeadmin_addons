@@ -22,14 +22,10 @@ end
 
 <img src="./images/enumerize-tag-column.png" height="250" />
 
-If you want to customize the tag's colors. You need to define css classes matching enumerize attribute values. For example: if you have the `Bill` model with:
+If you want to customize the tag's colors. You need to define css classes matching enum values. For example: if you have the `Bill` model with:
 
 ```ruby
 class Bill < ActiveRecord::Base
-  # Enumerize
-  extend Enumerize
-  enumerize :state, in: [:pending, :rejected, :approved], default: :pending
-
   # Rails Enum
   enum status: { active: 0, archived: 1 }
 end
