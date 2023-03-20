@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+### 2.0.0.beta-0
+
 * Replaces [Select2](https://select2.org/) with [Slim Select](https://slimselectjs.com/) to make it easier to work with newer bundlers like esbuild [#448](https://github.com/platanus/activeadmin_addons/pull/448)
 * Removes support for Paperclip since it has been deprecated. [#450](https://github.com/platanus/activeadmin_addons/pull/450)
 * Removes support for enumerize [#452](https://github.com/platanus/activeadmin_addons/pull/452)

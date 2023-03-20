@@ -17,7 +17,7 @@ module ActiveadminAddons
       end
 
       def install_package
-        run "yarn add activeadmin_addons"
+        run "yarn add activeadmin_addons@beta"
       end
 
       private
