@@ -44,8 +44,8 @@ function setupSelect(el) {
     }
   });
 
-  const slim = new SlimSelect(settings);
-  el.dataset.slimSelectId = slim.settings.id;
+  // eslint-disable-next-line no-new
+  new SlimSelect(settings);
 }
 
 function initSelects(node = document) {
