@@ -18,15 +18,8 @@ const selectTypes = {
   tagsSelect,
 };
 
-// eslint-disable-next-line max-statements
+// eslint-disable-next-line max-statements, complexity
 function setupSelect(el) {
-  const emptyOption = el.querySelector('option[value=""]');
-  if (!emptyOption) {
-    el.insertAdjacentHTML('afterbegin', '<option value=""></option>');
-  }
-  el.querySelector('option[value=""]').dataset.placeholder = true;
-
-  el.style.width = el.dataset.width;
   let settings = {
     select: el,
     settings: {
@@ -34,6 +27,31 @@ function setupSelect(el) {
       placeholderText: 'Select Value',
     },
   };
+
+  const selectStyles = window.getComputedStyle(el);
+  el.style.width = el.dataset.width;
+  el.style.fontSize = selectStyles.fontSize;
+
+  const searchSelectFilter = el.closest('.filter_form_field');
+  if (searchSelectFilter) {
+    if (searchSelectFilter.classList.contains('search_select_filter') ||
+    searchSelectFilter.classList.contains('filter_string')) {
+      settings.settings.allowDeselect = false;
+    }
+
+    if (el.options.length > 0) {
+      el.style.width = el.dataset.width || selectStyles.width;
+      if (selectStyles.display === 'inline-block') {
+        el.style.display = 'inline-flex';
+      }
+    }
+  }
+
+  const emptyOption = el.querySelector('option[value=""]');
+  if (!emptyOption) {
+    el.insertAdjacentHTML('afterbegin', '<option value=""></option>');
+  }
+  el.querySelector('option[value=""]').dataset.placeholder = true;
 
   Object.keys(selectTypes).forEach((type) => {
     if (selectTypes[type].classes.some((className) => el.classList.contains(className))) {
@@ -44,8 +62,8 @@ function setupSelect(el) {
     }
   });
 
-  const slim = new SlimSelect(settings);
-  el.dataset.slimSelectId = slim.settings.id;
+  // eslint-disable-next-line no-new
+  new SlimSelect(settings);
 }
 
 function initSelects(node = document) {
