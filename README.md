@@ -250,10 +250,9 @@ On master/main branch...
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
-3. If you changed the javascript/scss files, run `yarn build`.
-4. Commit your changes (`git commit -am 'Add some feature'`)
-5. Push to the branch (`git push origin my-new-feature`)
-6. Create new Pull Request
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 If you want to collaborate, please check [the rules](docs/CONTRIBUTING.md) first.
 

@@ -3,11 +3,12 @@
 ## Rules
 
 1. **Test everything you add or fix**. Functionality that is not tested is a headache to the future.
-1. **Document everything you add**, even an small option. If the functionality is hidden in the code, it is not useful.
+1. **Document everything you add**, even a small option. If the functionality is hidden in the code, it is not useful.
 In general, we add a brief in the `README.md` and we extend the information in a file inside `/docs`.
 1. **Avoid making Pull Requests with multiple changes**. If you intend to add/fix several things, please make a PR for each one.
 1. **Ask before attempting to add new features**. In Platanus, we open the code of this gem to spread the happiness but we don't want to maintain things that are not useful for the company. Remember that you can always fork this gem and modify it according to your needs.
-1. **Respect the style rules**. We use [rubocop](https://github.com/bbatsov/rubocop), [stylelint](https://github.com/stylelint/stylelint) and [eslint](https://eslint.org/). Te rules are in the root of this gem.
+1. **Respect the style rules**. We use [rubocop](https://github.com/bbatsov/rubocop) and [eslint](https://eslint.org/). The rules are in the root of this gem. Any changes added to the PR because of a style rule violation should be added to the original commit in your branch with a [`git rebase`](https://help.github.com/articles/about-git-rebase/), don't add "style fix" as separate commits.
+1. **Use the template when submitting a PR** 
 
 ## Dummy App
 
@@ -44,17 +45,8 @@ If you're using homebrew on OS X you can do: `brew install chromedriver`.
 To run the tests you can do, in the root of the gem:
 
 ```
-# For running helper specs (/lib directory)
 bundle exec rake tests
-
-# For running with all tests
-bundle exec rake tests
-
 ```
 
-- The addons specs we put them inside `/spec/features`.
-- The helper classes specs we put them inside `/spec/lib`.
-
-## Style rules
-
-We use [Hound](https://houndci.com/) to check the style rules against pull requests. So, you don't need to install the code analyzers or linters if you don't want. But, don't make commits named "style fix" when the hound attacks you, or do it but use [`git rebase`](https://help.github.com/articles/about-git-rebase/).
+- We put the addons specs inside `/spec/features`.
+- We put the helper classes specs inside `/spec/lib`.
