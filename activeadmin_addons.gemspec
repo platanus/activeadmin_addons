@@ -1,6 +1,4 @@
-# coding: utf-8
-# rubocop:disable Metrics/LineLength
-$:.push File.expand_path("../lib", __FILE__)
+$:.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
 require "activeadmin_addons/version"
@@ -10,7 +8,8 @@ Gem::Specification.new do |s|
   s.name        = "activeadmin_addons"
   s.version     = ActiveadminAddons::VERSION
   s.authors     = ["Platanus", "Julio García", "Emilio Blanco", "Leandro Segovia"]
-  s.email       = ["rubygems@platan.us", "julioggonz@gmail.com", "emilioeduardob@gmail.com", "ldlsegovia@gmail.com"]
+  s.email       = ["rubygems@platan.us", "julioggonz@gmail.com", "emilioeduardob@gmail.com",
+                   "ldlsegovia@gmail.com"]
   s.homepage    = "https://github.com/platanus/activeadmin_addons"
   s.summary     = "Set of addons to help with the activeadmin ui"
   s.description = "Set of addons to help with the activeadmin ui"
@@ -36,10 +35,13 @@ Gem::Specification.new do |s|
   s.add_development_dependency "puma"
   s.add_development_dependency "rails", "~> 6.1", ">= 6.1.4.4"
   s.add_development_dependency "rexml"
+  s.add_development_dependency "rspec_junit_formatter"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "rspec-retry"
-  s.add_development_dependency "rspec_junit_formatter"
-  s.add_development_dependency "rubocop", "~> 0.65.0"
+  s.add_development_dependency "rubocop", "~> 1.50"
+  s.add_development_dependency "rubocop-performance"
+  s.add_development_dependency "rubocop-rails"
+  s.add_development_dependency "rubocop-rspec", "~> 2.2"
   s.add_development_dependency "shoulda-matchers"
   s.add_development_dependency "shrine", "~> 3.0"
   s.add_development_dependency "sqlite3"

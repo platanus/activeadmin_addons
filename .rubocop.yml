@@ -1,3 +1,7 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
 AllCops:
   Exclude:
   - "vendor/**/*"
@@ -5,11 +9,12 @@ AllCops:
   - "db/schema.rb"
   - "bin/**/*"
   - "spec/dummy/db/schema.rb"
-  DisplayCopNames: false
   TargetRubyVersion: 2.7
 Rails:
   Enabled: true
-Layout/AlignParameters:
+Performance:
+  Enabled: true
+Layout/ParameterAlignment:
   Description: Align the parameters of a method call if they span more than one line.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-double-indent
   Enabled: true
@@ -121,7 +126,7 @@ Naming/PredicateName:
   - is_
   - has_
   - have_
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
   - is_
 Style/RaiseArgs:
   Description: Checks the arguments passed to raise/fail.
@@ -172,7 +177,7 @@ Style/TrivialAccessors:
   ExactNameMatch: false
   AllowPredicates: false
   AllowDSLWriters: false
-  Whitelist:
+  AllowedMethods:
   - to_ary
   - to_a
   - to_c
@@ -200,6 +205,17 @@ Style/WordArray:
   Enabled: false
   MinSize: 0
   WordRegex: !ruby/regexp /\A[\p{Word}]+\z/
+Style/ExponentialNotation:
+  Enabled: true
+Style/HashEachMethods:
+  Description: Use Hash#each_key and Hash#each_value.
+  Enabled: true
+Style/HashTransformKeys:
+  Description: Prefer `transform_keys` over `each_with_object` and `map`.
+  Enabled: true
+Style/HashTransformValues:
+  Description: Prefer `transform_values` over `each_with_object` and `map`.
+  Enabled: true
 Metrics/AbcSize:
   Description: A calculated magnitude based on number of assignments, branches, and
     conditions.
@@ -215,15 +231,6 @@ Metrics/ClassLength:
   Enabled: false
   CountComments: false
   Max: 100
-Metrics/LineLength:
-  Description: Limit lines to 100 characters.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#100-character-limits
-  Enabled: true
-  Max: 100
-  AllowURI: true
-  URISchemes:
-  - http
-  - https
 Metrics/MethodLength:
   Description: Avoid methods longer than 15 lines of code.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#short-methods
@@ -243,6 +250,15 @@ Lint/AssignmentInCondition:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition
   Enabled: false
   AllowSafeAssignment: true
+Layout/LineLength:
+  Description: Limit lines to 100 characters.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#100-character-limits
+  Enabled: true
+  Max: 100
+  AllowURI: true
+  URISchemes:
+  - http
+  - https
 Layout/EndAlignment:
   Description: Align ends correctly.
   Enabled: true
@@ -257,6 +273,9 @@ Layout/DefEndAlignment:
   SupportedStylesAlignWith:
   - start_of_line
   - def
+Layout/SpaceAroundMethodCallOperator:
+  Description: Checks method call operators to not have spaces around them.
+  Enabled: true
 Style/SymbolArray:
   Description: Use %i or %I for arrays of symbols.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-i
@@ -264,6 +283,59 @@ Style/SymbolArray:
 Layout/ExtraSpacing:
   Description: Do not use unnecessary spacing.
   Enabled: false
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    validation:
+      - validate
+      - validates
+    association:
+      - belongs_to
+      - has_one
+      - has_many
+      - has_and_belongs_to_many
+    attribute_macros:
+      - attribute
+      - attr_accessor
+      - attr_reader
+      - attr_writer
+    callbacks:
+      - before_validation
+      - after_validation
+      - before_save
+      - before_create
+      - after_create
+      - after_save
+      - after_commit
+      - after_create_commit
+    other_macros:
+      - devise
+      - acts_as_token_authenticatable
+      - accepts_nested_attributes_for
+      - humanize
+      - monetize
+    scope:
+      - scope
+      - pg_search_scope
+  ExpectedOrder:
+    - module_inclusion
+    - constants
+    - public_attribute_macros
+    - association
+    - validation
+    - enum
+    - aasm
+    - scope
+    - public_delegate
+    - other_macros
+    - class_methods
+    - initializer
+    - public_methods
+    - protected_attribute_macros
+    - protected_methods
+    - private_attribute_macros
+    - private_delegate
+    - private_methods
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   Enabled: false
@@ -444,7 +516,7 @@ Lint/DeprecatedClassMethods:
 Lint/ElseLayout:
   Description: Check for odd code arrangement in an else block.
   Enabled: false
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Description: Don't suppress exception.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#dont-hide-exceptions
   Enabled: false
@@ -472,10 +544,43 @@ Lint/UnderscorePrefixedVariableName:
 Lint/Void:
   Description: Possible use of operator/literal/variable in void context.
   Enabled: false
-Rails/Delegate:
-  Description: Prefer delegate method for delegations.
-  Enabled: false
+Lint/RaiseException:
+  Description: Checks for `raise` or `fail` statements which are raising `Exception` class.
+  Enabled: true
+Lint/StructNewOverride:
+  Description: Disallow overriding the `Struct` built-in methods via `Struct.new`.
+  Enabled: true
 Performance/RedundantBlockCall:
   Description: Use `yield` instead of `block.call`.
   Reference: https://github.com/JuanitoFatas/fast-ruby#proccall-vs-yield-code
+  Enabled: false
+Style/OptionalBooleanParameter:
+  Description: 'Use keyword arguments when defining method with boolean argument.'
+  Enabled: false
+Lint/MissingSuper:
+  Description: >-
+                  This cop checks for the presence of constructors and lifecycle callbacks
+                  without calls to `super`'.
+  Enabled: false
+Style/RedundantFileExtensionInRequire:
+  Description: >-
+                  Checks for the presence of superfluous `.rb` extension in
+                  the filename provided to `require` and `require_relative`.
+  Enabled: false
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Max: 5
+RSpec/NestedGroups:
+  Max: 5
+RSpec/ExampleLength:
+  Max: 10
+RSpec/LetSetup:
+  Enabled: false
+RSpec/ExpectChange:
+  Enabled: true
+  EnforcedStyle: block
+RSpec/FilePath:
+  Enabled: false
+RSpec/InstanceVariable:
   Enabled: false
