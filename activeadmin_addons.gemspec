@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.summary     = "Set of addons to help with the activeadmin ui"
   s.description = "Set of addons to help with the activeadmin ui"
   s.license     = "MIT"
+  s.required_ruby_version = '>= 2.7.0'
 
   s.files = Dir["{app,config,db,lib,vendor/assets}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
