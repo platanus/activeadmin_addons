@@ -23,9 +23,9 @@ describe "Nested Select Input", type: :feature do
     end
 
     it "shows empty select controls" do
-      expect(page.text).to_not match(/Chile/)
-      expect(page.text).to_not match(/Metropolitana/)
-      expect(page.text).to_not match(/Santiago/)
+      expect(page.text).not_to match(/Chile/)
+      expect(page.text).not_to match(/Metropolitana/)
+      expect(page.text).not_to match(/Santiago/)
     end
 
     it "uses the custom url" do
@@ -225,7 +225,7 @@ describe "Nested Select Input", type: :feature do
                           level_2: {
                             attribute: :region_id,
                             filters: { name_contains: 'Met' }
-                            },
+                          },
                           level_3: { attribute: :city_id }
       end
 

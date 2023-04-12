@@ -3,8 +3,9 @@ class SearchSelectInput < ActiveAdminAddons::InputBase
 
   def render_custom_input
     concat(label_html)
-    concat(builder.select(input_method,
-      initial_collection_to_select_options, {}, input_html_options))
+    concat(
+      builder.select(input_method, initial_collection_to_select_options, {}, input_html_options)
+    )
   end
 
   def input_method
@@ -23,7 +24,7 @@ class SearchSelectInput < ActiveAdminAddons::InputBase
     load_data_attr(
       :order,
       value: @options[:order_by],
-      default: get_data_attr_value(:fields).first.to_s + "_desc"
+      default: "#{get_data_attr_value(:fields).first}_desc"
     )
   end
 end

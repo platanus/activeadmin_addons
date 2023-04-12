@@ -54,7 +54,7 @@ module ActiveAdminHelpers
     return unless _show_routes
 
     Rails.application.routes.routes.each do |route|
-      puts route.path.spec.to_s
+      puts route.path.spec
     end
   end
 

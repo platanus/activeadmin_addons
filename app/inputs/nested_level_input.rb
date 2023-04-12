@@ -13,6 +13,7 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   def load_control_attributes
     load_class(@options[:class])
     load_data_attr(:association, value: association_name)
@@ -26,14 +27,16 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
     load_data_attr(:response_root, default: tableize_method)
     load_data_attr(:width)
     load_data_attr(:order,
-      value: @options[:order_by],
-      default: get_data_attr_value(:fields).first.to_s + "_desc")
+                   value: @options[:order_by],
+                   default: "#{get_data_attr_value(:fields).first}_desc")
     load_parent_data_options
     load_collection_data
   end
+  # rubocop:enable Metrics/MethodLength
 
   def load_parent_data_options
     return unless @options[:parent_attribute]
+
     load_data_attr(:parent, value: @options[:parent_attribute])
     load_data_attr(:parent_id, value: @object.send(@options[:parent_attribute]), default: -1)
   end

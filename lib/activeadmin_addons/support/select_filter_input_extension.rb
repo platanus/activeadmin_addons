@@ -14,6 +14,4 @@ module ActiveAdminAddons
   end
 end
 
-::ActiveAdmin::Inputs::Filters::SelectInput.send(
-  :prepend, ActiveAdminAddons::SelectFilterInputExtension
-)
+::ActiveAdmin::Inputs::Filters::SelectInput.prepend ActiveAdminAddons::SelectFilterInputExtension

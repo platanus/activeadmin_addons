@@ -13,7 +13,7 @@ module ActiveAdminAddons
       load_control_attributes
       render_custom_input
       if parts.any?
-        return input_wrapping { parts_to_html }
+        input_wrapping { parts_to_html }
       else
         super
       end

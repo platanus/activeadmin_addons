@@ -5,16 +5,19 @@ module ActiveadminAddons
 
   def default_select
     return "slim-select" unless @default_select
+
     @default_select
   end
 
   def datetime_picker_default_options
     return {} unless @datetime_picker_default_options
+
     @datetime_picker_default_options
   end
 
   def datetime_picker_input_format
     return "%Y-%m-%d %H:%M" unless @datetime_picker_input_format
+
     @datetime_picker_input_format
   end
 

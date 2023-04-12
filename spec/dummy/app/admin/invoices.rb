@@ -1,6 +1,7 @@
 ActiveAdmin.register Invoice do
   permit_params :legal_date, :number, :paid, :state, :category_id, :city_id,
-    :amount, :color, :updated_at, :picture, :active, :description, item_ids: [], other_item_ids: []
+                :amount, :color, :updated_at, :picture, :active, :description,
+                item_ids: [], other_item_ids: []
 
   filter :id, as: :numeric_range_filter
 

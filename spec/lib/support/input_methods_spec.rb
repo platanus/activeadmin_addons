@@ -49,11 +49,13 @@ describe ActiveAdminAddons::InputMethods do
 
   describe "#model_name" do
     it { expect(instance.model_name).to eq("invoice") }
+
     check_invalid_object(:model_name)
   end
 
   describe "#method_model" do
     it { expect(instance.method_model).to be(Category) }
+
     check_invalid_method(:method_model)
 
     context "when class_name isn't defined and object is a namespaced class" do
@@ -76,6 +78,7 @@ describe ActiveAdminAddons::InputMethods do
 
   describe "#tableize_method" do
     it { expect(instance.tableize_method).to eq("categories") }
+
     check_invalid_method(:tableize_method)
   end
 
@@ -101,7 +104,7 @@ describe ActiveAdminAddons::InputMethods do
     context "when method is a related collection" do
       let(:method) { :item_ids }
 
-      it { expect(instance.input_value).to contain_exactly(*@invoice.items.ids) }
+      it { expect(instance.input_value).to match_array(@invoice.items.ids) }
     end
 
     check_invalid_method(:input_value)
@@ -123,6 +126,7 @@ describe ActiveAdminAddons::InputMethods do
 
   describe "#translated_method" do
     it { expect(instance.translated_method).to eq("Category") }
+
     check_invalid_method(:translated_method)
     check_invalid_object(:translated_method)
   end
