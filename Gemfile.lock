@@ -209,7 +209,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
-    rack-proxy (0.6.5)
+    rack-proxy (0.7.6)
       rack
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -335,7 +335,7 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (5.3.0)
+    webpacker (5.4.4)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -380,7 +380,7 @@ DEPENDENCIES
   shrine (~> 3.0)
   sqlite3
   webdrivers
-  webpacker (~> 5.0)
+  webpacker (~> 5.4)
 
 BUNDLED WITH
    2.3.4
