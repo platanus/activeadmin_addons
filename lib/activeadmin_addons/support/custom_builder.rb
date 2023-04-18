@@ -79,7 +79,7 @@ module ActiveAdminAddons
     end
 
     def has_label?
-      has_opts? ? args.length == 3 : args.length == 2
+      args.length == (has_opts? ? 3 : 2)
     end
 
     def has_opts?

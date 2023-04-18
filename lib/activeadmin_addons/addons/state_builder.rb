@@ -11,6 +11,7 @@ module ActiveAdminAddons
     def render
       raise "you need to install AASM gem first" unless defined? AASM
       raise "the #{attribute} is not an AASM state" unless state_attribute?
+
       context.status_tag(model.aasm(machine_name).human_state, class: status_class_for_model)
     end
 

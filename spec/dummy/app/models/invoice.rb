@@ -18,7 +18,6 @@ class Invoice < ActiveRecord::Base
 
   enum status: { active: 0, archived: 1 }
 
-
   # Uncomment to test validations
   # validates :city, :city_id, :category, :category_id, :updated_at, :number, :item_ids, :color,
   #   :state, :amount, presence: true

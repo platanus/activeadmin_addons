@@ -63,7 +63,9 @@ describe "Tags Input", type: :feature do
 
       it "does not allow new items", js: true do
         expect_slimselect_options_count_to_eq(3)
-        expect { add_slimselect_option("Not preloaded item") }.to raise_error(Capybara::ElementNotFound)
+        expect do
+          add_slimselect_option("Not preloaded item")
+        end.to raise_error(Capybara::ElementNotFound)
         slimselect_element.send_keys(:escape)
         expect_slimselect_options_count_to_eq(3)
       end

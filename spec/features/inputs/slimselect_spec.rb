@@ -1,11 +1,11 @@
 require "rails_helper"
 
 describe "Slim Select", type: :feature do
-  it { expect(ActiveadminAddons.default_select).to eq('slim-select') }
-
   after(:all) do
     ActiveadminAddons.default_select = 'slim-select'
   end
+
+  it { expect(ActiveadminAddons.default_select).to eq('slim-select') }
 
   context "when default config is slim select" do
     before do

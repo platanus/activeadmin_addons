@@ -32,11 +32,11 @@ describe "Date Time Picker Filter Input", type: :feature do
     end
 
     it "shows filtered rows", js: true do
-      expect(page).to_not have_css("#invoice_5")
+      expect(page).not_to have_css("#invoice_5")
       expect(page).to have_css("#invoice_4", count: 1)
       expect(page).to have_css("#invoice_3", count: 1)
       expect(page).to have_css("#invoice_2", count: 1)
-      expect(page).to_not have_css("#invoice_1")
+      expect(page).not_to have_css("#invoice_1")
     end
   end
 
@@ -62,7 +62,7 @@ describe "Date Time Picker Filter Input", type: :feature do
     end
 
     it "shows filtered rows", js: true do
-      expect(page).to_not have_css("#invoice_5")
+      expect(page).not_to have_css("#invoice_5")
       expect(page).to have_css("#invoice_4", count: 1)
       expect(page).to have_css("#invoice_3", count: 1)
       expect(page).to have_css("#invoice_2", count: 1)

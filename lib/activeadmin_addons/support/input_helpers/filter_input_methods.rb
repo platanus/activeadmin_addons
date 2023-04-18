@@ -14,6 +14,7 @@ module ActiveAdminAddons
       end
 
       return unless result
+
       result.values.first.value
     end
 

@@ -25,8 +25,8 @@ describe "Numeric Range Filter Input", type: :feature do
       expect(page).to have_css("#invoice_5", count: 1)
       expect(page).to have_css("#invoice_4", count: 1)
       expect(page).to have_css("#invoice_3", count: 1)
-      expect(page).to_not have_css("#invoice_2")
-      expect(page).to_not have_css("#invoice_1")
+      expect(page).not_to have_css("#invoice_2")
+      expect(page).not_to have_css("#invoice_1")
     end
   end
 
@@ -38,8 +38,8 @@ describe "Numeric Range Filter Input", type: :feature do
     end
 
     it "shows filtered rows", js: true do
-      expect(page).to_not have_css("#invoice_5", count: 1)
-      expect(page).to_not have_css("#invoice_4", count: 1)
+      expect(page).not_to have_css("#invoice_5", count: 1)
+      expect(page).not_to have_css("#invoice_4", count: 1)
       expect(page).to have_css("#invoice_3", count: 1)
       expect(page).to have_css("#invoice_2")
       expect(page).to have_css("#invoice_1")
@@ -56,11 +56,11 @@ describe "Numeric Range Filter Input", type: :feature do
     end
 
     it "shows filtered rows", js: true do
-      expect(page).to_not have_css("#invoice_5", count: 1)
+      expect(page).not_to have_css("#invoice_5", count: 1)
       expect(page).to have_css("#invoice_4", count: 1)
       expect(page).to have_css("#invoice_3", count: 1)
       expect(page).to have_css("#invoice_2")
-      expect(page).to_not have_css("#invoice_1")
+      expect(page).not_to have_css("#invoice_1")
     end
   end
 end

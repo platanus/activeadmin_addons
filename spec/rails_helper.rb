@@ -1,7 +1,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 
 require 'spec_helper'
-require File.expand_path("../dummy/config/environment", __FILE__)
+require File.expand_path('dummy/config/environment', __dir__)
 require 'rspec/rails'
 require 'factory_bot_rails'
 require 'webdrivers'
@@ -29,12 +29,12 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before(:each) do |example|
+  config.before do |example|
     DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 
