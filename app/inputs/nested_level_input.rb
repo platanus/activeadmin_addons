@@ -1,4 +1,4 @@
-class NestedLevelInput < ActiveAdminAddons::InputBase
+class NestedLevelInput < ActiveAdminAddons::SelectInputBase
   include ActiveAdminAddons::SelectHelpers
 
   def render_custom_input
@@ -38,15 +38,17 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
     return unless @options[:parent_attribute]
 
     load_data_attr(:parent, value: @options[:parent_attribute])
-    load_data_attr(:parent_id, value: @object.send(@options[:parent_attribute]), default: -1)
+    load_data_attr(
+      :parent_id, value: @object.send(@options[:parent_id_attribute]), default: -1
+    )
   end
 
   def load_collection_data
     return unless @options[:collection]
 
     collection_options = collection_to_select_options do |item, option|
-      if !!@options[:parent_attribute]
-        option[@options[:parent_attribute]] = item.send(@options[:parent_attribute])
+      if @options[:parent_attribute].present?
+        option[@options[:parent_id_attribute]] = item.send(@options[:parent_id_attribute])
       end
     end
 
