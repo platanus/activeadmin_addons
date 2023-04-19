@@ -225,10 +225,12 @@ filter :created_at, as: :date_time_picker_filter
 You can use the ajax select input to filter values on index view like this:
 
 ```ruby
-filter :category_id, as: :search_select_filter
+filter :category, as: :search_select_filter
 ```
 
 <img src="./docs/images/filter-search-select.png" height="160" />
+
+[Read more!](docs/slim-select_search.md#filter-usage)
 
 ### Themes
 
