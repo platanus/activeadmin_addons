@@ -5,7 +5,7 @@
 To enable Slim Select ajax search functionality you need to do the following:
 
 ```ruby
-  f.input :category_id, as: :search_select, url: admin_categories_path,
+  f.input :category, as: :search_select, url: admin_categories_path,
           fields: [:name, :description], display_name: 'name', minimum_input_length: 2,
           order_by: 'description_asc'
 ```
@@ -18,7 +18,7 @@ To use on filters you need to add `as: :search_select_filter` with same options.
 If you want to use url helpers, use a `proc` like on the example
 
 ```ruby
-  filter :category_id, as: :search_select_filter, url: proc { admin_categories_path },
+  filter :category, as: :search_select_filter, url: proc { admin_categories_path },
          fields: [:name, :description], display_name: 'name', minimum_input_length: 2,
          order_by: 'description_asc'
 ```
@@ -30,10 +30,10 @@ In case you need to filter with an attribute of another table you need to includ
          fields: [:name, :email], display_name: 'email', minimum_input_length: 2,
          order_by: 'description_asc', method_model: User
 ```
+Note that in this case you need to use the `id` instead of the name of the association, just like you would do in a normal filter that uses an attribute of an association.
 
 ### Options
 
-* `category_id`: Notice we're using the relation field name, not the relation itself, so you can't use `f.input :category`.
 * `url`: This is the URL where to get the results. This URL expects an activeadmin collection Url (like the index action) or anything that uses [ransack](https://github.com/activerecord-hackery/ransack) search gem.
 * `response_root`: **(optional)** If a request to `url` responds with root, you can indicate the name of that root with this attribute. By default, the gem will try to infer the root from url. For example: if `url` is `GET /admin/categories`, the root will be `categories`. If you have a rootless api, you don't need to worry about this attribute.
 * `fields`: an array of field names where to search for matches in the related model (`Category` in this example). If we give many fields, they will be searched with an OR condition.

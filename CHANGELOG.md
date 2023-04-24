@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Breaking changes
 * Defines required ruby version to >=2.7.0 [#460](https://github.com/platanus/activeadmin_addons/pull/460)
+* Nested and search select now use the name of the association instead of the name of id [#462](https://github.com/platanus/activeadmin_addons/pull/462)
 
 ### 2.0.0.beta-0
 

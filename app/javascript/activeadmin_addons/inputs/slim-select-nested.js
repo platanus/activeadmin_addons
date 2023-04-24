@@ -12,7 +12,7 @@ function ajaxSearch(search, currentData, args) {
   });
 
   if (!!args.parent) {
-    args.query.q[`${args.parent}_eq`] = args.parentId;
+    args.query.q[`${args.parent}_id_eq`] = args.parentId;
   }
 
   args.query.q = { ...args.query.q, ...args.filters };
@@ -48,7 +48,7 @@ function settings(el) {
         const { model, association } = el.dataset;
         const child = el.closest('.nested_level')
           .parentNode
-          .querySelector(`.nested_level [data-model=${model}][data-parent=${association}_id]`);
+          .querySelector(`.nested_level [data-model=${model}][data-parent=${association}]`);
 
         if (child) {
           child.slim.setSelected();

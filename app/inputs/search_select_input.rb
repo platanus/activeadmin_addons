@@ -1,4 +1,4 @@
-class SearchSelectInput < ActiveAdminAddons::InputBase
+class SearchSelectInput < ActiveAdminAddons::SelectInputBase
   include ActiveAdminAddons::SelectHelpers
 
   def render_custom_input

@@ -10,7 +10,7 @@ describe "Search Select Filter Input", type: :feature do
   context "with initial state" do
     before do
       register_page(City, false) do
-        filter :region_id, as: :search_select_filter
+        filter :region, as: :search_select_filter
       end
 
       visit admin_cities_path

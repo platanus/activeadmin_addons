@@ -59,32 +59,38 @@ class NestedSelectInput < ActiveAdminAddons::InputBase
       parent_level_data = hierarchy[next_idx] if hierarchy.count != next_idx
       if parent_level_data
         level_data[:parent_attribute] = parent_level_data[:attribute]
+        level_data[:parent_id_attribute] = "#{level_data[:parent_attribute]}_id"
         set_parent_value(level_data)
       end
     end
   end
 
   def set_parent_value(level_data)
-    parent_attribute = level_data[:parent_attribute]
-    build_virtual_attr(parent_attribute)
-    instance = instance_from_attribute_name(level_data[:attribute])
-    if instance&.respond_to?(parent_attribute)
-      @object.send("#{parent_attribute}=", instance.send(parent_attribute))
+    build_virtual_attr(level_data[:parent_attribute])
+    build_virtual_attr(level_data[:parent_id_attribute])
+    instance = instance_from_attribute_id("#{level_data[:attribute]}_id")
+    if instance.respond_to?(level_data[:parent_id_attribute])
+      @object.send(
+        "#{level_data[:parent_attribute]}=", instance.send(level_data[:parent_attribute])
+      )
+      @object.send(
+        "#{level_data[:parent_id_attribute]}=", instance.send(level_data[:parent_id_attribute])
+      )
     end
   end
 
-  def instance_from_attribute_name(attribute)
-    return unless attribute
+  def instance_from_attribute_id(attribute_id)
+    return unless attribute_id
 
-    attribute_value = @object.send(attribute)
-    return unless attribute_value
+    attribute_id_value = @object.send(attribute_id)
+    return unless attribute_id_value
 
-    klass = class_from_attribute(attribute)
-    klass.find_by(id: attribute_value)
+    klass = class_from_attribute_id(attribute_id)
+    klass.find_by(id: attribute_id_value)
   end
 
-  def class_from_attribute(attribute)
-    association_name = attribute.to_s.chomp("_id")
+  def class_from_attribute_id(attribute_id)
+    association_name = attribute_id.to_s.chomp("_id")
     association_name.camelize.constantize
   rescue NameError
     object_class.reflect_on_association(association_name).klass

@@ -1,4 +1,4 @@
 class DepartmentsCity < ActiveRecord::Base
-  has_many :departments
-  has_many :cities
+  belongs_to :department
+  belongs_to :city
 end

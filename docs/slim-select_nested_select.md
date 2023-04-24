@@ -36,10 +36,10 @@ end
 to enable nested select functionality, you we'll need to do the following:
 
 ```ruby
-f.input :city_id, as: :nested_select,
-                  level_1: { attribute: :country_id },
-                  level_2: { attribute: :region_id },
-                  level_3: { attribute: :city_id }
+f.input :city, as: :nested_select,
+               level_1: { attribute: :country },
+               level_2: { attribute: :region },
+               level_3: { attribute: :city }
 ```
 
 <img src="./images/slim-select-nested-select.gif" />
@@ -48,19 +48,19 @@ By default, the nested select input uses the index action of the different level
 It's not mandatory to register the ActiveAdmin pages. But, if you don't, you'll need to pass the `url` attribute, on each level, to make it work.
 
 ```ruby
-f.input :city_id, as: :nested_select,
-                  level_1: {
-                    attribute: :country_id,
-                    url: '/api/countries'
-                  },
-                  level_2: {
-                    attribute: :region_id,
-                    url: '/api/regions'
-                  },
-                  level_3: {
-                    attribute: :city_id,
-                    url: '/api/cities'
-                  }
+f.input :city, as: :nested_select,
+               level_1: {
+                 attribute: :country,
+                 url: '/api/countries'
+               },
+               level_2: {
+                 attribute: :region,
+                 url: '/api/regions'
+               },
+               level_3: {
+                 attribute: :city,
+                 url: '/api/cities'
+               }
 ```
 
 > Remember: those custom endpoints need to work with Ransack filters.
@@ -68,19 +68,19 @@ f.input :city_id, as: :nested_select,
 Another option is to pass the `collection` attribute. If you set this, the `url` attribute will be ignored (no ajax request will be executed) and you will work with preloaded collections.
 
 ```ruby
-f.input :city_id, as: :nested_select,
-                  level_1: {
-                    attribute: :country_id,
-                    collection: Country.all
-                  },
-                  level_2: {
-                    attribute: :region_id,
-                    collection: Region.active
-                  },
-                  level_3: {
-                    attribute: :city_id,
-                    collection: City.all
-                  }
+f.input :city, as: :nested_select,
+               level_1: {
+                 attribute: :country,
+                 collection: Country.all
+               },
+               level_2: {
+                 attribute: :region,
+                 collection: Region.active
+               },
+               level_3: {
+                 attribute: :city,
+                 collection: City.all
+               }
 ```
 
 ### Options
@@ -94,13 +94,13 @@ Nested select, allows you to customize the general behavior of the input:
 * `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `contains`
 
 ```ruby
-f.input :city_id, as: :nested_select,
-                  fields: [:name, :id],
-                  display_name: :id,
-                  minimum_input_length: 1,
-                  level_1: { attribute: :country_id },
-                  level_2: { attribute: :region_id },
-                  level_3: { attribute: :city_id }
+f.input :city, as: :nested_select,
+               fields: [:name, :id],
+               display_name: :id,
+               minimum_input_length: 1,
+               level_1: { attribute: :country },
+               level_2: { attribute: :region },
+               level_3: { attribute: :city }
 ```
 
 <img src="./images/slim-select-nested-select-general-options.gif" />
@@ -108,24 +108,24 @@ f.input :city_id, as: :nested_select,
 Also, you can redefine general options on each level.
 
 ```ruby
-f.input :city_id, as: :nested_select,
-                  fields: [:name],
-                  display_name: :name,
-                  minimum_input_length: 0,
-                  level_1: {
-                    attribute: :country_id,
-                    minimum_input_length: 3,
-                    url: '/api/countries',
-                    response_root: 'paises'
-                  },
-                  level_2: {
-                    attribute: :region_id,
-                    display_name: :id,
-                  },
-                  level_3: {
-                    attribute: :city_id,
-                    fields: [:name, :information]
-                  }
+f.input :city, as: :nested_select,
+               fields: [:name],
+               display_name: :name,
+               minimum_input_length: 0,
+               level_1: {
+                 attribute: :country,
+                 minimum_input_length: 3,
+                 url: '/api/countries',
+                 response_root: 'paises'
+               },
+               level_2: {
+                 attribute: :region,
+                 display_name: :id,
+               },
+               level_3: {
+                 attribute: :city,
+                 fields: [:name, :information]
+               }
 ```
 
 > `response_root` is not valid as general configuration. You need to define this attribute by level.
@@ -135,16 +135,16 @@ f.input :city_id, as: :nested_select,
 If you are using ajax search, you can define custom filters. For example, if you have:
 
 ```ruby
-f.input :city_id, as: :nested_select,
-                  level_1: { attribute: :country_id },
-                  level_2: {
-                    attribute: :region_id,
-                    filters: { name_contains: "Cuy", id_gt: 22 }
-                  },
-                  level_3: { attribute: :city_id }
+f.input :city, as: :nested_select,
+               level_1: { attribute: :country },
+               level_2: {
+                 attribute: :region,
+                 filters: { name_contains: "Cuy", id_gt: 22 }
+               },
+               level_3: { attribute: :city }
 ```
 
-After select a country, the regions will be filtered by:
+After selecting a country, the regions will be filtered by:
 
 * The selected country id.
 * The text entered in the region's input.
