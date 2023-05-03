@@ -99,33 +99,48 @@ describe "Nested Select Input", type: :feature do
       end
     end
 
-    context "updating medium level" do
-      before do
-        on_input_ctx("invoice_region") do
-          open_slimselect_options
-          slimselect_search_input.set("Antof")
-        end
-      end
-
-      it "shows results based on entered text", js: true do
-        expect_slimselect_result_text_to_eq(1, "Antofagasta")
-      end
-
-      context "after click option" do
+    context "when updating medium level (that uses collection option)" do
+      context 'when searching for region that does not belong to selected country' do
         before do
-          on_input_ctx("invoice_region") { click_slimselect_option("Antofagasta") }
+          on_input_ctx("invoice_region") do
+            open_slimselect_options
+            slimselect_search_input.set("Cuy")
+          end
         end
 
-        it "sets value", js: true do
-          on_input_ctx("invoice_region") { expect_slimselect_selection("Antofagasta") }
+        it "does not show results", js: true do
+          expect_slimselect_no_result
+        end
+      end
+
+      context 'when searching for region that belongs to selected country' do
+        before do
+          on_input_ctx("invoice_region") do
+            open_slimselect_options
+            slimselect_search_input.set("Antof")
+          end
         end
 
-        it "preserves parent value", js: true do
-          on_input_ctx("invoice_country") { expect_slimselect_selection("Chile") }
+        it "shows results based on entered text", js: true do
+          expect_slimselect_result_text_to_eq(1, "Antofagasta")
         end
 
-        it "resets children values", js: true do
-          on_input_ctx("invoice_city") { expect_slimselect_empty_selection }
+        context "when clicking option" do
+          before do
+            on_input_ctx("invoice_region") { click_slimselect_option("Antofagasta") }
+          end
+
+          it "sets value", js: true do
+            on_input_ctx("invoice_region") { expect_slimselect_selection("Antofagasta") }
+          end
+
+          it "preserves parent value", js: true do
+            on_input_ctx("invoice_country") { expect_slimselect_selection("Chile") }
+          end
+
+          it "resets children values", js: true do
+            on_input_ctx("invoice_city") { expect_slimselect_empty_selection }
+          end
         end
       end
     end

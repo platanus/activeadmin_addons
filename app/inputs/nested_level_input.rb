@@ -48,7 +48,7 @@ class NestedLevelInput < ActiveAdminAddons::SelectInputBase
 
     collection_options = collection_to_select_options do |item, option|
       if @options[:parent_attribute].present?
-        option[@options[:parent_id_attribute]] = item.send(@options[:parent_id_attribute])
+        option[@options[:parent_attribute]] = item.send(@options[:parent_id_attribute])
       end
     end
 

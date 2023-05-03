@@ -99,6 +99,12 @@ module CapybaraHelpers
     )
   end
 
+  def expect_slimselect_no_result
+    expect(page).to have_css(
+      "div.ss-search", text: 'No Result'
+    )
+  end
+
   def expect_slimselect_error(text)
     expect(page).to have_css(".ss-error", text: text)
   end

@@ -25,10 +25,12 @@ function collectionSearch(search, args, collection) {
     return Promise.reject('Search term too short');
   }
 
-  const data = JSON.parse(collection).map(
+  const data = JSON.parse(collection).filter(
+    (item) => (!args.parent || item[args.parent] === Number(args.parentId)) &&
+      String(item.text).toLowerCase().includes(search.toLowerCase()),
+  ).map(
     (item) => ({ value: String(item.id), text: item.text }),
-  ).filter(
-    (item) => String(item.text).toLowerCase().includes(search.toLowerCase()));
+  );
 
   return Promise.resolve(data);
 }
