@@ -584,3 +584,5 @@ RSpec/FilePath:
   Enabled: false
 RSpec/InstanceVariable:
   Enabled: false
+RSpec/Focus:
+  AutoCorrect: false
