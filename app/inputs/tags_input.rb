@@ -1,17 +1,12 @@
-class TagsInput < ActiveAdminAddons::InputBase
+class TagsInput < ActiveAdminAddons::SelectInputBase
   include ActiveAdminAddons::SelectHelpers
 
   def render_custom_input
-    if active_record_select?
-      return render_collection_tags
-    end
-
-    render_array_tags
+    render_collection_tags
   end
 
   def load_control_attributes
-    load_data_attr(:model, value: model_name)
-    load_data_attr(:method, value: method)
+    @options[:multiple] = true
     load_data_attr(:width)
 
     if active_record_select?
@@ -24,32 +19,8 @@ class TagsInput < ActiveAdminAddons::InputBase
 
   private
 
-  def render_array_tags
-    render_tags_control { build_hidden_control(prefixed_method, method_to_input_name, input_value) }
-  end
-
   def render_collection_tags
-    render_tags_control { render_selected_hidden_items }
-  end
-
-  def render_tags_control(&block)
     concat(label_html)
-    concat(block.call)
-    concat(builder.select(build_virtual_attr, [], {}, input_html_options))
-  end
-
-  def render_selected_hidden_items
-    template.content_tag(:div, id: selected_values_id) do
-      template.concat(build_hidden_control(empty_input_id, method_to_input_array_name, ""))
-      input_value.each do |item_id|
-        template.concat(
-          build_hidden_control(
-            method_to_input_id(item_id),
-            method_to_input_array_name,
-            item_id.to_s
-          )
-        )
-      end
-    end
+    concat(builder.select(method, [], input_options, input_html_options))
   end
 end
