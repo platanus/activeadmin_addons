@@ -1,3 +1,3 @@
 module ActiveadminAddons
-  VERSION = "2.0.0.beta.0"
+  VERSION = "2.0.0.beta.2"
 end
