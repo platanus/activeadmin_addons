@@ -239,14 +239,16 @@ Use default active_admin theme.
 
 ## Publishing
 
-On master/main branch...
+On a new branch:
 
-1. Change `VERSION` in `lib/activeadmin_addons/version.rb`.
-2. Change `Unreleased` title to current version in `CHANGELOG.md`.
-3. Run `bundle install`.
-4. Commit new release. For example: `Releasing v1.0.0`.
-5. Create tag. For example: `git tag v1.0.0`.
-6. Push tag. For example: `git push origin v1.0.0`.
+1. Change `VERSION` in `lib/activeadmin_addons/version.rb`. Note that beta versions should have a `.beta` suffix (e.g. `1.0.0.beta.1`).
+2. Change `"version"` in `package.json` to the same version. Note that beta versions should have a `-beta` suffix (e.g. `1.0.0-beta.1`).
+3. Change `Unreleased` title to current version in `CHANGELOG.md`.
+4. Run `bundle install`.
+5. Open a new PR with those changes.
+6. Once the PR is merged, checkout to master and pull the changes.
+8. Create tag. For example: `git tag v1.0.0`.
+9. Push tag. For example: `git push origin v1.0.0`. This will trigger the CI to publish the new version to npm and rubygems.
 
 ## Contributing
 
