@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+-
+
+### 2.0.0.beta-2
+
 #### Breaking changes
 * Defines required ruby version to >=2.7.0 [#460](https://github.com/platanus/activeadmin_addons/pull/460)
 * Nested and search select now use the name of the association instead of the name of id [#462](https://github.com/platanus/activeadmin_addons/pull/462)
@@ -11,6 +15,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Fixes
 * Include only items that belong to parent when using collection option in a nested input level [#463](https://github.com/platanus/activeadmin_addons/pull/463)
+
+### 2.0.0.beta-1
+
+Skipped
 
 ### 2.0.0.beta-0
 

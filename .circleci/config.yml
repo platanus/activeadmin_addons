@@ -121,6 +121,11 @@ jobs:
             gem build activeadmin_addons.gemspec
             version_tag=$(git describe --tags)
             gem push activeadmin_addons-${version_tag#v}.gem
+      - run:
+          name: Publish to npm
+          command: |
+            npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+            npm publish
 
 workflows:
   version: 2
