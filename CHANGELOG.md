@@ -26,7 +26,7 @@ Skipped
 * Replaces [Select2](https://select2.org/) with [Slim Select](https://slimselectjs.com/) to make it easier to work with newer bundlers like esbuild [#448](https://github.com/platanus/activeadmin_addons/pull/448)
 * Removes support for Paperclip since it has been deprecated. [#450](https://github.com/platanus/activeadmin_addons/pull/450)
 * Removes support for enumerize [#452](https://github.com/platanus/activeadmin_addons/pull/452)
-* Removes support for the Sprockets installation of ActiveAdmin [#451](https://github.com/platanus/activeadmin_addons/pull/452)
+* Removes support for the Sprockets installation of ActiveAdmin [#451](https://github.com/platanus/activeadmin_addons/pull/451)
 
 ### 1.10.0
 
