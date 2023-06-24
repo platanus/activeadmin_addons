@@ -1,7 +1,7 @@
 module ActiveAdminAddons
   module InputMethods
     def model_name
-      valid_object.class.to_s.underscore.tr('/', '_')
+      builder.options[:as]
     end
 
     def valid_method
