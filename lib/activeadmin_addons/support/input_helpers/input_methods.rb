@@ -1,7 +1,7 @@
 module ActiveAdminAddons
   module InputMethods
     def model_name
-      if builder.options[:as].present?
+      if respond_to?(:builder) && builder.options[:as].present?
         builder.options[:as]
       else
         valid_object.class.to_s.underscore.tr('/', '_')
