@@ -4,7 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
--
+#### Added
+
+* Add Ruby 3.2 support
 
 ### 2.0.0.beta-2
 

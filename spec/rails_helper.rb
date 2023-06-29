@@ -11,7 +11,6 @@ require 'selenium-webdriver'
 require 'shoulda-matchers'
 require 'database_cleaner'
 require 'rspec/retry'
-require 'pry'
 
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each { |f| require f }
