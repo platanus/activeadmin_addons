@@ -14,7 +14,7 @@ class SearchSelectInput < ActiveAdminAddons::InputBase
   def load_control_attributes
     load_class(@options[:class])
     load_data_attr(:fields, default: ["name"], formatter: :to_json)
-    load_data_attr(:predicate, default: "contains")
+    load_data_attr(:predicate, default: "cont")
     load_data_attr(:url, default: url_from_method)
     load_data_attr(:response_root, default: tableize_method)
     load_data_attr(:display_name, default: "name")
