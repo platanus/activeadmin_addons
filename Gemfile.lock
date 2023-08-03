@@ -61,7 +61,7 @@ GEM
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_material (1.5.2)
-    activeadmin (2.13.1)
+    activeadmin (3.0.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1, < 5.0)
       formtastic_i18n (~> 0.4)
@@ -69,7 +69,7 @@ GEM
       jquery-rails (~> 4.2)
       kaminari (~> 1.0, >= 1.2.1)
       railties (>= 6.1, < 7.1)
-      ransack (>= 2.1.1, < 4)
+      ransack (>= 4.0, < 5)
     activejob (6.1.7)
       activesupport (= 6.1.7)
       globalid (>= 0.3.6)
@@ -93,7 +93,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    arbre (1.5.0)
+    arbre (1.6.0)
       activesupport (>= 3.0.0, < 7.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
     ast (2.4.0)
@@ -148,7 +148,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    has_scope (0.8.0)
+    has_scope (0.8.1)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
     i18n (1.12.0)
@@ -258,9 +258,9 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.6)
-    ransack (3.0.1)
-      activerecord (>= 6.0.4)
-      activesupport (>= 6.0.4)
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
       i18n
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
@@ -268,9 +268,9 @@ GEM
     redcarpet (3.6.0)
     regexp_parser (1.6.0)
     require_all (3.0.0)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
+    responders (3.1.0)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rexml (3.2.5)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -366,7 +366,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
-  activeadmin
+  activeadmin (~> 3.0)
   activeadmin_addons!
   capybara-selenium
   database_cleaner
