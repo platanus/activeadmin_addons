@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "xdan-datetimepicker-rails", "~> 2.5.1"
 
   s.add_development_dependency "aasm"
-  s.add_development_dependency "capybara-selenium"
+  s.add_development_dependency "capybara"
   s.add_development_dependency "database_cleaner"
   s.add_development_dependency "enumerize", "~> 2.0"
   s.add_development_dependency "factory_bot_rails"
@@ -43,8 +43,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "rspec_junit_formatter"
   s.add_development_dependency "rubocop", "~> 0.65.0"
+  s.add_development_dependency "selenium-webdriver", '~> 4.10'
   s.add_development_dependency "shoulda-matchers"
   s.add_development_dependency "shrine", "~> 3.0"
   s.add_development_dependency "sqlite3"
-  s.add_development_dependency "webdrivers"
 end
