@@ -4,7 +4,6 @@ require 'spec_helper'
 require File.expand_path('dummy/config/environment', __dir__)
 require 'rspec/rails'
 require 'factory_bot_rails'
-require 'webdrivers'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'selenium-webdriver'
@@ -40,12 +39,6 @@ RSpec.configure do |config|
   config.around :each, :js do |ex|
     ex.run_with_retry retry: 3
   end
-
-  # Cache the download of chrome driver for 1 day
-  Webdrivers.cache_time = 86_400
-
-  # Allow override of default path to Chrome (we use this in Travis)
-  Selenium::WebDriver::Chrome.path = ENV['CHROME_PATH'] if ENV['CHROME_PATH']
 
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
