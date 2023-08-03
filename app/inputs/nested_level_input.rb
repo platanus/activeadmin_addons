@@ -18,7 +18,7 @@ class NestedLevelInput < ActiveAdminAddons::SelectInputBase
     load_class(@options[:class])
     load_data_attr(:association, value: association_name)
     load_data_attr(:fields, default: ["name"], formatter: :to_json)
-    load_data_attr(:predicate, default: "contains")
+    load_data_attr(:predicate, default: "cont")
     load_data_attr(:filters)
     load_data_attr(:model, value: model_name)
     load_data_attr(:display_name, default: "name")

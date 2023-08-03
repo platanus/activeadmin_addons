@@ -43,5 +43,5 @@ Note that in this case you need to use the `id` instead of the name of the assoc
 * `class`: **(optional)** You can pass extra classes for your field.
 * `width`: **(optional)** You can set the select input width (px or %).
 * `order_by`: **(optional)** Order (sort) results by a specific attribute, suffixed with `_desc` or `_asc`. Eg: `description_desc`. By **default** is used the first field in descending direction.
-* `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `contains`.
+* `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `cont`.
 * `method_model`: **(optional)** Use in case you need to search or filter an attribute of another table.
