@@ -26,7 +26,6 @@ commands:
     steps:
       - checkout
       - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
       - restore_cache:
           keys:
           - bundler-dependencies-{{ checksum "Gemfile.lock" }}
