@@ -242,7 +242,7 @@ describe "Nested Select Input", type: :feature do
                        level_1: { attribute: :country },
                        level_2: {
                          attribute: :region,
-                         filters: { name_contains: 'Met' }
+                         filters: { name_cont: 'Met' }
                        },
                        level_3: { attribute: :city }
       end

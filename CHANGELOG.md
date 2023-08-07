@@ -6,7 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Added
 
-* Add Ruby 3.2 support
+* Add Ruby 3.2 support [#474](https://github.com/platanus/activeadmin_addons/pull/474)
+* Add ActiveAdmin v3 support [#477](https://github.com/platanus/activeadmin_addons/pull/477)
+  * Note that changes made should be backwards compatible with ActiveAdmin 2.x, so this is not a breaking change
 
 ### 2.0.0.beta-2
 
