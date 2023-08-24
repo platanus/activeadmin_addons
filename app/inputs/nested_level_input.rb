@@ -24,6 +24,7 @@ class NestedLevelInput < ActiveAdminAddons::InputBase
     load_data_attr(:url, default: url_from_method)
     load_data_attr(:response_root, default: tableize_method)
     load_data_attr(:width, default: "80%")
+    load_data_attr(:primary_key, default: "id")
     load_data_attr(:order,
       value: @options[:order_by],
       default: get_data_attr_value(:fields).first.to_s + "_desc")

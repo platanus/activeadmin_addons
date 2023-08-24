@@ -79,6 +79,7 @@ var initializer = function() {
       var minimumInputLength = element.data('minimum-input-length');
       var order = element.data('order');
       var parentId = element.data('parent-id');
+      var primaryKey = element.data('primary-key');
       var selectInstance;
 
       var select2Config = {
@@ -133,7 +134,7 @@ var initializer = function() {
                   resource[displayName] = 'No display name for id #' + resource.id.toString();
                 }
                 return {
-                  id: resource.id,
+                  id: resource[primaryKey],
                   text: resource[displayName].toString(),
                 };
               }),
