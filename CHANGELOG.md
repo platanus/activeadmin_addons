@@ -2,7 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-### Unreleased
+### 1.10.1
+
+* Backport [#477](https://github.com/platanus/activeadmin_addons/pull/477) to have ActiveAdmin v3 compatibility [#479](https://github.com/platanus/activeadmin_addons/pull/479)
 
 ### 1.10.0
 

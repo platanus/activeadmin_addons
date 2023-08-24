@@ -98,4 +98,22 @@ class Invoice < ActiveRecord::Base
       "#B9BF00"
     ]
   end
+
+  def set_default_state
+    self.state ||= 'pending'
+  end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    [
+      "aasm_state", "active", "amount", "attachment_content_type", "attachment_file_name",
+      "attachment_file_size", "attachment_updated_at", "category_id", "city_id", "client_id",
+      "color", "created_at", "description", "id", "legal_date", "number", "paid",
+      "photo_content_type", "photo_file_name", "photo_file_size", "photo_updated_at",
+      "picture_data", "position", "shipping_status", "state", "status", "updated_at"
+    ]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    ["category", "city", "items", "other_items"]
+  end
 end

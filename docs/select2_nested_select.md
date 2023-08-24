@@ -91,7 +91,7 @@ Nested select, allows you to customize the general behavior of the input:
 * `display_name`: **(optional)** You can pass an optional `display_name` to set the attribute (or method) to show results on the select. It **defaults to**: `name`
 * `minimum_input_length`: **(optional)** Minimum number of characters required to initiate the search. It **defaults to**: `1`. Set this value to `0` to disable type-to-search and show a static list.
 * `response_root`: **(optional)** If you have defined the `url` attribute and a request to that url responds with a root, you can indicate the name of that root with this attribute. By default, the gem will try to infer the root from url. For example: if `url` is `GET /admin/countries`, the root will be `countries`. If you have a rootless api, you don't need to worry about this attribute.
-* `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `contains`
+* `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `cont`
 
 ```ruby
 f.input :city_id, as: :nested_select,
@@ -139,7 +139,7 @@ f.input :city_id, as: :nested_select,
                   level_1: { attribute: :country_id },
                   level_2: {
                     attribute: :region_id,
-                    filters: { name_contains: "Cuy", id_gt: 22 }
+                    filters: { name_cont: "Cuy", id_gt: 22 }
                   },
                   level_3: { attribute: :city_id }
 ```

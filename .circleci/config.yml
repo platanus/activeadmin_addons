@@ -15,7 +15,7 @@ executors:
     parameters:
       ruby-version:
         description: "Ruby version"
-        default: "2.7"
+        default: "3.2"
         type: string
     docker:
       - image: *ruby-image
@@ -27,7 +27,6 @@ commands:
     steps:
       - checkout
       - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
       - restore_cache:
           keys:
           - bundler-dependencies-{{ checksum "Gemfile.lock" }}
@@ -140,7 +139,7 @@ workflows:
       - test:
           matrix:
             parameters:
-              ruby-version: ["2.6", "2.7", "3.0", "3.1"]
+              ruby-version: ["3.0", "3.1", "3.2"]
       - deploy:
           context: org-global
           filters:
