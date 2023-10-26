@@ -45,3 +45,4 @@ In case you need to filter with an attribute of another table you need to includ
 * `order_by`: **(optional)** Order (sort) results by a specific attribute, suffixed with `_desc` or `_asc`. Eg: `description_desc`. By **default** is used the first field in descending direction.
 * `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `cont`.
 * `method_model`: **(optional)** Use in case you need to search or filter an attribute of another table.
+* `primary_key`: **(optional)** Use in case you need to search with another column. It **defaults to** `"id"`.
