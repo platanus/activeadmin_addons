@@ -54,7 +54,11 @@ function settings(el) {
       search: (search, currentData) => {
         args.textQuery = { m: 'or' };
         args.fields.forEach((field) => {
-          args.textQuery[`${field}_${predicate}`] = search;
+          if (field === 'id') {
+            args.textQuery[`${field}_eq`] = search;
+          } else {
+            args.textQuery[`${field}_${predicate}`] = search;
+          }
         });
 
         return ransackSearch(search, currentData, args);
