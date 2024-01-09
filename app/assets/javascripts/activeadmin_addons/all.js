@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-abusive-eslint-disable */
 /* eslint-disable */
 /**
  * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/activeadmin_addons/' and run `yarn build`
@@ -343,6 +344,21 @@
         var fields = element.data("fields");
         var predicate = element.data("predicate");
         var filters = element.data("filters");
+
+        filters = function() {
+          var filters = {}
+
+          $('.nested-level-input').each(function(i, el) {
+            var element = $(el);
+            var parent = element.data("parent");
+            var parentId = element.data("parent-id");
+            if (!!parent) {
+              filters[parent + "_eq"] = parentId;
+            }
+
+          });
+          return filters;
+        }
         var displayName = element.data("display-name");
         var parent = element.data("parent");
         var width = element.data("width");
@@ -388,7 +404,7 @@
               if (!!parent) {
                 query.q[parent + "_eq"] = parentId;
               }
-              Object.assign(query.q, filters);
+              Object.assign(query.q, filters());
               return query;
             },
             processResults: function(data) {
