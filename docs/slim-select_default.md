@@ -23,7 +23,7 @@ end
 Now, if you want to enable [Slim Select](https://slimselectjs.com/) for a single control, you can add the `"slim-select"` class:
 
 ```
-f.input :created_at, input_html: { class: ""slim-select" }
+f.input :state, input_html: { class: "slim-select" }
 ```
 
 ### Options
