@@ -39,6 +39,16 @@ The value update is done through the default update route, so you must check you
  `toggle_bool_column :paid, if: proc { |item| item.price.present? }`
  
  `toggle_bool_column :paid, unless: proc { |item| item.is_free? }`
+
+ ### Confirmation message
+
+ Optionally, you can provide a confirmation message to the user before updating the value.
+  
+ This is disabled by default, but can be enabled by adding the option `confirm_message`
+   
+ `toggle_bool_column :paid, confirm_message: 'Are you sure you want to toggle this switch?'`
+  
+ If the user cancels the confirmation, the update action will be aborted.
  
  ### Success message
  

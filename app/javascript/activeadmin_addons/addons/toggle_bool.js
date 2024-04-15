@@ -2,6 +2,11 @@ var initializer = function() {
   $('.toggle-bool-switch').click(function(e) {
     var boolSwitch = $(e.target);
 
+    var confirmMessage = boolSwitch.data('confirm_message');
+    if (confirmMessage && !confirm(confirmMessage)) {
+      return false;
+    }
+
     var objectId = boolSwitch.data('object_id');
     var model = boolSwitch.data('model');
     var field = boolSwitch.data('field');
