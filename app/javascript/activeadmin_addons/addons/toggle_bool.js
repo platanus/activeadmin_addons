@@ -2,8 +2,17 @@ var initializer = function() {
   $('.toggle-bool-switch').click(function(e) {
     var boolSwitch = $(e.target);
 
+    var value = boolSwitch.data('value');
     var confirmMessage = boolSwitch.data('confirm_message');
     if (confirmMessage && !confirm(confirmMessage)) {
+      return false;
+    }
+    var confirmMessage = boolSwitch.data('confirm_on_message');
+    if (confirmMessage && !value && !confirm(confirmMessage)) {
+      return false;
+    }
+    var confirmMessage = boolSwitch.data('confirm_off_message');
+    if (confirmMessage && value && !confirm(confirmMessage)) {
       return false;
     }
 

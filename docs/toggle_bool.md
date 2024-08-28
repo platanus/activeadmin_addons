@@ -44,7 +44,10 @@ The value update is done through the default update route, so you must check you
 
  Optionally, you can provide a confirmation message to the user before updating the value.
   
- This is disabled by default, but can be enabled by adding the option `confirm_message`
+ This is disabled by default, but can be enabled by adding a option:
+ - `confirm_message` (on/off),
+ - `confirm_on_message` (on),
+ - `confirm_off_message` (off)
    
  `toggle_bool_column :paid, confirm_message: 'Are you sure you want to toggle this switch?'`
   
