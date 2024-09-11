@@ -11,7 +11,10 @@ module ActiveAdminAddons
     def render
       raise "you need to install AASM gem first" unless defined? AASM
       raise "the #{attribute} is not an AASM state" unless state_attribute?
-      context.status_tag(model.aasm(machine_name).human_state, class: status_class_for_model)
+
+      context.status_tag(
+        model.aasm(machine_name).human_state, class: status_class_for_model, title: title
+      )
     end
 
     private
@@ -32,6 +35,23 @@ module ActiveAdminAddons
 
     def class_bindings
       @class_bindings ||= DEFAULT_CLASS_BINDINGS.merge(options[:states] || {})
+    end
+
+    def title
+      return @title if defined? @title
+
+      title = options.fetch(:title, nil)
+      @title =
+        case title
+        when String, nil
+          title
+        when Symbol
+          model.send(title)
+        when Proc
+          title.call(model)
+        else
+          raise "Invalid title type: #{title.class}. It must be a String, Symbol or Proc."
+        end
     end
   end
 end

@@ -70,3 +70,26 @@ show do
   end
 end
 ```
+
+## Adding a title
+
+You can add a static text title to the state column:
+
+```ruby
+state_column :state, title: "Changes when ..."
+state_row :state, title: "Changes when ..."
+```
+
+You can use model field as a title:
+
+```ruby
+state_column :state, title: :state_changed_at
+state_row :state, title: :state_changed_at
+```
+
+You can use a proc as a title:
+
+```ruby
+state_column :state, title: ->(model) { model.change_reason && "Reason: #{model.change_reason}" }
+state_row :state, title: ->(model) { model.change_reason && "Reason: #{model.change_reason}" }
+```

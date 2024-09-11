@@ -71,4 +71,48 @@ describe "State Builder", type: :feature do
       expect(page).to have_css('.stock')
     end
   end
+
+  context "passing title as string" do
+    before do
+      register_show(Invoice) do
+        state_row(:aasm_state, title: 'Enigmatic')
+      end
+
+      visit admin_invoice_path(create_invoice)
+    end
+
+    it "shows title" do
+      expect(page).to have_selector('span[title="Enigmatic"]')
+    end
+  end
+
+  context "passing title as string" do
+    before do
+      register_show(Invoice) do
+        state_row(:aasm_state, title: :shipping_status)
+      end
+
+      visit admin_invoice_path(create_invoice)
+    end
+
+    it "shows title" do
+      expect(page).to have_selector('span[title="stock"]')
+    end
+  end
+
+  context "passing title as proc" do
+    before do
+      register_show(Invoice) do
+        state_row(:aasm_state, title: lambda { |invoice|
+          invoice.shipping_status && "Shipping: #{invoice.shipping_status.humanize}"
+        })
+      end
+
+      visit admin_invoice_path(create_invoice)
+    end
+
+    it "shows title" do
+      expect(page).to have_selector('span[title="Shipping: Stock"]')
+    end
+  end
 end
