@@ -26,8 +26,7 @@ module ActiveAdminAddons
         'data-url' => resource_url,
         'data-success_message' => options[:success_message],
         'data-confirm_message' => options[:confirm_message],
-        'data-confirm_on_message' => options[:confirm_on_message],
-        'data-confirm_off_message' => options[:confirm_off_message]
+        'data-confirm_message_trigger' => options[:confirm_message_trigger]
       )
     end
 
