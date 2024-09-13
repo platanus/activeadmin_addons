@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### Added
+
+* Add confirm_message to toggle-bool-switch
+
 ### 2.0.0.beta-3
 
 #### Added

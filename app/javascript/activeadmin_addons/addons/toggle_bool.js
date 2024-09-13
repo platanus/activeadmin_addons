@@ -2,6 +2,20 @@ var initializer = function() {
   $('.toggle-bool-switch').click(function(e) {
     var boolSwitch = $(e.target);
 
+    var value = boolSwitch.data('value');
+    var confirmMessage = boolSwitch.data('confirm_message');
+    var confirmTrigger = boolSwitch.data('confirm_message_trigger') || 'both';
+    
+    if (confirmMessage) {
+      var shouldConfirm = 
+        (confirmTrigger === 'both') || 
+        (confirmTrigger === 'on' && !value) || 
+        (confirmTrigger === 'off' && value);
+    
+      if (shouldConfirm && !confirm(confirmMessage)) {
+        return false;
+      }
+    }
     var objectId = boolSwitch.data('object_id');
     var model = boolSwitch.data('model');
     var field = boolSwitch.data('field');
