@@ -69,8 +69,8 @@ describe "Nested Select Input", type: :feature do
       on_input_ctx("invoice_country") { expect_slimselect_selection("Chile") }
       on_input_ctx("invoice_region") do
         expect_slimselect_selection("Metropolitana")
-        expect_slimselect_selection("Antofagasta")
-        expect_slimselect_selection("Cuyo")
+        expect_slimselect_option("Antofagasta")
+        expect_slimselect_option("Cuyo")
       end
       on_input_ctx("invoice_city") { expect_slimselect_selection("Santiago") }
     end
