@@ -26,7 +26,6 @@ class SelectedListInput < ActiveAdminAddons::InputBase
 
   def render_control_wrapper
     template.content_tag(:div, class: "selected-list-container") do
-      template.content_tag(label_html)
       template.concat(render_items_list)
       template.concat(builder.select(build_virtual_attr, [], {}, input_html_options))
     end

@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### Fixed
+
+* Remove invalid HTML from selected list input to avoid error in Rails 7.2
+
 #### Added
 
 * Add confirm_message to toggle-bool-switch
