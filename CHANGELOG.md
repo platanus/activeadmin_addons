@@ -4,19 +4,23 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+### 2.0.0.beta-4
+
 #### Fixed
 
-* Remove invalid HTML from selected list input to avoid error in Rails 7.2
+* Remove invalid HTML from selected list input to avoid error in Rails 7.2 [#506](https://github.com/platanus/activeadmin_addons/pull/506)
+* Suppress sass deprecation warning [#503](https://github.com/platanus/activeadmin_addons/pull/503)
+
 
 #### Added
 
-* Add confirm_message to toggle-bool-switch
+* Add confirm_message to toggle-bool-switch [#498](https://github.com/platanus/activeadmin_addons/pull/498)
 
 ### 2.0.0.beta-3
 
 #### Added
 
-* Add Ruby 3.2 support [#474](https://github.com/platanus/activeadmin_addons/pull/474)
+* Formally support Ruby 3.2 [#474](https://github.com/platanus/activeadmin_addons/pull/474)
 * Add ActiveAdmin v3 support [#477](https://github.com/platanus/activeadmin_addons/pull/477)
   * Note that changes made should be backwards compatible with ActiveAdmin 2.x, so this is not a breaking change
 
@@ -41,6 +45,14 @@ Skipped
 * Removes support for Paperclip since it has been deprecated. [#450](https://github.com/platanus/activeadmin_addons/pull/450)
 * Removes support for enumerize [#452](https://github.com/platanus/activeadmin_addons/pull/452)
 * Removes support for the Sprockets installation of ActiveAdmin [#451](https://github.com/platanus/activeadmin_addons/pull/451)
+
+### 1.10.2
+
+#### Fixes
+
+* Remove invalid HTML from selected list input to avoid error in Rails 7.2 [#506](https://github.com/platanus/activeadmin_addons/pull/506)[#508](https://github.com/platanus/activeadmin_addons/pull/508)
+* Pin active material to 1.5 to avoid incompatibility issue with newer versions [#501](https://github.com/platanus/activeadmin_addons/pull/501)
+* Fix searching for ids with selected list input [#489](https://github.com/platanus/activeadmin_addons/pull/489)
 
 ### 1.10.1
 
