@@ -4,9 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
-#### Fixed
+### 1.10.2
 
-* Remove invalid HTML from selected list input to avoid error in Rails 7.2 [#507](https://github.com/platanus/activeadmin_addons/pull/507)
+* Remove invalid HTML from selected list input to avoid error in Rails 7.2 [#506](https://github.com/platanus/activeadmin_addons/pull/506)[#508](https://github.com/platanus/activeadmin_addons/pull/508)
+* Pin active material to 1.5 to avoid incompatibility issue with newer versions [#501](https://github.com/platanus/activeadmin_addons/pull/501)
+* Fix searching for ids with selected list input [#489](https://github.com/platanus/activeadmin_addons/pull/489)
 
 ### 1.10.1
 
