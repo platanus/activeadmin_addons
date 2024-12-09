@@ -7,6 +7,6 @@ class SearchSelectFilterInput < SearchSelectInput
   end
 
   def input_method
-    eq_input_name
+    in_input_name
   end
 end

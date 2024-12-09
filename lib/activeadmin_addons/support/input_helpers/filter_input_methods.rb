@@ -17,6 +17,10 @@ module ActiveAdminAddons
       result.values.first.value
     end
 
+    def in_input_name
+      "#{method}_in"
+    end
+
     def eq_input_name
       "#{valid_method}_eq"
     end
