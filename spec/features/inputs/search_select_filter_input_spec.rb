@@ -36,13 +36,55 @@ describe "Search Select Filter Input", type: :feature do
         click_filter_btn
       end
 
-      it "shows all the results" do
+      it "shows filtered results" do
         within "#index_table_cities" do
           expect_text("Santiago")
           expect_text("Colina")
           not_expect_text("Mejillones")
           not_expect_text("Tocopilla")
           not_expect_text("Mendoza")
+        end
+      end
+    end
+  end
+
+  context "with multiple: true" do
+    before do
+      register_page(City, false) do
+        filter :region_id, as: :search_select_filter, input_html: { multiple: true }
+      end
+
+      visit admin_cities_path
+    end
+
+    it "shows filter input" do
+      expect_css("select#q_region_id[multiple]")
+    end
+
+    it "shows all the results" do
+      within "#index_table_cities" do
+        expect_text("Santiago")
+        expect_text("Colina")
+        expect_text("Mejillones")
+        expect_text("Tocopilla")
+        expect_text("Mendoza")
+      end
+    end
+
+    context "setting multiple values", js: true do
+      before do
+        pick_select2_entered_option("Cuyo")
+        pick_select2_entered_option("Metropolitana")
+        click_filter_btn
+      end
+
+      it "shows filtered results" do
+        within "#index_table_cities" do
+          expect_text("Santiago")
+          expect_text("Colina")
+          expect_text("Mendoza")
+          not_expect_text("Mejillones")
+          not_expect_text("Tocopilla")
         end
       end
     end
