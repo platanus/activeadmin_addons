@@ -16,6 +16,7 @@ var initializer = function() {
       var responseRoot = element.data('response-root');
       var minimumInputLength = element.data('minimum-input-length');
       var order = element.data('order');
+      var primaryKey = element.data('primary-key');
 
       var selectOptions = {
         width: width,
@@ -58,7 +59,7 @@ var initializer = function() {
                   resource[displayName] = 'No display name for id #' + resource.id.toString();
                 }
                 return {
-                  id: resource.id,
+                  id: resource[primaryKey],
                   text: resource[displayName].toString(),
                 };
               }),

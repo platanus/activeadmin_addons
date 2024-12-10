@@ -15,6 +15,7 @@ class SelectedListInput < ActiveAdminAddons::InputBase
     load_data_attr(:display_name, default: "name")
     load_data_attr(:minimum_input_length, default: 1)
     load_data_attr(:width, default: "100%")
+    load_data_attr(:primary_key, default: "id")
     load_data_attr(
       :order,
       value: @options[:order_by],

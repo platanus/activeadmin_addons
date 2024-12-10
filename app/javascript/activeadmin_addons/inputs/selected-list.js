@@ -25,6 +25,7 @@ var initializer = function() {
       var responseRoot = element.data('response-root');
       var minimumInputLength = element.data('minimum-input-length');
       var order = element.data('order');
+      var primaryKey = element.data('primary-key');
 
       var selectOptions = {
         minimumInputLength: minimumInputLength,
@@ -62,7 +63,7 @@ var initializer = function() {
             return {
               results: jQuery.map(data, function(resource) {
                 return {
-                  id: resource.id,
+                  id: resource[primaryKey],
                   text: resource[displayName].toString(),
                 };
               }),

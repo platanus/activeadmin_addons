@@ -230,6 +230,7 @@
         var responseRoot = element.data("response-root");
         var minimumInputLength = element.data("minimum-input-length");
         var order = element.data("order");
+        var primaryKey = element.data("primary-key");
         var selectOptions = {
           width: width,
           minimumInputLength: minimumInputLength,
@@ -270,7 +271,7 @@
                     resource[displayName] = "No display name for id #" + resource.id.toString();
                   }
                   return {
-                    id: resource.id,
+                    id: resource[primaryKey],
                     text: resource[displayName].toString()
                   };
                 })
@@ -352,6 +353,7 @@
         var minimumInputLength = element.data("minimum-input-length");
         var order = element.data("order");
         var parentId = element.data("parent-id");
+        var primaryKey = element.data("primary-key");
         var selectInstance;
         var select2Config = {
           width: width,
@@ -401,7 +403,7 @@
                     resource[displayName] = "No display name for id #" + resource.id.toString();
                   }
                   return {
-                    id: resource.id,
+                    id: resource[primaryKey],
                     text: resource[displayName].toString()
                   };
                 })
@@ -520,6 +522,7 @@
         var responseRoot = element.data("response-root");
         var minimumInputLength = element.data("minimum-input-length");
         var order = element.data("order");
+        var primaryKey = element.data("primary-key");
         var selectOptions = {
           minimumInputLength: minimumInputLength,
           allowClear: true,
@@ -555,7 +558,7 @@
               return {
                 results: jQuery.map(data, function(resource) {
                   return {
-                    id: resource.id,
+                    id: resource[primaryKey],
                     text: resource[displayName].toString()
                   };
                 })
