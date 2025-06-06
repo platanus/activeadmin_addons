@@ -1,5 +1,5 @@
 var initializer = function() {
-  $('.toggle-bool-switch').click(function(e) {
+  $('.toggle-bool-switch').off('click.toggleBool').on('click.toggleBool', function(e) {
     var boolSwitch = $(e.target);
 
     var value = boolSwitch.data('value');
@@ -50,4 +50,4 @@ var initializer = function() {
 };
 
 $(initializer);
-$(document).on('turbolinks:load', initializer);
+$(document).on('turbolinks:load turbo:load', initializer);
